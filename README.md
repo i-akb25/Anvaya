@@ -1,7 +1,5 @@
 # Anvaya
 
-**Product requirements:** [PRD.md](./PRD.md) · **Master charter:** [PROJECT_MASTER.md](./PROJECT_MASTER.md).
-
 **Project source of truth:** [PROJECT_MASTER.md](./PROJECT_MASTER.md). Product, design, exam coverage, privacy, content integrity, delivery rules, and current implementation limits are documented there.
 
 Personal-first, public-ready exam preparation workspace.

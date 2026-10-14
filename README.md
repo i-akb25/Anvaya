@@ -24,3 +24,7 @@ Open http://localhost:3000.
 - Official exam patterns must come from a dated official notification, not hardcoded assumptions.
 
 Support: akbsupportinfo@gmail.com
+
+## Custom CBT practice (new)
+
+Open `/practice` to configure a timed question set, marking scheme, select answers, mark questions for review, navigate by palette, submit, inspect explanations, and export attempt history. Attempts are stored in **the current browser's localStorage**, with a maximum of 50 records. **This is not cloud synchronization** and is not safe as a sole backup. The user should export JSON. This does not implement offline service-worker caching or real PYQ ingestion. The supplied bank is six illustrative questions, and the scoring preset is not presented as an official exam pattern.

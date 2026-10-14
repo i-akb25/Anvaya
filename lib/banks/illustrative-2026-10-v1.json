@@ -1,0 +1,92 @@
+{
+  "version": "anvaya-illustrative-2026-10-v1",
+  "kind": "illustrative",
+  "language": "en",
+  "origin": "Original illustrative examples; no official exam, year, shift or answer-key provenance is claimed.",
+  "questions": [
+    {
+      "id": "q1",
+      "topic": "Indian Polity",
+      "stem": "Which Article provides the right to approach the Supreme Court for enforcement of Fundamental Rights?",
+      "choices": [
+        "Article 14",
+        "Article 19",
+        "Article 32",
+        "Article 44"
+      ],
+      "correct": 2,
+      "explanation": "Article 32 guarantees the right to constitutional remedies in the Supreme Court.",
+      "source": "illustrative"
+    },
+    {
+      "id": "q2",
+      "topic": "History",
+      "stem": "Who founded the Maurya Empire?",
+      "choices": [
+        "Ashoka",
+        "Chandragupta Maurya",
+        "Bindusara",
+        "Bimbisara"
+      ],
+      "correct": 1,
+      "explanation": "Chandragupta Maurya founded the Maurya dynasty.",
+      "source": "illustrative"
+    },
+    {
+      "id": "q3",
+      "topic": "General Science",
+      "stem": "What is the SI unit of electric resistance?",
+      "choices": [
+        "Volt",
+        "Ampere",
+        "Ohm",
+        "Watt"
+      ],
+      "correct": 2,
+      "explanation": "Electrical resistance is measured in ohms (Ω).",
+      "source": "illustrative"
+    },
+    {
+      "id": "q4",
+      "topic": "Geography",
+      "stem": "Which river is commonly referred to as the Sorrow of Bihar?",
+      "choices": [
+        "Gandak",
+        "Kosi",
+        "Son",
+        "Punpun"
+      ],
+      "correct": 1,
+      "explanation": "The Kosi is known for destructive floods and shifting channels.",
+      "source": "illustrative"
+    },
+    {
+      "id": "q5",
+      "topic": "Electrical Engineering",
+      "stem": "In an ideal transformer, frequency on the secondary side is:",
+      "choices": [
+        "Twice the primary",
+        "Half the primary",
+        "Same as primary",
+        "Zero"
+      ],
+      "correct": 2,
+      "explanation": "An ideal transformer changes voltage and current ratios, not frequency.",
+      "source": "illustrative"
+    },
+    {
+      "id": "q6",
+      "topic": "Quantitative Aptitude",
+      "stem": "What is 20% of 250?",
+      "choices": [
+        "25",
+        "40",
+        "50",
+        "75"
+      ],
+      "correct": 2,
+      "explanation": "0.2 × 250 = 50.",
+      "source": "illustrative"
+    }
+  ]
+}

@@ -29,7 +29,7 @@ assert.deepEqual(JSON.parse(exportAttempts()).attempts,JSON.parse(before).attemp
 const data=JSON.parse(before);data.attempts[0].answers={q1:999};assert.throws(()=>importAttempts(JSON.stringify(data)));
 });
 test('unavailable or corrupt browser storage fails safely',()=>{
-store.set('anvaya-practice-v1','broken');assert.deepEqual(readAttempts(),[]);
+store.clear();store.set('anvaya-practice-v1','broken');assert.deepEqual(readAttempts(),[]);
 const original=window.localStorage;window.localStorage={getItem(){throw Error('blocked')},setItem(){throw Error('blocked')}};
 assert.deepEqual(readAttempts(),[]);assert.equal(saveAttempt(createAttempt(config,{},['q1'],0)),false);window.localStorage=original;
 });

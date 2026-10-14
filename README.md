@@ -59,3 +59,14 @@ CI uses the lockfile and runs type checking, behavioral regression tests and the
 Dependency audit: PostCSS is overridden to 8.5.30 within the existing Next.js 15 stack to resolve the installed vulnerable transitive version. Recheck the override when upgrading Next.js.
 
 The full audit (including development tools) still flags the `braces` chain through `eslint-config-next`; npm reports no compatible fix without changing the lint toolchain. The production-only audit is clean. This remaining development dependency advisory is not a claim that all dependencies are vulnerability-free.
+
+## Recoverable practice and review
+
+- `/practice`: saved responses, navigation and review marks; resume/discard an unfinished session; the original deadline continues across reloads. Another tab must explicitly claim recovery. Starting without storage is available for blocked storage or memory-only practice.
+- `/review`: separate exam tracking contexts, per-topic accuracy and penalties, a historical mistake notebook, and a revision queue driven by the latest response. Self-review acknowledgements are not mastery claims. Statistics cover only retained illustrative attempts.
+- Attempts retain a bank version and content kind. Existing v1 history migrates on the first successful write, and v1 backups can still be restored. Released bank content must remain append-only; add a new bank version instead of changing a historical answer key.
+- Workspace backup format `anvaya-workspace-v2` includes completed attempts, unfinished recovery and review acknowledgements. All are written as one browser-storage record. Malformed imports are rejected before writing; raw data can be exported for recovery. Imported files are untrusted and validated. A raw recovery file is for safekeeping/manual diagnosis, not automatic import.
+- Deletion removes both legacy and current practice records. Exported files contain private responses and timing. Keep them private. A memory-only result can be downloaded before leaving the page.
+- GATE 2027 EE/EC/IN official-source links are recorded in `lib/exam-sources.ts` with the date and scope checked. Full official syllabi, pattern versions and authentic PYQs are still pending.
+
+Tests cover clock expiry, draft recovery, conflicting-tab ownership, legacy migration, input/provenance checks, failed writes, complete backup/restore, exam isolation, analytics and revision state. Authentication, private server storage, offline sync, and browser visual QA remain release gates. No cloud reliability or real-exam readiness is claimed.

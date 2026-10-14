@@ -67,3 +67,11 @@ Work to completion **within each active session**, push changes and check build/
 
 ## Continuity rule
 This document is the durable repository reference for future Anvaya work. Keep it synchronized when scope is explicitly revised and do not silently weaken the security, authenticity, device-support or visual rules.
+
+## Implemented follow-up · 2026-10-14
+- The shared branding/asset pack and responsive practice improvements from PR #1 are merged.
+- `/practice` now supports versioned illustrative attempts, exam-context labels, answer/review/navigation autosave, explicit resume/discard, original-deadline recovery, and a memory-only fallback. A session resumed after expiry is submitted, not given a new timer. Conflicting-tab writes are rejected once a different tab claims the saved session.
+- `/review` provides per-context topic observations, attempt summaries, a historical mistake notebook and a self-reviewed revision queue. GATE EE/EC/IN contexts remain separate. Small samples and illustrative content are labelled; analytics do not estimate examination performance.
+- Backups include unfinished sessions and review acknowledgements; v1 exports remain importable. Corrupt data is surfaced, raw recovery export is available, and a failed workspace write preserves the previous stored record.
+- The official GATE 2027 portal and syllabus directory were checked on 2026-10-14. EE/EC/IN have separately linked syllabus PDFs with dated source records. This is a link registry, not an imported, versioned official syllabus/pattern engine. The undated BPSC postponement claim was removed.
+- These additions remain a temporary browser-local demonstration, with no authentication or multi-user storage. The existing secure-persistence, official-material, accessibility and launch gates remain in force. No provider account, private document storage, AI tutor, admin panel or offline sync is implied by this update.

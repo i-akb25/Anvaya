@@ -1,0 +1,228 @@
+# Anvaya | Product Requirements Document (PRD)
+**Version:** 1.0 · **Date:** 14 October 2026 · **Status:** Approved project direction, implementation not complete  
+**Project:** [i-akb25/Anvaya](https://github.com/i-akb25/Anvaya)  
+**Support:** akbsupportinfo@gmail.com  
+**Authority:** [PROJECT_MASTER.md](./PROJECT_MASTER.md) governs product principles. If an implementation proposal conflicts with the charter, resolve the conflict explicitly before release.
+
+## 1. Executive summary
+Anvaya is a private-first, mobile-first, multi-exam preparation workspace that unifies official syllabus mapping, topic-based study, external lectures, user notes, authentic previous-year questions (PYQs), customizable computer-based-test-style (CBT) practice, deterministic evaluation, analytics, revision, daily current affairs and optional source-grounded AI tutoring. Initially serve one owner across devices; later expand into a secure multi-user product without redesigning its data isolation model.
+
+**Core promise:** Every topic becomes a connected learning unit spanning exam requirements, trustworthy content, practice, feedback and revision.
+
+**Learning loop:** Discover → Learn → Practice → Evaluate → Revise → Improve.
+
+## 2. Problem and target users
+### Primary persona
+An individual preparing simultaneously for civil services, recruitment, engineering and aptitude examinations, using mobile/tablet/desktop after losing access to a primary laptop. Materials, study logs and scores currently reside in scattered websites, files and browsers.
+
+### Future persona
+An independent aspirant with a different subset of exams, language needs, priorities and study rhythm. Their data must never mix with another user's data.
+
+### Problems to solve
+- Repetition and confusion when the same subject appears in multiple exam syllabi.
+- Difficulty locating usable notes, videos, playlists and PYQs for a particular topic.
+- Fragmented mock-test history and little actionable feedback.
+- Outdated or inaccurate exam patterns and unverified questions.
+- Lack of portable, recoverable preparation data across devices.
+
+## 3. Outcomes, success metrics and non-goals
+### Success criteria (first private release)
+- Owner can sign in on phone and another device, find a mapped exam topic, save/edit a note and retrieve the same note securely.
+- A verified question set can be launched with a versioned scoring scheme, resumed after interruption and evaluated reproducibly.
+- Authentic question provenance and official pattern version are visible; unverified examples cannot be mislabeled.
+- Data can be exported, restored and independently backed up.
+- Owner can locate official notices and source-linked third-party videos without manual navigation through multiple sites.
+
+### Measurement (targets, not existing results)
+- 100% automated pass of authorized-user and cross-user isolation tests before public account creation.
+- 100% reproducible objective scoring on the versioned regression fixture set.
+- 0 known high/critical security findings at production gate.
+- Responsive usability verified at 320, 375, 768, 1024, 1440 CSS px and keyboard-only navigation.
+- No silent loss of completed tests during tested network interruption/retry and restore scenarios.
+- Track weekly active study days, completed topic sessions, question attempts, export/restore success and content verification coverage without leaking notes or question responses to telemetry.
+
+### Out of scope
+- Rehosting paid classes, proprietary question banks, pirated books or copyrighted newspaper PDFs.
+- Inventing official dates, rank predictions, exact patterns or answer keys.
+- Full video download/offline access without authorization.
+- Social feed, gamified engagement loops, ads or public leaderboard in private-first release.
+- Claims of fully automated mains grading equivalent to an official evaluator.
+
+## 4. Exam and syllabus coverage
+| Track | Required separation |
+| --- | --- |
+| UPSC CSE | Prelims GS/CSAT, Mains papers, versioned cycles |
+| BPSC CCE | Prelims/Mains, Bihar-specific GS, notices and cycles |
+| SSC CGL | Tier, section, shift and applicable cycle |
+| SBI PO | Prelims/Mains and their distinct scoring rules |
+| IBPS PO | Prelims/Mains and their distinct scoring rules |
+| CAT | VARC/DILR/QA, appropriate paper/cycle |
+| UPSC ESE Electrical | Stage and paper-specific subjects |
+| GATE EE | Its own official syllabus, GA, engineering maths and technical sections |
+| GATE EC | Its own official syllabus, GA, engineering maths and technical sections |
+| GATE IN | Its own official syllabus, GA, engineering maths and technical sections |
+
+Exam configuration **must** use official source URL, publisher, exam year/cycle, paper/stage, effective date, checked-at date, language, duration, marks and special instructions, with distinct immutable versions. When verification is missing, display “unverified / custom practice” instead of “official simulation.” Syllabus links are not a substitute for a parsed, reviewed complete syllabus.
+
+## 5. Product information architecture
+Main navigation:
+1. **Today:** upcoming deadlines, assigned study, resume, current affairs, recent performance.
+2. **Exams:** exam tracks, official patterns, complete syllabi, stage/cycle notices.
+3. **Topics:** universal search; one canonical topic with exam-specific depth and mappings.
+4. **Learn:** notes, short notes, formulas, diagrams, legal video links/embeds, playlists, documents.
+5. **Practice:** PYQ papers, mocks, topic/section tests, custom test builder, CBT.
+6. **Review:** reports, mistakes, spaced-repetition queue, revision cards.
+7. **Library:** permitted source links, uploaded private materials, annotations, exports.
+8. **Settings:** private account, language, backups, notifications and privacy controls.
+Admin area only for owner/authorized editors; separate from public user routes.
+
+### Topic landing page acceptance example
+Search “Fundamental Rights” → show topic outline, relevant UPSC/BPSC/SSC mappings, verified detailed notes, quick notes, authorized lectures/playlists, authentic PYQs, practice builder, notes, progress and AI questions. Each result indicates source and verification status. Search should support aliases and Indian terminology.
+
+## 6. Functional requirements
+Priority: **P0** mandatory for first reliable private release; **P1** core product; **P2** enhancement.
+
+| ID | Priority | Requirement | Acceptance criteria |
+| --- | --- | --- | --- |
+| FR-01 | P0 | Private authentication | Disabled self-registration; secure login/logout; expired sessions deny access |
+| FR-02 | P0 | Tenant separation | All personal records/files have owner; server-side checks and negative tests prevent cross-user reads/writes |
+| FR-03 | P0 | Official exam registry | Versioned official source records; prominently show missing/unverified fields |
+| FR-04 | P0 | Canonical topic graph | Same topic may map to many exams, maintaining different depth and progress per exam |
+| FR-05 | P0 | Search and filters | Query by exam, subject, topic and aliases; source type, relevance and verified status |
+| FR-06 | P0 | Persistent notes and uploads | Private documents with validated file size/type, secure access, sync and export |
+| FR-07 | P0 | Immutable question provenance | Track author/source, paper, stage, year, shift, type, language, answer-key status and revision |
+| FR-08 | P0 | Deterministic test engine | Versioned scoring; objective answer comparison without AI; verified negative marking logic |
+| FR-09 | P0 | Recoverable tests | Save responses, marked-for-review, question index and original deadline; recover without granting extra time |
+| FR-10 | P0 | Detailed result report | Correct/incorrect/skipped, scores, marks lost, time, explanation, question/topic breakdown |
+| FR-11 | P0 | Export and backup | Validated export, secure independent backup, tested restoration and conflict handling |
+| FR-12 | P0 | Responsive accessibility | All core tasks usable on mobile, tablet and desktop; keyboard and reduced-motion support |
+| FR-13 | P1 | Custom tests | Select exam, topics, difficulty, count, timer, question formats and marking with clear “custom” label |
+| FR-14 | P1 | Official-pattern simulations | Match verified exam-cycle configuration; seal version per attempt |
+| FR-15 | P1 | Authentic PYQ practice | Filter year/paper/topic; show original source and answer-key corrections |
+| FR-16 | P1 | Lecture discovery | External links/authorized embeds; deduplication, broken-link handling, playlist ordering |
+| FR-17 | P1 | News and daily current affairs | Date/source, exam-wise relevance, summaries, source links and corrected/updated status |
+| FR-18 | P1 | Adaptive revision | Weak-topic reminders, flashcards, mistake notebook and spaced repetition |
+| FR-19 | P1 | Study planning | Daily/weekly goals based on available time, exam priorities and progress |
+| FR-20 | P1 | Owner admin tools | Authenticated source moderation, ingestion review, question/version editor and maintenance logs |
+| FR-21 | P1 | Offline authorized packs | Notes/selected questions cached by explicit user choice; queued sync and resolution of conflicts |
+| FR-22 | P2 | AI tutor | Server-only provider keys, source citations, prompt-injection defense, budget/rate caps, opt-in context |
+| FR-23 | P2 | Descriptive practice | Answer submission, rubrics, human-overridable AI feedback marked non-official |
+| FR-24 | P2 | Notifications | User-controlled official notice, deadline and revision alerts with evidence and timestamps |
+| FR-25 | P2 | Public onboarding | Registration, storage limits, multi-user quotas, account deletion and policy workflows |
+
+## 7. CBT requirements in detail
+### Test modes
+- Real-cycle simulation; official PYQ paper; full syllabus mock; subject, topic and mixed-topic; custom practice.
+- Question types: single correct MCQ, multiple select, numerical answer, paragraph/data interpretation and descriptive where supported. Scoring rubric differs per type.
+- Exam configuration records maximum questions, sections, marks, penalty rules, language, time, navigation constraints and allowed calculators where applicable.
+
+### Test state lifecycle
+Draft → In progress → Suspended/interrupted → Submitted/Expired → Evaluated → Reviewed. Attempts are tied to a frozen question-bank and pattern version. Resuming retains the original deadline. Duplicate submissions are idempotent. Multiple tabs cannot overwrite a newer attempt silently.
+
+### Report
+Total marks, attempted/unattempted, correct/incorrect, accuracy, time/question, topic summary, missed questions, correction/explanation, knowledge-vs-speed analysis and historical progress. Never publish percentile, AIR or prediction without defensible cohort and methodology.
+
+## 8. Content acquisition and provenance
+- Official issuing authority is the source of truth for exam notifications and syllabus/patterns.
+- Use permitted third-party links or embeds from YouTube, Physics Wallah, MADE EASY and others; no implication of partnership.
+- NCERT, authorized open educational resources and personal notes are classified by license and allowed use; private access does not authorize redistribution.
+- News: curated citations/links, allowed snippets, independent concise summaries, daily topic mapping. Do not reproduce entire protected articles.
+- Ingestion pipeline: discover → capture metadata → deduplicate → review license → map topic/exam → verify → publish → periodic recrawl/recheck → revoke or archive.
+- Each record has source URL, provider, retrieved-at, last-verified-at, content kind, license status, verification status, source version and content hash where appropriate.
+- Paid/restricted resource URLs may be displayed as external redirects, not downloaded or proxied.
+
+## 9. AI tutor behavior
+- Retrieval from allowlisted authoritative sources and user-selected documents with explicit user permission.
+- Answers explain their basis, link citations and say when verified evidence is missing.
+- Test objective scoring remains deterministic; generated questions are labelled “AI-generated” until reviewed.
+- No transfer of private notes/resumes/documents to providers without a clear user-triggered request and disclosure.
+- Privacy-safe request logging, per-user quotas, server-side secrets, abuse prevention and graceful no-AI fallback.
+- Cost controls: request ceiling, token limits, caching of non-sensitive shared responses, and explicit opt-in for paid model usage.
+
+## 10. Data architecture
+Recommended entities:
+`users`, `user_preferences`, `exams`, `exam_cycles`, `exam_stages`, `exam_pattern_versions`, `syllabus_versions`, `subjects`, `topics`, `topic_aliases`, `exam_topic_links`, `resources`, `resource_sources`, `questions`, `question_versions`, `answer_keys`, `test_templates`, `test_versions`, `attempts`, `attempt_answers`, `notes`, `user_materials`, `study_sessions`, `topic_progress`, `revision_queue`, `deadlines`, `ingestion_jobs`, `review_events`, `audit_events`.
+
+Reference/public materials separated from private per-user records and private object-storage paths. Database-level RLS plus server checks, not just filtered browser queries. Never put API or storage admin keys into client bundles.
+
+## 11. UX/design specification
+**Identity:** Anvaya, connected preparation without noise. Existing original wordmark, SVG icon and study-desk illustration are baseline assets, not stock or AI-generated art.  
+**Visual:** muted sage/earth, cream/off-white, restrained soft-clay elevation, generous whitespace, clear typographic hierarchy, minimal decorative motion. No neon, glassmorphism, cyberpunk, center-card walls, heavy effects or attention-hijacking streaks.  
+**Accessibility:** WCAG 2.2 AA target, visible focus, semantically structured pages, screen-reader announcements for CBT states, labeled form controls, keyboard navigation and reduced motion.  
+**Responsive:** 320–1440+ CSS px, Android, iOS, tablet, Windows, macOS. Exam timer, question palette and save status persist visibly without obscuring answers. English-first, Hindi-ready with source-dependent exam language labels.
+
+## 12. Non-functional requirements
+- **Security:** server-side authZ, secure session cookies, RLS, CSRF protection as applicable, rate limits, validation, safe uploads, admin auditing, no public blobs, OWASP review.
+- **Reliability:** autosave, idempotency, network interruption recovery, conflict handling, explicit offline status, restoration drills and bounded retries.
+- **Privacy:** no ads or third-party tracking of private content; no unnecessary PII; user-controlled deletion/export; redact sensitive logs.
+- **Performance:** optimize mobile load, avoid unnecessary JS, paginate large question lists, cache public material without leaking private material.
+- **Operability:** health checks, alerts, data migrations, feature flags, provider timeout handling, maintenance and rollback documentation.
+- **Cost:** use economical services with measured storage/AI/feed budgets; no assumption that free plans offer indefinite uptime/storage.
+
+## 13. Release sequence and dependencies
+### R0: Stabilize existing repository
+Typecheck, tests, build, inspect CI, repair high-priority bugs. Browser visual audit and accessibility baseline. Classify current demo accurately.
+
+### R1: Reliable private workspace (minimum usable product)
+Secure owner authentication and cloud storage; official registry, canonical topic mappings; notes and personal files; basic search; dependable backup/export; authenticated cross-device retrieval.
+
+### R2: Authentic exam practice
+Question/version ingestion, reviewed answer keys and PYQ metadata, pattern-version records, full CBT lifecycle and scoring tests, completed-attempt sync/report, trustworthy custom test builder.
+
+### R3: Learning ecosystem
+Topic pages, curated lectures/playlists, summaries, source quality/availability checks, original study resources and offline authorized packs.
+
+### R4: Daily study intelligence
+Current affairs ingest and moderation, exam-topic linkage, official notifications, study/revision plans and adaptive analytics.
+
+### R5: Optional AI assistance
+Cited doubts, answer review, controlled spend/privacy guardrails, red-team testing and no-AI fallback.
+
+### R6: Public-readiness gate
+User self-service auth/onboarding, tenant load/security tests, data-rights workflows, licensing review, operations playbook and observed backups/restore.
+
+Milestones are dependency gates, not promises of autonomous/background execution. Implement and push during active connected development sessions; publish only after verification.
+
+## 14. Release acceptance test matrix
+1. **Isolation:** Two test users each create data; cross-account URL/API/object access denied.
+2. **Persistence:** Create note on mobile-sized viewport, sign out, access securely on second device.
+3. **Test integrity:** Force refresh, tab conflict, network failure and expiry; no erased answers, duplicate results or reset timer.
+4. **Scoring:** Reference fixtures cover single, multiple, numeric, negative-marked and unattempted answers for configured patterns.
+5. **Provenance:** Unverified question cannot masquerade as PYQ; old attempt retains historical answer key and pattern.
+6. **Rights:** Illegal/unlicensed content cannot enter public library via the ingest workflow.
+7. **Backups:** Export and restore on clean account/environment with integrity checks and documented recovery process.
+8. **Accessibility:** Keyboard operation, timer announcement, responsive layouts, contrast and reduced motion.
+9. **Security:** Secret scan, dependency audit, request validation, permissions matrix and admin route protection.
+10. **Operational:** Build, tests, deployment, rollback, source refresh and provider-outage behavior observed.
+
+**Go/No-Go:** Any failing P0 privacy, integrity, scoring, recovery or authentication test blocks public deployment.
+
+## 15. Risks and mitigations
+| Risk | Mitigation |
+| --- | --- |
+| Incorrect/outdated official exam pattern | Dated source, review gate, versioned immutable patterns |
+| Fabricated PYQs or answer keys | Mandatory provenance and editorial verification |
+| Publisher licensing/API limitations | Redirect to publisher; permitted embeds; no prohibited copying |
+| Personal data loss | Independent backups, restore drills, explicit offline/local warnings |
+| Leaked data in public GitHub or client | Secrets scanning, private object storage, server authZ and RLS |
+| API/AI cost overrun | Server budget limits, quotas and fallback |
+| Multiple-exam complexity | Normalized topic graph with stage-specific content and progress |
+| Weak mobile usability | Touch/keyboard QA and small viewport regression tests |
+| Source becoming unavailable | Broken-link detection, source refresh, replacements with clear provenance |
+
+## 16. Current implementation baseline (14 Oct 2026)
+From the repository charter and README, already pushed: basic responsive app and branding, preliminary ten-track directory (including distinct GATE EE/EC/IN), subject discovery, source redirect/search links, illustrative six-question CBT, recoverable practice sessions, local browser history/exports, /review analytics and review acknowledgements, and some linked GATE 2027 source references. These are not a complete official syllabus or authentic exam content.
+
+**Still absent or unverified:** secured cloud auth and storage, complete validated syllabus catalog, real sourced PYQ bank, exam-pattern-backed mocks, automatic daily current affairs, AI tutor, full admin workflow, offline synchronization, public readiness and independent verified production deployment. Existing README and charter may describe different snapshots; implementation status must be rechecked against the latest source and CI before each release.
+
+## 17. Decisions and change management
+- Brand is **Anvaya**. Domain selection remains open; do not treat suggestions as confirmed availability.
+- User is not required to micromanage phases. Technical choices are delegated within security, cost and charter limits; only irreversible external actions, paid commitments or permission changes require owner approval where needed.
+- Keep this PRD and PROJECT_MASTER.md aligned. Update the PRD version and change log when product requirements change.
+- The repository remains public code; the app is private-first; no Codex/AI attribution as contributor.
+- Contact: **akbsupportinfo@gmail.com**.
+
+### Change log
+| Version | Date | Change |
+| --- | --- | --- |
+| 1.0 | 2026-10-14 | Initial consolidated PRD from Anvaya master charter and repository documentation |

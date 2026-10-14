@@ -75,3 +75,9 @@ Support: akbsupportinfo@gmail.com
 All ten tracks are recorded in `lib/exam-coverage.ts` with authority, cycle, source URL, retrieval status and explicitly incomplete rule review. A failed retrieval is not labelled verified. Stages are reviewed separately; the three GATE papers remain distinct. No generic CAT/SSC paper is substituted for another exam.
 
 The generated lesson/question prototypes are now **disabled in production**, even if the preview flag is set. To inspect drafts locally only, use `NEXT_PUBLIC_ANVAYA_DRAFT_PREVIEW=true` with `npm run dev`. They are not approved learning content. Production routes show the source-review status instead, with tests unavailable. This is an incomplete source-review interface, not the promised learning platform. Source-backed content, question moderation and private-workspace gates must be completed before learner publication.
+
+### Course-first classroom update
+
+The workspace now has ten exam paths, subject sections, a responsive header/footer, an ink/paper/copper theme and a light/dark toggle. `/papers` links original GATE papers/keys and official UPSC/GATE archives. `/study/private` opens a user-selected local PDF alongside recall notes and a study timer. The PDF is not uploaded or retained after reload. `/planner` manages study sessions and exports/imports workspace backups with explicit replacement confirmation. Earlier practice backups remain separate.
+
+This is a local workspace preview, not a complete learning service: reviewed hosted lessons, lectures, comprehensive question banks, official mock configurations and authenticated cross-device storage are not ready. Local notes can be lost if browser storage is cleared, so export backups. Browser visual QA was unavailable in this environment; responsive layout and accessibility still need device testing before release.

@@ -1,9 +1,2 @@
-import {draftPreviewEnabled} from "@/lib/content-policy";
-import {SourceCoverage} from "@/components/source-coverage";
-import Link from "next/link";
-import {StudyShell} from "@/components/study-shell";
-import {exams} from "@/lib/catalog";
-import {examSources} from "@/lib/exam-sources";
-import {lessonsFor} from "@/lib/learning";
-export default function Exams(){return draftPreviewEnabled?<ExamPreview/>:<SourceCoverage/>}
-function ExamPreview(){return <StudyShell><header className="desk-top"><span className="eyebrow">EXAM PATHS</span><Link href="/topics">Search topics →</Link></header><section className="desk-intro"><span className="desk-kicker">CHOOSE THE CONTEXT BEFORE YOU STUDY.</span><h1>Different papers, connected foundations.</h1><p>Open a relevant learning path or check the issuing authority. Complete reviewed syllabi and stage-specific tests are still being built.</p></section><div className="exam-directory">{exams.map(exam=>{const source=examSources[exam.id];return <section className="exam-directory-row" key={exam.id}><div><span className="eyebrow">{exam.group}</span><h2>{exam.name}</h2><p>{lessonsFor(exam.id).length} foundation lessons · {exam.id==='cat'||exam.id==='ssc'?'Draft rehearsal available':'Full rehearsal not available'}</p>{source?<p className="coverage-note">{source.cycle} {source.paper} · Source directory checked {source.checkedOn}. This is a dated link check, not an imported, reviewed complete syllabus.</p>:<p className="coverage-note">Current cycle, full syllabus and test blueprint are not verified in Anvaya. Consult the official portal.</p>}</div><div className="directory-actions"><Link href={`/learn?exam=${exam.id}`}>Open learning path →</Link><a href={exam.official} target="_blank" rel="noopener noreferrer">Official portal ↗</a>{source&&<a href={source.syllabusPdf} target="_blank" rel="noopener noreferrer">{source.paper} syllabus PDF ↗</a>}</div></section>})}</div></StudyShell>}
+import {ExamDirectory} from "@/components/classroom";
+export default function Exams(){return <ExamDirectory/>}

@@ -91,3 +91,9 @@ Content integrity: The learning/question material above is AI-generated draft co
 
 ## Accuracy and full scope clarification · 2026-10-15
 All locked examinations remain in scope, with separate cycle/stage rules and GATE papers. Unreviewed generated material is not accepted as usable learning merely because it has a disclaimer. The prototype lessons, generated banks and generic legacy practice are disabled in production; they are available only in an explicit local development preview. `lib/exam-coverage.ts` records the source-review state for all tracks. Unavailable material and failed source retrievals are stated explicitly. The full learning platform is still incomplete; adding a source-review screen does not satisfy it.
+
+### Latest design and product direction · 14 October 2026
+- Replace the earlier sage/clay design lock with ink/paper/copper, light/dark themes, global navigation, responsive mobile menu and full footer.
+- Course-first learning navigation inspired by PW/Drishti; restrained visual cues from AKB Studio. Original assets and interface only.
+- Deliver useful local study tools and authentic publisher links without fabricating course availability, question counts, keys, teachers or results.
+- Official paper library, private PDF/recall desk and session planner are workspace-preview features. Secure accounts and reviewed hosted learning remain incomplete release gates.

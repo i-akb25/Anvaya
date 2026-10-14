@@ -4,7 +4,7 @@ export type ExamCoverage = {
   ruleStatus:"partial-review"|"not-reviewed"|"reviewed";
   stages:{id:string;label:string}[];note:string;
 };
-const checkedOn="2026-10-15";
+const checkedOn="2026-10-14";
 export const examCoverage:ExamCoverage[] = [
   {examId:"upsc",cycle:"2026 reference; 2027 not verified",authority:"UPSC",sourceUrl:"https://www.upsc.gov.in/sites/default/files/Notif-CSP-2026-Engl-060226Rev.pdf",checkedOn,sourceStatus:"document-opened",ruleStatus:"partial-review",stages:[{id:"prelims-gs1",label:"Prelims GS-I"},{id:"prelims-gs2",label:"Prelims GS-II / CSAT"},{id:"mains-written",label:"Mains written papers"},{id:"personality-test",label:"Interview / personality test"}],note:"The opened notification is for 2026. It must not be silently applied to 2027. Full paper-level transcription and review are pending."},
   {examId:"bpsc",cycle:"72nd CCE source located; target cycle review pending",authority:"BPSC",sourceUrl:"https://bpsc.bihar.gov.in/syllabus/",checkedOn,sourceStatus:"retrieval-blocked",ruleStatus:"not-reviewed",stages:[{id:"prelims",label:"Preliminary examination"},{id:"mains",label:"Main examination"},{id:"interview",label:"Interview"}],note:"The official syllabus page timed out. No question count, date, marking or optional-paper rule is inferred from another cycle."},

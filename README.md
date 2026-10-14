@@ -1,72 +1,77 @@
 # Anvaya
 
-**Project source of truth:** [PROJECT_MASTER.md](./PROJECT_MASTER.md). Product, design, exam coverage, privacy, content integrity, delivery rules, and current implementation limits are documented there.
+**Project source of truth:** [PROJECT_MASTER.md](./PROJECT_MASTER.md). Product, design, privacy, content integrity and release rules are documented there.
 
-Personal-first, public-ready exam preparation workspace.
+An exam preparation prototype with learning paths, worked examples and paper-specific practice. It is **not a complete or production-ready learning platform**.
 
-## Current status
+## Development prototype (not a learner release)
 
-A **functional Next.js foundation**, not a completed coaching platform. Includes 10 exam tracks (GATE EE/EC/IN separately), preliminary subject-to-exam discovery, publisher/search launchers, a deterministic scored six-question CBT **demonstration**, and responsive layouts. Sample questions are **not PYQs**. Official syllabi, question banks, AI, authenticated storage, lecture indexing, daily feeds and offline sync are **not yet implemented**.
+| Route | Experience |
+| --- | --- |
+| `/` | Study desk and exam-filtered next lesson |
+| `/exams` | Ten exam tracks, learning links and official portals |
+| `/topics` | Search foundation topics and aliases by exam context |
+| `/learn` | Foundation learning paths |
+| `/learn/[slug]` | Concepts, worked example, common trap, checkpoint, revision prompts, notes |
+| `/practice` | CAT/SSC rehearsal, five-question drills, section timers/locks, recovery |
+| `/results` | Section reports, responses, explanations, study backup/restore |
+| `/practice/custom`, `/review` | Earlier demo engine/history preserved separately |
 
-### Run
+The new study layout uses cream, sage and earth colours, restrained elevation and a reading-led content hierarchy. Responsive breakpoints and keyboard states are implemented; real browser/device visual QA is still pending. No claim of WCAG compliance is made without testing.
+
+## Content and exam rules
+
+There are **13 AI-generated lesson drafts** and **146 distinct AI-generated foundation questions**: 24 VARC, 22 DILR, 25 QA, 25 reasoning, 25 general awareness and 25 English. They are explicitly **not editorially reviewed, not authentic PYQs and not calibrated to real exam difficulty**. Automated numerical-key checks do not replace subject-expert review.
+
+- **CAT rehearsal:** requested 68-question blueprint, 24/22/22, VARC → DILR → QA, 40 minutes each, 204 available marks. Completed/upcoming sections cannot be opened. MCQ +3/−1; numeric +3/0. The historical official 2024 navigation guide is linked as a reference. CAT 2026 current-cycle retrieval was blocked; no claim of independently verified 2026 question count is made.
+- **SSC CGL Tier-I rehearsal:** 100 MCQs, 25 per subject, 60 minutes with 15-minute subject timers, +2/−0.5. Source: official 2026 notice §13.8, checked 14 October 2026. The rehearsal follows the table’s subject order without claiming the live interface’s order. Tier-II, DEST and accommodation timings are not implemented.
+- Each blueprint has one full paper’s worth of content. Shuffling does not create a new mock. Previously attempted questions are excluded by default; exhausted pools stop with an explanation. Repeats require an explicit revision choice.
+- Full mocks for other tracks, complete reviewed syllabi and an authentic PYQ collection are not available. Linked GATE EE/EC/IN references remain separate dated source records, not imported syllabi.
+
+Released bank and paper versions are append-only. Preserve old versions when publishing changed questions or keys so historical attempts remain reproducible.
+
+## Local data and privacy
+
+No account, provider token, private server upload or cloud sync is enabled. Notes and attempts use browser storage, which is not encrypted or user-isolated server storage. Use a trusted device. Never commit private notes, paid PDFs, credentials or personal documents.
+
+- New study key: `anvaya-study-v1`.
+- Study backups include notes, exam-context reading progress, seen-question IDs, unfinished test state and the latest 30 results. Restore explicitly replaces the new study workspace after validation; export first if needed.
+- Legacy demo keys (`anvaya-workspace-v2`, `anvaya-practice-v1`) remain separate and readable through legacy routes.
+- Recovery retains the original section deadlines. Resuming elsewhere claims the local draft; stale-tab writes are rejected. Repeated submissions do not create additional results.
+- Failed writes retain the previous stored record. Memory-only practice is available, with a downloadable result. Raw recovery export is provided for damaged data; it is not an automatic import format.
+- Backups contain private notes and responses. Store them privately. External lecture links are publisher searches/redirects, not downloaded classes or partnerships.
+
+## Run and verify
+
+Node 22.18 or later:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open http://localhost:3000.
-
-### Safety
-
-- Never commit keys, personal PDFs, login tokens or copyrighted paid learning material.
-- No user accounts or persistent personal-data store are activated in this foundation.
-- External publisher links are redirects/search shortcuts; no affiliations implied.
-- Before public launch, add authenticated per-user data boundaries, private storage, backups, validated question ingestion and source-specific usage rights.
-- Official exam patterns must come from a dated official notification, not hardcoded assumptions.
-
-Support: akbsupportinfo@gmail.com
-
-## Custom CBT practice (new)
-
-Open `/practice` to configure a timed question set, marking scheme, select answers, mark questions for review, navigate by palette, submit, inspect explanations, and export attempt history. Attempts are stored in **the current browser's localStorage**, with a maximum of 50 records. **This is not cloud synchronization** and is not safe as a sole backup. The user should export JSON. This does not implement offline service-worker caching or real PYQ ingestion. The supplied bank is six illustrative questions, and the scoring preset is not presented as an official exam pattern.
-
-## Branding and responsive design
-
-The existing cream, sage and clay direction is preserved. Headers share the Anvaya mark; the dashboard uses an original SVG desk illustration. No generated imagery or third-party asset calls are used. Breakpoints adapt navigation, the hero, cards and CBT palette; keyboard focus and reduced motion are supported.
-
-- Mark: `public/anvaya-mark.svg`; wordmark: `public/brand/anvaya-wordmark.svg`
-- Illustration: `public/illustrations/study-desk.svg`
-- App icons: `public/brand/`; social cover: `app/opengraph-image.png`
-- Manifest: `app/manifest.ts`. This adds installation metadata, not offline support.
-- Regenerate raster assets with `npm run assets` (uses the installed Sharp dependency supplied with Next.js).
-
-## History controls and verification
-
-The practice page supports local JSON export, validated restore/merge (2 MB maximum, latest 50 attempts), and confirmed deletion. Imports are processed locally; scores are recalculated against the supported sample bank. Malformed imports leave existing history intact. Browser storage is not encrypted, authenticated storage; use a trusted device. Private PDFs, notes and credentials must not be stored in this public repository.
-
-Run on Node 22.18 or later:
+Open `http://localhost:3000`.
 
 ```bash
-npm ci
 npm run typecheck
 npm test
 npm run build
 ```
 
-CI uses the lockfile and runs type checking, behavioral regression tests and the production build. Browser visual verification is still required before launch, including 320, 375, 768, 1024 and 1440 px widths and keyboard-only use. Search indexing remains disabled until the platform is ready. No authenticated cloud storage, private document upload, verified PYQ bank or AI tutor is enabled by this update.
+Regression coverage includes bank integrity/provenance, fixed section transitions, stale-section answer rejection, numeric/MCQ penalties, quantitative keys, unseen-pool exhaustion, recovery, idempotent submission, conflicting tabs, legacy migration, backup validation, failed writes and exam-specific reading progress. These checks do not constitute expert content moderation or browser usability verification.
 
-Dependency audit: PostCSS is overridden to 8.5.30 within the existing Next.js 15 stack to resolve the installed vulnerable transitive version. Recheck the override when upgrading Next.js.
+CI uses `npm ci` and the lockfile. Existing asset generation is available with `npm run assets`: the Anvaya SVG mark/wordmark, app icons, study-desk illustration and social cover are retained.
 
-The full audit (including development tools) still flags the `braces` chain through `eslint-config-next`; npm reports no compatible fix without changing the lint toolchain. The production-only audit is clean. This remaining development dependency advisory is not a claim that all dependencies are vulnerability-free.
+## Outstanding release gates
 
-## Recoverable practice and review
+Private owner authentication, server-side authorization/RLS, cross-device notes/files, independent server backups, complete canonical syllabus mappings, reviewed source-backed patterns/PYQs, expert content verification, browser accessibility/device QA and operational release testing remain incomplete. These local prototype features do not satisfy those gates. Search indexing remains disabled.
 
-- `/practice`: saved responses, navigation and review marks; resume/discard an unfinished session; the original deadline continues across reloads. Another tab must explicitly claim recovery. Starting without storage is available for blocked storage or memory-only practice.
-- `/review`: separate exam tracking contexts, per-topic accuracy and penalties, a historical mistake notebook, and a revision queue driven by the latest response. Self-review acknowledgements are not mastery claims. Statistics cover only retained illustrative attempts.
-- Attempts retain a bank version and content kind. Existing v1 history migrates on the first successful write, and v1 backups can still be restored. Released bank content must remain append-only; add a new bank version instead of changing a historical answer key.
-- Workspace backup format `anvaya-workspace-v2` includes completed attempts, unfinished recovery and review acknowledgements. All are written as one browser-storage record. Malformed imports are rejected before writing; raw data can be exported for recovery. Imported files are untrusted and validated. A raw recovery file is for safekeeping/manual diagnosis, not automatic import.
-- Deletion removes both legacy and current practice records. Exported files contain private responses and timing. Keep them private. A memory-only result can be downloaded before leaving the page.
-- GATE 2027 EE/EC/IN official-source links are recorded in `lib/exam-sources.ts` with the date and scope checked. Full official syllabi, pattern versions and authentic PYQs are still pending.
+The PostCSS override stays within the existing Next.js 15 stack. The previously observed development-only `braces`/ESLint advisory is still documented; a clean production-dependency audit is not a clean full-toolchain audit.
 
-Tests cover clock expiry, draft recovery, conflicting-tab ownership, legacy migration, input/provenance checks, failed writes, complete backup/restore, exam isolation, analytics and revision state. Authentication, private server storage, offline sync, and browser visual QA remain release gates. No cloud reliability or real-exam readiness is claimed.
+Support: akbsupportinfo@gmail.com
+
+## Accuracy gate across all exams
+
+All ten tracks are recorded in `lib/exam-coverage.ts` with authority, cycle, source URL, retrieval status and explicitly incomplete rule review. A failed retrieval is not labelled verified. Stages are reviewed separately; the three GATE papers remain distinct. No generic CAT/SSC paper is substituted for another exam.
+
+The generated lesson/question prototypes are now **disabled in production**, even if the preview flag is set. To inspect drafts locally only, use `NEXT_PUBLIC_ANVAYA_DRAFT_PREVIEW=true` with `npm run dev`. They are not approved learning content. Production routes show the source-review status instead, with tests unavailable. This is an incomplete source-review interface, not the promised learning platform. Source-backed content, question moderation and private-workspace gates must be completed before learner publication.

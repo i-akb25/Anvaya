@@ -9,6 +9,11 @@ export type LearningVault = {
   active: PracticeAttempt | null;
   writing: Record<string, { text: string; updatedAt: string; kind: string }>;
   revisionDue: Record<string, string>;
+  seen?: Record<string, string[]>;
+  recalls?: Record<
+    string,
+    { rating: "again" | "hard" | "good"; reviewedAt: string }
+  >;
 };
 export const vaultKey = "anvaya-learning-v1";
 export function emptyVault(): LearningVault {
@@ -64,6 +69,27 @@ export function validVault(value: unknown): value is LearningVault {
         typeof w.updatedAt === "string" &&
         typeof w.kind === "string",
     ) &&
+    (v.seen === undefined ||
+      (record(v.seen) &&
+        Object.values(v.seen).every(
+          (ids) =>
+            Array.isArray(ids) &&
+            ids.length <= 10000 &&
+            new Set(ids).size === ids.length &&
+            ids.every(
+              (id) =>
+                typeof id === "string" && id.length > 0 && id.length < 200,
+            ),
+        ))) &&
+    (v.recalls === undefined ||
+      (record(v.recalls) &&
+        Object.values(v.recalls).every(
+          (r) =>
+            record(r) &&
+            ["again", "hard", "good"].includes(r.rating as string) &&
+            typeof r.reviewedAt === "string" &&
+            Number.isFinite(Date.parse(r.reviewedAt)),
+        ))) &&
     record(v.revisionDue) &&
     Object.values(v.revisionDue).every(
       (v) => typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v),
@@ -109,5 +135,36 @@ export function addResult(v: LearningVault, a: PracticeAttempt) {
   if (a.submittedAt === null || !validAttempt(a))
     throw Error("Cannot store an unfinished or invalid result.");
   if (v.attempts.some((r) => r.id === a.id)) return { ...v, active: null };
-  return { ...v, active: null, attempts: [a, ...v.attempts].slice(0, 30) };
+  return {
+    ...v,
+    active: null,
+    attempts: [a, ...v.attempts].slice(0, 30),
+    seen: Object.fromEntries(
+      [
+        ...new Set([
+          ...Object.keys(v.seen ?? {}),
+          ...v.attempts.map((r) => r.examId),
+          a.examId,
+        ]),
+      ].map((examId) => [
+        examId,
+        [
+          ...new Set([
+            ...seenQuestions(v, examId),
+            ...(examId === a.examId ? a.items.map((i) => i.question.id) : []),
+          ]),
+        ],
+      ]),
+    ),
+  };
+}
+export function seenQuestions(v: LearningVault, examId: string) {
+  return [
+    ...new Set([
+      ...(v.seen?.[examId] ?? []),
+      ...v.attempts
+        .filter((a) => a.examId === examId)
+        .flatMap((a) => a.items.map((i) => i.question.id)),
+    ]),
+  ];
 }

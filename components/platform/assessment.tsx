@@ -17,6 +17,7 @@ import {
 } from "@/lib/platform/engine";
 import {
   addResult,
+  seenQuestions,
   emptyVault,
   readVault,
   saveVault,
@@ -138,9 +139,7 @@ export function AssessmentDesk() {
     topicIds = availableTopics
       .filter((u) => topic === "all" || u.slug === topic)
       .map((u) => u.slug),
-    seen = vault.attempts
-      .filter((a) => a.examId === exam)
-      .flatMap((a) => a.items.map((i) => i.question.id)),
+    seen = seenQuestions(vault, exam),
     available = practiceQuestions.filter(
       (q) => topicIds.includes(q.topicId) && (repeat || !seen.includes(q.id)),
     ).length;

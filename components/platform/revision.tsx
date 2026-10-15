@@ -4,9 +4,9 @@ import Link from "next/link";
 import {
   emptyVault,
   readVault,
-  saveVault,
   type LearningVault,
 } from "@/lib/platform/vault";
+import { localDay } from "@/lib/platform/recall";
 import { studyUnits } from "@/lib/platform/content";
 import { evaluate } from "@/lib/platform/engine";
 import { ResultReport } from "./assessment";
@@ -35,7 +35,7 @@ export function ProgressDesk() {
       });
   const missed = [...latest.values()].filter((v) => v.wrong),
     due = Object.entries(vault.revisionDue).filter(
-      ([, date]) => date <= new Date().toISOString().slice(0, 10),
+      ([, date]) => date <= localDay(),
     );
   return (
     <StudyShell>
@@ -91,6 +91,7 @@ export function ProgressDesk() {
         <aside>
           <div className="panel">
             <h2>Recall queue</h2>
+            <Link href="/recall">Open all recall cards →</Link>
             {due.map(([key, date]) => {
               const [exam, slug] = key.split(":"),
                 unit = studyUnits.find((u) => u.slug === slug);
@@ -102,34 +103,9 @@ export function ProgressDesk() {
                   <p>
                     {exam} · Due {date}
                   </p>
-                  <button
-                    className="button"
-                    onClick={() => {
-                      try {
-                        setVault(
-                          saveVault(
-                            {
-                              ...vault,
-                              revisionDue: {
-                                ...vault.revisionDue,
-                                [key]: new Date(Date.now() + 7 * 86400000)
-                                  .toISOString()
-                                  .slice(0, 10),
-                              },
-                            },
-                            vault.revision,
-                          ),
-                        );
-                        setStatus(
-                          "Recall acknowledged; next review scheduled in seven days.",
-                        );
-                      } catch (e) {
-                        setStatus((e as Error).message);
-                      }
-                    }}
-                  >
-                    I recalled it · review in 7 days
-                  </button>
+                  <Link className="button" href={`/recall?exam=${exam}`}>
+                    Recall, reveal & rate →
+                  </Link>
                 </div>
               );
             })}

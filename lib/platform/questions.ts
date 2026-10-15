@@ -1,3 +1,4 @@
+import { expansionQuestions } from "./expansion-questions.ts";
 import { sourceFor } from "./content.ts";
 export type ObjectiveType = "mcq" | "msq" | "nat" | "tita";
 export type StudyQuestion = {
@@ -368,7 +369,7 @@ const items: Input[] = [
       "A count of distinct users addresses the specific missing measurement.",
   },
 ];
-export const practiceQuestions: StudyQuestion[] = items.map((q) => ({
+const firstRelease: StudyQuestion[] = items.map((q) => ({
   ...q,
   marks: q.marks ?? 1,
   version: `${q.id}-v1`,
@@ -378,7 +379,26 @@ export const practiceQuestions: StudyQuestion[] = items.map((q) => ({
   humanReviewed: false,
   pyq: false,
 }));
-export const practiceBankVersion = "source-linked-foundations-20261015-v1";
+export const legacyBankVersion = "source-linked-foundations-20261015-v1";
+export const practiceBankVersion = "source-linked-foundations-20261015-v2";
+export const practiceQuestions: StudyQuestion[] = [
+  ...firstRelease,
+  ...expansionQuestions.map((q): StudyQuestion => ({
+    ...q,
+    marks: 1,
+    version: `${q.id}-v1`,
+    origin: "original-ai-authored",
+    keyStatus: ["rights", "ecosystem"].includes(q.sourceId)
+      ? "source-compared"
+      : "calculation-checked",
+    humanReviewed: false,
+    pyq: false,
+  })),
+];
+export function questionBankFor(version: string): StudyQuestion[] | undefined {
+  if (version === legacyBankVersion) return firstRelease;
+  if (version === practiceBankVersion) return practiceQuestions;
+}
 export function questionSource(q: StudyQuestion) {
   return sourceFor(q.sourceId);
 }

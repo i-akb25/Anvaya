@@ -48,6 +48,9 @@ try {
     "/",
     "/courses",
     "/courses/ohms-law",
+    "/courses/constitutional-rights",
+    "/courses/rc-transients",
+    "/recall",
     "/syllabus",
     "/assessments",
     "/writing",
@@ -70,6 +73,7 @@ try {
         html.includes("Start custom practice"),
         path + " should open the usable practice builder",
       );
+    if (path === "/recall") assert.ok(html.includes("Recall your learning."));
     if (["/topics", "/courses"].includes(path))
       assert.ok(
         html.includes("Start learning"),

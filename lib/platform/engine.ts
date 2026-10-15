@@ -1,5 +1,6 @@
 import {
   practiceQuestions,
+  questionBankFor,
   practiceBankVersion,
   type StudyQuestion,
 } from "./questions.ts";
@@ -208,17 +209,15 @@ export function createPractice(input: {
     classification: "custom-illustrative",
     sections: [{ id: "practice", seconds: input.seconds }],
     navigation: "paper",
-    items: pool
-      .slice(0, input.count)
-      .map((question) => ({
-        question: structuredClone(question),
-        section: "practice",
-        marking: {
-          correct: input.correct,
-          mcqPenalty: input.penalty,
-          blankPenalty: 0,
-        },
-      })),
+    items: pool.slice(0, input.count).map((question) => ({
+      question: structuredClone(question),
+      section: "practice",
+      marking: {
+        correct: input.correct,
+        mcqPenalty: input.penalty,
+        blankPenalty: 0,
+      },
+    })),
     answers: {},
     marked: [],
     startedAt: input.now,
@@ -232,7 +231,7 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
     const a = value as PracticeAttempt;
     if (
       a.version !== 1 ||
-      a.bankVersion !== practiceBankVersion ||
+      !questionBankFor(a.bankVersion) ||
       a.classification !== "custom-illustrative" ||
       typeof a.id !== "string" ||
       typeof a.examId !== "string" ||
@@ -268,7 +267,9 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
       return false;
     return (
       a.items.every((i) => {
-        const original = practiceQuestions.find((q) => q.id === i.question.id);
+        const original = questionBankFor(a.bankVersion)!.find(
+          (q) => q.id === i.question.id,
+        );
         return (
           original &&
           JSON.stringify(original) === JSON.stringify(i.question) &&

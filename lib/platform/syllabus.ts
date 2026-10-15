@@ -142,15 +142,24 @@ function topics(title: string) {
   const value = title.toLowerCase();
   const ids: string[] = [];
   if (/quant|numeracy|mathematical abilities|general aptitude/.test(value))
-    ids.push("percentages", "ratios", "probability");
+    ids.push("percentages", "ratios", "probability", "simple-interest");
   if (/mathematics|statistics/.test(value)) ids.push("probability");
   if (/circuits|networks/.test(value))
-    ids.push("ohms-law", "series-parallel", "kirchhoff");
+    ids.push(
+      "ohms-law",
+      "series-parallel",
+      "kirchhoff",
+      "capacitor-energy",
+      "rc-transients",
+    );
   if (/english|reading|verbal|comprehension/.test(value))
     ids.push("reading-analysis");
   if (/polity|constitution/.test(value)) ids.push("constitutional-rights");
   if (/interpretation|statistical analysis/.test(value))
     ids.push("ratios", "percentages");
+  if (/environment|biodiversity/.test(value)) ids.push("ecosystems-energy");
+  if (/general awareness/.test(value))
+    ids.push("constitutional-rights", "ecosystems-energy");
   return [...new Set(ids)];
 }
 export const syllabusUnits: SyllabusUnit[] = [

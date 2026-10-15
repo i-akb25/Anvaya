@@ -91,6 +91,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
                 ["/planner", "Study planner"],
                 ["/writing", "Answer writing"],
                 ["/results", "Results & revision"],
+                ["/recall", "Recall cards"],
                 ["/account", "Private account"],
               ])
               .map(([href, label]) => (
@@ -129,6 +130,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
           <Link href="/papers">Official paper library</Link>
           <Link href="/planner">Study planner</Link>
           <Link href="/results">Results & revision</Link>
+          <Link href="/recall">Recall cards</Link>
           <Link href="/account">Account & backups</Link>
         </div>
         <div>

@@ -1,3 +1,4 @@
+import { expansionSources, expansionUnits } from "./expansion.ts";
 export type Source = {
   id: string;
   title: string;
@@ -7,6 +8,7 @@ export type Source = {
   licenseNote: string;
 };
 export const sources: Source[] = [
+  ...expansionSources,
   {
     id: "percent",
     title: "Prealgebra 2e · Understand Percent",
@@ -402,14 +404,16 @@ const units: Draft[] = [
     mistake: "Replacing visits with visitors changes the claim.",
   },
 ];
-export const studyUnits: StudyUnit[] = units.map((u) => ({
-  ...u,
-  status: "source-checked",
-  authorship: "AI-authored",
-  review:
-    "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
-  version: `${u.slug}-sourcecheck-20261015-v1`,
-}));
+export const studyUnits: StudyUnit[] = [...units, ...expansionUnits].map(
+  (u) => ({
+    ...u,
+    status: "source-checked",
+    authorship: "AI-authored",
+    review:
+      "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
+    version: `${u.slug}-sourcecheck-20261015-v1`,
+  }),
+);
 export function sourceFor(id: string) {
   const source = sources.find((s) => s.id === id);
   if (!source) throw Error("Unknown source");

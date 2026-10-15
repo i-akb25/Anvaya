@@ -91,7 +91,9 @@ export function SyllabusRegistry() {
                 </p>
                 <div className="unit-links">
                   {u.topicIds.map((id) => {
-                    const lesson = studyUnits.find((l) => l.slug === id);
+                    const lesson = studyUnits.find(
+                      (l) => l.slug === id && l.exams.includes(exam),
+                    );
                     return lesson ? (
                       <Link key={id} href={`/courses/${id}?exam=${exam}`}>
                         {lesson.title} →

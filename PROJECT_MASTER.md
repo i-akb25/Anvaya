@@ -106,3 +106,8 @@ All locked examinations remain in scope, with separate cycle/stage rules and GAT
 
 ### Personal-use decision · 15 October 2026
 Keep the Supabase integration for later, disabled by default. Require explicit `ANVAYA_CLOUD_ENABLED=true` plus complete server configuration before any cloud authentication or sync. Prioritize local study and user-controlled file backups for current personal use.
+
+### Foundation content and active recall · 15 October 2026
+Five new primary-source-checked units extend the catalog to 13 units and 45 original non-PYQ questions. Rights/Directive Principles and ecosystem energy introduce small GS foundations; simple interest and capacitor/RC lessons extend aptitude and engineering practice. Independent human editorial review and full curriculum coverage remain pending.
+
+Completed exam/unit contexts now support active recall at `/recall`: explain before reveal, compare concepts/worked steps and personal notes, then self-rate with disclosed fixed intervals of 1/3/7 local calendar days. Scratch explanations are unsaved and ungraded; ratings and schedules are backed up. No mastery or exam-readiness claim is inferred. Versioned v1 snapshots remain valid alongside the expanded v2 bank. Per-exam seen IDs persist beyond the latest 30 detailed results; previously discarded history cannot be recovered. Cloud remains disabled by default.

@@ -84,9 +84,9 @@ This is a local workspace preview, not a complete learning service: reviewed hos
 
 ### Learning system and private sync
 
-- `/courses`: eight source-linked original foundation units, worked examples, recall prompts and per-exam notes.
+- `/courses`: 13 source-linked original foundation units, worked examples, recall prompts and per-exam notes.
 - `/syllabus`: independent cycle/stage paper references and syllabus outlines for all ten tracks, with unresolved fields visible.
-- `/assessments`: 30 original non-PYQ questions across MCQ/MSQ/NAT/TITA, custom scoring, interruption recovery, explicit tab takeover and result explanations. No silent padding or official percentile claims.
+- `/assessments`: 45 original non-PYQ questions across MCQ/MSQ/NAT/TITA, custom scoring, interruption recovery, explicit tab takeover and result explanations. No silent padding or official percentile claims.
 - `/writing`: original descriptive/essay/conventional/interview prompts, word count, custom timer, local handwritten-image preview and an explicitly non-DEST typing drill.
 - `/results`: new results, mistake concepts and recall queue. Earlier practice data remains under `/results/legacy` and `/review`.
 - `/account`: independent validated backups and optional owner-only cloud sync. Cloud is disabled until configured. See [private setup](docs/PRIVATE_SETUP.md).
@@ -100,3 +100,11 @@ Validation commands: `npm test` (including embedded PostgreSQL RLS/conflict test
 Personal-use default: `ANVAYA_CLOUD_ENABLED=false`. Supabase code stays available for later integration, but credentials alone never enable login or cloud sync. Local study and backup exports work without cloud configuration.
 
 For current personal use: open Learn, save a note, choose Practice, submit and review under Results. Planner and the local PDF desk require no sign-in. Older `/practice`, `/practice/custom` and `/topics` URLs now reach the current study tools; the development-only draft preview remains gated.
+
+### Foundation expansion and active recall
+
+Five additional source-checked units cover rights/Directive Principles, ecosystem energy, simple interest, capacitor energy and RC transients. Each has three original questions. These are small foundation topics, not complete exam curricula. No independent human editorial review is claimed.
+
+`/recall` turns completed exam/unit contexts into memory prompts: explain before revealing the reference and your saved note, then rate Again/Hard/Good to schedule a review in 1/3/7 local calendar days. Scratch answers are not saved or graded. Ratings and due dates are included in backups. Turn off Due only to revise early.
+
+The v1 question-bank release remains available to validate old saved results and unfinished attempts. New attempts use v2. Seen IDs persist per exam beyond the latest 30 detailed results; older IDs already discarded before this update cannot be reconstructed. Existing backups remain accepted. Supabase stays disabled by default.

@@ -1,4 +1,5 @@
 "use client";
+import { afterDays } from "@/lib/platform/recall";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BookOpen, ArrowRight, Search, Check } from "lucide-react";
@@ -138,7 +139,7 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
         revisionDue: complete
           ? {
               ...vault.revisionDue,
-              [key]: new Date(Date.now() + 86400000).toISOString().slice(0, 10),
+              [key]: afterDays(1),
             }
           : vault.revisionDue,
       };
@@ -253,6 +254,7 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
                 : "Complete & schedule recall"}
             </button>
             <p role="status">{status}</p>
+            <Link href={`/recall?exam=${exam}`}>Practise recall →</Link>
             <Link href="/account">Back up or sync this workspace →</Link>
           </div>
         </aside>

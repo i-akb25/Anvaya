@@ -2,12 +2,12 @@
 import {useCallback,useEffect,useRef,useState} from "react";
 import Link from "next/link";
 import {draftPreviewEnabled} from "@/lib/content-policy";
-import {SourceCoverage} from "@/components/source-coverage";
+import {AssessmentDesk} from "@/components/platform/assessment";
 import {StudyShell} from "@/components/study-shell";
 import {activeSection,answerSession,canAccess,examQuestion,foundationQuestions,getPaper,makeSession,papers,scoreSession,sectionRemaining,type ExamResult,type ExamSession,type SectionId} from "@/lib/assessment";
 import {finishStudySession,readStudy,saveStudySession,startStudySession,STUDY_KEY,updateStudy} from "@/lib/study-storage";
 const errorMessage=(error:unknown)=>error instanceof Error?error.message:"This action could not be saved.";
-export default function Practice(){return draftPreviewEnabled?<PracticePreview/>:<SourceCoverage/>}
+export default function Practice(){return draftPreviewEnabled?<PracticePreview/>:<AssessmentDesk/>}
 function PracticePreview() {
   const [paperId,setPaperId]=useState("cat-68"),[mode,setMode]=useState<"full"|"drill">("drill"),[section,setSection]=useState<SectionId>("VARC");
   const [allowRepeat,setAllowRepeat]=useState(false),[memoryOnly,setMemoryOnly]=useState(false),[persistent,setPersistent]=useState(true);

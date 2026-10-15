@@ -89,8 +89,17 @@ export function AssessmentDesk() {
   useEffect(() => {
     setWriter(crypto.randomUUID());
     const q = new URLSearchParams(location.search);
-    if (studyUnits.some((u) => u.slug === q.get("topic")))
-      setTopic(q.get("topic")!);
+    if (studyUnits.some((u) => u.slug === q.get("topic"))) {
+      const selected = q.get("topic")!;
+      setTopic(selected);
+      setCount(
+        Math.min(
+          4,
+          practiceQuestions.filter((question) => question.topicId === selected)
+            .length,
+        ),
+      );
+    }
     if (exams.some((e) => e.id === q.get("exam"))) setExam(q.get("exam")!);
     try {
       setVault(readVault());

@@ -244,3 +244,6 @@ The initial usable foundation catalog contains eight original, source-checked st
 New flows include MCQ/MSQ/NAT/TITA custom practice, immutable question snapshots, section-aware engine rules, original-deadline recovery, explicit tab takeover, reports, exam-specific note contexts and recall revision. Descriptive/essay/conventional/interview exercises use non-official rubrics; typing uses a disclosed custom metric rather than claiming SSC DEST equivalence.
 
 Private account and explicit cross-device sync are implemented using Supabase Auth and owner-isolated PostgreSQL RLS with revision-conflict checks. They remain disabled until the owner configures the project, applies the SQL migration and provisions the owner. Database deployment and actual two-user RLS tests have not been performed in the build environment. Local files are not cloud uploads. See `docs/PRIVATE_SETUP.md` and `docs/CONTENT_REVIEW.md` for exact setup, verification and limits.
+
+## Personal-use default · 15 October 2026
+Retain cloud integration but keep it disabled unless `ANVAYA_CLOUD_ENABLED=true` and all provider configuration is supplied. Current personal study uses browser storage and explicit file backups. Production practice/topics entry points open the current local learning flow; unreviewed draft content remains development-only.

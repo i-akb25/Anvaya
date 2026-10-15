@@ -14,3 +14,13 @@ export function allowedOwner(
 export function parseRevision(raw: unknown) {
   return Number.isSafeInteger(raw) && Number(raw) >= 0 ? Number(raw) : null;
 }
+
+export function cloudEnabled(env: Record<string, string | undefined>) {
+  return (
+    env.ANVAYA_CLOUD_ENABLED === "true" &&
+    !!env.SUPABASE_URL &&
+    !!env.SUPABASE_ANON_KEY &&
+    !!env.ANVAYA_OWNER_ID &&
+    !!env.ANVAYA_APP_ORIGIN
+  );
+}

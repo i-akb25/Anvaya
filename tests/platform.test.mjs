@@ -352,3 +352,104 @@ test("import moderation rejects missing permissions, editorial review, source ke
   assert.ok(issues.some((s) => s.includes("figure")));
   assert.ok(issues.some((s) => s.includes("range")));
 });
+
+test("cloud is disabled unless deliberately enabled with complete configuration", async () => {
+  const { cloudEnabled } = await import("../lib/platform/auth-policy.ts");
+  const configured = {
+    SUPABASE_URL: "https://example.supabase.co",
+    SUPABASE_ANON_KEY: "test-placeholder",
+    ANVAYA_OWNER_ID: "test-owner",
+    ANVAYA_APP_ORIGIN: "https://anvaya.test",
+  };
+  for (const flag of [undefined, "false", "TRUE", "1", ""])
+    assert.equal(
+      cloudEnabled({ ...configured, ANVAYA_CLOUD_ENABLED: flag }),
+      false,
+    );
+  assert.equal(
+    cloudEnabled({ ...configured, ANVAYA_CLOUD_ENABLED: "true" }),
+    true,
+  );
+  for (const key of Object.keys(configured))
+    assert.equal(
+      cloudEnabled({ ...configured, [key]: "", ANVAYA_CLOUD_ENABLED: "true" }),
+      false,
+    );
+});
+
+test("personal study notes, planner and result export restore without cloud and preserve deadlines", async () => {
+  const { restoreLocalPayload, clearLocalLearning } =
+    await import("../lib/platform/local-data.ts");
+  const { workspaceKey, readWorkspace } = await import("../lib/workspace.ts");
+  const descriptor = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "localStorage",
+    ),
+    store = storage();
+  Object.defineProperty(globalThis, "localStorage", {
+    configurable: true,
+    value: store,
+  });
+  try {
+    let v = saveVault(
+      {
+        ...emptyVault(),
+        notes: { "ssc:percentages": "Use the stated base" },
+        completed: ["ssc:percentages"],
+      },
+      0,
+    );
+    const attempt = createPractice({
+      ...input,
+      topicIds: ["percentages"],
+      count: 1,
+    });
+    const submitted = submit(attempt, 3000);
+    v = saveVault(addResult(v, submitted), v.revision);
+    const payload = {
+      schema: 1,
+      learning: v,
+      workspace: {
+        version: 1,
+        tasks: [
+          {
+            id: "task",
+            title: "Revise percentages",
+            exam: "ssc",
+            date: "2026-10-15",
+            done: false,
+          },
+        ],
+        papers: { private: { text: "Paper recall", seconds: 42 } },
+      },
+    };
+    const backup = JSON.parse(JSON.stringify(payload));
+    assert.equal(validPayload(backup), true);
+    clearLocalLearning();
+    assert.equal(readVault().attempts.length, 0);
+    restoreLocalPayload(backup);
+    assert.equal(readVault().notes["ssc:percentages"], "Use the stated base");
+    assert.equal(readWorkspace().tasks[0].title, "Revise percentages");
+    assert.equal(readWorkspace().papers.private.text, "Paper recall");
+    assert.equal(readVault().attempts.length, 1);
+    const active = createPractice(input);
+    const current = readVault();
+    saveVault({ ...current, active }, current.revision);
+    assert.throws(() => restoreLocalPayload(backup), /Finish the active/);
+    assert.equal(readVault().active.id, active.id);
+    clearLocalLearning();
+    restoreLocalPayload({
+      ...backup,
+      learning: { ...backup.learning, active },
+    });
+    assert.equal(deadline(readVault().active), deadline(active));
+    store.setItem(vaultKey, "corrupt");
+    clearLocalLearning();
+    assert.equal(readVault().attempts.length, 0);
+    assert.equal(store.getItem(workspaceKey), null);
+  } finally {
+    if (descriptor)
+      Object.defineProperty(globalThis, "localStorage", descriptor);
+    else delete globalThis.localStorage;
+  }
+});

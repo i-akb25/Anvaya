@@ -5,11 +5,14 @@ import {
   readVault,
   validPayload,
   vaultKey,
-  emptyVault,
   type SyncPayload,
 } from "@/lib/platform/vault";
 import { readWorkspace, workspaceKey } from "@/lib/workspace";
 import { StudyShell } from "../study-shell";
+import {
+  restoreLocalPayload,
+  clearLocalLearning,
+} from "@/lib/platform/local-data";
 function download(value: string, name: string) {
   const url = URL.createObjectURL(
     new Blob([value], { type: "application/json" }),
@@ -166,35 +169,7 @@ export function AccountDesk() {
   function replace() {
     if (!pending) return;
     try {
-      let previousRevision = 0;
-      try {
-        const existing = readVault();
-        previousRevision = existing.revision;
-        if (existing.active)
-          throw Error(
-            "Finish the active practice attempt before restoring a workspace.",
-          );
-      } catch (e) {
-        if ((e as Error).message.startsWith("Finish")) throw e;
-      }
-      const oldVault = localStorage.getItem(vaultKey),
-        oldWorkspace = localStorage.getItem(workspaceKey);
-      try {
-        localStorage.setItem(workspaceKey, JSON.stringify(pending.workspace));
-        localStorage.setItem(
-          vaultKey,
-          JSON.stringify({
-            ...pending.learning,
-            revision: previousRevision + 1,
-          }),
-        );
-      } catch (e) {
-        if (oldWorkspace === null) localStorage.removeItem(workspaceKey);
-        else localStorage.setItem(workspaceKey, oldWorkspace);
-        if (oldVault === null) localStorage.removeItem(vaultKey);
-        else localStorage.setItem(vaultKey, oldVault);
-        throw e;
-      }
+      restoreLocalPayload(pending);
       setPending(null);
       setStatus(
         "Workspace restored on this device. An unfinished attempt retains its original deadline. Open Practice and take over the attempt to resume.",
@@ -222,9 +197,9 @@ export function AccountDesk() {
               <p>Checking account availability…</p>
             ) : !configured ? (
               <p>
-                Cloud sign-in is not configured for this deployment. Local
-                learning and file backups work without an account. Public
-                registration is disabled.
+                Cloud sign-in is turned off for this deployment. Local learning
+                and file backups work without an account. Public registration is
+                disabled.
               </p>
             ) : signedIn ? (
               <>
@@ -411,14 +386,7 @@ export function AccountDesk() {
                   )
                 ) {
                   try {
-                    localStorage.setItem(
-                      vaultKey,
-                      JSON.stringify({
-                        ...emptyVault(),
-                        revision: readVault().revision + 1,
-                      }),
-                    );
-                    localStorage.removeItem(workspaceKey);
+                    clearLocalLearning();
                     setStatus(
                       "Local learning and planner data cleared. Cloud copy is unchanged.",
                     );

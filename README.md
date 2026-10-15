@@ -96,3 +96,7 @@ Content is a foundation pilot, not complete preparation for ten exams. Sources w
 Public registration, private PDF cloud storage and full curricula remain incomplete. Never commit personal exports, reference uploads, credentials or a service-role key. Live RLS isolation, cross-device round trips and browser/device QA are mandatory deployment checks that local unit tests do not replace.
 
 Validation commands: `npm test` (including embedded PostgreSQL RLS/conflict tests), `npm run typecheck`, `npm run build`, `npm run check:http` and `npm audit --omit=dev`. HTTP checks use deliberately fake provider configuration to verify deny paths; live owner sign-in and deployed RLS still require the setup checks.
+
+Personal-use default: `ANVAYA_CLOUD_ENABLED=false`. Supabase code stays available for later integration, but credentials alone never enable login or cloud sync. Local study and backup exports work without cloud configuration.
+
+For current personal use: open Learn, save a note, choose Practice, submit and review under Results. Planner and the local PDF desk require no sign-in. Older `/practice`, `/practice/custom` and `/topics` URLs now reach the current study tools; the development-only draft preview remains gated.

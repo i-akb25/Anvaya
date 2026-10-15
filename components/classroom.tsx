@@ -175,7 +175,7 @@ export function Classroom() {
           human review, complete syllabi, authentic imported PYQ banks and
           official full mocks remain pending.
         </p>
-        <Link href="/topics">
+        <Link href="/syllabus">
           Check source coverage <ArrowUpRight size={18} />
         </Link>
       </section>

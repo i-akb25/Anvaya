@@ -234,3 +234,13 @@ The latest user direction replaces the previous sage/cream/clay visual lock. Use
 The current classroom exposes ten distinct exam paths, subject planning categories, an official-paper link library, a local PDF reading/recall desk and a local study planner. Subject categories are not a verified complete syllabus. A publisher archive link is not an imported question bank. Files chosen in the PDF desk remain local and must be reattached after reload. Plans and notebooks have an explicit backup/replace workflow, separate from the earlier practice backup.
 
 Reviewed hosted courses, video instruction, complete verified PYQ banks, exam-cycle test rules and secure cross-device accounts remain release requirements. Keep unreviewed generated lessons/questions out of production. Do not claim this workspace preview completes R1 or makes the learner product ready for public registration.
+
+## Learning-system implementation · 15 October 2026
+
+The supplied exam-pattern reference is now represented as independent versioned paper definitions and a stage/cycle syllabus outline for all ten tracks. Missing figures, timings, instructions, permissions and keys stay unresolved. SSC Finance & Economics Paper III is retained separately because the primary 2026 notification includes it.
+
+The initial usable foundation catalog contains eight original, source-checked study units and 30 original calculation/source-checked practice questions. AI authorship and the lack of independent human editorial review are disclosed. This limited review level permits foundation study only; it is not official-pattern verification or PYQ provenance. Existing unreviewed draft banks remain disabled in production. Comprehensive verified curriculum and authentic imported question coverage are still release gates.
+
+New flows include MCQ/MSQ/NAT/TITA custom practice, immutable question snapshots, section-aware engine rules, original-deadline recovery, explicit tab takeover, reports, exam-specific note contexts and recall revision. Descriptive/essay/conventional/interview exercises use non-official rubrics; typing uses a disclosed custom metric rather than claiming SSC DEST equivalence.
+
+Private account and explicit cross-device sync are implemented using Supabase Auth and owner-isolated PostgreSQL RLS with revision-conflict checks. They remain disabled until the owner configures the project, applies the SQL migration and provisions the owner. Database deployment and actual two-user RLS tests have not been performed in the build environment. Local files are not cloud uploads. See `docs/PRIVATE_SETUP.md` and `docs/CONTENT_REVIEW.md` for exact setup, verification and limits.

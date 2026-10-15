@@ -11,13 +11,17 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: npm
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Type check
         run: npx tsc --noEmit
-      - name: Scoring and backup regression tests
+      - name: Scoring, storage and privacy policy regression tests
         run: npm test
       - name: Production build
         run: npm run build
+      - name: Production route and authentication deny-path checks
+        run: npm run check:http
+      - name: Production dependency audit
+        run: npm audit --omit=dev

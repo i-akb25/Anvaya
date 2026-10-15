@@ -97,3 +97,9 @@ All locked examinations remain in scope, with separate cycle/stage rules and GAT
 - Course-first learning navigation inspired by PW/Drishti; restrained visual cues from AKB Studio. Original assets and interface only.
 - Deliver useful local study tools and authentic publisher links without fabricating course availability, question counts, keys, teachers or results.
 - Official paper library, private PDF/recall desk and session planner are workspace-preview features. Secure accounts and reviewed hosted learning remain incomplete release gates.
+
+### Learning-system implementation · 15 October 2026
+- The supplied exam master reference is a research baseline, not a certified dataset. Preserve unresolved rules; include SSC's post-specific Finance & Economics paper from the primary notice.
+- Eight source-checked original foundation units / 30 original practice questions are explicitly AI-authored, non-PYQ and not independently human-reviewed. The old unreviewed draft gate remains intact. Source checking does not authorize official mock claims.
+- Private Supabase account/sync implementation is owner-only and fails closed without configuration. Apply RLS migration, disable public signup and perform live two-user isolation/conflict checks before relying on cloud storage.
+- All ten complete curricula and full verified mock sets remain incomplete; never report the project complete because its framework builds.

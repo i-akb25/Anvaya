@@ -9,20 +9,27 @@
     "lint": "eslint .",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
-    "assets": "node scripts/generate-assets.cjs"
+    "assets": "node scripts/generate-assets.cjs",
+    "check:http": "node scripts/check-http.mjs",
+    "content:check": "node --experimental-strip-types scripts/review-pack.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
     "lucide-react": "^0.468.0",
     "next": "^15.5.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.5.0",
+    "prettier": "^3.9.10",
     "typescript": "^5.9.0"
   },
   "type": "module",

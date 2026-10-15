@@ -81,3 +81,18 @@ The generated lesson/question prototypes are now **disabled in production**, eve
 The workspace now has ten exam paths, subject sections, a responsive header/footer, an ink/paper/copper theme and a light/dark toggle. `/papers` links original GATE papers/keys and official UPSC/GATE archives. `/study/private` opens a user-selected local PDF alongside recall notes and a study timer. The PDF is not uploaded or retained after reload. `/planner` manages study sessions and exports/imports workspace backups with explicit replacement confirmation. Earlier practice backups remain separate.
 
 This is a local workspace preview, not a complete learning service: reviewed hosted lessons, lectures, comprehensive question banks, official mock configurations and authenticated cross-device storage are not ready. Local notes can be lost if browser storage is cleared, so export backups. Browser visual QA was unavailable in this environment; responsive layout and accessibility still need device testing before release.
+
+### Learning system and private sync
+
+- `/courses`: eight source-linked original foundation units, worked examples, recall prompts and per-exam notes.
+- `/syllabus`: independent cycle/stage paper references and syllabus outlines for all ten tracks, with unresolved fields visible.
+- `/assessments`: 30 original non-PYQ questions across MCQ/MSQ/NAT/TITA, custom scoring, interruption recovery, explicit tab takeover and result explanations. No silent padding or official percentile claims.
+- `/writing`: original descriptive/essay/conventional/interview prompts, word count, custom timer, local handwritten-image preview and an explicitly non-DEST typing drill.
+- `/results`: new results, mistake concepts and recall queue. Earlier practice data remains under `/results/legacy` and `/review`.
+- `/account`: independent validated backups and optional owner-only cloud sync. Cloud is disabled until configured. See [private setup](docs/PRIVATE_SETUP.md).
+
+Content is a foundation pilot, not complete preparation for ten exams. Sources were checked and original numerical keys tested; independent human editorial review is not claimed. Old unreviewed drafts remain disabled in production. Read [content review and remaining gaps](docs/CONTENT_REVIEW.md) before enabling any official mock.
+
+Public registration, private PDF cloud storage and full curricula remain incomplete. Never commit personal exports, reference uploads, credentials or a service-role key. Live RLS isolation, cross-device round trips and browser/device QA are mandatory deployment checks that local unit tests do not replace.
+
+Validation commands: `npm test` (including embedded PostgreSQL RLS/conflict tests), `npm run typecheck`, `npm run build`, `npm run check:http` and `npm audit --omit=dev`. HTTP checks use deliberately fake provider configuration to verify deny paths; live owner sign-in and deployed RLS still require the setup checks.

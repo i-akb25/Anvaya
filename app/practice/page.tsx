@@ -1,222 +1,59 @@
 "use client";
-
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {useCallback,useEffect,useRef,useState} from "react";
 import Link from "next/link";
-import {Brand} from "@/components/brand";
-import {exams} from "@/lib/catalog";
-import {BANK_KIND, BANK_VERSION, bankQuestions} from "@/lib/question-bank";
-import {
-  BACKUP_FORMAT, STORAGE_KEY, DraftConflictError, buildTest, validateConfig,
-  claimDraft, clearAttempts, createAttempt, discardDraft, elapsedSeconds,
-  exportAttempts, exportRawPractice, importAttempts, readWorkspace, saveAttempt, saveDraft,
-  type Attempt, type Draft, type TestConfig,
-} from "@/lib/practice";
-import {attemptQuestions} from "@/lib/analytics";
-
-const initial:TestConfig = {mode:"mixed", topic:"Indian Polity", count:6, durationMinutes:10, positive:1, negative:.25, examId:"general"};
-const errorText = (error:unknown) => error instanceof Error ? error.message : "Browser storage is unavailable.";
-function downloadJson(content:string, filename:string) {
-  const url = URL.createObjectURL(new Blob([content], {type:"application/json"}));
-  const anchor = document.createElement("a");
-  anchor.href = url; anchor.download = filename; anchor.click();
-  window.setTimeout(() => URL.revokeObjectURL(url),1000);
-}
-
-export default function Practice() {
-  const [config,setConfig] = useState(initial);
-  const [session,setSession] = useState<Draft|null>(null);
-  const [recovery,setRecovery] = useState<Draft|null>(null);
-  const [report,setReport] = useState<Attempt|null>(null);
-  const [history,setHistory] = useState<Attempt[]>([]);
-  const [message,setMessage] = useState("");
-  const [storageIssue,setStorageIssue] = useState("");
-  const [ready,setReady] = useState(false);
-  const [persistent,setPersistent] = useState(true);
-  const [now,setNow] = useState(0);
-  const writerId = useRef("");
-  const submitting = useRef(false);
-  const items = useMemo(() => {
-    if (session) return session.questionIds.map(id => bankQuestions(session.bankVersion).find(q => q.id === id)!);
-    try {return buildTest(config)} catch {return []}
-  },[config,session]);
-  const current = session ? items[session.index] : null;
-  const elapsed = session ? elapsedSeconds(session,now) : 0;
-
-  const refresh = useCallback(() => {
-    try {
-      const state = readWorkspace();
-      setHistory(state.attempts); setRecovery(state.draft); setStorageIssue("");
-    } catch (error) {setStorageIssue(`Saved data could not be loaded: ${errorText(error)}`)}
-  },[]);
-
-  useEffect(() => {
-    writerId.current = crypto.randomUUID();
-    refresh(); setReady(true);
-    const params = new URLSearchParams(window.location.search);
-    const topic = params.get("topic"), examId = params.get("exam");
-    const context = exams.some(e => e.id === examId) ? examId! : "general";
-    setConfig(previous => ({...previous,examId:context,...(topic && bankQuestions().some(q => q.topic === topic) ? {mode:"topic" as const,topic} : {})}));
-  },[refresh]);
-
-  useEffect(() => {
-    if (!session) return;
-    const tick = () => setNow(Date.now());
-    tick();
-    const timer = window.setInterval(tick,1000);
-    window.addEventListener("focus",tick);
-    document.addEventListener("visibilitychange",tick);
-    return () => {window.clearInterval(timer); window.removeEventListener("focus",tick); document.removeEventListener("visibilitychange",tick)};
-  },[session?.id]);
-
-  useEffect(() => {
-    function changed(event:StorageEvent) {
-      if (event.key !== STORAGE_KEY && event.key !== null) return;
-      refresh();
-      if (!session || !persistent) return;
-      try {
-        const state = readWorkspace();
-        if (!state.draft || state.draft.id !== session.id || state.draft.writerId !== writerId.current) {
-          setSession(null);
-          setMessage("This session was changed, submitted or deleted in another tab. Resume the saved session here if available.");
-        }
-      } catch (error) {setStorageIssue(errorText(error))}
-    }
-    window.addEventListener("storage",changed);
-    return () => window.removeEventListener("storage",changed);
-  },[session,persistent,refresh]);
-
-  const finish = useCallback(() => {
-    if (!session || submitting.current) return;
-    submitting.current = true;
-    const attempt = createAttempt(session.config,session.answers,session.questionIds,elapsedSeconds(session),session.id,session.bankVersion);
-    if (persistent) {
-      try {
-        const state = readWorkspace();
-        if (!state.draft || state.draft.id !== session.id || state.draft.writerId !== writerId.current) {
-          setSession(null); refresh();
-          setMessage("This session changed in another tab. Its saved state was kept.");
-          return;
-        }
-      } catch (error) {setStorageIssue(errorText(error))}
-    }
-    const saved = persistent && saveAttempt(attempt,writerId.current);
-    setReport(attempt); setSession(null);
-    if (saved) {refresh(); setMessage("Attempt saved in this browser. Export your workspace for a portable backup.")}
-    else setMessage("This result is in memory only. Download this attempt before leaving. The saved recovery session, if any, was kept.");
-  },[session,persistent,refresh]);
-
-  useEffect(() => {
-    if (session && now >= session.startedAt + session.config.durationMinutes * 60_000) finish();
-  },[now,session,finish]);
-
-  function begin(memoryOnly = false) {
-    try {
-      const clean = validateConfig(config);
-      const selected = buildTest(clean);
-      if (!selected.length) throw new Error("No sample questions are available for this topic.");
-      const startedAt = Date.now();
-      const draft:Draft = {id:crypto.randomUUID(), writerId:writerId.current, bankVersion:BANK_VERSION, kind:BANK_KIND,
-        config:clean,questionIds:selected.map(q => q.id),answers:{},marked:[],index:0,startedAt,updatedAt:startedAt};
-      if (!memoryOnly) claimDraft(draft);
-      setPersistent(!memoryOnly); setSession(draft); setReport(null); setNow(startedAt); submitting.current = false;
-      setMessage(memoryOnly ? "Memory-only session: recovery and history are disabled. Download the result before leaving." : "Answers and review marks save on this device. The clock continues while this page is closed.");
-    } catch (error) {setMessage(errorText(error)); refresh()}
-  }
-
-  function resume() {
-    try {
-      // Re-read on the click so an old recovery banner cannot revive a submitted test.
-      const fresh = readWorkspace().draft;
-      if (!fresh) throw new Error("There is no unfinished session to resume.");
-      const claimed = claimDraft({...fresh,writerId:writerId.current,updatedAt:Math.max(Date.now(),fresh.startedAt)});
-      setConfig(claimed.config); setPersistent(true); setSession(claimed); setReport(null); setNow(Date.now()); submitting.current = false;
-      setMessage("Session resumed here. Time spent away counts toward the time limit; expired sessions submit automatically.");
-    } catch (error) {setMessage(errorText(error)); refresh()}
-  }
-
-  function change(patch:Partial<Pick<Draft,"answers"|"marked"|"index">>) {
-    if (!session) return;
-    if (elapsedSeconds(session) >= session.config.durationMinutes * 60) {finish(); return}
-    const updated = {...session,...patch,updatedAt:Math.max(Date.now(),session.startedAt)};
-    if (persistent) {
-      try {saveDraft(updated)} catch (error) {
-        if (error instanceof DraftConflictError) {setSession(null);refresh();setMessage(error.message);return}
-        setPersistent(false); setStorageIssue(`Autosave failed: ${errorText(error)}. Continue in memory and download your result before leaving.`);
-      }
-    }
-    setSession(updated);
-  }
-
-  async function restore(file:File|undefined) {
-    if (!file) return;
-    try {
-      if (file.size > 2_000_000) throw new Error("Backup must be smaller than 2 MB.");
-      const count = importAttempts(await file.text()); refresh();
-      setMessage(`Backup restored. ${count} completed attempts are available; reviews and unfinished sessions are included when present.`);
-    } catch (error) {setMessage(errorText(error))}
-  }
-
-  function exportWorkspace(raw = false) {
-    try {downloadJson(raw ? exportRawPractice() : exportAttempts(),raw ? "anvaya-raw-recovery.json" : "anvaya-workspace-backup.json")}
-    catch (error) {setMessage(errorText(error))}
-  }
-
-  return <><a className="skip-link" href="#workspace">Skip to practice</a><main id="workspace" className="shell">
-    <header className="head"><Brand/><nav className="row" aria-label="Practice navigation"><Link href="/">Workspace</Link><Link href="/review">Review & progress →</Link></nav></header>
-    <section className="hero"><div className="tag">PRACTICE LAB · ILLUSTRATIVE BANK</div><h1>A little practice. A clearer next step.</h1>
-      <p className="sub">Custom timed practice, saved responses and a path back to your mistakes. These six original examples are not PYQs or official-pattern mocks.</p></section>
-    <p role="status" aria-live="polite" className={message ? "status" : ""}>{message}</p>
-    {storageIssue && <aside className="notice section" role="alert"><p>{storageIssue}</p><button className="btn secondary" onClick={() => exportWorkspace(true)}>Download raw recovery data</button></aside>}
-
-    {!session && !report && <>
-      {recovery && <section className="panel recovery-banner section"><div><div className="tag">UNFINISHED SESSION</div><h2>Pick up where you left off.</h2><p>{recovery.questionIds.length} questions · {Object.keys(recovery.answers).length} answered. The original timer continues while you are away.</p></div>
-        <div className="row"><button className="btn" onClick={resume}>Resume here</button><button className="btn secondary danger" onClick={() => {
-          if (!window.confirm("Discard this unfinished session and its saved answers?")) return;
-          try {discardDraft(recovery.id);refresh();setMessage("Unfinished session discarded.")} catch (error) {setMessage(errorText(error))}
-        }}>Discard session</button></div></section>}
-      <div className="grid"><section className="panel stack"><h2>Configure practice</h2>
-        <label>Tracking context<select className="search" value={config.examId} onChange={e => setConfig(c => ({...c,examId:e.target.value}))}><option value="general">General practice</option>{exams.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}</select></label>
-        <p className="tag">This label keeps your progress separate by exam. It does not change the sample bank into an exam-specific test.</p>
-        <label>Question selection<select className="search" value={config.mode} onChange={e => setConfig(c => ({...c,mode:e.target.value as TestConfig["mode"]}))}><option value="mixed">Mixed subjects</option><option value="topic">One topic</option></select></label>
-        {config.mode === "topic" && <label>Topic<select className="search" value={config.topic} onChange={e => setConfig(c => ({...c,topic:e.target.value}))}>{bankQuestions().map(q => <option key={q.id}>{q.topic}</option>)}</select></label>}
-        <label>Question limit (this selection has {items.length} available)<input className="search" type="number" min="1" max="100" value={config.count} onChange={e => setConfig(c => ({...c,count:Number(e.target.value)}))}/></label>
-        <label>Time limit in minutes<input className="search" type="number" min="1" max="240" value={config.durationMinutes} onChange={e => setConfig(c => ({...c,durationMinutes:Number(e.target.value)}))}/></label>
-        <label>Marks for a correct response<input className="search" type="number" min=".01" max="100" step=".25" value={config.positive} onChange={e => setConfig(c => ({...c,positive:Number(e.target.value)}))}/></label>
-        <label>Deduction for an incorrect response<input className="search" type="number" min="0" max="100" step=".25" value={config.negative} onChange={e => setConfig(c => ({...c,negative:Number(e.target.value)}))}/></label>
-        <button className="btn" disabled={!ready || !!recovery || !!storageIssue} onClick={() => begin()}>Start test with recovery</button>
-        <details><summary>Practise without browser storage</summary><p className="tag">Use a memory-only session if storage is blocked or you prefer not to save answers. Leaving the page loses the session.</p><button className="btn secondary" disabled={!ready} onClick={() => begin(true)}>Start without saving</button></details>
-      </section>
-      <section className="panel"><h2>Previous attempts</h2><p className="muted">Temporary browser storage. It is not encrypted, authenticated or synced across devices. Use a trusted device and keep a private backup.</p>
-        {!ready ? <p>Loading saved history…</p> : !history.length ? <p>No completed attempts yet.</p> : <ol className="attempt-list">{history.map(attempt => <li key={attempt.id}><button className="history-button" onClick={() => {setReport(attempt);setMessage("Viewing a saved illustrative attempt.")}}><strong>{new Date(attempt.createdAt).toLocaleString()}</strong><span>{attempt.score} / {attempt.maxScore} points · {attempt.accuracy}% accuracy</span><span className="tag">{exams.find(e => e.id === attempt.config.examId)?.name ?? "General practice"} · Illustrative</span></button></li>)}</ol>}
-        <div className="backup-controls"><button className="btn secondary" disabled={!ready || !!storageIssue} onClick={() => exportWorkspace()}>Export practice workspace</button>
-          <label className="stack">Restore a backup<input type="file" accept=".json,application/json" disabled={!ready || !!storageIssue} onChange={e => {void restore(e.target.files?.[0]);e.target.value=""}}/></label>
-          <p className="tag">Backups include answers, scores, unfinished sessions and review status. Files are processed locally; keep exported files private. Up to 50 completed attempts are retained.</p>
-          <button className="btn secondary danger" disabled={!ready} onClick={() => {
-            if (!window.confirm("Delete all Anvaya practice data from this browser, including unfinished sessions and review status? Export a backup first if needed.")) return;
-            try {clearAttempts();setHistory([]);setRecovery(null);setStorageIssue("");setMessage("All practice data deleted from this browser.")} catch (error) {setMessage(errorText(error))}
-          }}>Delete all practice data</button>
-        </div></section></div>
+import {draftPreviewEnabled} from "@/lib/content-policy";
+import {SourceCoverage} from "@/components/source-coverage";
+import {StudyShell} from "@/components/study-shell";
+import {activeSection,answerSession,canAccess,examQuestion,foundationQuestions,getPaper,makeSession,papers,scoreSession,sectionRemaining,type ExamResult,type ExamSession,type SectionId} from "@/lib/assessment";
+import {finishStudySession,readStudy,saveStudySession,startStudySession,STUDY_KEY,updateStudy} from "@/lib/study-storage";
+const errorMessage=(error:unknown)=>error instanceof Error?error.message:"This action could not be saved.";
+export default function Practice(){return draftPreviewEnabled?<PracticePreview/>:<SourceCoverage/>}
+function PracticePreview() {
+  const [paperId,setPaperId]=useState("cat-68"),[mode,setMode]=useState<"full"|"drill">("drill"),[section,setSection]=useState<SectionId>("VARC");
+  const [allowRepeat,setAllowRepeat]=useState(false),[memoryOnly,setMemoryOnly]=useState(false),[persistent,setPersistent]=useState(true);
+  const [session,setSession]=useState<ExamSession|null>(null),[recovery,setRecovery]=useState<ExamSession|null>(null),[result,setResult]=useState<ExamResult|null>(null);
+  const [seen,setSeen]=useState<string[]>([]),[now,setNow]=useState(0),[ready,setReady]=useState(false),[message,setMessage]=useState("");
+  const writer=useRef(""),finishing=useRef(false),paper=getPaper(paperId);
+  const refresh=useCallback(()=>{try{const data=readStudy();setSeen(data.seen);setRecovery(data.session)}catch(error){setMessage(`Saved data could not be read. ${errorMessage(error)} Export raw recovery from Review; memory-only practice is available.`)}},[]);
+  useEffect(()=>{writer.current=crypto.randomUUID();refresh();setReady(true)},[refresh]);
+  useEffect(()=>{if(!session)return;const tick=()=>setNow(Date.now());tick();const timer=window.setInterval(tick,250);window.addEventListener("focus",tick);document.addEventListener("visibilitychange",tick);return()=>{window.clearInterval(timer);window.removeEventListener("focus",tick);document.removeEventListener("visibilitychange",tick)}},[session?.id]);
+  useEffect(()=>{const changed=(event:StorageEvent)=>{if(event.key!==STUDY_KEY&&event.key!==null)return;refresh();if(session&&persistent){try{const saved=readStudy().session;if(saved?.id!==session.id||saved.writerId!==writer.current){setSession(null);setMessage("This session changed in another tab. Its saved state has been kept.")}}catch(error){setMessage(errorMessage(error))}}};window.addEventListener("storage",changed);return()=>window.removeEventListener("storage",changed)},[session,persistent,refresh]);
+  const finish=useCallback(()=>{if(!session||finishing.current)return;finishing.current=true;const report=scoreSession(session);if(persistent){try{finishStudySession(session);refresh();setMessage("Attempt saved. Review the reasoning, not just your score.")}catch(error){setMessage(`Result is in memory only: ${errorMessage(error)}. Download it before leaving.`)}}else setMessage("Memory-only result. Download it before leaving.");setResult(report);setSession(null)},[session,persistent,refresh]);
+  useEffect(()=>{if(session&&activeSection(session,now)===session.sections.length)finish()},[session,now,finish]);
+  function start(){try{const started=makeSession(paperId,seen,writer.current,{mode,section,allowRepeat});if(!memoryOnly)startStudySession(started);setSession(started);setPersistent(!memoryOnly);setResult(null);setNow(Date.now());finishing.current=false;setMessage(memoryOnly?"Memory-only practice: this page will not save recovery or progress.":"Responses save on this device. Section clocks continue while you are away.")}catch(error){setMessage(errorMessage(error));refresh()}}
+  function resume(){try{const fresh=readStudy().session;if(!fresh)throw Error("No unfinished paper remains.");const claimed={...fresh,writerId:writer.current};startStudySession(claimed);setSession(claimed);setPersistent(true);setNow(Date.now());setResult(null);finishing.current=false;setMessage("Resumed with the original section deadlines. Completed sections stay locked.")}catch(error){setMessage(errorMessage(error));refresh()}}
+  function save(next:ExamSession){if(persistent){try{saveStudySession(next)}catch(error){try{const saved=readStudy().session;if(saved?.writerId!==writer.current||saved.id!==next.id){setSession(null);refresh();setMessage("Session ownership changed in another tab.");return}}catch{}setPersistent(false);setMessage(`Autosave failed. Continue in memory and download your result: ${errorMessage(error)}`)}}setSession(next)}
+  function respond(id:string,answer:string){if(!session)return;try{save(answerSession(session,id,answer))}catch(error){setMessage(errorMessage(error))}}
+  const sectionIndex=session?activeSection(session,now):0,active=session?.sections[sectionIndex];
+  const ids=session&&active?session.questionIds.filter(id=>examQuestion(id).section===active.id):[];
+  const selectedId=session&&ids.includes(session.questionIds[session.index])?session.questionIds[session.index]:ids[0];
+  const question=selectedId&&session?examQuestion(selectedId,session.paperId):null;
+  const remaining=session?sectionRemaining(session,now):0;
+  return <StudyShell><header className="desk-top"><span className="eyebrow">PRACTICE ROOM</span><Link href="/results">My attempts →</Link></header>
+    {!session&&!result&&<><section className="desk-intro"><span className="desk-kicker">DIFFERENT PAPERS. DIFFERENT RULES.</span><h1>Practise the way the section works.</h1><p>Learn first, try a short drill, then rehearse a complete paper with its own timer, navigation and marking rules.</p></section>
+      {recovery&&<section className="continue-strip"><div><span className="eyebrow">UNFINISHED PRACTICE</span><h2>{getPaper(recovery.paperId).title}</h2><p>{Object.keys(recovery.answers).length} answered · Original clock still running.</p><div className="row"><button className="study-button" onClick={resume}>Resume here</button><button className="text-button" onClick={()=>{if(window.confirm("Discard this unfinished paper and its responses?")){try{updateStudy(data=>({...data,session:null}));refresh()}catch(error){setMessage(errorMessage(error))}}}}>Discard</button></div></div></section>}
+      <div className="paper-choices">{papers.map(p=><button key={p.id} className={paperId===p.id?"paper-choice chosen":"paper-choice"} aria-pressed={paperId===p.id} onClick={()=>{setPaperId(p.id);setSection(p.sections[0].id)}}><span className="eyebrow">{p.examId.toUpperCase()}</span><h2>{p.title}</h2><p>{p.sections.reduce((n,s)=>n+s.count,0)} questions · {p.sections.reduce((n,s)=>n+s.seconds,0)/60} min</p><span>{p.sections.map(s=>s.label).join(" → ")}</span></button>)}</div>
+      <section className="paper-setup"><div><h2>{paper.title}</h2><p>{paper.description}</p><details><summary>Practice blueprint and source</summary><p>{paper.sourceNote}</p><a href={paper.source} target="_blank" rel="noopener noreferrer">Open reference document ↗</a></details>
+        <p className="coverage-note">146 AI-generated foundation drafts, not editorially reviewed. Linked passages and logical sets stay grouped. Content is not PYQ material and has not been calibrated to live exam difficulty.</p>
+        <div className="bank-availability">{paper.sections.map(part=><div key={part.id}><strong>{part.label}</strong><span>{foundationQuestions.filter(q=>q.section===part.id&&!seen.includes(q.id)).length} unseen / {foundationQuestions.filter(q=>q.section===part.id).length} available</span></div>)}</div>
+      </div><form onSubmit={e=>{e.preventDefault();start()}}><label>Practice mode<select value={mode} onChange={e=>setMode(e.target.value as "full"|"drill")}><option value="drill">5-question drill · 10 minutes</option><option value="full">Full structured rehearsal</option></select></label>
+        {mode==="drill"&&<label>Section<select value={section} onChange={e=>setSection(e.target.value as SectionId)}>{paper.sections.map(part=><option value={part.id} key={part.id}>{part.label}</option>)}</select></label>}
+        <label className="checkbox-label"><input type="checkbox" checked={allowRepeat} onChange={e=>setAllowRepeat(e.target.checked)}/><span>Include previously attempted questions for deliberate revision</span></label>
+        <p className="coverage-note">Off by default. When unseen content runs out, practice stops instead of silently recycling questions. More original papers still need to be added.</p>
+        <label className="checkbox-label"><input type="checkbox" checked={memoryOnly} onChange={e=>setMemoryOnly(e.target.checked)}/><span>Start without saving on this browser</span></label>
+        <button className="study-button" disabled={!ready||(!memoryOnly&&!!recovery)}>Start {mode==="full"?"rehearsal":"drill"} →</button>
+      </form></section><p className="coverage-note">CAT and SSC Tier-I rehearsals are available. Other exam mocks are not ready. <Link href="/learn">Their foundation lessons remain available.</Link></p><details><summary>Previous demo history</summary><p>Your earlier six-question attempts remain accessible.</p><Link href="/review">Open legacy review →</Link></details>
     </>}
-
-    {session && current && <>
-      <div className="notice row"><strong>Question {session.index+1} / {items.length}</strong><strong role="timer" aria-label="Time remaining">{Math.floor((session.config.durationMinutes*60-elapsed)/60)}:{String((session.config.durationMinutes*60-elapsed)%60).padStart(2,"0")}</strong><span className="tag">{persistent ? "Saves on this device" : "Memory only"}</span></div>
-      <div className="grid practice-grid section"><section className="panel"><div className="tag">{current.topic} · Original sample</div><h2>{current.stem}</h2>
-        <div className="options">{current.choices.map((choice,i) => <button className={`option ${session.answers[current.id] === i ? "selected" : ""}`} aria-pressed={session.answers[current.id] === i} key={i} onClick={() => change({answers:{...session.answers,[current.id]:i}})}>{String.fromCharCode(65+i)}. {choice}</button>)}</div>
-        <div className="row section"><button className="btn secondary" onClick={() => {const answers = {...session.answers};delete answers[current.id];change({answers})}}>Clear answer</button>
-          <button className="btn secondary" aria-pressed={session.marked.includes(current.id)} onClick={() => change({marked:session.marked.includes(current.id) ? session.marked.filter(id => id !== current.id) : [...session.marked,current.id]})}>{session.marked.includes(current.id) ? "Unmark review" : "Mark for review"}</button></div>
-        <div className="row"><button className="btn secondary" disabled={session.index === 0} onClick={() => change({index:session.index-1})}>Previous</button><button className="btn secondary" disabled={session.index === items.length-1} onClick={() => change({index:session.index+1})}>Next</button></div>
-      </section><aside className="panel"><h3>Question palette</h3><div className="question-palette">{items.map((q,i) => <button key={q.id} className={`btn ${i === session.index ? "" : "secondary"}`} aria-current={i === session.index ? "step" : undefined} aria-label={`Question ${i+1}, ${session.answers[q.id] === undefined ? "unanswered" : "answered"}${session.marked.includes(q.id) ? ", marked for review" : ""}`} onClick={() => change({index:i})}>{i+1}{session.marked.includes(q.id) ? " ★" : session.answers[q.id] !== undefined ? " ✓" : ""}</button>)}</div>
-        <p>Answered: {Object.keys(session.answers).length} · For review: {session.marked.length}</p>
-        <button className="btn" onClick={() => {if (window.confirm("Submit this practice session? You cannot change submitted answers.")) finish()}}>Submit test</button>
-        {persistent && <p><button className="btn secondary" onClick={() => {setSession(null);refresh();setMessage("Saved session left open. Its clock keeps running.")}}>Return to setup</button></p>}
-      </aside></div>
-    </>}
-
-    {report && !session && <section><div className="row"><h2>Attempt report</h2><span className="pill">Illustrative · {report.bankVersion}</span></div>
-      <div className="grid">{[["Score",`${report.score} / ${report.maxScore}`],["Correct",report.correct],["Incorrect",report.incorrect],["Unanswered",report.unanswered],["Accuracy",`${report.accuracy}%`],["Time",`${report.elapsedSeconds} seconds`]].map(([label,value]) => <div className="panel" key={label}><div className="tag">{label}</div><h2>{value}</h2></div>)}</div>
-      {attemptQuestions(report).map((q,i) => <article className="panel section" key={q.id}><div className="tag">{q.topic} · {report.answers[q.id] === undefined ? "Unanswered" : report.answers[q.id] === q.correct ? "Correct" : "Incorrect"}</div><h3>{i+1}. {q.stem}</h3><p>Your response: {report.answers[q.id] === undefined ? "Not attempted" : q.choices[report.answers[q.id]]}</p><p>Correct answer: {q.choices[q.correct]}</p><p>{q.explanation}</p></article>)}
-      <div className="row section"><button className="btn" onClick={() => {setReport(null);refresh()}}>Back to practice setup</button><Link className="btn secondary" href={`/review?exam=${encodeURIComponent(report.config.examId ?? "general")}`}>Review & progress</Link><button className="btn secondary" onClick={() => downloadJson(JSON.stringify({format:BACKUP_FORMAT,attempts:[report],draft:null,reviews:[],exportedAt:new Date().toISOString()},null,2),"anvaya-attempt.json")}>Download this attempt</button></div>
+    {session&&question&&active&&<section className="exam-room"><div className="exam-bar"><div><span className="eyebrow">{getPaper(session.paperId).title} · {session.mode==="drill"?"DRILL":"REHEARSAL"}</span><h2>{active.label}</h2></div><div className="exam-clock"><span>SECTION TIME LEFT</span><strong role="timer">{Math.floor(remaining/60)}:{String(remaining%60).padStart(2,"0")}</strong></div></div>
+      <ol className="section-locks">{session.sections.map((part,i)=><li key={part.id} aria-current={i===sectionIndex?"step":undefined}>{i<sectionIndex?"✓ Locked":i===sectionIndex?"● Active":"🔒 Upcoming"}<strong>{part.label}</strong></li>)}</ol>
+      <p className="content-provenance">AI-generated practice draft · Answer keys not editorially reviewed · {active.label} is active; other sections are locked.</p><p className="visually-hidden" role="status" aria-live="polite">Current section: {active.label}. Completed sections are locked.</p><div className="exam-columns"><article className="exam-question"><div className="row"><span className="eyebrow">QUESTION {ids.indexOf(selectedId)+1} / {ids.length}</span><span className="eyebrow">{question.type==="numeric"?"TYPE IN ANSWER":"SINGLE CHOICE"}</span></div>
+        {question.context&&<div className="question-context"><span className="eyebrow">READ THE SET</span><p>{question.context}</p></div>}<h2>{question.stem}</h2>
+        {question.type==="mcq"?<div className="options">{question.choices.map((choice,i)=><button key={i} className={`option ${session.answers[selectedId]===String(i)?"selected":""}`} aria-pressed={session.answers[selectedId]===String(i)} onClick={()=>respond(selectedId,String(i))}><span>{String.fromCharCode(65+i)}.</span> {choice}</button>)}</div>:<label className="numeric-answer">Your numeric answer<input inputMode="decimal" value={session.answers[selectedId]??""} onChange={e=>respond(selectedId,e.target.value)} placeholder="Enter a number"/><span className="coverage-note">No negative marking for this numeric-answer question. Use a leading zero for decimals.</span></label>}
+        <div className="row section"><button className="text-button" onClick={()=>respond(selectedId,"")}>Clear response</button><button className="study-button secondary-study" aria-pressed={session.marked.includes(selectedId)} onClick={()=>{if(canAccess(session,selectedId)){save({...session,marked:session.marked.includes(selectedId)?session.marked.filter(id=>id!==selectedId):[...session.marked,selectedId]})}}}>{session.marked.includes(selectedId)?"Unmark review":"Mark for review"}</button></div>
+        <div className="question-navigation"><button className="study-button secondary-study" disabled={ids.indexOf(selectedId)===0} onClick={()=>{const id=ids[ids.indexOf(selectedId)-1];if(canAccess(session,id))save({...session,index:session.questionIds.indexOf(id)})}}>Previous</button><button className="study-button" disabled={ids.indexOf(selectedId)===ids.length-1} onClick={()=>{const id=ids[ids.indexOf(selectedId)+1];if(canAccess(session,id))save({...session,index:session.questionIds.indexOf(id)})}}>Save & next</button></div>
+      </article><aside className="exam-palette"><h3>Current section</h3><div className="question-palette">{ids.map((id,i)=><button key={id} className={`palette-button ${session.answers[id]!==undefined?"answered":""} ${id===selectedId?"current":""}`} aria-current={id===selectedId?"step":undefined} aria-label={`Question ${i+1}, ${session.answers[id]===undefined?"unanswered":"answered"}${session.marked.includes(id)?", marked for review":""}`} onClick={()=>{if(canAccess(session,id))save({...session,index:session.questionIds.indexOf(id)})}}>{i+1}{session.marked.includes(id)?"★":""}</button>)}</div><p>Answered: {ids.filter(id=>session.answers[id]!==undefined).length} / {ids.length}</p><p className="coverage-note">Earlier and later sections cannot be opened. The next section starts automatically when this timer reaches zero.</p>{sectionIndex===session.sections.length-1&&<button className="study-button" onClick={()=>{if(window.confirm("Submit the paper? Submitted answers cannot be changed."))finish()}}>Submit paper</button>}<p className="eyebrow">{persistent?"SAVED ON THIS DEVICE":"MEMORY ONLY"}</p></aside></div>
     </section>}
-    <footer>Support: <a href="mailto:akbsupportinfo@gmail.com">akbsupportinfo@gmail.com</a> · Saved data stays in this browser. Export before clearing site data.</footer>
-  </main></>;
+    {result&&<section className="desk-intro"><span className="desk-kicker">ATTEMPT COMPLETE</span><h1>{result.score} <small>/ {result.maxScore}</small></h1><p>{result.correct} correct · {result.incorrect} incorrect · {result.unanswered} unanswered</p><div className="row"><Link href="/results" className="study-button">Review explanations →</Link><button className="study-button secondary-study" onClick={()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({format:STUDY_KEY,data:{completed:[],notes:{},seen:result.session.questionIds,session:null,results:[result]}},null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="anvaya-attempt.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}}>Download this attempt</button><button className="text-button" onClick={()=>{setResult(null);refresh()}}>Back to practice</button></div><div className="attempt-explanations">{result.session.questionIds.map((id,i)=>{const q=examQuestion(id,result.session.paperId);return <details key={id}><summary>{i+1}. {q.stem}</summary><p><strong>Correct answer:</strong> {q.type==="mcq"?q.choices[Number(q.answer)]:q.answer}</p><p>{q.explanation}</p></details>})}</div></section>}
+    <p className={message?"study-status":""} role="status">{message}</p>
+  </StudyShell>;
 }

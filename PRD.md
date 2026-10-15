@@ -226,3 +226,11 @@ From the repository charter and README, already pushed: basic responsive app and
 | Version | Date | Change |
 | --- | --- | --- |
 | 1.0 | 2026-10-14 | Initial consolidated PRD from Anvaya master charter and repository documentation |
+
+## Design revision · 14 October 2026
+
+The latest user direction replaces the previous sage/cream/clay visual lock. Use an original ink, paper and copper identity with light and dark themes, a global responsive header, mobile navigation and a full footer. AKB Studio informs visual restraint; PW and Drishti inform course-first learning navigation. Do not copy their paid materials, identities or marketing claims.
+
+The current classroom exposes ten distinct exam paths, subject planning categories, an official-paper link library, a local PDF reading/recall desk and a local study planner. Subject categories are not a verified complete syllabus. A publisher archive link is not an imported question bank. Files chosen in the PDF desk remain local and must be reattached after reload. Plans and notebooks have an explicit backup/replace workflow, separate from the earlier practice backup.
+
+Reviewed hosted courses, video instruction, complete verified PYQ banks, exam-cycle test rules and secure cross-device accounts remain release requirements. Keep unreviewed generated lessons/questions out of production. Do not claim this workspace preview completes R1 or makes the learner product ready for public registration.

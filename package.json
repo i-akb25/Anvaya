@@ -10,7 +10,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "assets": "node scripts/generate-assets.cjs",
-    "check:http": "node scripts/check-http.mjs",
+    "check:http": "node scripts/check-http.mjs && node scripts/check-http.mjs --local-only",
     "content:check": "node --experimental-strip-types scripts/review-pack.mjs"
   },
   "dependencies": {

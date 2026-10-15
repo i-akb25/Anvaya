@@ -103,3 +103,6 @@ All locked examinations remain in scope, with separate cycle/stage rules and GAT
 - Eight source-checked original foundation units / 30 original practice questions are explicitly AI-authored, non-PYQ and not independently human-reviewed. The old unreviewed draft gate remains intact. Source checking does not authorize official mock claims.
 - Private Supabase account/sync implementation is owner-only and fails closed without configuration. Apply RLS migration, disable public signup and perform live two-user isolation/conflict checks before relying on cloud storage.
 - All ten complete curricula and full verified mock sets remain incomplete; never report the project complete because its framework builds.
+
+### Personal-use decision · 15 October 2026
+Keep the Supabase integration for later, disabled by default. Require explicit `ANVAYA_CLOUD_ENABLED=true` plus complete server configuration before any cloud authentication or sync. Prioritize local study and user-controlled file backups for current personal use.

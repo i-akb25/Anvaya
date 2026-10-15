@@ -2,14 +2,9 @@ import "server-only";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { NextResponse, type NextRequest } from "next/server";
-import { allowedOwner, sameOrigin } from "./auth-policy";
+import { allowedOwner, sameOrigin, cloudEnabled } from "./auth-policy";
 export function cloudConfigured() {
-  return (
-    !!process.env.SUPABASE_URL &&
-    !!process.env.SUPABASE_ANON_KEY &&
-    !!process.env.ANVAYA_OWNER_ID &&
-    !!process.env.ANVAYA_APP_ORIGIN
-  );
+  return cloudEnabled(process.env);
 }
 export async function authClient() {
   if (!cloudConfigured()) throw Error("Cloud account is not configured.");

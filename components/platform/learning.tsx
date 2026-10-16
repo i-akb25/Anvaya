@@ -35,6 +35,9 @@ export function CourseLibrary() {
           calculation checks; independent human editorial review is pending.
         </p>
       </div>
+      <div className="question-actions">
+        <Link href="/lectures">Browse topic-wise lectures →</Link>
+      </div>
       <div className="library-toolbar">
         <label className="search-field">
           <Search size={18} />
@@ -173,6 +176,26 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
               Checked {source.checkedOn} · Version {unit.version}
             </small>
           </div>
+          <section className="lesson-section lecture-lesson-invite">
+            <h2>Learn with a lecture</h2>
+            <p>
+              Open the topic’s publisher-linked videos, save a position and
+              write your explanation.
+            </p>
+            <Link
+              className="button"
+              href={`/lectures/${unit.slug}?exam=${exam}`}
+              onClick={(e) => {
+                if (
+                  note !== (vault.notes[key] ?? "") &&
+                  !window.confirm("Leave without saving your lesson note?")
+                )
+                  e.preventDefault();
+              }}
+            >
+              Open topic lectures →
+            </Link>
+          </section>
           {unit.concepts.map((c, i) => (
             <section className="lesson-section" key={c.title}>
               <span className="eyebrow">IDEA {i + 1}</span>

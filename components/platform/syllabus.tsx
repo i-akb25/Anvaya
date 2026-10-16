@@ -90,6 +90,9 @@ export function SyllabusRegistry() {
                   {u.locator} · {u.version}
                 </p>
                 <div className="unit-links">
+                  <Link href={`/lectures?exam=${exam}&syllabus=${u.id}`}>
+                    Lecture selections for this section →
+                  </Link>
                   {u.topicIds.map((id) => {
                     const lesson = studyUnits.find(
                       (l) => l.slug === id && l.exams.includes(exam),

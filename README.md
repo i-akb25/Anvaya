@@ -80,7 +80,7 @@ The generated lesson/question prototypes are now **disabled in production**, eve
 
 The workspace now has ten exam paths, subject sections, a responsive header/footer, an ink/paper/copper theme and a light/dark toggle. `/papers` links original GATE papers/keys and official UPSC/GATE archives. `/study/private` opens a user-selected local PDF alongside recall notes and a study timer. The PDF is not uploaded or retained after reload. `/planner` manages study sessions and exports/imports workspace backups with explicit replacement confirmation. Earlier practice backups remain separate.
 
-This is a local workspace preview, not a complete learning service: reviewed hosted lessons, lectures, comprehensive question banks, official mock configurations and authenticated cross-device storage are not ready. Local notes can be lost if browser storage is cleared, so export backups. Browser visual QA was unavailable in this environment; responsive layout and accessibility still need device testing before release.
+This is a local workspace preview, not a complete learning service: reviewed hosted courses, comprehensive lecture coverage and question banks, official mock configurations and authenticated cross-device storage are not ready. Local notes can be lost if browser storage is cleared, so export backups. Browser visual QA was unavailable in this environment; responsive layout and accessibility still need device testing before release.
 
 ### Learning system and private sync
 
@@ -108,3 +108,11 @@ Five additional source-checked units cover rights/Directive Principles, ecosyste
 `/recall` turns completed exam/unit contexts into memory prompts: explain before revealing the reference and your saved note, then rate Again/Hard/Good to schedule a review in 1/3/7 local calendar days. Scratch answers are not saved or graded. Ratings and due dates are included in backups. Turn off Due only to revise early.
 
 The v1 question-bank release remains available to validate old saved results and unfinished attempts. New attempts use v2. Seen IDs persist per exam beyond the latest 30 detailed results; older IDs already discarded before this update cannot be reconstructed. Existing backups remain accepted. Supabase stays disabled by default.
+
+### Topic-wise lectures · 15 October 2026
+
+The lecture directory at `/lectures` contains 100 distinct publisher links: 85 individual lecture links, four publisher collections and 11 NPTEL course pages. It offers 71 populated topic selections across ten exam paths, and four explicitly unfilled topic areas. These counts do not certify complete subject or exam coverage. Every current foundation lesson links to a matching lecture topic; syllabus outline sections link to curated selections without changing their review status.
+
+NIOS subject tables, MIT OCW resource/collection pages and NPTEL course metadata were opened. Khan Academy and Drishti IAS English titles were checked against publisher-indexed search listings; their page rendering was limited. Metadata checks are disclosed separately from playback and full editorial review. NIOS/NPTEL spoken language remains unconfirmed. Some historical school lessons are partial selections, and economics examples are not current policy. No full video playback review is claimed.
+
+Lecture pages include an ordered resource outline, exam-specific notes, a manually entered resume position, self-reported watch status, and save/next navigation. These optional fields use existing revision-conflict protection and local backups, accepting older backups. Watching a lecture does not mark a lesson complete or infer mastery. Known YouTube videos load only after an explicit click into a privacy-enhanced player; publisher links remain available if playback fails. No provider keys, account, scraping service or Supabase enablement are required.

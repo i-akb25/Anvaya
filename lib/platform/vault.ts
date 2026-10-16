@@ -1,3 +1,4 @@
+import { validLectureState, type LectureState } from "./lecture-progress.ts";
 import { validAttempt, type PracticeAttempt } from "./engine.ts";
 import { validWorkspace, type Workspace } from "../workspace.ts";
 export type LearningVault = {
@@ -9,6 +10,7 @@ export type LearningVault = {
   active: PracticeAttempt | null;
   writing: Record<string, { text: string; updatedAt: string; kind: string }>;
   revisionDue: Record<string, string>;
+  lectures?: Record<string, LectureState>;
   seen?: Record<string, string[]>;
   recalls?: Record<
     string,
@@ -89,6 +91,11 @@ export function validVault(value: unknown): value is LearningVault {
             ["again", "hard", "good"].includes(r.rating as string) &&
             typeof r.reviewedAt === "string" &&
             Number.isFinite(Date.parse(r.reviewedAt)),
+        ))) &&
+    (v.lectures === undefined ||
+      (record(v.lectures) &&
+        Object.entries(v.lectures).every(
+          ([key, state]) => key.length < 200 && validLectureState(state),
         ))) &&
     record(v.revisionDue) &&
     Object.values(v.revisionDue).every(

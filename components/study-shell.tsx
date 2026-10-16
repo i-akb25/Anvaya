@@ -34,6 +34,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
   const links = [
     ["/", "Classroom"],
     ["/courses", "Learn"],
+    ["/lectures", "Lectures"],
     ["/syllabus", "Syllabus"],
     ["/assessments", "Practice"],
     ["/papers", "PYQs"],
@@ -123,6 +124,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
         <div>
           <h3>Workspace</h3>
           <Link href="/courses">Learning library</Link>
+          <Link href="/lectures">Topic-wise lectures</Link>
           <Link href="/syllabus">Syllabus & paper rules</Link>
           <Link href="/assessments">Concept practice</Link>
           <Link href="/writing">Answer writing</Link>

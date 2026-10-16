@@ -317,8 +317,8 @@ export function AccountDesk() {
             <h2>Independent backup</h2>
             <p>
               Keep a file outside the app. This includes the new learning
-              workspace and the paper/planner workspace. Earlier demo/practice
-              backups remain separate.
+              workspace, lecture notes and positions, and the paper/planner
+              workspace. Earlier demo/practice backups remain separate.
             </p>
             <button
               className="button"

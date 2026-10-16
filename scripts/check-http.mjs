@@ -51,6 +51,11 @@ try {
     "/courses/constitutional-rights",
     "/courses/rc-transients",
     "/recall",
+    "/lectures",
+    "/lectures/percentages",
+    "/lectures/constitutional-rights",
+    "/lectures/rc-transients",
+    "/lectures/bihar-special",
     "/syllabus",
     "/assessments",
     "/writing",
@@ -73,6 +78,20 @@ try {
         html.includes("Start custom practice"),
         path + " should open the usable practice builder",
       );
+    if (path.startsWith("/lectures")) {
+      assert.ok(
+        !html.includes("<iframe"),
+        "External player must not load without consent",
+      );
+      assert.match(
+        r.headers.get("content-security-policy"),
+        /frame-src[^;]*https:\/\/www.youtube-nocookie.com/,
+      );
+    }
+    if (path === "/lectures/percentages")
+      assert.ok(html.includes("My explanation"));
+    if (path === "/lectures/bihar-special")
+      assert.ok(html.includes("Lecture curation is pending."));
     if (path === "/recall") assert.ok(html.includes("Recall your learning."));
     if (["/topics", "/courses"].includes(path))
       assert.ok(
@@ -80,6 +99,10 @@ try {
         path + " should open usable lessons",
       );
   }
+  assert.equal(
+    (await fetch(origin + "/lectures/not-a-real-topic")).status,
+    404,
+  );
   const account = await fetch(origin + "/api/account");
   assert.equal(account.status, 200);
   assert.deepEqual(await account.json(), {

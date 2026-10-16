@@ -279,16 +279,14 @@ export function ExamPath({ id }: { id: string }) {
                   >
                     Plan a study session →
                   </Link>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(e.name + " " + s + " lecture")}`}
+                  <Link
+                    href={`/lectures?exam=${e.id}${s.includes("Engineering") && s !== "Engineering Mathematics" ? "" : `&subject=${encodeURIComponent(s === "English" ? "English and Comprehension" : s)}`}`}
                   >
-                    Find external lectures ↗
-                  </a>
+                    Open lecture selections →
+                  </Link>
                   <small>
-                    Search results are external and have not been reviewed by
-                    Anvaya.
+                    Publisher-linked selections include source dates and visible
+                    coverage gaps.
                   </small>
                 </div>
               </details>

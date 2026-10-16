@@ -57,6 +57,17 @@ export function Classroom() {
   const exam = exams.find((e) => e.id === selected)!;
   return (
     <StudyShell>
+      <div className="question-actions">
+        <Link className="button primary" href="/today">
+          Open my study day →
+        </Link>
+        <Link className="button" href="/search">
+          Search all study content →
+        </Link>
+        <Link className="button" href="/notebook">
+          My notebook →
+        </Link>
+      </div>
       <div className="workspace-top">
         <span className="eyebrow">YOUR LEARNING SPACE</span>
         <span className="local-label">

@@ -1,0 +1,4 @@
+import { NotebookDesk } from "@/components/platform/study-desk";
+export default function Page() {
+  return <NotebookDesk />;
+}

@@ -51,6 +51,10 @@ try {
     "/courses/constitutional-rights",
     "/courses/rc-transients",
     "/recall",
+    "/today",
+    "/search",
+    "/notebook",
+    "/my-practice",
     "/lectures",
     "/lectures/percentages",
     "/lectures/constitutional-rights",
@@ -92,6 +96,11 @@ try {
       assert.ok(html.includes("My explanation"));
     if (path === "/lectures/bihar-special")
       assert.ok(html.includes("Lecture curation is pending."));
+    if (path === "/today") assert.ok(html.includes("A clear next step."));
+    if (path === "/search")
+      assert.ok(html.includes("Include my private content"));
+    if (path === "/notebook") assert.ok(html.includes("My topic notebook."));
+    if (path === "/my-practice") assert.ok(html.includes("My question desk."));
     if (path === "/recall") assert.ok(html.includes("Recall your learning."));
     if (["/topics", "/courses"].includes(path))
       assert.ok(

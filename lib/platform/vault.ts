@@ -1,3 +1,7 @@
+import {
+  validPersonalPractice,
+  type PersonalPractice,
+} from "./personal-practice.ts";
 import { validLectureState, type LectureState } from "./lecture-progress.ts";
 import { validAttempt, type PracticeAttempt } from "./engine.ts";
 import { validWorkspace, type Workspace } from "../workspace.ts";
@@ -11,6 +15,7 @@ export type LearningVault = {
   writing: Record<string, { text: string; updatedAt: string; kind: string }>;
   revisionDue: Record<string, string>;
   lectures?: Record<string, LectureState>;
+  personal?: PersonalPractice;
   seen?: Record<string, string[]>;
   recalls?: Record<
     string,
@@ -97,6 +102,7 @@ export function validVault(value: unknown): value is LearningVault {
         Object.entries(v.lectures).every(
           ([key, state]) => key.length < 200 && validLectureState(state),
         ))) &&
+    (v.personal === undefined || validPersonalPractice(v.personal)) &&
     record(v.revisionDue) &&
     Object.values(v.revisionDue).every(
       (v) => typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v),

@@ -145,6 +145,10 @@ export function AssessmentDesk() {
     ).length;
   function start() {
     try {
+      if (vault.personal?.active)
+        throw Error(
+          "Finish your active personal practice at /my-practice first.",
+        );
       const a = createPractice({
         examId: exam,
         topicIds,
@@ -186,6 +190,9 @@ export function AssessmentDesk() {
     owned = active?.writerId === writer;
   return (
     <StudyShell>
+      <p>
+        <Link href="/my-practice">Practise with my own questions →</Link>
+      </p>
       <div className="page-heading">
         <span className="eyebrow">APPLY WHAT YOU LEARNED</span>
         <h1>

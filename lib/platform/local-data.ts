@@ -13,7 +13,7 @@ export function restoreLocalPayload(payload: SyncPayload) {
   try {
     const current = readVault();
     revision = current.revision;
-    if (current.active)
+    if (current.active || current.personal?.active)
       throw Error(
         "Finish the active practice attempt before restoring a workspace.",
       );

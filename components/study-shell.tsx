@@ -37,7 +37,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
     ["/lectures", "Lectures"],
     ["/syllabus", "Syllabus"],
     ["/assessments", "Practice"],
-    ["/papers", "PYQs"],
+    ["/search", "Search"],
   ];
   return (
     <div className="site">
@@ -88,6 +88,10 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
           >
             {links
               .concat([
+                ["/today", "Today"],
+                ["/notebook", "My notebook"],
+                ["/my-practice", "My question desk"],
+                ["/papers", "Official papers"],
                 ["/exams", "Exam paths"],
                 ["/planner", "Study planner"],
                 ["/writing", "Answer writing"],
@@ -123,6 +127,10 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
         </div>
         <div>
           <h3>Workspace</h3>
+          <Link href="/today">Today</Link>
+          <Link href="/search">Search everything</Link>
+          <Link href="/notebook">My topic notebook</Link>
+          <Link href="/my-practice">My question desk</Link>
           <Link href="/courses">Learning library</Link>
           <Link href="/lectures">Topic-wise lectures</Link>
           <Link href="/syllabus">Syllabus & paper rules</Link>

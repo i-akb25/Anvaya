@@ -97,13 +97,26 @@ export function ProgressDesk() {
                 unit = studyUnits.find((u) => u.slug === slug);
               return (
                 <div className="revision-item" key={key}>
-                  <Link href={`/courses/${slug}?exam=${exam}`}>
+                  <Link
+                    href={
+                      unit
+                        ? `/courses/${slug}?exam=${exam}`
+                        : `/notebook?exam=${exam}&topic=${slug}`
+                    }
+                  >
                     {unit?.title ?? slug} →
                   </Link>
                   <p>
                     {exam} · Due {date}
                   </p>
-                  <Link className="button" href={`/recall?exam=${exam}`}>
+                  <Link
+                    className="button"
+                    href={
+                      unit
+                        ? `/recall?exam=${exam}`
+                        : `/notebook?exam=${exam}&topic=${slug}`
+                    }
+                  >
                     Recall, reveal & rate →
                   </Link>
                 </div>

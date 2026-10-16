@@ -1,3 +1,4 @@
+import { releaseSources, releaseUnits } from "./release-content.ts";
 import { expansionSources, expansionUnits } from "./expansion.ts";
 export type Source = {
   id: string;
@@ -9,6 +10,7 @@ export type Source = {
 };
 export const sources: Source[] = [
   ...expansionSources,
+  ...releaseSources,
   {
     id: "percent",
     title: "Prealgebra 2e · Understand Percent",
@@ -404,16 +406,18 @@ const units: Draft[] = [
     mistake: "Replacing visits with visitors changes the claim.",
   },
 ];
-export const studyUnits: StudyUnit[] = [...units, ...expansionUnits].map(
-  (u) => ({
-    ...u,
-    status: "source-checked",
-    authorship: "AI-authored",
-    review:
-      "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
-    version: `${u.slug}-sourcecheck-20261015-v1`,
-  }),
-);
+export const studyUnits: StudyUnit[] = [
+  ...units,
+  ...expansionUnits,
+  ...releaseUnits,
+].map((u) => ({
+  ...u,
+  status: "source-checked",
+  authorship: "AI-authored",
+  review:
+    "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
+  version: `${u.slug}-sourcecheck-${releaseUnits.some((r) => r.slug === u.slug) ? "20261016" : "20261015"}-v1`,
+}));
 export function sourceFor(id: string) {
   const source = sources.find((s) => s.id === id);
   if (!source) throw Error("Unknown source");

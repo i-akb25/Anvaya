@@ -1,3 +1,4 @@
+import { validBriefing, type Briefing } from "./briefings.ts";
 import {
   validPersonalPractice,
   type PersonalPractice,
@@ -7,6 +8,7 @@ import { validAttempt, type PracticeAttempt } from "./engine.ts";
 import { validWorkspace, type Workspace } from "../workspace.ts";
 export type LearningVault = {
   schema: 1;
+  briefings?: Briefing[];
   revision: number;
   notes: Record<string, string>;
   completed: string[];
@@ -103,6 +105,11 @@ export function validVault(value: unknown): value is LearningVault {
           ([key, state]) => key.length < 200 && validLectureState(state),
         ))) &&
     (v.personal === undefined || validPersonalPractice(v.personal)) &&
+    (v.briefings === undefined ||
+      (Array.isArray(v.briefings) &&
+        v.briefings.length <= 100 &&
+        v.briefings.every(validBriefing) &&
+        new Set(v.briefings.map((b) => b.id)).size === v.briefings.length)) &&
     record(v.revisionDue) &&
     Object.values(v.revisionDue).every(
       (v) => typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v),

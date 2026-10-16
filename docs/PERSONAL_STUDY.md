@@ -21,7 +21,7 @@ Each attempt freezes the chosen questions and supplied key. Removing a source pa
 
 Question packs, active attempts and personal results are included in the existing `/account` study backup. Older backups without the optional personal field remain valid. Files containing questions, notes and responses should be kept private. No personal content is written to Git, rehosted or uploaded merely by importing it. If cloud sync is later enabled, its existing explicit transfer workflow applies to the entire learning payload; its upload size limit still applies.
 
-Planner task writes now compare the saved task list before merging, preserve newer paper notes and reject stale task edits. The notebook and question desk use learning-vault revision checks. Corrupt storage and quota failures are surfaced rather than silently resetting work. Private PDFs still require reattachment after reload; browser storage is not a substitute for independent backups.
+Planner task writes now compare the saved task list before merging, preserve newer paper notes and reject stale task edits. The notebook and question desk use learning-vault revision checks. Corrupt storage and quota failures are surfaced rather than silently resetting work. Saved PDFs now reopen after reload through the private file library; their bytes remain outside JSON backups and cloud sync; browser storage is not a substitute for independent backups.
 
 ## Remaining product gates
 

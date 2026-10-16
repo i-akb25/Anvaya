@@ -24,6 +24,9 @@ const child = spawn(
       SUPABASE_ANON_KEY: "test-public-placeholder",
       ANVAYA_OWNER_ID: "00000000-0000-4000-8000-000000000001",
       ANVAYA_APP_ORIGIN: origin,
+      ANVAYA_TUTOR_ENABLED: localOnly ? "false" : "true",
+      GEMINI_API_KEY: "test-placeholder-not-a-provider-key",
+      ANVAYA_GEMINI_MODEL: "test-placeholder-model",
     },
     stdio: ["ignore", "pipe", "pipe"],
   },
@@ -52,6 +55,14 @@ try {
     "/courses/rc-transients",
     "/recall",
     "/today",
+    "/coverage",
+    "/content-review",
+    "/library",
+    "/current-affairs",
+    "/mocks",
+    "/tutor",
+    "/courses/work-rates",
+    "/lectures/work-rates",
     "/search",
     "/notebook",
     "/my-practice",
@@ -112,6 +123,23 @@ try {
     (await fetch(origin + "/lectures/not-a-real-topic")).status,
     404,
   );
+  const tutor = await fetch(origin + "/api/tutor");
+  assert.equal(tutor.status, 200);
+  assert.equal((await tutor.json()).configured, !localOnly);
+  assert.equal(
+    (
+      await fetch(origin + "/api/tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: origin },
+        body: JSON.stringify({ consent: true }),
+      })
+    ).status,
+    localOnly ? 503 : 401,
+  );
+  const invalidFeed = await fetch(
+    origin + "/api/current-affairs?source=https://evil.example",
+  );
+  assert.equal(invalidFeed.status, 400);
   const account = await fetch(origin + "/api/account");
   assert.equal(account.status, 200);
   assert.deepEqual(await account.json(), {

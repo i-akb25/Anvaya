@@ -21,7 +21,7 @@ export type PracticeAttempt = {
   version: 1;
   bankVersion: string;
   classification: "custom-illustrative";
-  sections: { id: string; seconds: number }[];
+  sections: { id: string; seconds: number; title?: string }[];
   navigation: "paper" | "fixed-sections";
   items: FrozenQuestion[];
   answers: Record<string, Response>;
@@ -150,7 +150,7 @@ export function evaluate(a: PracticeAttempt) {
 }
 export function submit(a: PracticeAttempt, now: number) {
   return a.submittedAt === null
-    ? { ...a, submittedAt: Math.min(now, deadline(a)) }
+    ? { ...a, submittedAt: Math.max(a.startedAt, Math.min(now, deadline(a))) }
     : a;
 }
 export function createPractice(input: {
@@ -245,7 +245,7 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
       !["paper", "fixed-sections"].includes(a.navigation) ||
       !Array.isArray(a.items) ||
       a.items.length < 1 ||
-      a.items.length > 50 ||
+      a.items.length > 200 ||
       new Set(a.items.map((i) => i.question?.id)).size !== a.items.length ||
       !Array.isArray(a.sections) ||
       a.sections.length < 1 ||
@@ -254,6 +254,8 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
       !a.sections.every(
         (s) =>
           typeof s.id === "string" &&
+          (s.title === undefined ||
+            (typeof s.title === "string" && s.title.length <= 100)) &&
           Number.isInteger(s.seconds) &&
           s.seconds >= 60 &&
           s.seconds <= 10800,
@@ -294,4 +296,64 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
   } catch {
     return false;
   }
+}
+
+export type SectionPlan = {
+  title: string;
+  topicIds: string[];
+  count: number;
+  seconds: number;
+  correct: number;
+  penalty: number;
+};
+/** Custom source-linked sectional practice only. Does not certify an official pattern. */
+export function createSectionPractice(input: {
+  examId: string;
+  sections: SectionPlan[];
+  fixed: boolean;
+  seen: string[];
+  allowRepeats: boolean;
+  writerId: string;
+  now: number;
+}): PracticeAttempt {
+  if (
+    !input.sections.length ||
+    input.sections.length > 6 ||
+    input.sections.reduce((n, s) => n + s.count, 0) > 200 ||
+    input.sections.reduce((n, s) => n + s.seconds, 0) > 21600
+  )
+    throw Error(
+      "Use 1–6 sections, at most 200 questions and 6 hours in total.",
+    );
+  const used = new Set<string>();
+  const attempts = input.sections.map((s, i) => {
+    if (typeof s.title !== "string" || !s.title.trim() || s.title.length > 100)
+      throw Error("Each section needs a title up to 100 characters.");
+    const prior = input.allowRepeats ? [] : input.seen;
+    const a = createPractice({
+      ...s,
+      examId: input.examId,
+      seen: [...prior, ...used],
+      allowRepeats: false,
+      writerId: input.writerId,
+      now: input.now,
+    });
+    a.items.forEach((item) => used.add(item.question.id));
+    return {
+      ...a,
+      sections: [
+        { id: `section-${i + 1}`, title: s.title, seconds: s.seconds },
+      ],
+      items: a.items.map((item) => ({ ...item, section: `section-${i + 1}` })),
+    };
+  });
+  const a: PracticeAttempt = {
+    ...attempts[0],
+    id: crypto.randomUUID(),
+    navigation: input.fixed ? "fixed-sections" : "paper",
+    sections: attempts.flatMap((a) => a.sections),
+    items: attempts.flatMap((a) => a.items),
+  };
+  if (!validAttempt(a)) throw Error("Section settings failed validation.");
+  return a;
 }

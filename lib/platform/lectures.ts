@@ -1,3 +1,4 @@
+import { releaseUnits } from "./release-content.ts";
 import catalog from "./lecture-catalog.json" with { type: "json" };
 import { syllabusUnits, type SyllabusUnit } from "./syllabus.ts";
 export type LectureResource = {
@@ -23,7 +24,20 @@ export type LectureTopic = {
   lessonSlug?: string;
 };
 export const lectureResources = catalog.resources as LectureResource[];
-export const lectureTopics = catalog.topics as LectureTopic[];
+export const lectureTopics: LectureTopic[] = [
+  ...(catalog.topics as LectureTopic[]),
+  ...releaseUnits.map((u) => ({
+    id: u.slug,
+    title: u.title,
+    subject: u.subject,
+    exams: u.exams,
+    resourceIds: [],
+    scope:
+      "Source-linked reading and worked lesson available; no video curated yet.",
+    aliases: [u.slug.replaceAll("-", " ")],
+    lessonSlug: u.slug,
+  })),
+];
 export const lectureCatalogVersion = catalog.version;
 export function resourcesForTopic(topic: LectureTopic) {
   return topic.resourceIds.map((id) =>

@@ -467,6 +467,20 @@ export function officialLaunchReadiness(
   const missing = [...p.unresolved];
   if (p.status !== "source-checked")
     missing.push("Governing rules not fully source-checked");
+  if (p.classification !== "official-pattern-verified")
+    missing.push("Reference is not approved as an official simulation pattern");
+  if (!p.questionBankVersion || p.questionBankVersion !== bank?.version)
+    missing.push("Approved immutable question-bank version does not match");
+  if (
+    !p.effectiveDate ||
+    p.navigation === "unresolved" ||
+    !p.penalty ||
+    p.sections.some((s) => s.questions === null) ||
+    p.sections.some((s) => s.marks === null)
+  )
+    missing.push(
+      "Effective pattern date, objective coverage and navigation/marking must be resolved",
+    );
   if (!bank?.reviewed) missing.push("Question bank and answer key need review");
   const count = p.sections.reduce((a, s) => a + (s.questions ?? 0), 0);
   if (!bank || bank.count !== count)

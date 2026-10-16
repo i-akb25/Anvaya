@@ -6,6 +6,7 @@ import { studyUnits } from "@/lib/platform/content";
 import { practiceQuestions, questionSource } from "@/lib/platform/questions";
 import {
   answer,
+  activeSection,
   blank,
   createPractice,
   deadline,
@@ -84,7 +85,7 @@ export function AssessmentDesk() {
     [penalty, setPenalty] = useState(0),
     [repeat, setRepeat] = useState(false),
     [now, setNow] = useState(0),
-    [index, setIndex] = useState(0),
+    [requestedIndex, setIndex] = useState(0),
     [status, setStatus] = useState(""),
     [result, setResult] = useState<PracticeAttempt | null>(null);
   useEffect(() => {
@@ -113,6 +114,16 @@ export function AssessmentDesk() {
     return () => clearInterval(clock);
   }, []);
   const active = vault.active;
+  const section = active ? activeSection(active, now) : null;
+  const index =
+    active &&
+    active.navigation === "fixed-sections" &&
+    active.items[requestedIndex]?.section !== section
+      ? Math.max(
+          0,
+          active.items.findIndex((i) => i.section === section),
+        )
+      : Math.min(requestedIndex, Math.max(0, (active?.items.length ?? 1) - 1));
   function persist(next: LearningVault) {
     try {
       const saved = saveVault(next, vault.revision);
@@ -186,12 +197,22 @@ export function AssessmentDesk() {
       setStatus((e as Error).message);
     }
   }
+  const sectionEnd =
+    active && section
+      ? active.startedAt +
+        active.sections
+          .slice(0, active.sections.findIndex((s) => s.id === section) + 1)
+          .reduce((t, s) => t + s.seconds, 0) *
+          1000
+      : now;
   const item = active?.items[index],
     owned = active?.writerId === writer;
   return (
     <StudyShell>
       <p>
         <Link href="/my-practice">Practise with my own questions →</Link>
+        {" · "}
+        <Link href="/mocks">Build sectional practice →</Link>
       </p>
       <div className="page-heading">
         <span className="eyebrow">APPLY WHAT YOU LEARNED</span>
@@ -453,14 +474,22 @@ export function AssessmentDesk() {
               <div className="question-actions">
                 <button
                   className="button"
-                  disabled={index === 0}
+                  disabled={
+                    index === 0 ||
+                    (active.navigation === "fixed-sections" &&
+                      active.items[index - 1]?.section !== section)
+                  }
                   onClick={() => setIndex(index - 1)}
                 >
                   Previous
                 </button>
                 <button
                   className="button primary"
-                  disabled={index === active.items.length - 1}
+                  disabled={
+                    index === active.items.length - 1 ||
+                    (active.navigation === "fixed-sections" &&
+                      active.items[index + 1]?.section !== section)
+                  }
                   onClick={() => setIndex(index + 1)}
                 >
                   Next →
@@ -469,10 +498,25 @@ export function AssessmentDesk() {
             </article>
             <aside className="panel">
               <h3>Question palette</h3>
+              {active.navigation === "fixed-sections" && (
+                <p aria-label="Current section time remaining">
+                  {Math.max(0, Math.ceil((sectionEnd - now) / 1000))} seconds
+                  left in this section
+                </p>
+              )}
+              <p>
+                {active.navigation === "fixed-sections"
+                  ? `Current section: ${active.sections.find((s) => s.id === section)?.title ?? section ?? "Expired"}. Other sections are locked; the next opens when its timer starts.`
+                  : "Free navigation across this custom paper."}
+              </p>
               <div className="question-palette">
                 {active.items.map((v, i) => (
                   <button
                     key={v.question.id}
+                    disabled={
+                      active.navigation === "fixed-sections" &&
+                      v.section !== section
+                    }
                     className={`palette-button ${!blank(active.answers[v.question.id]) ? "answered" : ""} ${index === i ? "current" : ""}`}
                     onClick={() => setIndex(i)}
                     aria-label={`Question ${i + 1}${active.marked.includes(v.question.id) ? ", marked for review" : ""}`}

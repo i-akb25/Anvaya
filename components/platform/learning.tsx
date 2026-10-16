@@ -37,6 +37,7 @@ export function CourseLibrary() {
       </div>
       <div className="question-actions">
         <Link href="/lectures">Browse topic-wise lectures →</Link>
+        <Link href="/coverage">Inspect content coverage →</Link>
       </div>
       <div className="library-toolbar">
         <label className="search-field">

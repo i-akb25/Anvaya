@@ -73,3 +73,24 @@ export function saveTaskEdit(expected: Workspace, next: Workspace): Workspace {
   saveWorkspace(value);
   return value;
 }
+
+export function savePaperEdit(
+  id: string,
+  expected: PaperNote | undefined,
+  next: PaperNote,
+) {
+  if (
+    !id ||
+    id.length > 100 ||
+    ["__proto__", "constructor", "prototype"].includes(id)
+  )
+    throw Error("Invalid paper identifier.");
+  const current = readWorkspace();
+  if (JSON.stringify(current.papers[id]) !== JSON.stringify(expected))
+    throw Error(
+      "Paper notes changed in another tab. Export your draft, then reload the saved notes.",
+    );
+  const value = { ...current, papers: { ...current.papers, [id]: next } };
+  saveWorkspace(value);
+  return next;
+}

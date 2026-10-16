@@ -316,9 +316,11 @@ export function AccountDesk() {
           <div className="panel">
             <h2>Independent backup</h2>
             <p>
-              Keep a file outside the app. This includes the new learning
-              workspace, lecture notes and positions, and the paper/planner
-              workspace. Earlier demo/practice backups remain separate.
+              Keep a file outside the app. PDF bytes are stored separately in
+              Private PDFs; download originals independently. This includes the
+              new learning workspace, lecture notes and positions, and the
+              paper/planner workspace. Earlier demo/practice backups remain
+              separate.
             </p>
             <button
               className="button"
@@ -382,7 +384,7 @@ export function AccountDesk() {
               onClick={() => {
                 if (
                   window.confirm(
-                    "Clear the new learning and planner data on this device? Cloud data and old demo history will remain. Export a backup first.",
+                    "Clear the new learning and planner data on this device? Cloud data, saved PDF files and old demo history will remain. Export a backup first.",
                   )
                 ) {
                   try {

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { subtopicHighlights } from "@/lib/platform/coverage";
 import { exams } from "@/lib/catalog";
 import { patterns, officialLaunchReadiness } from "@/lib/platform/registry";
 import { syllabusUnits } from "@/lib/platform/syllabus";
@@ -28,6 +29,11 @@ export function SyllabusRegistry() {
           instructions remain visible.
         </p>
       </div>
+      <p>
+        <Link href="/coverage">
+          Inspect all ten paths and remaining content gates →
+        </Link>
+      </p>
       <div className="registry-filters">
         <label>
           Exam
@@ -83,6 +89,20 @@ export function SyllabusRegistry() {
                     : "Research outline · verification pending"}
                 </span>
                 <p>{u.depth}</p>
+                {subtopicHighlights(u) && (
+                  <section>
+                    <h3>Selected subtopic highlights</h3>
+                    <ul>
+                      {subtopicHighlights(u)!.items.map((t) => (
+                        <li key={t}>{t}</li>
+                      ))}
+                    </ul>
+                    <p>
+                      {subtopicHighlights(u)!.scope} Checked{" "}
+                      {subtopicHighlights(u)!.checkedOn}.
+                    </p>
+                  </section>
+                )}
                 <a href={u.sourceUrl} target="_blank" rel="noreferrer">
                   Governing source ↗
                 </a>

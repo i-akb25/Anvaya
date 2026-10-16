@@ -89,6 +89,12 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
             {links
               .concat([
                 ["/today", "Today"],
+                ["/library", "Private PDFs"],
+                ["/current-affairs", "Current affairs"],
+                ["/mocks", "Sectional practice"],
+                ["/tutor", "Optional tutor"],
+                ["/coverage", "Content coverage"],
+                ["/content-review", "Content preflight"],
                 ["/notebook", "My notebook"],
                 ["/my-practice", "My question desk"],
                 ["/papers", "Official papers"],
@@ -128,6 +134,12 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
         <div>
           <h3>Workspace</h3>
           <Link href="/today">Today</Link>
+          <Link href="/library">Private PDFs</Link>
+          <Link href="/current-affairs">Current affairs</Link>
+          <Link href="/mocks">Sectional practice</Link>
+          <Link href="/tutor">Optional tutor</Link>
+          <Link href="/coverage">Content coverage</Link>
+          <Link href="/content-review">Content preflight</Link>
           <Link href="/search">Search everything</Link>
           <Link href="/notebook">My topic notebook</Link>
           <Link href="/my-practice">My question desk</Link>

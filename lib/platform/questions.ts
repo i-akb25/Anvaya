@@ -1,3 +1,4 @@
+import { releaseQuestions } from "./release-content.ts";
 import { expansionQuestions } from "./expansion-questions.ts";
 import { sourceFor } from "./content.ts";
 export type ObjectiveType = "mcq" | "msq" | "nat" | "tita";
@@ -380,8 +381,9 @@ const firstRelease: StudyQuestion[] = items.map((q) => ({
   pyq: false,
 }));
 export const legacyBankVersion = "source-linked-foundations-20261015-v1";
-export const practiceBankVersion = "source-linked-foundations-20261015-v2";
-export const practiceQuestions: StudyQuestion[] = [
+export const previousBankVersion = "source-linked-foundations-20261015-v2";
+export const practiceBankVersion = "source-linked-foundations-20261016-v3";
+const secondRelease: StudyQuestion[] = [
   ...firstRelease,
   ...expansionQuestions.map((q): StudyQuestion => ({
     ...q,
@@ -395,8 +397,23 @@ export const practiceQuestions: StudyQuestion[] = [
     pyq: false,
   })),
 ];
+export const practiceQuestions: StudyQuestion[] = [
+  ...secondRelease,
+  ...releaseQuestions.map((q): StudyQuestion => ({
+    ...q,
+    marks: 1,
+    version: `${q.id}-v1`,
+    origin: "original-ai-authored",
+    keyStatus: ["bihar-basins", "logic"].includes(q.sourceId)
+      ? "source-compared"
+      : "calculation-checked",
+    humanReviewed: false,
+    pyq: false,
+  })),
+];
 export function questionBankFor(version: string): StudyQuestion[] | undefined {
   if (version === legacyBankVersion) return firstRelease;
+  if (version === previousBankVersion) return secondRelease;
   if (version === practiceBankVersion) return practiceQuestions;
 }
 export function questionSource(q: StudyQuestion) {

@@ -1,3 +1,4 @@
+import { publishedBriefings } from "./briefings.ts";
 import { studyUnits } from "./content.ts";
 import { lectureTopics, lectureResources } from "./lectures.ts";
 import { syllabusUnits } from "./syllabus.ts";
@@ -17,6 +18,18 @@ export type StudyHit = {
 };
 export function studyIndex(v?: LearningVault, w?: Workspace): StudyHit[] {
   const hits: StudyHit[] = [
+    ...publishedBriefings
+      .filter((b) => b.status !== "withdrawn")
+      .map((b) => ({
+        id: `briefing:${b.id}`,
+        kind: "Current affairs",
+        title: b.title,
+        body: b.summary,
+        exams: b.exams,
+        href: "/current-affairs",
+        private: false,
+        status: `Dated selection ${b.date}; AI source-checked, not independently human-reviewed`,
+      })),
     ...studyUnits.map((u) => ({
       id: `lesson:${u.slug}`,
       kind: "Lesson",
@@ -62,6 +75,18 @@ export function studyIndex(v?: LearningVault, w?: Workspace): StudyHit[] {
     })),
   ];
   if (v) {
+    for (const b of v.briefings ?? [])
+      if (b.status !== "withdrawn")
+        hits.push({
+          id: `my-briefing:${b.id}`,
+          kind: "My briefing",
+          title: b.title,
+          body: b.summary,
+          exams: b.exams,
+          href: "/current-affairs",
+          private: true,
+          status: `Private ${b.status}; not published`,
+        });
     for (const [key, note] of Object.entries(v.notes)) {
       const [exam, topic] = key.split(":"),
         t = lectureTopics.find((t) => t.id === topic && t.exams.includes(exam));

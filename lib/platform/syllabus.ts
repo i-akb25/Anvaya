@@ -142,7 +142,19 @@ function topics(title: string) {
   const value = title.toLowerCase();
   const ids: string[] = [];
   if (/quant|numeracy|mathematical abilities|general aptitude/.test(value))
-    ids.push("percentages", "ratios", "probability", "simple-interest");
+    ids.push(
+      "percentages",
+      "percentage-change",
+      "ratios",
+      "probability",
+      "simple-interest",
+      "profit-discount",
+      "work-rates",
+      "compound-interest",
+      "relative-speed",
+      "weighted-averages",
+      "combinations",
+    );
   if (/mathematics|statistics/.test(value)) ids.push("probability");
   if (/circuits|networks/.test(value))
     ids.push(
@@ -152,6 +164,12 @@ function topics(title: string) {
       "capacitor-energy",
       "rc-transients",
     );
+  if (/fields|magnetism/.test(value)) ids.push("electromagnetic-induction");
+  if (/bihar/.test(value)) ids.push("bihar-river-basins");
+  if (/reasoning|mental ability|decision/.test(value))
+    ids.push("constraint-reasoning");
+  if (/statistics|interpretation|statistical analysis/.test(value))
+    ids.push("weighted-averages");
   if (/english|reading|verbal|comprehension/.test(value))
     ids.push("reading-analysis");
   if (/polity|constitution/.test(value)) ids.push("constitutional-rights");

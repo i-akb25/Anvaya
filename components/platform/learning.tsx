@@ -178,10 +178,10 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
             </small>
           </div>
           <section className="lesson-section lecture-lesson-invite">
-            <h2>Learn with a lecture</h2>
+            <h2>Topic resources</h2>
             <p>
-              Open the topic’s publisher-linked videos, save a position and
-              write your explanation.
+              Check publisher-linked lecture availability and keep topic notes.
+              Some topics are awaiting video curation.
             </p>
             <Link
               className="button"
@@ -194,7 +194,7 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
                   e.preventDefault();
               }}
             >
-              Open topic lectures →
+              Open topic resources →
             </Link>
           </section>
           {unit.concepts.map((c, i) => (

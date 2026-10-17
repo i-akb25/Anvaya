@@ -224,6 +224,7 @@ export const patterns: Pattern[] = [
     ],
     {
       status: "source-checked",
+      checkedOn: "2026-10-17",
       sourceLocator: "§13.8, page 25; scribe timings separate",
       navigation: "fixed-sections",
       penalty: { mcqFixed: 0.5, msq: 0, numeric: 0 },
@@ -249,11 +250,16 @@ export const patterns: Pattern[] = [
       section("dest", "DEST", null, null, 15, true),
     ],
     {
-      sourceLocator: "§13.9 table and instructions, pages 25–29",
+      status: "source-checked",
+      checkedOn: "2026-10-17",
+      sourceLocator:
+        "§13.9 table and instructions, pages 25–29; separate session-II DEST",
+      navigation: "fixed-sections",
+      calculator: "none",
       penalty: { mcqFixed: 1, msq: 0, numeric: 0 },
       unresolved: [
-        "Reconcile subject timers in the table with section closure instructions; model re-registration break separately.",
-        "Scribe timings, qualifying thresholds and post-specific rules require separate profiles.",
+        "Practice uses subject-table order with section closure. Live subject-order behaviour is not certified; DEST starts separately after an untimed re-registration break.",
+        "Standard and compensatory practice profiles are available at /ssc-cgl. Eligibility, qualifying thresholds and regional DEST evaluation require the applicable official instructions.",
       ],
     },
   ),

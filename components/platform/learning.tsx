@@ -31,11 +31,13 @@ export function CourseLibrary() {
         </h1>
         <p>
           Source-linked foundation units with original worked examples, recall
-          prompts and practice. These AI-authored units have source and
-          calculation checks; independent human editorial review is pending.
+          prompts and practice. Check levels appear in each AI-authored lesson:
+          source-checked foundations or syllabus-linked essentials. Independent
+          human editorial review is pending.
         </p>
       </div>
       <div className="question-actions">
+        <Link href="/ssc-cgl">SSC CGL study path →</Link>
         <Link href="/lectures">Browse topic-wise lectures →</Link>
         <Link href="/coverage">Inspect content coverage →</Link>
       </div>
@@ -160,7 +162,12 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
   return (
     <StudyShell>
       <div className="breadcrumbs">
-        <Link href="/courses">Learning library</Link> / {unit.subject}
+        <Link href={unit.slug.startsWith("ssc-") ? "/ssc-cgl" : "/courses"}>
+          {unit.slug.startsWith("ssc-")
+            ? "SSC CGL classroom"
+            : "Learning library"}
+        </Link>{" "}
+        / {unit.subject}
       </div>
       <div className="lesson-layout">
         <article className="learning-article">
@@ -168,7 +175,12 @@ export function UnitReader({ unit }: { unit: StudyUnit }) {
           <h1>{unit.title}</h1>
           <p className="unit-objective">{unit.objective}</p>
           <div className="content-provenance">
-            <strong>Source-checked · AI-authored · Original examples</strong>
+            <strong>
+              {unit.status === "source-checked"
+                ? "Source-checked"
+                : "Syllabus-linked"}{" "}
+              · AI-authored · Original examples
+            </strong>
             <p>{unit.review}</p>
             <a href={source.url} target="_blank" rel="noreferrer">
               Read {source.title} ↗

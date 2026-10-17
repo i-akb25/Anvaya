@@ -104,7 +104,10 @@ export function Classroom() {
                 </option>
               ))}
             </select>
-            <Link className="button primary" href={`/exams/${selected}`}>
+            <Link
+              className="button primary"
+              href={selected === "ssc" ? "/ssc-cgl" : `/exams/${selected}`}
+            >
               Open my path <ArrowRight size={18} />
             </Link>
           </div>
@@ -260,6 +263,18 @@ export function ExamPath({ id }: { id: string }) {
           </a>
         </div>
       </div>
+      {id === "ssc" && (
+        <div className="editorial-band">
+          <h2>Your SSC CGL classroom is ready.</h2>
+          <p>
+            Open worked lessons, topic drills, timed original papers and
+            separate DEST practice.
+          </p>
+          <Link className="button primary" href="/ssc-cgl">
+            Open SSC CGL →
+          </Link>
+        </div>
+      )}
       <div className="path-layout">
         <section>
           <div className="section-heading">

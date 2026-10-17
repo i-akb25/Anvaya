@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { sscScore } from "@/lib/platform/ssc-exam";
 import { useEffect, useState } from "react";
 import { exams } from "@/lib/catalog";
 import { studyUnits } from "@/lib/platform/content";
@@ -103,6 +104,18 @@ export function AssessmentDesk() {
       );
     }
     if (exams.some((e) => e.id === q.get("exam"))) setExam(q.get("exam")!);
+    if (q.get("exam") === "ssc") {
+      const computer =
+        q.get("topic")?.startsWith("ssc-") &&
+        [
+          "ssc-computer-hardware",
+          "ssc-office",
+          "ssc-spreadsheets",
+          "ssc-internet-security",
+        ].includes(q.get("topic")!);
+      setPositive(computer ? 3 : 2);
+      setPenalty(computer ? 1 : 0.5);
+    }
     try {
       setVault(readVault());
       setReady(true);
@@ -210,6 +223,8 @@ export function AssessmentDesk() {
   return (
     <StudyShell>
       <p>
+        <Link href="/ssc-cgl">SSC CGL classroom →</Link>
+        {" · "}
         <Link href="/my-practice">Practise with my own questions →</Link>
         {" · "}
         <Link href="/mocks">Build sectional practice →</Link>
@@ -235,6 +250,10 @@ export function AssessmentDesk() {
               onChange={(e) => {
                 setExam(e.target.value);
                 setTopic("all");
+                if (e.target.value === "ssc") {
+                  setPositive(2);
+                  setPenalty(0.5);
+                }
               }}
             >
               {exams.map((e) => (
@@ -319,8 +338,10 @@ export function AssessmentDesk() {
         <>
           <div className="attempt-toolbar">
             <span>
-              {exams.find((e) => e.id === active.examId)?.name} · Custom
-              practice
+              {exams.find((e) => e.id === active.examId)?.name} ·{" "}
+              {active.ssc
+                ? `${active.ssc.id === "tier1" ? "Tier-I" : "Tier-II Paper-I"} original rehearsal`
+                : "Custom practice"}
             </span>
             <strong role="timer" aria-label="Remaining time">
               {Math.floor(Math.max(0, deadline(active) - now) / 60000)}:
@@ -576,6 +597,7 @@ export function AssessmentDesk() {
 }
 export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
   const report = evaluate(attempt);
+  const ssc = attempt.ssc ? sscScore(attempt) : null;
   return (
     <section className="result-report">
       <span className="eyebrow">
@@ -601,6 +623,34 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
         seconds. Per-question timing was not measured. Bank{" "}
         {attempt.bankVersion}. No percentile or rank is calculated.
       </p>
+      {ssc && (
+        <div className="panel">
+          <h3>SSC CGL · original practice breakdown</h3>
+          <p>
+            Merit portion: {ssc.merit.toFixed(2)} / {ssc.meritMaximum}. Practice
+            marks only; no official cutoff, normalisation or pass/fail verdict.
+          </p>
+          {ssc.computer && (
+            <p>
+              Computer qualifying component: {ssc.computer.score.toFixed(2)} /
+              60. DEST is a separate session;{" "}
+              <Link href="/ssc-cgl/dest">open DEST practice →</Link>
+            </p>
+          )}
+          <ul>
+            {ssc.sections.map((s) => (
+              <li key={s.id}>
+                {s.title}: {s.score.toFixed(2)} / {s.maximum}
+              </li>
+            ))}
+          </ul>
+          <p className="small-copy">
+            2026 notice subject-table order is used for this rehearsal. Live
+            subject-order behaviour has not been certified. Timing profile:{" "}
+            {attempt.ssc!.profile}.
+          </p>
+        </div>
+      )}
       {attempt.items.map((item, i) => {
         const source = questionSource(item.question);
         return (

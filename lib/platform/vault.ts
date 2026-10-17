@@ -1,3 +1,4 @@
+import { validDestStore, type DestStore } from "./ssc-dest.ts";
 import { validBriefing, type Briefing } from "./briefings.ts";
 import {
   validPersonalPractice,
@@ -8,6 +9,7 @@ import { validAttempt, type PracticeAttempt } from "./engine.ts";
 import { validWorkspace, type Workspace } from "../workspace.ts";
 export type LearningVault = {
   schema: 1;
+  sscDest?: DestStore;
   briefings?: Briefing[];
   revision: number;
   notes: Record<string, string>;
@@ -53,6 +55,8 @@ export function validVault(value: unknown): value is LearningVault {
   const v = value as LearningVault;
   return (
     v.schema === 1 &&
+    (v.sscDest === undefined || validDestStore(v.sscDest)) &&
+    !(v.sscDest?.active && (v.active || v.personal?.active)) &&
     Number.isSafeInteger(v.revision) &&
     v.revision >= 0 &&
     record(v.notes) &&
@@ -131,6 +135,10 @@ export function saveVault(next: LearningVault, expected: number) {
   if (current.revision !== expected)
     throw Error(
       "This workspace changed in another tab. Reload to avoid overwriting newer work.",
+    );
+  if (next.sscDest?.active && (next.active || next.personal?.active))
+    throw Error(
+      "Finish the active DEST or objective practice before starting another timed attempt.",
     );
   const value = { ...next, revision: expected + 1 };
   if (!validVault(value))

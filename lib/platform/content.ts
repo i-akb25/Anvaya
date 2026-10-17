@@ -1,3 +1,4 @@
+import { sscSources, sscUnits } from "./ssc.ts";
 import { releaseSources, releaseUnits } from "./release-content.ts";
 import { expansionSources, expansionUnits } from "./expansion.ts";
 export type Source = {
@@ -9,6 +10,7 @@ export type Source = {
   licenseNote: string;
 };
 export const sources: Source[] = [
+  ...sscSources,
   ...expansionSources,
   ...releaseSources,
   {
@@ -86,7 +88,7 @@ export type StudyUnit = {
   minutes: number;
   objective: string;
   sourceId: string;
-  status: "source-checked";
+  status: "source-checked" | "source-linked";
   authorship: "AI-authored";
   review: string;
   version: string;
@@ -406,7 +408,7 @@ const units: Draft[] = [
     mistake: "Replacing visits with visitors changes the claim.",
   },
 ];
-export const studyUnits: StudyUnit[] = [
+const foundationUnits: StudyUnit[] = [
   ...units,
   ...expansionUnits,
   ...releaseUnits,
@@ -418,6 +420,7 @@ export const studyUnits: StudyUnit[] = [
     "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
   version: `${u.slug}-sourcecheck-${releaseUnits.some((r) => r.slug === u.slug) ? "20261016" : "20261015"}-v1`,
 }));
+export const studyUnits: StudyUnit[] = [...foundationUnits, ...sscUnits];
 export function sourceFor(id: string) {
   const source = sources.find((s) => s.id === id);
   if (!source) throw Error("Unknown source");

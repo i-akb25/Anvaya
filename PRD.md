@@ -272,3 +272,8 @@ The personal question desk supports authored/imported MCQ, exact-set MSQ and num
 22 source-linked foundation lessons and81 distinct original questions are now connected to study/recall, preserving immutable earlier question banks. New routes: `/mocks` (custom sectional practice), `/library` (persistent private PDFs), `/current-affairs` (dated selections, publisher RSS metadata and private review journal), `/content-review` (local pack preflight), `/coverage` (ten-track inventory) and `/tutor` (optional, owner-authenticated Gemini integration with SQL-backed quotas). Supabase and AI remain OFF by default.
 
 This is not complete ten-exam content: full syllabus transcription, independent editorial review, authentic permitted PYQs and official full mocks remain gated. Live provider setup and physical-device/accessibility verification remain pending. See [learning release details](docs/LEARNING_RELEASE.md).
+
+
+## SSC CGL delivery checkpoint · 17 October 2026
+
+The SSC common personal-study workflow is implemented at `/ssc-cgl`: condensed lessons, notes, recall, topic drills, original complete-count Tier-I/Tier-II common rehearsals and separate saved DEST. Special-paper lessons are separate by applicable post. Read `docs/SSC_CGL.md` for exact inventory, timing profiles, validation and explicitly incomplete content/review gates. Do not interpret this checkpoint as approval of full syllabus coverage or official mocks.

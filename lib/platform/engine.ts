@@ -1,3 +1,4 @@
+import { validSSCTemplate, type SSCTemplate } from "./ssc-rules.ts";
 import {
   practiceQuestions,
   questionBankFor,
@@ -21,6 +22,7 @@ export type PracticeAttempt = {
   version: 1;
   bankVersion: string;
   classification: "custom-illustrative";
+  ssc?: SSCTemplate;
   sections: { id: string; seconds: number; title?: string }[];
   navigation: "paper" | "fixed-sections";
   items: FrozenQuestion[];
@@ -268,6 +270,7 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
     )
       return false;
     return (
+      validSSCTemplate(a) &&
       a.items.every((i) => {
         const original = questionBankFor(a.bankVersion)!.find(
           (q) => q.id === i.question.id,

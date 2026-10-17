@@ -90,9 +90,9 @@ export function CoverageDesk() {
             subject and advanced-topic depth pending.
           </li>
           <li>
-            Question bank: original source-linked questions with checked keys.
-            Independent human review and permitted authentic PYQ ingestion
-            pending.
+            Question bank: original questions with per-item check labels. SSC
+            essentials currently have author checks only. Independent human
+            review and permitted authentic PYQ ingestion pending.
           </li>
           <li>
             Mock engine: custom sectional timing, navigation and marking
@@ -130,6 +130,7 @@ export function CoverageDesk() {
           answer quality.
         </p>
         <div className="question-actions">
+          <Link href="/ssc-cgl">SSC CGL classroom →</Link>
           <Link href="/account">Account & backups →</Link>
           <Link href="/library">Private PDFs →</Link>
           <Link href="/current-affairs">Current-affairs journal →</Link>

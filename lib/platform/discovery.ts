@@ -38,8 +38,7 @@ export function studyIndex(v?: LearningVault, w?: Workspace): StudyHit[] {
       exams: u.exams,
       href: `/courses/${u.slug}`,
       private: false,
-      status:
-        "Source-checked original foundation; not independently human-reviewed",
+      status: `${u.status === "source-checked" ? "Source-checked" : "Syllabus-linked, author-checked"} original lesson; not independently human-reviewed`,
     })),
     ...lectureTopics.map((t) => ({
       id: `topic:${t.id}`,

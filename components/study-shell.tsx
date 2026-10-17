@@ -88,6 +88,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
           >
             {links
               .concat([
+                ["/ssc-cgl", "SSC CGL classroom"],
                 ["/today", "Today"],
                 ["/library", "Private PDFs"],
                 ["/current-affairs", "Current affairs"],
@@ -133,6 +134,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
         </div>
         <div>
           <h3>Workspace</h3>
+          <Link href="/ssc-cgl">SSC CGL classroom</Link>
           <Link href="/today">Today</Link>
           <Link href="/library">Private PDFs</Link>
           <Link href="/current-affairs">Current affairs</Link>

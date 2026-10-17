@@ -41,11 +41,11 @@ import { coverageRows, subtopicHighlights } from "../lib/platform/coverage.ts";
 import { syllabusUnits } from "../lib/platform/syllabus.ts";
 const find = (id) => practiceQuestions.find((q) => q.id === id);
 test("release adds distinct worked units/questions and preserves the v2 snapshot bank", () => {
-  assert.equal(studyUnits.length, 22);
-  assert.equal(practiceQuestions.length, 81);
+  assert.equal(studyUnits.length, 66);
+  assert.equal(practiceQuestions.length, 281);
   assert.equal(questionBankFor(previousBankVersion).length, 45);
-  assert.equal(new Set(practiceQuestions.map((q) => q.id)).size, 81);
-  assert.equal(new Set(practiceQuestions.map((q) => q.stem)).size, 81);
+  assert.equal(new Set(practiceQuestions.map((q) => q.id)).size, 281);
+  assert.equal(new Set(practiceQuestions.map((q) => q.stem)).size, 281);
   for (const q of releaseQuestions) {
     assert.ok(studyUnits.some((u) => u.slug === q.topicId));
     assert.equal(find(q.id).pyq, false);

@@ -1,3 +1,4 @@
+import { sscChapters } from "./ssc.ts";
 import { patterns } from "./registry.ts";
 export type SyllabusUnit = {
   id: string;
@@ -221,12 +222,42 @@ export const syllabusUnits: SyllabusUnit[] = [
           title,
           aliases: [title, examId.toUpperCase()],
           depth:
-            "Planning outline from the supplied research reference. Complete subtopic transcription and primary-source review remain pending.",
-          topicIds: topics(title),
+            examId === "ssc"
+              ? "2026 notice subject outline with mapped condensed lessons. Complete subtopic depth and independent review remain pending; DEST is a separate session at /ssc-cgl/dest."
+              : "Planning outline from the supplied research reference. Complete subtopic transcription and primary-source review remain pending.",
+          topicIds: [
+            ...topics(title),
+            ...(examId === "ssc"
+              ? sscChapters
+                  .filter(
+                    (c) =>
+                      c.section ===
+                      (/reason/i.test(title)
+                        ? "reason"
+                        : /general awareness/i.test(title)
+                          ? "ga"
+                          : /quantitative|mathematical/i.test(title)
+                            ? "quant"
+                            : /english/i.test(title)
+                              ? "english"
+                              : /computer/i.test(title)
+                                ? "computer"
+                                : /statistics/i.test(title)
+                                  ? "statistics"
+                                  : /finance/i.test(title)
+                                    ? "finance"
+                                    : "none"),
+                  )
+                  .map((c) => c.slug)
+              : []),
+          ],
           sourceUrl: p.sourceUrl,
           locator: p.sourceLocator,
           version: `${examId}-${p.cycle}-${stage}-outline-v1`,
-          status: "research-outline" as const,
+          status:
+            examId === "ssc"
+              ? ("source-checked-outline" as const)
+              : ("research-outline" as const),
           complete: false as const,
         };
       }),

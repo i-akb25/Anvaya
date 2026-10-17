@@ -101,9 +101,9 @@ test("all ten exams retain cycle/stage-specific definitions and distinct GATE sy
   );
 });
 test("published foundation units have checked primary links, honest provenance and original questions", () => {
-  assert.equal(studyUnits.length, 22);
-  assert.equal(practiceQuestions.length, 81);
-  assert.equal(new Set(practiceQuestions.map((q) => q.id)).size, 81);
+  assert.equal(studyUnits.length, 66);
+  assert.equal(practiceQuestions.length, 281);
+  assert.equal(new Set(practiceQuestions.map((q) => q.id)).size, 281);
   for (const u of studyUnits) {
     assert.ok(sources.some((s) => s.id === u.sourceId));
     assert.equal(u.authorship, "AI-authored");

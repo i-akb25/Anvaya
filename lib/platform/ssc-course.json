@@ -1,0 +1,4578 @@
+{
+  "chapters": [
+    {
+      "slug": "ssc-numbers",
+      "title": "Number operations, factors and remainders",
+      "section": "quant",
+      "tags": [
+        "Whole numbers",
+        "Fractions and decimals",
+        "Square roots",
+        "Divisibility",
+        "HCF and LCM"
+      ],
+      "concepts": [
+        {
+          "title": "Factor before calculating",
+          "text": "Prime factorisation expresses a positive integer as prime powers. The HCF takes common primes to their smaller powers; the LCM takes all primes to their larger powers. For two positive integers, HCF × LCM equals their product."
+        },
+        {
+          "title": "Keep operations explicit",
+          "text": "Evaluate brackets, then powers, then multiplication/division from left to right, then addition/subtraction. Division is not commutative. A remainder on division by a positive d must lie from 0 to d−1."
+        },
+        {
+          "title": "Convert rather than guess",
+          "text": "A terminating decimal can be written over a power of ten and reduced. A square root is the nonnegative root by convention: √49=7, while solving x²=49 gives x=±7."
+        }
+      ],
+      "example": {
+        "problem": "Find HCF and LCM of 72 and 120, and simplify 3/4 + 0.125.",
+        "steps": [
+          "72=2³×3²;120=2³×3×5.",
+          "HCF=2³×3=24; LCM=2³×3²×5=360.",
+          "0.125=1/8, so 3/4+1/8=7/8."
+        ],
+        "answer": "HCF 24, LCM 360; sum 7/8."
+      },
+      "mistake": "A square-root expression and the solutions to a squared equation are different.",
+      "recall": [
+        "Factor before calculating",
+        "Keep operations explicit",
+        "Convert rather than guess"
+      ]
+    },
+    {
+      "slug": "ssc-algebra",
+      "title": "Algebra, surds and linear graphs",
+      "section": "quant",
+      "tags": [
+        "Algebraic identities",
+        "Surds",
+        "Linear equations",
+        "Graphs"
+      ],
+      "concepts": [
+        {
+          "title": "Use identities with conditions",
+          "text": "(a+b)²=a²+2 ab+b² and a²−b²=(a−b)(a+b). For x≠0, (x+1/x)²=x²+2+1/x². State nonzero denominators before rearranging."
+        },
+        {
+          "title": "Isolate and check",
+          "text": "Apply the same operation to both sides of an equation. Substitute the proposed solution into the original equation. For y=mx+c, m is slope and c the y-intercept."
+        },
+        {
+          "title": "Simplify radicals",
+          "text": "For nonnegative a,b, √(ab)=√a√b. Factor out perfect squares. In general √(a+b) is not √a+√b."
+        }
+      ],
+      "example": {
+        "problem": "If x+1/x=5, find x²+1/x². Also simplify √72.",
+        "steps": [
+          "Square the equation:25=x²+2+1/x².",
+          "Subtract 2 to obtain 23.",
+          "√72=√(36×2)=6√2."
+        ],
+        "answer": "23 and 6√2."
+      },
+      "mistake": "Do not drop the middle term 2 ab in a squared sum.",
+      "recall": [
+        "Use identities with conditions",
+        "Isolate and check",
+        "Simplify radicals"
+      ]
+    },
+    {
+      "slug": "ssc-mixture",
+      "title": "Mixtures, alligation and partnership",
+      "section": "quant",
+      "tags": [
+        "Mixture and alligation",
+        "Partnership business"
+      ],
+      "concepts": [
+        {
+          "title": "Conserve the measured amount",
+          "text": "For mixtures, total solute equals concentration×volume when the stated units and additive-volume assumption apply. The weighted concentration lies between component concentrations."
+        },
+        {
+          "title": "Use alligation only with a valid average",
+          "text": "For low concentration L, high H and desired M with L<M<H, low:high=(H−M):(M−L). The ratio refers to quantities, not prices unless it is a price-mixture problem."
+        },
+        {
+          "title": "Weight partnership by time",
+          "text": "When profit is shared in proportion to invested capital over time, use capital×duration. This is a stated model; real agreements can specify a different rule."
+        }
+      ],
+      "example": {
+        "problem": "Mix 20% and 50% solutions to obtain 30 litres at 30%. Separately compare ₹4,000 invested for 12 months and ₹6,000 for 8 months.",
+        "steps": [
+          "Low:high=(50−30):(30−20)=2:1.",
+          "Volumes 20 L and 10 L; solute=4+5=9 L, which is 30% of 30 L.",
+          "Capital-time products are both 48,000 rupee-months."
+        ],
+        "answer": "20 L and 10 L; partnership ratio 1:1."
+      },
+      "mistake": "Averaging concentrations without their quantities gives the wrong mixture.",
+      "recall": [
+        "Conserve the measured amount",
+        "Use alligation only with a valid average",
+        "Weight partnership by time"
+      ]
+    },
+    {
+      "slug": "ssc-triangles",
+      "title": "Triangles, centres and similarity",
+      "section": "quant",
+      "tags": [
+        "Triangles and centres",
+        "Congruence",
+        "Similarity"
+      ],
+      "concepts": [
+        {
+          "title": "Angles and length constraints",
+          "text": "Triangle angles sum to 180°. The sum of any two side lengths must exceed the third. In a right triangle, hypotenuse² equals the sum of the squares of the legs."
+        },
+        {
+          "title": "Distinguish congruence and similarity",
+          "text": "Congruent triangles have equal corresponding sides and angles. Similar triangles have equal corresponding angles and proportional sides. If length scale is k, area scale is k²."
+        },
+        {
+          "title": "Know each centre by construction",
+          "text": "Medians meet at the centroid, which divides each median 2:1 from the vertex. Perpendicular bisectors meet at the circumcentre; angle bisectors at the incentre; altitudes at the orthocentre."
+        }
+      ],
+      "example": {
+        "problem": "A right triangle has legs 9 and 12 cm. A similar triangle has corresponding lengths doubled. Find each hypotenuse and the area ratio.",
+        "steps": [
+          "Hypotenuse=√(81+144)=15 cm.",
+          "Length scale 2 gives the other hypotenuse 30 cm.",
+          "Area scale=2²=4."
+        ],
+        "answer": "15 cm,30 cm; area ratio 1:4."
+      },
+      "mistake": "Doubling side length quadruples area, rather than doubling it.",
+      "recall": [
+        "Angles and length constraints",
+        "Distinguish congruence and similarity",
+        "Know each centre by construction"
+      ]
+    },
+    {
+      "slug": "ssc-circles",
+      "title": "Circles, chords and tangents",
+      "section": "quant",
+      "tags": [
+        "Circle chords",
+        "Angles in a circle",
+        "Tangents",
+        "Common tangents"
+      ],
+      "concepts": [
+        {
+          "title": "Use the radius at contact",
+          "text": "A tangent is perpendicular to the radius at its contact point. Tangent segments from the same external point to a circle have equal lengths."
+        },
+        {
+          "title": "Relate angles to an arc",
+          "text": "The angle at the centre is twice an angle at the circumference subtending the same arc under the usual configuration. An angle in a semicircle is 90°. Opposite angles in a cyclic quadrilateral sum to 180°."
+        },
+        {
+          "title": "Draw the hidden right triangle",
+          "text": "For an external point at distance d from a centre of radius r, tangent length is √(d²−r²), with d>r. A perpendicular from the centre to a chord bisects it."
+        }
+      ],
+      "example": {
+        "problem": "A point lies 13 cm from the centre of a circle of radius 5 cm. Find a tangent length.",
+        "steps": [
+          "Join centre, contact point and external point.",
+          "The radius and tangent meet at 90°.",
+          "Tangent²=13²−5²=144."
+        ],
+        "answer": "12 cm."
+      },
+      "mistake": "A line through the centre is not generally a tangent.",
+      "recall": [
+        "Use the radius at contact",
+        "Relate angles to an arc",
+        "Draw the hidden right triangle"
+      ]
+    },
+    {
+      "slug": "ssc-mensuration",
+      "title": "Plane areas and solid volumes",
+      "section": "quant",
+      "tags": [
+        "Polygons",
+        "Prism",
+        "Cone",
+        "Cylinder",
+        "Sphere",
+        "Hemisphere",
+        "Pyramid"
+      ],
+      "concepts": [
+        {
+          "title": "Separate length, area and volume",
+          "text": "A rectangle has area lb; a triangle½bh; a circleπr². Scaling all lengths by k scales surface area by k² and volume by k³. Convert units before substituting."
+        },
+        {
+          "title": "Use base area and perpendicular height",
+          "text": "Prism volume is base area×height. A pyramid or cone has one third of that corresponding volume. For a cylinder V=πr²h; sphere V=4πr³/3; hemisphere V=2πr³/3."
+        },
+        {
+          "title": "Specify which surface",
+          "text": "Cylinder curved area=2πrh and total area=2πr(h+r). A hemisphere has curved area 2πr² and total area 3πr². Cone slant height differs from perpendicular height."
+        }
+      ],
+      "example": {
+        "problem": "A cylinder has radius 7 cm and height 10 cm. Usingπ=22/7 find volume and curved surface area.",
+        "steps": [
+          "Volume=(22/7)×49×10=1540 cm³.",
+          "Curved area=2×(22/7)×7×10=440 cm².",
+          "The two circular bases add 308 cm² if total area is needed."
+        ],
+        "answer": "1540 cm³ and 440 cm²."
+      },
+      "mistake": "Do not add a surface area to a volume.",
+      "recall": [
+        "Separate length, area and volume",
+        "Use base area and perpendicular height",
+        "Specify which surface"
+      ]
+    },
+    {
+      "slug": "ssc-trigonometry",
+      "title": "Trigonometric ratios, identities and heights",
+      "section": "quant",
+      "tags": [
+        "Trigonometric ratios",
+        "Degree and radian",
+        "Identities",
+        "Heights and distances"
+      ],
+      "concepts": [
+        {
+          "title": "Label sides relative to the angle",
+          "text": "In a right triangle, sinθ=opposite/hypotenuse, cosθ=adjacent/hypotenuse and tanθ=opposite/adjacent. The opposite side changes when the reference acute angle changes."
+        },
+        {
+          "title": "Use identities without inventing values",
+          "text": "sin²θ+cos²θ=1 and tanθ=sinθ/cosθ when cosθ≠0. For acute θ, sin(90°−θ)=cosθ. π radians=180°. Standard values should be derived from familiar right triangles."
+        },
+        {
+          "title": "Model the height problem",
+          "text": "An angle of elevation is measured up from the horizontal. For a level ground baseline d and angle θ, height difference=d tanθ. Add observer eye height only if it is supplied."
+        }
+      ],
+      "example": {
+        "problem": "A tower is observed from level ground 30 m away at 45°. The observer eye is 1.5 m above ground. Find tower height.",
+        "steps": [
+          "Height above eye level=30 tan 45°=30 m.",
+          "Add the eye height 1.5 m.",
+          "Total height=31.5 m."
+        ],
+        "answer": "31.5 m."
+      },
+      "mistake": "Do not add an invented eye height when a question gives none.",
+      "recall": [
+        "Label sides relative to the angle",
+        "Use identities without inventing values",
+        "Model the height problem"
+      ]
+    },
+    {
+      "slug": "ssc-data",
+      "title": "Tables, charts and percentage comparisons",
+      "section": "quant",
+      "tags": [
+        "Histogram",
+        "Frequency polygon",
+        "Bar chart",
+        "Pie chart",
+        "Tables"
+      ],
+      "concepts": [
+        {
+          "title": "Read the denominator and unit",
+          "text": "Before calculating, record what each row and axis measures. A percentage of total uses the total, while growth uses the earlier value. An average rate may need weighting."
+        },
+        {
+          "title": "Choose the right chart interpretation",
+          "text": "Bar charts compare categories. A histogram describes intervals of numerical data; for unequal class widths, frequency density rather than raw height is relevant. A pie angle is 360°×category/total."
+        },
+        {
+          "title": "Check approximation",
+          "text": "Estimate an answer to reject impossible options, then compute if choices are close. Distinguish a percentage change from a change in percentage points."
+        }
+      ],
+      "example": {
+        "problem": "A centre recorded 40,60,50 and 90 registrations in four weeks. Find the second week share and the pie angle for the fourth.",
+        "steps": [
+          "Total=40+60+50+90=240.",
+          "Second week share=60/240=25%.",
+          "Fourth week angle=360×90/240=135°."
+        ],
+        "answer": "25%;135°."
+      },
+      "mistake": "Changing shares and changing counts are not the same comparison.",
+      "recall": [
+        "Read the denominator and unit",
+        "Choose the right chart interpretation",
+        "Check approximation"
+      ]
+    },
+    {
+      "slug": "ssc-arithmetic-review",
+      "title": "Arithmetic applications and inverse percentages",
+      "section": "quant",
+      "tags": [
+        "Percentage",
+        "Ratio",
+        "Averages",
+        "Interest",
+        "Profit",
+        "Time and work",
+        "Time and distance"
+      ],
+      "concepts": [
+        {
+          "title": "Link the earlier foundation lessons",
+          "text": "Use percentage multipliers for successive changes; use proportional parts for sharing; use work-per-time rather than completion times. These principles combine in multi-step SSC arithmetic problems."
+        },
+        {
+          "title": "Distinguish interest models",
+          "text": "Simple interest=P×r×t. Compound amount=P(1+r/n)^(nt), with consistent annual rate and periods. A loan or bank product with fees is not described fully by these textbook models."
+        },
+        {
+          "title": "Reverse with algebra",
+          "text": "If a value after a 20% increase is given, divide by 1.2. If work or distance remains, compute the remaining quantity before switching a rate."
+        }
+      ],
+      "example": {
+        "problem": "A quantity increases 20% to₹960, then a 10% discount is applied. Find its original and final values.",
+        "steps": [
+          "Original=960/1.2=₹800.",
+          "Final=960×0.9=₹864.",
+          "Net factor=1.2×0.9=1.08."
+        ],
+        "answer": "₹800 original;₹864 final;8% net rise."
+      },
+      "mistake": "Successive percentage changes use different bases.",
+      "recall": [
+        "Link the earlier foundation lessons",
+        "Distinguish interest models",
+        "Reverse with algebra"
+      ]
+    },
+    {
+      "slug": "ssc-series",
+      "title": "Series, analogies and classification",
+      "section": "reason",
+      "tags": [
+        "Number series",
+        "Semantic analogy",
+        "Number analogy",
+        "Classification",
+        "Word building"
+      ],
+      "concepts": [
+        {
+          "title": "State a rule that fits every step",
+          "text": "For a numerical series inspect differences, ratios and alternating subsequences. A finite sequence can admit multiple invented continuations; exam practice assumes the simplest intended rule among the options."
+        },
+        {
+          "title": "Preserve the relation",
+          "text": "An analogy is a relation, not just two associated words. Identify part-to-whole, tool-to-purpose, opposite, category or a specified numerical operation, then apply the same relation."
+        },
+        {
+          "title": "Classify by one stated property",
+          "text": "For an odd-one-out problem test a shared property. Explain why the chosen option differs; do not select based on superficial familiarity."
+        }
+      ],
+      "example": {
+        "problem": "Continue 3,8,15,24,35 using consecutive odd differences.",
+        "steps": [
+          "Differences are 5,7,9,11.",
+          "Next difference is 13.",
+          "35+13=48."
+        ],
+        "answer": "48 under the stated rule."
+      },
+      "mistake": "A plausible rule must explain every supplied term.",
+      "recall": [
+        "State a rule that fits every step",
+        "Preserve the relation",
+        "Classify by one stated property"
+      ]
+    },
+    {
+      "slug": "ssc-coding",
+      "title": "Coding, alphabet positions and symbolic operations",
+      "section": "reason",
+      "tags": [
+        "Coding and decoding",
+        "Symbolic operations",
+        "Letter matching"
+      ],
+      "concepts": [
+        {
+          "title": "Write the mapping explicitly",
+          "text": "For a letter shift use A=1,…,Z=26 and define wraparound. Apply the same shift to each letter; test an example before transforming the target word."
+        },
+        {
+          "title": "Replace meanings before evaluating",
+          "text": "If symbols represent different arithmetic operations, first rewrite the full expression using the defined meanings. Then follow normal order of operations unless the question supplies a different rule."
+        },
+        {
+          "title": "Check reversal and alternation",
+          "text": "Some codes reverse order before shifting or use different rules at odd and even positions. A word pattern alone is not evidence that every letter follows one shift."
+        }
+      ],
+      "example": {
+        "problem": "If each letter is shifted forward 2 with wraparound, encode ZEBRA.",
+        "steps": [
+          "Z wraps to B; E becomes G.",
+          "B→D, R→T, A→C.",
+          "Keep the original order of the transformed letters."
+        ],
+        "answer": "BGDTC."
+      },
+      "mistake": "Do not forget wraparound afterZ.",
+      "recall": [
+        "Write the mapping explicitly",
+        "Replace meanings before evaluating",
+        "Check reversal and alternation"
+      ]
+    },
+    {
+      "slug": "ssc-directions",
+      "title": "Directions, distance and spatial orientation",
+      "section": "reason",
+      "tags": [
+        "Direction sense",
+        "Space orientation",
+        "Spatial reasoning"
+      ],
+      "concepts": [
+        {
+          "title": "Use coordinates",
+          "text": "Choose east as positive x and north as positive y. Add each displacement separately. Straight-line distance uses the final net coordinates, not total path length."
+        },
+        {
+          "title": "Track heading separately from location",
+          "text": "A left or right turn depends on the current heading. A half-turn reverses direction. For standard plan-view questions define the viewpoint instead of inferring a different one."
+        },
+        {
+          "title": "Distinguish path and displacement",
+          "text": "Walking a closed route can have a positive path length but zero displacement. Pythagoras applies to perpendicular net components."
+        }
+      ],
+      "example": {
+        "problem": "Walk 8 m east,6 m north and 8 m west. Find final direction and distance from start.",
+        "steps": [
+          "Net east displacement 8−8=0.",
+          "Net north displacement 6 m.",
+          "The final position is directly north of the start."
+        ],
+        "answer": "6 m north; total path 22 m."
+      },
+      "mistake": "Path length and shortest distance answer different questions.",
+      "recall": [
+        "Use coordinates",
+        "Track heading separately from location",
+        "Distinguish path and displacement"
+      ]
+    },
+    {
+      "slug": "ssc-relations",
+      "title": "Family relations, ranks and ordered positions",
+      "section": "reason",
+      "tags": [
+        "Blood relations",
+        "Ranking",
+        "Order comparison"
+      ],
+      "concepts": [
+        {
+          "title": "Build only the stated relations",
+          "text": "Record parent, child, sibling and spouse as distinct links. Do not infer gender from a name or assume every relative has only one sibling."
+        },
+        {
+          "title": "Turn ranks into positions",
+          "text": "If the same person is kth from the left and rth from the right in a line, total=k+r−1. The middle person is counted twice before subtracting 1."
+        },
+        {
+          "title": "Handle inequalities consistently",
+          "text": "For a>b and b>c, a>c follows. An equality can be substituted. A chain with missing comparisons may not fix the order of all participants."
+        }
+      ],
+      "example": {
+        "problem": "One student is 8th from the left and 12th from the right. How many students are in the line?",
+        "steps": [
+          "Count 8 positions from the left including that student.",
+          "Count 12 from the right including the same student.",
+          "Subtract the duplicate count:8+12−1."
+        ],
+        "answer": "19 students."
+      },
+      "mistake": "A relation can be possible without being forced by the information.",
+      "recall": [
+        "Build only the stated relations",
+        "Turn ranks into positions",
+        "Handle inequalities consistently"
+      ]
+    },
+    {
+      "slug": "ssc-venn",
+      "title": "Venn diagrams, syllogisms and set counts",
+      "section": "reason",
+      "tags": [
+        "Venn diagrams",
+        "Syllogism",
+        "Drawing inferences"
+      ],
+      "concepts": [
+        {
+          "title": "Represent all, some and none differently",
+          "text": "All A are B means A is a subset of B; it does not imply all B are A. Some A are B asserts an overlap exists. No A are B means disjoint sets."
+        },
+        {
+          "title": "Avoid invented existence",
+          "text": "In standard modern logical reading, an all-statement alone does not establish that A exists. A conclusion using some requires supplied existence. State the convention when solving a formal syllogism."
+        },
+        {
+          "title": "Subtract overlap once",
+          "text": "For two sets, |A∪B|=|A|+|B|−|A∩B|. Neither equals the universe size minus the union."
+        }
+      ],
+      "example": {
+        "problem": "Of 50 students,28 study French,24 study German and 10 study both. How many study neither?",
+        "steps": [
+          "Union=28+24−10=42.",
+          "Subtract union from total 50.",
+          "Neither=8."
+        ],
+        "answer": "8 students."
+      },
+      "mistake": "Do not count the overlap twice.",
+      "recall": [
+        "Represent all, some and none differently",
+        "Avoid invented existence",
+        "Subtract overlap once"
+      ]
+    },
+    {
+      "slug": "ssc-seating",
+      "title": "Seating, scheduling and constraint tables",
+      "section": "reason",
+      "tags": [
+        "Seating arrangement",
+        "Scheduling",
+        "Problem solving"
+      ],
+      "concepts": [
+        {
+          "title": "Fix a coordinate convention",
+          "text": "Number positions from the reader’s left. For circular seating, specify whether people face inward or outward before interpreting left and right. Identify immediate adjacency separately from a general left-of relation."
+        },
+        {
+          "title": "Use a constraint table",
+          "text": "Mark fixed positions, exclusions and relative blocks. Carry each condition into every candidate. Do not complete a diagram with an unstated assumption."
+        },
+        {
+          "title": "Check every candidate",
+          "text": "A unique answer follows only if all valid arrangements agree on the requested fact. If two satisfy the conditions with different answers, report insufficient information instead of choosing one."
+        }
+      ],
+      "example": {
+        "problem": "Three talks X,Y,Z occur on Monday,Tuesday,Wednesday. X is before Y and Z is not on Wednesday. Find all schedules.",
+        "steps": [
+          "X before Y givesXY as an ordered pair.",
+          "List XYZ,XZY,ZXY.",
+          "XYZ has Z on Wednesday and is rejected; XZY and ZXY remain."
+        ],
+        "answer": "Two schedules remain; Y is on Wednesday in both."
+      },
+      "mistake": "One working diagram does not prove uniqueness.",
+      "recall": [
+        "Fix a coordinate convention",
+        "Use a constraint table",
+        "Check every candidate"
+      ]
+    },
+    {
+      "slug": "ssc-figures",
+      "title": "Non-verbal reasoning: transformations and patterns",
+      "section": "reason",
+      "tags": [
+        "Mirror and water images",
+        "Paper folding",
+        "Embedded figures",
+        "Figure completion",
+        "Figural series"
+      ],
+      "concepts": [
+        {
+          "title": "Describe the transformation",
+          "text": "Reflection across a vertical mirror reverses left and right; a horizontal water-line reflection reverses up and down. Rotation preserves handedness; reflection reverses it. Name the mirror axis."
+        },
+        {
+          "title": "Track labelled parts",
+          "text": "Use arrows, corners and labelled points rather than guessing from overall resemblance. In paper-folding questions, reflect holes across each fold in reverse order; holes on a fold can coincide."
+        },
+        {
+          "title": "Respect what a text sketch cannot show",
+          "text": "Real embedded-figure and folded-paper practice needs legible diagrams. Use the linked official/free study resources for visual exercises; text-described transformations below train only the specified operations."
+        }
+      ],
+      "example": {
+        "problem": "An arrow points east. Reflect it in a vertical mirror, then rotate the result 90° clockwise.",
+        "steps": [
+          "Vertical reflection turns east to west.",
+          "A clockwise quarter-turn from west points north.",
+          "Keep the order:reflection followed by rotation."
+        ],
+        "answer": "North."
+      },
+      "mistake": "Reflecting and rotating in the opposite order can change the result.",
+      "recall": [
+        "Describe the transformation",
+        "Track labelled parts",
+        "Respect what a text sketch cannot show"
+      ]
+    },
+    {
+      "slug": "ssc-critical",
+      "title": "Critical reasoning and social judgement",
+      "section": "reason",
+      "tags": [
+        "Critical thinking",
+        "Decision making",
+        "Emotional intelligence",
+        "Social intelligence",
+        "Address matching"
+      ],
+      "concepts": [
+        {
+          "title": "Separate evidence and inference",
+          "text": "A claim is what is asserted; evidence supports it; an assumption connects them. A correlation does not by itself identify a cause. Words like all and never require stronger evidence than some."
+        },
+        {
+          "title": "Use proportional responses",
+          "text": "In workplace scenarios, identify the immediate risk, verify facts, communicate respectfully and use the relevant procedure. Emotional intelligence concerns recognising and regulating emotions, not suppressing every disagreement."
+        },
+        {
+          "title": "Compare exact information",
+          "text": "For code or address matching, compare each required character and field. Avoid treating a visually similar letter and numeral as identical unless the question says they are."
+        }
+      ],
+      "example": {
+        "problem": "Visits rose after a library extended hours and a bus route opened. Is it established that extended hours alone caused the rise?",
+        "steps": [
+          "Two changes occurred together.",
+          "The report does not isolate either effect.",
+          "A comparison or other causal design would be needed."
+        ],
+        "answer": "No; the stated observations do not isolate the cause."
+      },
+      "mistake": "Do not replace an association with a causal certainty.",
+      "recall": [
+        "Separate evidence and inference",
+        "Use proportional responses",
+        "Compare exact information"
+      ]
+    },
+    {
+      "slug": "ssc-agreement",
+      "title": "Grammar: subjects, agreement and sentence structure",
+      "section": "english",
+      "tags": [
+        "Subject–verb agreement",
+        "Sentence structure",
+        "Error detection"
+      ],
+      "concepts": [
+        {
+          "title": "Find the head of the subject",
+          "text": "A phrase between subject and verb does not normally change the head noun’s number. In standard formal English, each and every take a singular verb when they head the subject."
+        },
+        {
+          "title": "Distinguish clause roles",
+          "text": "A complete independent clause normally has a subject and a finite verb. A dependent clause introduced by although or because needs a main clause to complete its role in a sentence."
+        },
+        {
+          "title": "Edit for the intended meaning",
+          "text": "Collective nouns and proximity constructions can vary by dialect and meaning. Use unambiguous standard examples for these drills; do not generalise a shortcut to every collective noun."
+        }
+      ],
+      "example": {
+        "problem": "Correct: Each of the files have a label.",
+        "steps": [
+          "Head of the subject is Each, not files.",
+          "Each takes singular has in this construction.",
+          "Keep the rest of the sentence."
+        ],
+        "answer": "Each of the files has a label."
+      },
+      "mistake": "Matching the verb to the nearest noun can hide the real subject.",
+      "recall": [
+        "Find the head of the subject",
+        "Distinguish clause roles",
+        "Edit for the intended meaning"
+      ]
+    },
+    {
+      "slug": "ssc-tenses",
+      "title": "Tense, aspect and conditional meaning",
+      "section": "english",
+      "tags": [
+        "Tenses",
+        "Verb forms",
+        "Conditionals",
+        "Sentence improvement"
+      ],
+      "concepts": [
+        {
+          "title": "Locate the event in time",
+          "text": "Simple past describes a completed past event; present perfect connects a past event to the present without a finished past-time marker in standard usage. The choice depends on context, not only a memorised keyword."
+        },
+        {
+          "title": "Distinguish duration and completion",
+          "text": "Continuous forms emphasise an ongoing activity; perfect forms locate an event before another reference point. State the reference time before choosing the verb."
+        },
+        {
+          "title": "Conditional structure carries meaning",
+          "text": "For an ordinary real future condition, use if+present and will+base verb in the result. An unreal present hypothesis commonly uses if+past and would+base verb; formal were can mark a hypothetical condition."
+        }
+      ],
+      "example": {
+        "problem": "Choose the form for a completed action at a specified past time: She ___ the report yesterday.",
+        "steps": [
+          "Yesterday is a finished past-time marker.",
+          "Use simple past for this event.",
+          "The irregular past of write is wrote."
+        ],
+        "answer": "She wrote the report yesterday."
+      },
+      "mistake": "Do not use present perfect mechanically with a finished-time marker like yesterday.",
+      "recall": [
+        "Locate the event in time",
+        "Distinguish duration and completion",
+        "Conditional structure carries meaning"
+      ]
+    },
+    {
+      "slug": "ssc-articles",
+      "title": "Articles, determiners and prepositions",
+      "section": "english",
+      "tags": [
+        "Articles",
+        "Determiners",
+        "Prepositions",
+        "Fill in the blanks"
+      ],
+      "concepts": [
+        {
+          "title": "Choose a/an by sound",
+          "text": "Use a before a consonant sound and an before a vowel sound. Spelling alone is insufficient: a university begins with a consonant /y/ sound, while an hour begins with a vowel sound."
+        },
+        {
+          "title": "Use the when identification is specific",
+          "text": "The points to an identified referent in context. Many general plural and uncountable nouns use no article. Article choice must be checked against the sentence meaning."
+        },
+        {
+          "title": "Learn prepositions in constructions",
+          "text": "Interested in, good at and depend on are conventional patterns. Time expressions commonly use at for clock times, on for named days and in for months/years. Exceptions and idiomatic constructions require context."
+        }
+      ],
+      "example": {
+        "problem": "Fill the blanks: She is ___ honest person and studies at ___ university.",
+        "steps": [
+          "Honest begins with a vowel sound because h is silent.",
+          "University begins with a consonant /y/ sound.",
+          "Choose an and a respectively."
+        ],
+        "answer": "an honest person; a university."
+      },
+      "mistake": "Article selection follows pronunciation rather than the first written letter.",
+      "recall": [
+        "Choose a/an by sound",
+        "Use the when identification is specific",
+        "Learn prepositions in constructions"
+      ]
+    },
+    {
+      "slug": "ssc-voice",
+      "title": "Active and passive voice",
+      "section": "english",
+      "tags": [
+        "Active voice",
+        "Passive voice",
+        "Verb transformation"
+      ],
+      "concepts": [
+        {
+          "title": "Preserve tense and meaning",
+          "text": "In a basic passive transformation, the active object becomes the passive subject; use the appropriate form of be plus the past participle. The agent can be introduced with by if relevant."
+        },
+        {
+          "title": "Check whether a passive is available",
+          "text": "The basic object-to-subject transformation requires a transitive use. An intransitive clause such as She slept cannot be transformed by inventing an object."
+        },
+        {
+          "title": "Keep aspect and auxiliaries",
+          "text": "Present continuous passive uses is/are being+participle; present perfect passive uses has/have been+participle. Do not drop a modal or change a negative into a positive."
+        }
+      ],
+      "example": {
+        "problem": "Transform: The clerk has checked the documents.",
+        "steps": [
+          "Documents is the active object and becomes passive subject.",
+          "Plural subject uses have been checked.",
+          "The clerk may be retained as by the clerk."
+        ],
+        "answer": "The documents have been checked by the clerk."
+      },
+      "mistake": "Changinghas checked towere checked loses the present-perfect meaning.",
+      "recall": [
+        "Preserve tense and meaning",
+        "Check whether a passive is available",
+        "Keep aspect and auxiliaries"
+      ]
+    },
+    {
+      "slug": "ssc-speech",
+      "title": "Direct and reported speech",
+      "section": "english",
+      "tags": [
+        "Direct and indirect narration",
+        "Reporting verbs"
+      ],
+      "concepts": [
+        {
+          "title": "Report the message, not the quotation marks",
+          "text": "Reported statements commonly use a reporting verb and a clause. Pronouns and place/time words must match who is reporting and when; they are not changed blindly."
+        },
+        {
+          "title": "Backshift with a past reporting context",
+          "text": "In a conventional past reporting context, present simple often shifts to past simple and will to would. Backshift is not always required for a statement still true; the intended context decides."
+        },
+        {
+          "title": "Questions and commands differ",
+          "text": "Reported questions use statement word order, with if/whether for yes–no questions. Commands commonly use told/asked+object+to-infinitive; a negative command uses not to."
+        }
+      ],
+      "example": {
+        "problem": "Report in a later past context: Mira said,\"I am tired.\"",
+        "steps": [
+          "Mira is the speaker, so I becomes she.",
+          "In this past reporting context am backshifts to was.",
+          "Remove quotation punctuation and form a reported statement."
+        ],
+        "answer": "Mira said that she was tired."
+      },
+      "mistake": "Reported questions do not retain ordinary direct-question inversion.",
+      "recall": [
+        "Report the message, not the quotation marks",
+        "Backshift with a past reporting context",
+        "Questions and commands differ"
+      ]
+    },
+    {
+      "slug": "ssc-vocabulary",
+      "title": "Vocabulary, spelling and word formation",
+      "section": "english",
+      "tags": [
+        "Synonyms",
+        "Antonyms",
+        "Homonyms",
+        "Spelling",
+        "One-word substitution"
+      ],
+      "concepts": [
+        {
+          "title": "Choose meaning in context",
+          "text": "Near-synonyms differ in register and sense. Confirm the meaning used in the sentence before replacing a word. An antonym must oppose that meaning, not an unrelated sense."
+        },
+        {
+          "title": "Distinguish sound and spelling",
+          "text": "Homophones sound alike but can differ in spelling and meaning, such as principal and principle. A word-family suffix can change part of speech:careful is an adjective;carefully an adverb."
+        },
+        {
+          "title": "Use retrieval rather than passive rereading",
+          "text": "Record a word, a concise meaning and your own sentence, then test recall later. A single list of words cannot represent complete vocabulary coverage."
+        }
+      ],
+      "example": {
+        "problem": "Choose principal or principle: Honesty is a guiding ___.",
+        "steps": [
+          "The sentence refers to a rule or belief.",
+          "Principle names a rule or belief.",
+          "Principal can mean chief or a head of an institution."
+        ],
+        "answer": "principle."
+      },
+      "mistake": "Do not choose a homophone by sound alone.",
+      "recall": [
+        "Choose meaning in context",
+        "Distinguish sound and spelling",
+        "Use retrieval rather than passive rereading"
+      ]
+    },
+    {
+      "slug": "ssc-idioms",
+      "title": "Idioms, phrasal verbs and sentence improvement",
+      "section": "english",
+      "tags": [
+        "Idioms and phrases",
+        "Phrasal verbs",
+        "Sentence improvement"
+      ],
+      "concepts": [
+        {
+          "title": "Interpret a phrase as a unit",
+          "text": "An idiom often has a conventional meaning not predictable from its separate words. In hit the nail on the head, the meaning is to identify something exactly, not necessarily to use a hammer."
+        },
+        {
+          "title": "Track particles and objects",
+          "text": "Phrasal verbs such as put off can change meaning with context. An object pronoun can affect placement in separable constructions:put it off, not put off it in this meaning."
+        },
+        {
+          "title": "Improve only what is wrong",
+          "text": "Preserve meaning and tense when editing. Avoid redundant combinations and unnatural collocations, but do not replace an acceptable sentence merely to make it longer."
+        }
+      ],
+      "example": {
+        "problem": "Improve: We discussed about the proposal.",
+        "steps": [
+          "In this transitive use,discuss takes a direct object.",
+          "Remove about without changing the past tense.",
+          "Keep the original meaning."
+        ],
+        "answer": "We discussed the proposal."
+      },
+      "mistake": "A word-for-word translation from another language may introduce the wrong preposition.",
+      "recall": [
+        "Interpret a phrase as a unit",
+        "Track particles and objects",
+        "Improve only what is wrong"
+      ]
+    },
+    {
+      "slug": "ssc-reading",
+      "title": "Comprehension, cloze and paragraph order",
+      "section": "english",
+      "tags": [
+        "Reading comprehension",
+        "Cloze test",
+        "Sentence rearrangement"
+      ],
+      "concepts": [
+        {
+          "title": "Separate statement from inference",
+          "text": "Summarise the passage’s central claim, identify the supporting sentence and reject an option that adds an unsupported absolute or cause. Answer from the supplied passage rather than outside assumptions."
+        },
+        {
+          "title": "Use cohesion for ordering",
+          "text": "Pronouns need antecedents;therefore signals a consequence and however a contrast. A sentence introducing a new subject commonly precedes one referring back to this change."
+        },
+        {
+          "title": "Cloze decisions use grammar and meaning",
+          "text": "Check part of speech, tense, agreement and collocation, then read the completed paragraph for coherence. A locally grammatical word can still contradict the passage."
+        }
+      ],
+      "example": {
+        "problem": "Original passage: A town added evening buses. Passenger trips rose, but the survey did not count distinct riders. Can we infer the number of distinct riders increased?",
+        "steps": [
+          "The measured quantity is trips.",
+          "One rider may make several trips.",
+          "Distinct rider counts are not provided."
+        ],
+        "answer": "No; only a rise in trips is established."
+      },
+      "mistake": "Do not treat more trips as proof of more people.",
+      "recall": [
+        "Separate statement from inference",
+        "Use cohesion for ordering",
+        "Cloze decisions use grammar and meaning"
+      ]
+    },
+    {
+      "slug": "ssc-polity",
+      "title": "Polity: institutions, rights and constitutional structure",
+      "section": "ga",
+      "tags": [
+        "Constitution",
+        "Parliament",
+        "Fundamental Rights",
+        "Directive Principles",
+        "Public policy"
+      ],
+      "concepts": [
+        {
+          "title": "Separate institutions and functions",
+          "text": "Parliament legislates; the executive administers; courts adjudicate. India has a parliamentary system. Constitutional provisions distribute powers and provide checks; the categories are related rather than wholly isolated."
+        },
+        {
+          "title": "Distinguish rights and directives",
+          "text": "Fundamental Rights are constitutionally protected with judicial remedies. Directive Principles guide state policy and are not directly enforceable by courts as rights. Neither a right nor a general policy slogan should be treated as unlimited."
+        },
+        {
+          "title": "Use dated primary text",
+          "text": "The Constitution came into force on 26 January 1950, with certain provisions effective earlier. For article numbers, amendments and exceptions consult the current official text; an old coaching chart is not the legal authority."
+        }
+      ],
+      "example": {
+        "problem": "A note calls every welfare goal in the Constitution directly enforceable. What distinction is missing?",
+        "steps": [
+          "Identify whether the provision is a Fundamental Right or a Directive Principle.",
+          "Directive Principles guide policy but are non-justiciable.",
+          "The relevant provision and remedy must be checked individually."
+        ],
+        "answer": "The note confuses constitutional policy guidance with directly enforceable rights."
+      },
+      "mistake": "Non-justiciable does not mean irrelevant to governance.",
+      "recall": [
+        "Separate institutions and functions",
+        "Distinguish rights and directives",
+        "Use dated primary text"
+      ]
+    },
+    {
+      "slug": "ssc-history",
+      "title": "History: chronology, evidence and the national movement",
+      "section": "ga",
+      "tags": [
+        "Indian history",
+        "National movement",
+        "Historical sources"
+      ],
+      "concepts": [
+        {
+          "title": "Build a timeline before memorising isolated facts",
+          "text": "Distinguish an event, its immediate objective and its wider context. Sequence is not proof that one event alone caused another. Political, social and economic processes can develop together."
+        },
+        {
+          "title": "Separate broad phases",
+          "text": "For modern history, connect colonial expansion,1857, organised nationalism, mass movements and independence. For ancient and medieval history build parallel timelines of states, social change and cultural developments using the linked textbooks."
+        },
+        {
+          "title": "Assess historical evidence",
+          "text": "A contemporary account is a primary source for what it records, but can reflect its author’s viewpoint. Compare sources and distinguish a later interpretation from an original record."
+        }
+      ],
+      "example": {
+        "problem": "Place the Revolt of 1857, the Salt March and Indian independence in chronological order.",
+        "steps": [
+          "The revolt belongs to 1857.",
+          "The Salt March took place in 1930.",
+          "Independence followed in 1947."
+        ],
+        "answer": "1857 →1930 →1947."
+      },
+      "mistake": "Do not merge the dates of a movement, an act and an election.",
+      "recall": [
+        "Build a timeline before memorising isolated facts",
+        "Separate broad phases",
+        "Assess historical evidence"
+      ]
+    },
+    {
+      "slug": "ssc-geography",
+      "title": "Geography: Earth, coordinates, climate and resources",
+      "section": "ga",
+      "tags": [
+        "Earth",
+        "Latitude and longitude",
+        "Physical geography",
+        "Climate",
+        "Indian geography"
+      ],
+      "concepts": [
+        {
+          "title": "Use coordinates correctly",
+          "text": "Latitude measures angular position north or south of the equator; longitude measures east or west relative to a reference meridian. Coordinates are angles, not a direct distance in kilometres."
+        },
+        {
+          "title": "Distinguish rotation and revolution",
+          "text": "Earth’s rotation produces the day–night cycle. Seasons arise mainly from axial tilt combined with Earth’s revolution around the Sun, not simply from changing Earth–Sun distance."
+        },
+        {
+          "title": "Link physical and human geography",
+          "text": "Relief, drainage and climate influence settlement and resources, but do not determine every social outcome. Use maps to locate Indian rivers, mountain ranges, neighbouring countries and major resource regions rather than relying only on word lists."
+        }
+      ],
+      "example": {
+        "problem": "Explain why opposite hemispheres have different seasons at the same time.",
+        "steps": [
+          "Earth’s axis is tilted relative to its orbit.",
+          "The hemispheres receive different sunlight angles and day lengths during the orbit.",
+          "When one is tilted toward the Sun, the other is tilted away."
+        ],
+        "answer": "Opposite seasonal conditions follow from axial tilt and orbital position."
+      },
+      "mistake": "Day–night and seasonal change operate on different time scales.",
+      "recall": [
+        "Use coordinates correctly",
+        "Distinguish rotation and revolution",
+        "Link physical and human geography"
+      ]
+    },
+    {
+      "slug": "ssc-physics",
+      "title": "Physics: units, motion, energy and everyday observations",
+      "section": "ga",
+      "tags": [
+        "Units",
+        "Motion",
+        "Work and energy",
+        "Electricity",
+        "Light and sound"
+      ],
+      "concepts": [
+        {
+          "title": "Use quantities with units",
+          "text": "Force is measured in newtons, energy/work in joules and power in watts. Speed is distance/time; acceleration is velocity change/time. Dimensions help identify an impossible formula."
+        },
+        {
+          "title": "Apply a model within its conditions",
+          "text": "For constant acceleration,v=u+at. Work by a constant force parallel to displacement is Fs; power is work/time. Ohm’s law V=IR models an ohmic resistor under specified conditions."
+        },
+        {
+          "title": "Distinguish waves and transport",
+          "text": "Sound is a mechanical wave requiring a medium. Light can propagate in vacuum. Refraction concerns a change of propagation direction associated with a change in wave speed at an interface, subject to incidence conditions."
+        }
+      ],
+      "example": {
+        "problem": "A machine performs 900 J of work in 30 s. Find its average power.",
+        "steps": [
+          "Power=work/time.",
+          "900/30=30.",
+          "J/s is the watt."
+        ],
+        "answer": "30 W."
+      },
+      "mistake": "Energy and power are different physical quantities.",
+      "recall": [
+        "Use quantities with units",
+        "Apply a model within its conditions",
+        "Distinguish waves and transport"
+      ]
+    },
+    {
+      "slug": "ssc-chemistry",
+      "title": "Chemistry: atoms, reactions, acids and materials",
+      "section": "ga",
+      "tags": [
+        "Atoms",
+        "Elements and compounds",
+        "Chemical reactions",
+        "Acids and bases",
+        "Materials"
+      ],
+      "concepts": [
+        {
+          "title": "Keep atomic quantities distinct",
+          "text": "Atomic number counts protons. In a neutral atom, electrons equal protons. Isotopes of an element have the same proton count but different neutron counts."
+        },
+        {
+          "title": "Separate physical and chemical changes",
+          "text": "A physical change can alter state without changing chemical identity. A chemical reaction rearranges atoms into different substances. Balance equations by conserving each element’s atom count, not by altering chemical formula subscripts."
+        },
+        {
+          "title": "Interpret acidity within conditions",
+          "text": "In the usual dilute aqueous school model at 25°C,pH below 7 is acidic and above 7 basic; neutral water has pH 7. Acids and bases can neutralise, but products and hazards depend on the substances and conditions."
+        }
+      ],
+      "example": {
+        "problem": "Balance hydrogen reacting with oxygen to form water.",
+        "steps": [
+          "Start H₂+O₂→H₂O.",
+          "Put 2 before H₂O to balance oxygen.",
+          "Put 2 before H₂ to balance hydrogen."
+        ],
+        "answer": "2 H₂+O₂→2 H₂O."
+      },
+      "mistake": "Change coefficients to balance atoms; changing a subscript changes the substance.",
+      "recall": [
+        "Keep atomic quantities distinct",
+        "Separate physical and chemical changes",
+        "Interpret acidity within conditions"
+      ]
+    },
+    {
+      "slug": "ssc-biology",
+      "title": "Biology: cells, life processes and ecology",
+      "section": "ga",
+      "tags": [
+        "Cells",
+        "Plant processes",
+        "Human systems",
+        "Microorganisms",
+        "Ecology"
+      ],
+      "concepts": [
+        {
+          "title": "Start from cell organisation",
+          "text": "Cells are basic units of life. Eukaryotic cells contain a membrane-bound nucleus; prokaryotic cells lack one. A virus is not a cellular organism and depends on a host’s machinery for replication."
+        },
+        {
+          "title": "Distinguish key processes",
+          "text": "Photosynthesis converts light energy into chemical forms in photosynthetic organisms. Cellular respiration transfers energy from fuel molecules into usable cellular energy. Plants carry out respiration as well as photosynthesis."
+        },
+        {
+          "title": "Connect organisms to environments",
+          "text": "Producers, consumers and decomposers have different ecological roles. Energy flows through food chains while matter cycles. Health topics here are general science revision, not diagnosis or treatment instructions."
+        }
+      ],
+      "example": {
+        "problem": "A statement says plants photosynthesise and therefore never respire. Is it correct?",
+        "steps": [
+          "Photosynthesis and respiration are distinct processes.",
+          "Plant cells require usable energy.",
+          "Plants also carry out cellular respiration."
+        ],
+        "answer": "No; photosynthesis does not exclude respiration."
+      },
+      "mistake": "Do not treat a broad contrast as an absolute exceptionless rule.",
+      "recall": [
+        "Start from cell organisation",
+        "Distinguish key processes",
+        "Connect organisms to environments"
+      ]
+    },
+    {
+      "slug": "ssc-economy",
+      "title": "Economy, culture and current-affairs source literacy",
+      "section": "ga",
+      "tags": [
+        "Economic scene",
+        "Public policy",
+        "Culture",
+        "Current affairs",
+        "Scientific research"
+      ],
+      "concepts": [
+        {
+          "title": "Separate stocks and flows",
+          "text": "A stock is measured at a point in time; a flow over a period. GDP is a production flow over a stated period. A price-level index and its rate of change are different quantities."
+        },
+        {
+          "title": "Identify policy instruments",
+          "text": "Fiscal policy concerns government taxation and spending. Monetary policy concerns monetary conditions and related central-bank tools. Public policy announcements are not by themselves evidence that the stated outcome has occurred."
+        },
+        {
+          "title": "Build dated culture and news records",
+          "text": "For culture, organise traditions by region, period and evidence. For news, store the original issuer, event date, publication date and subsequent corrections. No five-year topic-frequency or high-weightage claim is made without an auditable paper dataset."
+        }
+      ],
+      "example": {
+        "problem": "A report says an index rose from 120 to 126 in one year. Find percentage growth and explain what the index level alone cannot establish.",
+        "steps": [
+          "Growth=(126−120)/120×100=5%.",
+          "The level 126 is not itself a 126% annual growth rate.",
+          "Interpretation also requires the index definition and base."
+        ],
+        "answer": "5% growth; the index level alone is not the growth rate."
+      },
+      "mistake": "Do not confuse a policy target with measured achievement.",
+      "recall": [
+        "Separate stocks and flows",
+        "Identify policy instruments",
+        "Build dated culture and news records"
+      ]
+    },
+    {
+      "slug": "ssc-computer-hardware",
+      "title": "Computer hardware, memory and operating systems",
+      "section": "computer",
+      "tags": [
+        "CPU",
+        "Memory",
+        "Input/output",
+        "Ports",
+        "Windows"
+      ],
+      "concepts": [
+        {
+          "title": "Follow the data path",
+          "text": "Input devices capture data; the CPU executes instructions using registers and memory; output devices present results. A touchscreen can serve both input and output roles. A port is an interface, not itself a storage capacity."
+        },
+        {
+          "title": "Separate volatile and persistent storage",
+          "text": "RAM normally loses its contents without power. SSDs and hard drives retain files. Capacity and access speed describe different properties. A byte is eight bits; binary KiB is 1024 bytes, while decimal kB is 1000 bytes."
+        },
+        {
+          "title": "Use the operating system",
+          "text": "An operating system manages processes, memory, devices and files. Windows File Explorer organises files and folders; an extension suggests a format but renaming it does not convert the contents. Deleting to a recycle bin and permanently deleting are different operations."
+        }
+      ],
+      "example": {
+        "problem": "A file contains 4096 bytes. Express its size in KiB, and identify where an unsaved document may be lost during power failure.",
+        "steps": [
+          "Use 1 KiB=1024 bytes.",
+          "4096/1024=4 KiB.",
+          "Unsaved work held only in volatile memory can be lost."
+        ],
+        "answer": "4 KiB; volatile memory does not guarantee persistence."
+      },
+      "mistake": "Do not treat RAM capacity as the same as SSD capacity.",
+      "recall": [
+        "Follow the data path",
+        "Separate volatile and persistent storage",
+        "Use the operating system"
+      ]
+    },
+    {
+      "slug": "ssc-office",
+      "title": "Word processing, presentations and file workflows",
+      "section": "computer",
+      "tags": [
+        "MS Word",
+        "PowerPoint",
+        "Shortcuts",
+        "File Explorer"
+      ],
+      "concepts": [
+        {
+          "title": "Choose the right document tool",
+          "text": "A word processor manages text, styles, tables and page layout. A presentation arranges content into slides. Styles provide consistent heading structure; manually making every heading large does not create the same structural information."
+        },
+        {
+          "title": "Distinguish operations",
+          "text": "Copy duplicates selected content; cut removes it for a move; paste inserts clipboard content. Save updates the working file; Save As can create another file or format. In common Windows desktop applications Ctrl+C, Ctrl+X, Ctrl+V and Ctrl+Z mean copy, cut, paste and undo, but shortcuts can vary by application."
+        },
+        {
+          "title": "Keep outputs usable",
+          "text": "Page orientation changes the page layout, not the meaning of the text. A slide transition acts between slides, while an animation acts on an object. Preview printing and export before sharing; inspect the actual exported file rather than trusting its extension."
+        }
+      ],
+      "example": {
+        "problem": "A report needs consistent chapter headings and a second copy under a new name. Which operations fit?",
+        "steps": [
+          "Apply a heading style to chapter titles.",
+          "Use Save As to create a separately named copy.",
+          "Open the copy to check content and layout."
+        ],
+        "answer": "Heading styles and Save As."
+      },
+      "mistake": "A slide animation is not a transition between slides.",
+      "recall": [
+        "Choose the right document tool",
+        "Distinguish operations",
+        "Keep outputs usable"
+      ]
+    },
+    {
+      "slug": "ssc-spreadsheets",
+      "title": "Excel formulas, references and functions",
+      "section": "computer",
+      "tags": [
+        "MS Excel",
+        "Formulas",
+        "Relative references",
+        "Functions"
+      ],
+      "concepts": [
+        {
+          "title": "Start a formula explicitly",
+          "text": "In Excel a formula begins with =. A1 names a cell by column and row. A1:A4 is an inclusive range. SUM adds numerical values; AVERAGE returns their arithmetic mean, while COUNT counts numeric entries rather than every nonempty cell."
+        },
+        {
+          "title": "Track reference movement",
+          "text": "Relative A1 shifts when copied. Absolute $A$1 fixes both coordinates. Mixed $A1 fixes the column and A$1 fixes the row. Predict the copied formula before calculating its value."
+        },
+        {
+          "title": "Separate storage from display",
+          "text": "A displayed percentage is a format for an underlying value. A cell containing 0.25 can display 25%. Formatting a cell does not necessarily change its stored number. Parentheses control arithmetic grouping in formulas."
+        }
+      ],
+      "example": {
+        "problem": "B2 contains =A2*$D$1. What is the formula after copying it to B3?",
+        "steps": [
+          "B2 to B3 moves down one row.",
+          "Relative A2 becomes A3.",
+          "Absolute $D$1 stays fixed."
+        ],
+        "answer": "=A3*$D$1"
+      },
+      "mistake": "Do not freeze a row when the dollar sign fixes only a column.",
+      "recall": [
+        "Start a formula explicitly",
+        "Track reference movement",
+        "Separate storage from display"
+      ]
+    },
+    {
+      "slug": "ssc-internet-security",
+      "title": "Networks, email and safe digital transactions",
+      "section": "computer",
+      "tags": [
+        "Internet",
+        "Email",
+        "Networking",
+        "Cybersecurity",
+        "E-banking"
+      ],
+      "concepts": [
+        {
+          "title": "Name the network role",
+          "text": "A browser requests and displays web resources. A search engine indexes and retrieves information. A URL identifies a resource; DNS maps domain names to network information. Upload sends data from the local device to a remote service; download brings it back."
+        },
+        {
+          "title": "Use email fields deliberately",
+          "text": "To identifies main recipients; CC copies visible recipients; BCC conceals that recipient list from other recipients. Reply All includes the relevant original recipients and should be inspected before sending. An attachment can carry malware even when its filename looks familiar."
+        },
+        {
+          "title": "Check identity before action",
+          "text": "Phishing impersonates a trusted party to obtain credentials or payments. HTTPS protects a connection but does not prove the operator is honest. Use updates, backups, unique passwords and multi-factor authentication. Never share an OTP or approve an unsolicited payment request to receive money."
+        }
+      ],
+      "example": {
+        "problem": "An unsolicited message asks for your bank OTP and links to a similar-looking domain. What is the appropriate response?",
+        "steps": [
+          "Do not enter the OTP or use the message link.",
+          "Open the bank through an independently known official channel.",
+          "Report the suspicious message using that channel."
+        ],
+        "answer": "Verify independently; do not share the OTP."
+      },
+      "mistake": "A padlock is not a guarantee that a website is trustworthy.",
+      "recall": [
+        "Name the network role",
+        "Use email fields deliberately",
+        "Check identity before action"
+      ]
+    },
+    {
+      "slug": "ssc-statistics-data",
+      "title": "Statistics: data, centre, dispersion and moments",
+      "section": "statistics",
+      "tags": [
+        "Collection and presentation",
+        "Central tendency",
+        "Dispersion",
+        "Moments and shape"
+      ],
+      "concepts": [
+        {
+          "title": "Identify the observational unit",
+          "text": "Separate a population from a sample and a variable from its observed values. Categories, discrete counts and continuous measurements require appropriate tables and plots. A frequency table must account for every observation exactly once."
+        },
+        {
+          "title": "Choose centre and spread together",
+          "text": "Mean=sum/n; median is the middle ordered value, averaging the two middle values for even n. The mode is the most frequent value and need not be unique. Range=max−min. Population variance averages squared deviations using n; the usual unbiased sample variance uses n−1."
+        },
+        {
+          "title": "Describe shape carefully",
+          "text": "Central moments use deviations from the mean. Standardised third and fourth moments describe skewness and kurtosis; conventions for excess kurtosis subtract 3. Quartiles depend on a stated finite-sample convention. A coefficient of variation requires a meaningful nonzero mean and ratio-scale interpretation."
+        }
+      ],
+      "example": {
+        "problem": "For the full population {2,4,6}, find mean and population variance.",
+        "steps": [
+          "Mean=(2+4+6)/3=4.",
+          "Squared deviations are 4,0,4.",
+          "Population variance=8/3; sample variance for these observations would be 4."
+        ],
+        "answer": "Mean 4; population variance 8/3."
+      },
+      "mistake": "Do not switch n and n−1 without naming the target.",
+      "recall": [
+        "Identify the observational unit",
+        "Choose centre and spread together",
+        "Describe shape carefully"
+      ]
+    },
+    {
+      "slug": "ssc-statistics-probability",
+      "title": "Statistics: probability and random variables",
+      "section": "statistics",
+      "tags": [
+        "Conditional probability",
+        "Bayes theorem",
+        "Random variables",
+        "Distributions"
+      ],
+      "concepts": [
+        {
+          "title": "Condition on the given event",
+          "text": "P(A|B)=P(A∩B)/P(B), provided P(B)>0. Independence means P(A∩B)=P(A)P(B), whereas disjoint positive-probability events cannot be independent. Bayes theorem reverses conditioning using prior probabilities and likelihoods."
+        },
+        {
+          "title": "Calculate expectation from a distribution",
+          "text": "For discrete X, E[X]=Σxp(x) and Var(X)=E[X²]−E[X]². A valid probability mass function is nonnegative and sums to one. Joint distributions yield marginals by summing over the other variable; independence requires factorisation."
+        },
+        {
+          "title": "Match a model to assumptions",
+          "text": "Binomial counts successes in n independent equal-p trials, mean np and variance np(1−p). Poisson has mean and variance λ. A normal distribution uses mean μ and variance σ². Exponential waiting time with rate λ has mean 1/λ. Model assumptions must be justified, not chosen just from a formula."
+        }
+      ],
+      "example": {
+        "problem": "X has probabilities P(X=0)=1/4 and P(X=2)=3/4. Find its mean and variance.",
+        "steps": [
+          "E[X]=0/4+2×3/4=1.5.",
+          "E[X²]=4×3/4=3.",
+          "Variance=3−1.5²=0.75."
+        ],
+        "answer": "Mean 1.5; variance 0.75."
+      },
+      "mistake": "Mutually exclusive and independent are different conditions.",
+      "recall": [
+        "Condition on the given event",
+        "Calculate expectation from a distribution",
+        "Match a model to assumptions"
+      ]
+    },
+    {
+      "slug": "ssc-statistics-inference",
+      "title": "Statistics: sampling, estimation and tests",
+      "section": "statistics",
+      "tags": [
+        "Sampling methods",
+        "Estimation",
+        "Hypothesis tests",
+        "ANOVA"
+      ],
+      "concepts": [
+        {
+          "title": "Define a sampling design",
+          "text": "Simple random sampling gives each eligible sample of the stated size equal selection probability. Stratification samples within defined strata; clusters sample groups. Systematic sampling uses a start and interval, with periodicity risk. Convenience and purposive samples are not probability designs. Sampling and nonsampling errors require different controls."
+        },
+        {
+          "title": "Distinguish estimator properties",
+          "text": "An estimator is a statistic used for an unknown parameter. Unbiasedness concerns its expectation; consistency concerns convergence with sample size. Method of moments matches sample and model moments; maximum likelihood maximises the likelihood over permitted parameter values. A confidence interval describes a procedure, not a posterior probability unless a Bayesian model is specified."
+        },
+        {
+          "title": "State assumptions before testing",
+          "text": "A p-value is computed under the null model and is not the probability that the null is true. Type I error rejects a true null; power is 1−Type II error. Choice among z, t, chi-square and F procedures depends on model, sample and target. ANOVA compares mean variation between groups with residual variation under its assumptions; one-way and two-way designs use different decompositions."
+        }
+      ],
+      "example": {
+        "problem": "For independent normal observations with unknown variance, n=16, mean=12 and s=4, express the usual two-sided 95% mean interval.",
+        "steps": [
+          "Use Student t with 15 degrees of freedom.",
+          "Standard error=s/√n=1.",
+          "Interval is 12±t(0.975,15)×1, approximately 12±2.131."
+        ],
+        "answer": "Approximately [9.869,14.131] under the stated assumptions."
+      },
+      "mistake": "A small p-value does not measure the size or importance of an effect.",
+      "recall": [
+        "Define a sampling design",
+        "Distinguish estimator properties",
+        "State assumptions before testing"
+      ]
+    },
+    {
+      "slug": "ssc-statistics-association",
+      "title": "Statistics: association, time series and index numbers",
+      "section": "statistics",
+      "tags": [
+        "Correlation and regression",
+        "Time series",
+        "Index numbers"
+      ],
+      "concepts": [
+        {
+          "title": "Separate association and prediction",
+          "text": "Pearson correlation measures linear association and lies between −1 and 1 when defined. Spearman uses ranks. In simple least-squares regression with an intercept, slope b=r(sy/sx). Correlation is symmetric; regression of Y on X and X on Y solves different prediction problems. Partial correlation controls specified additional variables and does not by itself establish causality."
+        },
+        {
+          "title": "Decompose temporal change",
+          "text": "Trend is long-run movement; seasonality repeats at a fixed within-year period. Moving averages can smooth fluctuations but do not prove an underlying causal mechanism. Additive models express components as a sum; multiplicative models use products and require suitable nonzero scaling."
+        },
+        {
+          "title": "Keep index weights explicit",
+          "text": "A price relative is current/base×100. Laspeyres price index uses base-period quantities; Paasche uses current quantities. Base shifting rescales a consistently defined index. Splicing joins compatible series using an overlap, while changed coverage requires more than arithmetic. Cost-of-living indices concern a specified consumption basket or framework."
+        }
+      ],
+      "example": {
+        "problem": "Given r=0.6, sx=2 and sy=5, find the regression slope for predicting Y from X.",
+        "steps": [
+          "Use b=r sy/sx.",
+          "Substitute 0.6×5/2.",
+          "Obtain 1.5; an intercept still needs the means."
+        ],
+        "answer": "Slope 1.5."
+      },
+      "mistake": "A high correlation does not isolate the cause of an observed change.",
+      "recall": [
+        "Separate association and prediction",
+        "Decompose temporal change",
+        "Keep index weights explicit"
+      ]
+    },
+    {
+      "slug": "ssc-accounts-foundations",
+      "title": "Accounts: principles, journals, ledgers and reconciliation",
+      "section": "finance",
+      "tags": [
+        "Accounting principles",
+        "Double entry",
+        "Trial balance",
+        "Bank reconciliation"
+      ],
+      "concepts": [
+        {
+          "title": "Use the accounting equation",
+          "text": "Assets=Liabilities+Equity. Double entry records equal debits and credits. Under conventional account rules, asset increases are debits and liability/equity increases are credits; expenses usually debit and revenue usually credits. Accrual recording follows earned revenue and incurred expense, not only cash movement."
+        },
+        {
+          "title": "Trace a transaction",
+          "text": "Source documents support journal entries, which post to ledger accounts and feed a trial balance. Agreement of debit and credit totals does not detect every error: complete omission or an equal wrong-account posting can still balance. Rectification must follow the actual error rather than force a total."
+        },
+        {
+          "title": "Reconcile timing differences",
+          "text": "Bank reconciliation explains differences between the cash-book bank balance and bank statement. A cheque issued but not presented and a deposit not yet credited are timing items. Bank charges not yet recorded require cash-book adjustment. Specify overdraft signs before adding or subtracting."
+        }
+      ],
+      "example": {
+        "problem": "A business buys equipment for cash ₹20,000. Explain the double entry and net effect on total assets.",
+        "steps": [
+          "Debit equipment ₹20,000.",
+          "Credit cash ₹20,000.",
+          "One asset increases while another decreases equally."
+        ],
+        "answer": "Total assets unchanged; composition changes."
+      },
+      "mistake": "A balanced trial balance is not proof that all records are correct.",
+      "recall": [
+        "Use the accounting equation",
+        "Trace a transaction",
+        "Reconcile timing differences"
+      ]
+    },
+    {
+      "slug": "ssc-accounts-statements",
+      "title": "Accounts: statements, depreciation, inventory and special records",
+      "section": "finance",
+      "tags": [
+        "Financial statements",
+        "Capital and revenue",
+        "Depreciation",
+        "Inventory",
+        "NPO",
+        "Bills",
+        "Self-balancing ledgers"
+      ],
+      "concepts": [
+        {
+          "title": "Separate period performance and position",
+          "text": "A trading account derives gross profit from net sales and cost of goods sold; further expenses and income determine net profit. A balance sheet reports assets, liabilities and equity at a date. Capital expenditure creates or improves a qualifying longer-term resource; revenue expenditure relates to current operations. Classification depends on substance."
+        },
+        {
+          "title": "Allocate costs systematically",
+          "text": "Straight-line annual depreciation=(cost−residual value)/useful life under stable assumptions. Diminishing-balance depreciation applies a rate to carrying amount. Cost of goods sold=opening inventory+purchases−closing inventory in a simple periodic model. Inventory valuation rules and write-downs require the applicable accounting framework."
+        },
+        {
+          "title": "Recognise specialised records",
+          "text": "A not-for-profit receipts-and-payments account tracks cash; an income-and-expenditure account uses accrual adjustments. A bill of exchange is a written payment order subject to its legal requirements; distinguish drawer, drawee and payee. Self-balancing ledgers use control/adjustment accounts to allow separate ledger balancing, not to remove double entry."
+        }
+      ],
+      "example": {
+        "problem": "Equipment costs ₹50,000, residual value ₹5,000 and useful life 5 years. Find straight-line annual depreciation and carrying amount after 2 full years.",
+        "steps": [
+          "Depreciable amount=50,000−5,000=45,000.",
+          "Annual charge=45,000/5=9,000.",
+          "Carrying amount=50,000−18,000=32,000."
+        ],
+        "answer": "₹9,000 per year; carrying amount ₹32,000."
+      },
+      "mistake": "Receipts are not automatically revenue for the current period.",
+      "recall": [
+        "Separate period performance and position",
+        "Allocate costs systematically",
+        "Recognise specialised records"
+      ]
+    },
+    {
+      "slug": "ssc-microeconomics",
+      "title": "Economics: demand, production, cost and markets",
+      "section": "finance",
+      "tags": [
+        "Demand and supply",
+        "Elasticity",
+        "Consumer theory",
+        "Production and cost",
+        "Market forms"
+      ],
+      "concepts": [
+        {
+          "title": "Read the condition ceteris paribus",
+          "text": "A demand curve relates own price and quantity demanded holding other determinants constant; income or preferences can shift it. Own-price elasticity=(percentage change in quantity)/(percentage change in price), with sign and measurement convention stated. Income and cross-price elasticities answer different questions."
+        },
+        {
+          "title": "Connect consumer and producer choices",
+          "text": "Marshallian marginal utility and indifference-curve analysis are distinct consumer frameworks. A production possibility curve represents feasible output combinations under stated resources and technology. Short-run diminishing marginal product is not the same as long-run returns to scale, where all inputs vary."
+        },
+        {
+          "title": "Use marginal comparisons",
+          "text": "Average cost=total cost/output; marginal cost is the additional cost of extra output. Under ideal price-taking conditions marginal revenue equals market price. Monopoly, monopolistic competition and oligopoly differ in barriers, differentiation and strategic interaction. A competitive benchmark requires its assumptions, not merely many visible shops."
+        }
+      ],
+      "example": {
+        "problem": "Using initial-value percentages, price rises from 10 to 11 and quantity demanded falls from 100 to 80. Find own-price elasticity.",
+        "steps": [
+          "Price change=1/10=10%.",
+          "Quantity change=−20/100=−20%.",
+          "Elasticity=−20/10=−2. A midpoint method would produce a different numerical estimate."
+        ],
+        "answer": "−2 under the stated initial-value convention."
+      },
+      "mistake": "A movement along demand is not the same as a demand shift.",
+      "recall": [
+        "Read the condition ceteris paribus",
+        "Connect consumer and producer choices",
+        "Use marginal comparisons"
+      ]
+    },
+    {
+      "slug": "ssc-macro-governance",
+      "title": "Economics and governance: income, public finance and institutions",
+      "section": "finance",
+      "tags": [
+        "Indian economy",
+        "National income",
+        "Poverty and population",
+        "Reforms",
+        "Money and banking",
+        "CAG",
+        "Finance Commission",
+        "IT governance"
+      ],
+      "concepts": [
+        {
+          "title": "Measure the economy consistently",
+          "text": "GDP counts final production within a territory over a period. Nominal measures use current prices; real measures adjust for price changes. Value added avoids double counting intermediate output. Poverty, unemployment and population indicators require a defined denominator, reference period and measurement method. Sector shares and infrastructure claims must be dated."
+        },
+        {
+          "title": "Distinguish policy and external accounts",
+          "text": "Fiscal policy uses government revenue and expenditure; monetary policy addresses monetary conditions through the central bank and its framework. A fiscal deficit is not the same as public debt. The balance of payments records resident/nonresident economic transactions under an accounting framework. The 1991 reform discussion includes liberalisation, privatisation and globalisation; individual outcomes need evidence."
+        },
+        {
+          "title": "Know institutional mandates",
+          "text": "The CAG audits public accounts within its constitutional and legal remit. The Finance Commission recommends specified fiscal arrangements, including tax distribution, under Article 280. RBI, commercial banks, regional rural banks and payments banks have different roles. FRBM refers to the Fiscal Responsibility and Budget Management framework; use current official texts for amendments and targets. IT governance includes accountable digital service delivery, access and data security, not simply installing computers."
+        }
+      ],
+      "example": {
+        "problem": "A firm buys intermediate inputs worth 70 and sells final output for 120. Find its value added, ignoring inventory changes.",
+        "steps": [
+          "Count output at 120.",
+          "Subtract intermediate consumption 70.",
+          "Value added=50, avoiding repeated counting of the inputs."
+        ],
+        "answer": "50 in the same monetary units."
+      },
+      "mistake": "Do not use an undated policy target as a current measured outcome.",
+      "recall": [
+        "Measure the economy consistently",
+        "Distinguish policy and external accounts",
+        "Know institutional mandates"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "ssc-numbers-1",
+      "topicId": "ssc-numbers",
+      "section": "quant",
+      "stem": "What is the LCM of 18 and 24?",
+      "options": [
+        "72",
+        "42",
+        "6",
+        "432"
+      ],
+      "answer": "0",
+      "explanation": "18=2×3² and 24=2³×3; LCM=2³×3²=72."
+    },
+    {
+      "id": "ssc-numbers-2",
+      "topicId": "ssc-numbers",
+      "section": "quant",
+      "stem": "Simplify 3/5 + 0.25.",
+      "options": [
+        "0.85",
+        "0.75",
+        "0.65",
+        "0.95"
+      ],
+      "answer": "0",
+      "explanation": "3/5=0.6;0.6+0.25=0.85."
+    },
+    {
+      "id": "ssc-numbers-3",
+      "topicId": "ssc-numbers",
+      "section": "quant",
+      "stem": "What is the remainder when 347 is divided by 9?",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "4"
+      ],
+      "answer": "2",
+      "explanation": "347=9×38+5."
+    },
+    {
+      "id": "ssc-numbers-4",
+      "topicId": "ssc-numbers",
+      "section": "quant",
+      "stem": "Evaluate 36÷6×3−4.",
+      "options": [
+        "−2",
+        "14",
+        "2",
+        "18"
+      ],
+      "answer": "1",
+      "explanation": "Division and multiplication left to right:6×3−4=14."
+    },
+    {
+      "id": "ssc-algebra-1",
+      "topicId": "ssc-algebra",
+      "section": "quant",
+      "stem": "If x+1/x=4, what is x²+1/x²?",
+      "options": [
+        "14",
+        "12",
+        "16",
+        "18"
+      ],
+      "answer": "0",
+      "explanation": "Square 4 and subtract 2:16−2=14."
+    },
+    {
+      "id": "ssc-algebra-2",
+      "topicId": "ssc-algebra",
+      "section": "quant",
+      "stem": "Solve 3 x−7=20.",
+      "options": [
+        "7",
+        "8",
+        "10",
+        "9"
+      ],
+      "answer": "3",
+      "explanation": "3 x=27, so x=9; check 27−7=20."
+    },
+    {
+      "id": "ssc-algebra-3",
+      "topicId": "ssc-algebra",
+      "section": "quant",
+      "stem": "Simplify √50+√8.",
+      "options": [
+        "7√2",
+        "√58",
+        "5√10",
+        "9√2"
+      ],
+      "answer": "0",
+      "explanation": "√50=5√2 and√8=2√2."
+    },
+    {
+      "id": "ssc-algebra-4",
+      "topicId": "ssc-algebra",
+      "section": "quant",
+      "stem": "What is the slope of y=−3 x+5?",
+      "options": [
+        "5",
+        "−3",
+        "−5",
+        "3"
+      ],
+      "answer": "1",
+      "explanation": "The coefficient of x in slope-intercept form is−3."
+    },
+    {
+      "id": "ssc-mixture-1",
+      "topicId": "ssc-mixture",
+      "section": "quant",
+      "stem": "10 L at 20% is mixed with 30 L at 40%. What is the concentration?",
+      "options": [
+        "35%",
+        "30%",
+        "25%",
+        "40%"
+      ],
+      "answer": "0",
+      "explanation": "Solute=2+12=14 L in 40 L, hence 35%."
+    },
+    {
+      "id": "ssc-mixture-2",
+      "topicId": "ssc-mixture",
+      "section": "quant",
+      "stem": "Mix 10% and 40% solutions to get 20%. What is low:high?",
+      "options": [
+        "1:2",
+        "1:1",
+        "2:1",
+        "3:1"
+      ],
+      "answer": "2",
+      "explanation": "(40−20):(20−10)=20:10=2:1."
+    },
+    {
+      "id": "ssc-mixture-3",
+      "topicId": "ssc-mixture",
+      "section": "quant",
+      "stem": "A invests₹3,000 for 12 months and B₹6,000 for 6 months. Under capital-time sharing, what is A:B?",
+      "options": [
+        "1:2",
+        "1:1",
+        "2:1",
+        "3:2"
+      ],
+      "answer": "1",
+      "explanation": "Both products equal 36,000."
+    },
+    {
+      "id": "ssc-mixture-4",
+      "topicId": "ssc-mixture",
+      "section": "quant",
+      "stem": "A mixture is 25% salt by mass. How much salt is in 12 kg of it?",
+      "options": [
+        "2 kg",
+        "4 kg",
+        "3 kg",
+        "5 kg"
+      ],
+      "answer": "2",
+      "explanation": "0.25×12=3 kg."
+    },
+    {
+      "id": "ssc-triangles-1",
+      "topicId": "ssc-triangles",
+      "section": "quant",
+      "stem": "A right triangle has legs 5 and 12. What is its hypotenuse?",
+      "options": [
+        "15",
+        "13",
+        "17",
+        "19"
+      ],
+      "answer": "1",
+      "explanation": "√(25+144)=13."
+    },
+    {
+      "id": "ssc-triangles-2",
+      "topicId": "ssc-triangles",
+      "section": "quant",
+      "stem": "Two angles of a triangle are 48° and 67°. Find the third.",
+      "options": [
+        "55°",
+        "75°",
+        "65°",
+        "85°"
+      ],
+      "answer": "2",
+      "explanation": "180−48−67=65°."
+    },
+    {
+      "id": "ssc-triangles-3",
+      "topicId": "ssc-triangles",
+      "section": "quant",
+      "stem": "The medians of a triangle meet at the:",
+      "options": [
+        "Incentre",
+        "Circumcentre",
+        "Orthocentre",
+        "Centroid"
+      ],
+      "answer": "3",
+      "explanation": "The centroid is the intersection of the three medians."
+    },
+    {
+      "id": "ssc-triangles-4",
+      "topicId": "ssc-triangles",
+      "section": "quant",
+      "stem": "Similar triangles have side ratio 3:5. What is their area ratio?",
+      "options": [
+        "3:5",
+        "6:10",
+        "9:25",
+        "27:125"
+      ],
+      "answer": "2",
+      "explanation": "Square the side ratio:9:25."
+    },
+    {
+      "id": "ssc-circles-1",
+      "topicId": "ssc-circles",
+      "section": "quant",
+      "stem": "An external point is 10 cm from the centre of a circle of radius 6 cm. Find the tangent length.",
+      "options": [
+        "8 cm",
+        "6 cm",
+        "4 cm",
+        "16 cm"
+      ],
+      "answer": "0",
+      "explanation": "√(100−36)=8 cm."
+    },
+    {
+      "id": "ssc-circles-2",
+      "topicId": "ssc-circles",
+      "section": "quant",
+      "stem": "An angle subtended by a diameter at a point on the circle is:",
+      "options": [
+        "90°",
+        "60°",
+        "45°",
+        "180°"
+      ],
+      "answer": "0",
+      "explanation": "The angle in a semicircle is a right angle."
+    },
+    {
+      "id": "ssc-circles-3",
+      "topicId": "ssc-circles",
+      "section": "quant",
+      "stem": "One angle of a cyclic quadrilateral is 112°. Its opposite angle is:",
+      "options": [
+        "58°",
+        "112°",
+        "78°",
+        "68°"
+      ],
+      "answer": "3",
+      "explanation": "Opposite angles sum to 180°, so 68°."
+    },
+    {
+      "id": "ssc-circles-4",
+      "topicId": "ssc-circles",
+      "section": "quant",
+      "stem": "Two tangent segments from one external point are 7 cm and x cm. Find x.",
+      "options": [
+        "3.5",
+        "7",
+        "14",
+        "49"
+      ],
+      "answer": "1",
+      "explanation": "Tangent segments from the same external point are equal."
+    },
+    {
+      "id": "ssc-mensuration-1",
+      "topicId": "ssc-mensuration",
+      "section": "quant",
+      "stem": "A cone has radius 3 cm and perpendicular height 7 cm. With π=22/7, find volume.",
+      "options": [
+        "22 cm³",
+        "44 cm³",
+        "198 cm³",
+        "66 cm³"
+      ],
+      "answer": "3",
+      "explanation": "V=(1/3)×(22/7)×9×7=66 cm³."
+    },
+    {
+      "id": "ssc-mensuration-2",
+      "topicId": "ssc-mensuration",
+      "section": "quant",
+      "stem": "A square side increases from 4 to 6. Its area increases by:",
+      "options": [
+        "125%",
+        "50%",
+        "100%",
+        "20%"
+      ],
+      "answer": "0",
+      "explanation": "Area rises 16→36:20/16×100=125%."
+    },
+    {
+      "id": "ssc-mensuration-3",
+      "topicId": "ssc-mensuration",
+      "section": "quant",
+      "stem": "If a sphere radius doubles, its volume becomes:",
+      "options": [
+        "2 times",
+        "4 times",
+        "6 times",
+        "8 times"
+      ],
+      "answer": "3",
+      "explanation": "Volume scales as the cube of radius."
+    },
+    {
+      "id": "ssc-mensuration-4",
+      "topicId": "ssc-mensuration",
+      "section": "quant",
+      "stem": "Find the area of a triangle with base 14 cm and perpendicular height 9 cm.",
+      "options": [
+        "23 cm²",
+        "46 cm²",
+        "63 cm²",
+        "126 cm²"
+      ],
+      "answer": "2",
+      "explanation": "Area=½×14×9=63 cm²."
+    },
+    {
+      "id": "ssc-trigonometry-1",
+      "topicId": "ssc-trigonometry",
+      "section": "quant",
+      "stem": "If sinθ=3/5 for an acute angle, what is cosθ?",
+      "options": [
+        "2/5",
+        "3/5",
+        "5/4",
+        "4/5"
+      ],
+      "answer": "3",
+      "explanation": "cosθ=√(1−9/25)=4/5; acute makes it positive."
+    },
+    {
+      "id": "ssc-trigonometry-2",
+      "topicId": "ssc-trigonometry",
+      "section": "quant",
+      "stem": "Evaluate sin²37°+cos²37°.",
+      "options": [
+        "0",
+        "2",
+        "1",
+        "37"
+      ],
+      "answer": "2",
+      "explanation": "The Pythagorean identity gives 1."
+    },
+    {
+      "id": "ssc-trigonometry-3",
+      "topicId": "ssc-trigonometry",
+      "section": "quant",
+      "stem": "Convert π/3 radians to degrees.",
+      "options": [
+        "60°",
+        "45°",
+        "30°",
+        "90°"
+      ],
+      "answer": "0",
+      "explanation": "Multiply by 180/π to obtain 60°."
+    },
+    {
+      "id": "ssc-trigonometry-4",
+      "topicId": "ssc-trigonometry",
+      "section": "quant",
+      "stem": "A tower is 20 m away on level ground and its elevation is 45° from a ground-level point. Find height.",
+      "options": [
+        "10 m",
+        "20 m",
+        "20√3 m",
+        "40 m"
+      ],
+      "answer": "1",
+      "explanation": "h=20 tan 45°=20 m."
+    },
+    {
+      "id": "ssc-data-1",
+      "topicId": "ssc-data",
+      "section": "quant",
+      "stem": "A table has values 30,50,70 and 50. What share is the value 70?",
+      "options": [
+        "35%",
+        "30%",
+        "25%",
+        "40%"
+      ],
+      "answer": "0",
+      "explanation": "Total 200;70/200=35%."
+    },
+    {
+      "id": "ssc-data-2",
+      "topicId": "ssc-data",
+      "section": "quant",
+      "stem": "A category represents 15% of a pie chart. What is its angle?",
+      "options": [
+        "54°",
+        "45°",
+        "36°",
+        "72°"
+      ],
+      "answer": "0",
+      "explanation": "0.15×360=54°."
+    },
+    {
+      "id": "ssc-data-3",
+      "topicId": "ssc-data",
+      "section": "quant",
+      "stem": "A rate rises from 20% to 25%. What is the increase in percentage points?",
+      "options": [
+        "45",
+        "20",
+        "25",
+        "5"
+      ],
+      "answer": "3",
+      "explanation": "25−20=5 percentage points; relative increase is 25%."
+    },
+    {
+      "id": "ssc-data-4",
+      "topicId": "ssc-data",
+      "section": "quant",
+      "stem": "For unequal-width histogram classes, frequency is proportional to:",
+      "options": [
+        "Bar area",
+        "Width alone",
+        "Height alone",
+        "Number of labels"
+      ],
+      "answer": "0",
+      "explanation": "Frequency density×class width gives frequency, so bar area matters."
+    },
+    {
+      "id": "ssc-arithmetic-review-1",
+      "topicId": "ssc-arithmetic-review",
+      "section": "quant",
+      "stem": "A value rises 25% to₹1,000. What was its original value?",
+      "options": [
+        "₹800",
+        "₹775",
+        "₹750",
+        "₹825"
+      ],
+      "answer": "0",
+      "explanation": "1000/1.25=800."
+    },
+    {
+      "id": "ssc-arithmetic-review-2",
+      "topicId": "ssc-arithmetic-review",
+      "section": "quant",
+      "stem": "A and B share₹3,600 in 2:7. What is B’s share?",
+      "options": [
+        "₹800",
+        "₹1,400",
+        "₹2,800",
+        "₹2,400"
+      ],
+      "answer": "2",
+      "explanation": "One part 400; B receives 7×400=2800."
+    },
+    {
+      "id": "ssc-arithmetic-review-3",
+      "topicId": "ssc-arithmetic-review",
+      "section": "quant",
+      "stem": "A person covers 120 km at 40 km/h and 120 km at 60 km/h. Find average speed.",
+      "options": [
+        "48 km/h",
+        "45 km/h",
+        "50 km/h",
+        "52 km/h"
+      ],
+      "answer": "0",
+      "explanation": "Time=3+2=5 h, distance 240 km; average 48 km/h."
+    },
+    {
+      "id": "ssc-arithmetic-review-4",
+      "topicId": "ssc-arithmetic-review",
+      "section": "quant",
+      "stem": "Simple interest on₹2,400 at 5% annually for 18 months is:",
+      "options": [
+        "₹120",
+        "₹180",
+        "₹240",
+        "₹360"
+      ],
+      "answer": "1",
+      "explanation": "2400×0.05×1.5=180."
+    },
+    {
+      "id": "ssc-series-1",
+      "topicId": "ssc-series",
+      "section": "reason",
+      "stem": "Continue 2,6,12,20,30 under successive even differences.",
+      "options": [
+        "36",
+        "40",
+        "44",
+        "42"
+      ],
+      "answer": "3",
+      "explanation": "Differences 4,6,8,10; next 12 gives 42."
+    },
+    {
+      "id": "ssc-series-2",
+      "topicId": "ssc-series",
+      "section": "reason",
+      "stem": "Under the rule n↦n²+1, 4:17 :: 7:?",
+      "options": [
+        "48",
+        "49",
+        "50",
+        "51"
+      ],
+      "answer": "2",
+      "explanation": "7²+1=50."
+    },
+    {
+      "id": "ssc-series-3",
+      "topicId": "ssc-series",
+      "section": "reason",
+      "stem": "Which is not a prime number?",
+      "options": [
+        "21",
+        "19",
+        "17",
+        "23"
+      ],
+      "answer": "0",
+      "explanation": "21=3×7; the other three have no divisor other than 1 and themselves."
+    },
+    {
+      "id": "ssc-series-4",
+      "topicId": "ssc-series",
+      "section": "reason",
+      "stem": "Complete the tool-to-measured-quantity relation: thermometer:temperature :: barometer:?",
+      "options": [
+        "Pressure",
+        "Speed",
+        "Humidity",
+        "Mass"
+      ],
+      "answer": "0",
+      "explanation": "A barometer measures atmospheric pressure."
+    },
+    {
+      "id": "ssc-coding-1",
+      "topicId": "ssc-coding",
+      "section": "reason",
+      "stem": "With each letter shifted forward 1, how is CAT encoded?",
+      "options": [
+        "DBT",
+        "DBU",
+        "CBU",
+        "ECV"
+      ],
+      "answer": "1",
+      "explanation": "C→D,A→B,T→U."
+    },
+    {
+      "id": "ssc-coding-2",
+      "topicId": "ssc-coding",
+      "section": "reason",
+      "stem": "Using A=1,…,Z=26, find the sum of the letter positions in DOG.",
+      "options": [
+        "26",
+        "25",
+        "24",
+        "27"
+      ],
+      "answer": "0",
+      "explanation": "D 4+O 15+G 7=26."
+    },
+    {
+      "id": "ssc-coding-3",
+      "topicId": "ssc-coding",
+      "section": "reason",
+      "stem": "If + means multiplication and × means addition, evaluate 4+3×2 using normal precedence after replacement.",
+      "options": [
+        "20",
+        "14",
+        "24",
+        "18"
+      ],
+      "answer": "1",
+      "explanation": "Rewrite 4×3+2=14."
+    },
+    {
+      "id": "ssc-coding-4",
+      "topicId": "ssc-coding",
+      "section": "reason",
+      "stem": "If a code reverses the letters before shifting each forward 1, encode ABZ.",
+      "options": [
+        "BAC",
+        "ZBA",
+        "ACB",
+        "BCZ"
+      ],
+      "answer": "2",
+      "explanation": "ABZ reverses to ZBA, then shifts to ACB."
+    },
+    {
+      "id": "ssc-directions-1",
+      "topicId": "ssc-directions",
+      "section": "reason",
+      "stem": "A person walks 3 km east then 4 km north. What is the shortest distance from start?",
+      "options": [
+        "1 km",
+        "7 km",
+        "5 km",
+        "12 km"
+      ],
+      "answer": "2",
+      "explanation": "√(3²+4²)=5 km."
+    },
+    {
+      "id": "ssc-directions-2",
+      "topicId": "ssc-directions",
+      "section": "reason",
+      "stem": "Facing west, a person turns right. Which way do they face?",
+      "options": [
+        "West",
+        "South",
+        "East",
+        "North"
+      ],
+      "answer": "3",
+      "explanation": "A right turn from west points north."
+    },
+    {
+      "id": "ssc-directions-3",
+      "topicId": "ssc-directions",
+      "section": "reason",
+      "stem": "Walk 5 m north,2 m east,5 m south. The final position is:",
+      "options": [
+        "2 m west",
+        "2 m east",
+        "5 m south",
+        "At start"
+      ],
+      "answer": "1",
+      "explanation": "North and south cancel;2 m east remains."
+    },
+    {
+      "id": "ssc-directions-4",
+      "topicId": "ssc-directions",
+      "section": "reason",
+      "stem": "A full turn followed by a half-turn from south leaves the person facing:",
+      "options": [
+        "North",
+        "West",
+        "South",
+        "East"
+      ],
+      "answer": "0",
+      "explanation": "The full turn changes nothing; half-turn reverses south to north."
+    },
+    {
+      "id": "ssc-relations-1",
+      "topicId": "ssc-relations",
+      "section": "reason",
+      "stem": "A person is 6th from the left and 9th from the right. How many people are there?",
+      "options": [
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "answer": "1",
+      "explanation": "6+9−1=14."
+    },
+    {
+      "id": "ssc-relations-2",
+      "topicId": "ssc-relations",
+      "section": "reason",
+      "stem": "M is the brother of N. N is the mother of P. What is M to P?",
+      "options": [
+        "Father",
+        "Grandfather",
+        "Maternal uncle",
+        "Son"
+      ],
+      "answer": "2",
+      "explanation": "Mother’s brother is maternal uncle."
+    },
+    {
+      "id": "ssc-relations-3",
+      "topicId": "ssc-relations",
+      "section": "reason",
+      "stem": "If A>B, B=C and C>D, what necessarily follows?",
+      "options": [
+        "A>D",
+        "D>A",
+        "A=C",
+        "B<D"
+      ],
+      "answer": "0",
+      "explanation": "A>B=C>D implies A>D."
+    },
+    {
+      "id": "ssc-relations-4",
+      "topicId": "ssc-relations",
+      "section": "reason",
+      "stem": "In a line of 21, R is 9th from the left. What is R’s position from the right?",
+      "options": [
+        "11th",
+        "12th",
+        "14th",
+        "13th"
+      ],
+      "answer": "3",
+      "explanation": "21−9+1=13."
+    },
+    {
+      "id": "ssc-venn-1",
+      "topicId": "ssc-venn",
+      "section": "reason",
+      "stem": "In a group of 60,35 like tea,30 coffee and 15 both. How many like neither?",
+      "options": [
+        "5",
+        "15",
+        "10",
+        "20"
+      ],
+      "answer": "2",
+      "explanation": "Union=35+30−15=50; neither 10."
+    },
+    {
+      "id": "ssc-venn-2",
+      "topicId": "ssc-venn",
+      "section": "reason",
+      "stem": "All roses are flowers. Some roses are red. Which must follow?",
+      "options": [
+        "All flowers are roses",
+        "No flower is red",
+        "Some flowers are red",
+        "All red objects are flowers"
+      ],
+      "answer": "2",
+      "explanation": "The supplied red roses belong to the flower set."
+    },
+    {
+      "id": "ssc-venn-3",
+      "topicId": "ssc-venn",
+      "section": "reason",
+      "stem": "No poets are pilots. All teachers are poets. Which must follow?",
+      "options": [
+        "All pilots are teachers",
+        "Every poet is a teacher",
+        "Some teachers are pilots",
+        "No teachers are pilots"
+      ],
+      "answer": "3",
+      "explanation": "The teacher subset of poets is disjoint from pilots."
+    },
+    {
+      "id": "ssc-venn-4",
+      "topicId": "ssc-venn",
+      "section": "reason",
+      "stem": "All A are B, with no existence asserted. Which is necessarily valid?",
+      "options": [
+        "All B are A",
+        "Some A exist",
+        "No A lie outside B",
+        "Some B are not A"
+      ],
+      "answer": "2",
+      "explanation": "A⊆B means A has no member outside B; existence is not established."
+    },
+    {
+      "id": "ssc-seating-1",
+      "topicId": "ssc-seating",
+      "section": "reason",
+      "stem": "Talks X,Y,Z run Monday toWednesday. X before Y; Z notWednesday. Which is fixed?",
+      "options": [
+        "X onMonday",
+        "Y on Wednesday",
+        "Z onTuesday",
+        "X onTuesday"
+      ],
+      "answer": "1",
+      "explanation": "Valid schedules XZY and ZXY both put Y on Wednesday."
+    },
+    {
+      "id": "ssc-seating-2",
+      "topicId": "ssc-seating",
+      "section": "reason",
+      "stem": "Four seats 1–4 from the reader’s left: B immediately right of A; C in 1; D in 4. Who is in 2?",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "answer": "0",
+      "explanation": "C occupies 1,D 4; AB must occupy 2–3."
+    },
+    {
+      "id": "ssc-seating-3",
+      "topicId": "ssc-seating",
+      "section": "reason",
+      "stem": "If A is somewhere left of B in three seats with C otherwise unrestricted, which is possible?",
+      "options": [
+        "B,A,C",
+        "C,B,A",
+        "A,C,B",
+        "B,C,A"
+      ],
+      "answer": "2",
+      "explanation": "Only ACB has A left of B."
+    },
+    {
+      "id": "ssc-seating-4",
+      "topicId": "ssc-seating",
+      "section": "reason",
+      "stem": "Five consecutive numbered slots contain a two-slot block AB with A immediately before B. How many starting slots can AB have before other constraints?",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "10"
+      ],
+      "answer": "0",
+      "explanation": "The block can start in 1,2,3 or 4."
+    },
+    {
+      "id": "ssc-figures-1",
+      "topicId": "ssc-figures",
+      "section": "reason",
+      "stem": "An upward arrow is reflected in a horizontal mirror. It points:",
+      "options": [
+        "Up",
+        "Right",
+        "Left",
+        "Down"
+      ],
+      "answer": "3",
+      "explanation": "Horizontal reflection reverses the vertical direction."
+    },
+    {
+      "id": "ssc-figures-2",
+      "topicId": "ssc-figures",
+      "section": "reason",
+      "stem": "A right-pointing arrow rotates 90° counterclockwise. It points:",
+      "options": [
+        "Down",
+        "Right",
+        "Up",
+        "Left"
+      ],
+      "answer": "2",
+      "explanation": "Counterclockwise from east gives north."
+    },
+    {
+      "id": "ssc-figures-3",
+      "topicId": "ssc-figures",
+      "section": "reason",
+      "stem": "One hole away from a single fold line is punched through two folded layers. After unfolding, how many distinct holes result?",
+      "options": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "answer": "2",
+      "explanation": "Reflection across the fold produces a second distinct hole because the original is away from the fold."
+    },
+    {
+      "id": "ssc-figures-4",
+      "topicId": "ssc-figures",
+      "section": "reason",
+      "stem": "A vertical mirror changes the left-to-right sequence of distinct symbols P,Q,R into:",
+      "options": [
+        "P,Q,R",
+        "Q,P,R",
+        "R,P,Q",
+        "R,Q,P"
+      ],
+      "answer": "3",
+      "explanation": "Reflection reverses left-to-right order."
+    },
+    {
+      "id": "ssc-critical-1",
+      "topicId": "ssc-critical",
+      "section": "reason",
+      "stem": "Sales rose after a shop changed its sign and reduced prices. Which is established?",
+      "options": [
+        "The sign alone caused the rise",
+        "The price reduction had no effect",
+        "Sales rose after both changes",
+        "Every shopper saw the sign"
+      ],
+      "answer": "2",
+      "explanation": "Only the reported sequence is established; causes are not isolated."
+    },
+    {
+      "id": "ssc-critical-2",
+      "topicId": "ssc-critical",
+      "section": "reason",
+      "stem": "A colleague makes an upsetting remark. Which response best uses emotional regulation?",
+      "options": [
+        "Immediately retaliate",
+        "Publish an accusation without checking",
+        "Pause, clarify the issue and respond respectfully",
+        "Assume intent without asking"
+      ],
+      "answer": "2",
+      "explanation": "Pausing and clarifying enables a proportionate response."
+    },
+    {
+      "id": "ssc-critical-3",
+      "topicId": "ssc-critical",
+      "section": "reason",
+      "stem": "Which string exactly matches AB 10 O 5?",
+      "options": [
+        "AB 1 OO 5",
+        "AB 10 O 5",
+        "AB 1005",
+        "A 810 O 5"
+      ],
+      "answer": "1",
+      "explanation": "The required sequence is A,B,numeral 1,numeral 0,letter O,numeral 5."
+    },
+    {
+      "id": "ssc-critical-4",
+      "topicId": "ssc-critical",
+      "section": "reason",
+      "stem": "Some inspected files had errors. Which conclusion follows?",
+      "options": [
+        "All files have errors",
+        "No file has errors",
+        "At least one inspected file had an error",
+        "Every uninspected file is correct"
+      ],
+      "answer": "2",
+      "explanation": "Some establishes at least one in the inspected set, not a universal claim."
+    },
+    {
+      "id": "ssc-agreement-1",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Choose the correct verb: Each of these books ___ a cover.",
+      "options": [
+        "have",
+        "were",
+        "are",
+        "has"
+      ],
+      "answer": "3",
+      "explanation": "Each is singular here, so has."
+    },
+    {
+      "id": "ssc-agreement-2",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Choose the correct sentence.",
+      "options": [
+        "The list of names are ready.",
+        "The list of names have ready.",
+        "The list of names were ready.",
+        "The list of names is ready."
+      ],
+      "answer": "3",
+      "explanation": "The head noun list is singular."
+    },
+    {
+      "id": "ssc-agreement-3",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Choose the correct verb: The students ___ waiting outside.",
+      "options": [
+        "are",
+        "was",
+        "is",
+        "has"
+      ],
+      "answer": "0",
+      "explanation": "Plural students takes are."
+    },
+    {
+      "id": "ssc-agreement-4",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Which is a complete standard sentence?",
+      "options": [
+        "Because the road was closed.",
+        "Although she arrived early.",
+        "The train stopped at noon.",
+        "While they were waiting."
+      ],
+      "answer": "2",
+      "explanation": "It has a subject and finite verb and stands as an independent clause."
+    },
+    {
+      "id": "ssc-agreement-5",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Correct the verb: Every participant receive a badge.",
+      "options": [
+        "have received",
+        "receiving",
+        "receives",
+        "are receiving"
+      ],
+      "answer": "2",
+      "explanation": "Every participant is singular and takes receives."
+    },
+    {
+      "id": "ssc-agreement-6",
+      "topicId": "ssc-agreement",
+      "section": "english",
+      "stem": "Choose the correctly punctuated sentence.",
+      "options": [
+        "When the rain stopped, we left.",
+        "When the rain stopped we left.",
+        "When, the rain stopped we left.",
+        "When the rain, stopped we left."
+      ],
+      "answer": "0",
+      "explanation": "The introductory dependent clause is followed by a comma in this formal example."
+    },
+    {
+      "id": "ssc-tenses-1",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose: He ___ here since 2020 and still works here.",
+      "options": [
+        "worked only",
+        "has worked",
+        "will work yesterday",
+        "had work"
+      ],
+      "answer": "1",
+      "explanation": "Present perfect links the continuing situation from 2020 to now."
+    },
+    {
+      "id": "ssc-tenses-2",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose: By the time we arrived, the film ___.",
+      "options": [
+        "has begun tomorrow",
+        "was begin",
+        "begins yesterday",
+        "had begun"
+      ],
+      "answer": "3",
+      "explanation": "Past perfect places the beginning before our past arrival."
+    },
+    {
+      "id": "ssc-tenses-3",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose: If it rains tomorrow, we ___ indoors.",
+      "options": [
+        "had stayed",
+        "stayed",
+        "will stay",
+        "would have stayed yesterday"
+      ],
+      "answer": "2",
+      "explanation": "A real future conditional uses present in the if-clause and will in the result."
+    },
+    {
+      "id": "ssc-tenses-4",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose the standard hypothetical form: If I ___ you, I would apologise.",
+      "options": [
+        "am",
+        "have been",
+        "will be",
+        "were"
+      ],
+      "answer": "3",
+      "explanation": "Formal hypothetical were is appropriate."
+    },
+    {
+      "id": "ssc-tenses-5",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose: At 8 pm yesterday, I ___ dinner.",
+      "options": [
+        "am cooking",
+        "have cooked tomorrow",
+        "was cooking",
+        "will cook"
+      ],
+      "answer": "2",
+      "explanation": "Past continuous describes activity underway at a specified past time."
+    },
+    {
+      "id": "ssc-tenses-6",
+      "topicId": "ssc-tenses",
+      "section": "english",
+      "stem": "Choose the correct past form: She ___ to Delhi last week.",
+      "options": [
+        "go",
+        "goes",
+        "went",
+        "gone"
+      ],
+      "answer": "2",
+      "explanation": "Went is the simple past of go."
+    },
+    {
+      "id": "ssc-articles-1",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: ___ hour passed.",
+      "options": [
+        "A",
+        "No an",
+        "The a",
+        "An"
+      ],
+      "answer": "3",
+      "explanation": "Hour begins with a vowel sound."
+    },
+    {
+      "id": "ssc-articles-2",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: She bought ___ useful tool.",
+      "options": [
+        "an",
+        "many",
+        "these",
+        "a"
+      ],
+      "answer": "3",
+      "explanation": "Useful begins with a /y/ consonant sound."
+    },
+    {
+      "id": "ssc-articles-3",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: He is interested ___ astronomy.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "by"
+      ],
+      "answer": "1",
+      "explanation": "The standard construction is interested in."
+    },
+    {
+      "id": "ssc-articles-4",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: The meeting starts ___9 am.",
+      "options": [
+        "in",
+        "at",
+        "on",
+        "from to"
+      ],
+      "answer": "1",
+      "explanation": "At introduces this clock time."
+    },
+    {
+      "id": "ssc-articles-5",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: We will meet ___ Monday.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "by at"
+      ],
+      "answer": "0",
+      "explanation": "On is used with named days in this construction."
+    },
+    {
+      "id": "ssc-articles-6",
+      "topicId": "ssc-articles",
+      "section": "english",
+      "stem": "Choose: Success depends ___ preparation.",
+      "options": [
+        "of",
+        "at",
+        "for",
+        "on"
+      ],
+      "answer": "3",
+      "explanation": "The construction is depend on."
+    },
+    {
+      "id": "ssc-voice-1",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Choose the passive of: They repair the road.",
+      "options": [
+        "The road is repaired by them.",
+        "The road repaired them.",
+        "The road has repair by them.",
+        "The road was repairing them."
+      ],
+      "answer": "0",
+      "explanation": "Simple present passive uses is+past participle."
+    },
+    {
+      "id": "ssc-voice-2",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Choose the passive of: She wrote the letter.",
+      "options": [
+        "The letter was written by her.",
+        "The letter is writing.",
+        "The letter has wrote by her.",
+        "The letter writes her."
+      ],
+      "answer": "0",
+      "explanation": "Simple past passive uses was written."
+    },
+    {
+      "id": "ssc-voice-3",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Choose: The files ___ being checked now.",
+      "options": [
+        "was",
+        "has",
+        "have",
+        "are"
+      ],
+      "answer": "3",
+      "explanation": "Plural files and present continuous passive take are being checked."
+    },
+    {
+      "id": "ssc-voice-4",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Which basic clause has no direct object for ordinary object-to-subject passive conversion?",
+      "options": [
+        "He opened the door.",
+        "She slept.",
+        "They built a bridge.",
+        "I read the note."
+      ],
+      "answer": "1",
+      "explanation": "Slept is intransitive in this sentence."
+    },
+    {
+      "id": "ssc-voice-5",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Passive of: They will announce the result.",
+      "options": [
+        "The result will be announced.",
+        "The result will announced.",
+        "The result is announce.",
+        "The result has announcing."
+      ],
+      "answer": "0",
+      "explanation": "Keep will and add be+announced."
+    },
+    {
+      "id": "ssc-voice-6",
+      "topicId": "ssc-voice",
+      "section": "english",
+      "stem": "Passive of: Someone has stolen my bag.",
+      "options": [
+        "My bag was stealing.",
+        "My bag has stole.",
+        "My bag has been stolen.",
+        "My bag is steal."
+      ],
+      "answer": "2",
+      "explanation": "Present perfect passive is has been+past participle."
+    },
+    {
+      "id": "ssc-speech-1",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "In a later past context, report: He said,\"I am ready.\"",
+      "options": [
+        "He said that I am ready.",
+        "He said that he was ready.",
+        "He told that was he ready.",
+        "He said he ready."
+      ],
+      "answer": "1",
+      "explanation": "Pronoun changes to he and am backshifts to was in the supplied context."
+    },
+    {
+      "id": "ssc-speech-2",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "Report a yes–no question: She asked,\"Are you ready?\"",
+      "options": [
+        "She asked that are you ready.",
+        "She asked whether was I ready.",
+        "She asked whether I was ready.",
+        "She said whether ready."
+      ],
+      "answer": "2",
+      "explanation": "A reported question useswhether and statement word order."
+    },
+    {
+      "id": "ssc-speech-3",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "Report: The guard said to us,\"Do not enter.\"",
+      "options": [
+        "The guard asked that do not enter.",
+        "The guard said us no enter.",
+        "The guard told not enter us.",
+        "The guard told us not to enter."
+      ],
+      "answer": "3",
+      "explanation": "A negative command usesobject+not to-infinitive."
+    },
+    {
+      "id": "ssc-speech-4",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "In a conventional later past context, will commonly backshifts to:",
+      "options": [
+        "would",
+        "must always",
+        "shall always",
+        "is"
+      ],
+      "answer": "0",
+      "explanation": "Will commonly becomes would when backshift is appropriate."
+    },
+    {
+      "id": "ssc-speech-5",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "Choose correct reported-question order.",
+      "options": [
+        "He asked where did I live.",
+        "He asked where lived I.",
+        "He asked where I lived.",
+        "He asked where do I lived."
+      ],
+      "answer": "2",
+      "explanation": "Reported questions use statement order: subject then verb."
+    },
+    {
+      "id": "ssc-speech-6",
+      "topicId": "ssc-speech",
+      "section": "english",
+      "stem": "Which reporting verb fits: She ___ me to wait.",
+      "options": [
+        "said",
+        "spoke",
+        "told",
+        "stated"
+      ],
+      "answer": "2",
+      "explanation": "Told takes an object and to-infinitive in this pattern."
+    },
+    {
+      "id": "ssc-vocabulary-1",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "Choose the nearest synonym of concise in\"a concise explanation\".",
+      "options": [
+        "Confusing",
+        "Brief",
+        "Lengthy",
+        "False"
+      ],
+      "answer": "1",
+      "explanation": "Concise means expressing information briefly without unnecessary detail."
+    },
+    {
+      "id": "ssc-vocabulary-2",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "Choose the opposite of abundant.",
+      "options": [
+        "Plentiful",
+        "Numerous",
+        "Ample",
+        "Scarce"
+      ],
+      "answer": "3",
+      "explanation": "Scarce contrasts with abundant."
+    },
+    {
+      "id": "ssc-vocabulary-3",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "Choose the correct spelling.",
+      "options": [
+        "Accomodation",
+        "Accommodation",
+        "Acommodation",
+        "Accommadation"
+      ],
+      "answer": "1",
+      "explanation": "Accommodation has double c and double m."
+    },
+    {
+      "id": "ssc-vocabulary-4",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "A person who studies the origin of words is an:",
+      "options": [
+        "Etymologist",
+        "Entomologist",
+        "Geologist",
+        "Ecologist"
+      ],
+      "answer": "0",
+      "explanation": "Etymology studies word origins;entomology concerns insects."
+    },
+    {
+      "id": "ssc-vocabulary-5",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "Choose: The school ___ welcomed the students.",
+      "options": [
+        "principle",
+        "principally",
+        "principled",
+        "principal"
+      ],
+      "answer": "3",
+      "explanation": "Principal denotes the head of the school here."
+    },
+    {
+      "id": "ssc-vocabulary-6",
+      "topicId": "ssc-vocabulary",
+      "section": "english",
+      "stem": "Choose the adverb formed from careful.",
+      "options": [
+        "Care",
+        "Caring",
+        "Carefulness",
+        "Carefully"
+      ],
+      "answer": "3",
+      "explanation": "Carefully describes how an action is performed."
+    },
+    {
+      "id": "ssc-idioms-1",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "In\"The test was a piece of cake\", the idiom means:",
+      "options": [
+        "Incomplete",
+        "Very expensive",
+        "Very easy",
+        "Very long"
+      ],
+      "answer": "2",
+      "explanation": "A piece of cake conventionally means an easy task."
+    },
+    {
+      "id": "ssc-idioms-2",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "To put off a meeting normally means to:",
+      "options": [
+        "Cancel every future meeting",
+        "Record it",
+        "Attend it early",
+        "Postpone it"
+      ],
+      "answer": "3",
+      "explanation": "Put off can mean postpone in this context."
+    },
+    {
+      "id": "ssc-idioms-3",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "Choose the standard sentence.",
+      "options": [
+        "We discussed the plan.",
+        "We discussed about the plan.",
+        "We discussed on about the plan.",
+        "We discussion the plan."
+      ],
+      "answer": "0",
+      "explanation": "Discuss takes the direct object the plan here."
+    },
+    {
+      "id": "ssc-idioms-4",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "Break the ice in a social setting means:",
+      "options": [
+        "Create initial ease or conversation",
+        "Stop all communication",
+        "Give a warning",
+        "Break a promise"
+      ],
+      "answer": "0",
+      "explanation": "It refers to easing an initially awkward interaction."
+    },
+    {
+      "id": "ssc-idioms-5",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "Choose the standard pronoun placement for postponement.",
+      "options": [
+        "Put it off.",
+        "Put off it.",
+        "Put off to it.",
+        "Put to off it."
+      ],
+      "answer": "0",
+      "explanation": "With this separable phrasal verb, the object pronoun comes between verb and particle."
+    },
+    {
+      "id": "ssc-idioms-6",
+      "topicId": "ssc-idioms",
+      "section": "english",
+      "stem": "Choose the less redundant expression.",
+      "options": [
+        "Return back again to the starting point",
+        "Return to the starting point",
+        "Revert return back",
+        "Return backwards back"
+      ],
+      "answer": "1",
+      "explanation": "Return already conveys going back."
+    },
+    {
+      "id": "ssc-reading-1",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "Original passage: A museum extended Sunday hours. Visits rose, but repeat visitors were not separated. Which is supported?",
+      "options": [
+        "Unique visitors doubled",
+        "Every resident visited",
+        "Longer hours were the only cause",
+        "Recorded visits rose"
+      ],
+      "answer": "3",
+      "explanation": "The passage directly reports a rise in visits only."
+    },
+    {
+      "id": "ssc-reading-2",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "For the museum passage: A museum recorded more visits after extending its hours, but did not count unique visitors, what additional measurement directly addresses unique visitors?",
+      "options": [
+        "Wall colour",
+        "Number of staff chairs",
+        "Deduplicated visitor counts",
+        "Gift-shop paint"
+      ],
+      "answer": "2",
+      "explanation": "Deduplicated counts measure distinct visitors."
+    },
+    {
+      "id": "ssc-reading-3",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "Order these sentences: P:Therefore, it closed early. Q:The centre lost power. R:Its backup supply also failed.",
+      "options": [
+        "PQR",
+        "QRP",
+        "RPQ",
+        "PRQ"
+      ],
+      "answer": "1",
+      "explanation": "Loss of power, backup failure, then the consequence form QRP."
+    },
+    {
+      "id": "ssc-reading-4",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "Choose the contrast connector: The route is longer; ___, it is safer.",
+      "options": [
+        "however",
+        "therefore",
+        "because",
+        "so that"
+      ],
+      "answer": "0",
+      "explanation": "However introduces a contrast between length and safety."
+    },
+    {
+      "id": "ssc-reading-5",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "Choose the cloze completion: She read the instructions ___ beginning.",
+      "options": [
+        "despite of",
+        "unless",
+        "although",
+        "before"
+      ],
+      "answer": "3",
+      "explanation": "Before establishes the intended sequence."
+    },
+    {
+      "id": "ssc-reading-6",
+      "topicId": "ssc-reading",
+      "section": "english",
+      "stem": "An option says all participants agreed, but the passage says some agreed. The option:",
+      "options": [
+        "Is necessarily equivalent",
+        "Adds an unsupported universal claim",
+        "Must be correct",
+        "Is a direct quotation"
+      ],
+      "answer": "1",
+      "explanation": "Some does not establish all."
+    },
+    {
+      "id": "ssc-polity-1",
+      "topicId": "ssc-polity",
+      "section": "ga",
+      "stem": "The Constitution of India generally came into force on:",
+      "options": [
+        "15 August 1947",
+        "26 November 1949",
+        "2 October 1950",
+        "26 January 1950"
+      ],
+      "answer": "3",
+      "explanation": "26 January 1950 is the commencement date; adoption was 26 November 1949."
+    },
+    {
+      "id": "ssc-polity-2",
+      "topicId": "ssc-polity",
+      "section": "ga",
+      "stem": "Which body makes laws at the Union level under the constitutional parliamentary framework?",
+      "options": [
+        "A district hospital",
+        "Election polling staff",
+        "Parliament",
+        "A private association"
+      ],
+      "answer": "2",
+      "explanation": "Parliament is the Union legislature."
+    },
+    {
+      "id": "ssc-polity-3",
+      "topicId": "ssc-polity",
+      "section": "ga",
+      "stem": "Directive Principles are primarily:",
+      "options": [
+        "Ordinary private contracts",
+        "Non-justiciable guidance for state policy",
+        "All directly enforceable like Fundamental Rights",
+        "Instructions issued by a private company"
+      ],
+      "answer": "1",
+      "explanation": "They guide state policy but are not directly enforceable in court as rights."
+    },
+    {
+      "id": "ssc-polity-4",
+      "topicId": "ssc-polity",
+      "section": "ga",
+      "stem": "India’s system of Union government is:",
+      "options": [
+        "An absolute monarchy",
+        "Parliamentary",
+        "A hereditary military council",
+        "A direct election for every executive appointment"
+      ],
+      "answer": "1",
+      "explanation": "The constitutional system is parliamentary."
+    },
+    {
+      "id": "ssc-history-1",
+      "topicId": "ssc-history",
+      "section": "ga",
+      "stem": "The Salt March associated with Gandhi occurred in:",
+      "options": [
+        "1930",
+        "1919",
+        "1905",
+        "1942"
+      ],
+      "answer": "0",
+      "explanation": "The Dandi/Salt March took place in 1930."
+    },
+    {
+      "id": "ssc-history-2",
+      "topicId": "ssc-history",
+      "section": "ga",
+      "stem": "Which came earliest?",
+      "options": [
+        "Revolt of 1857",
+        "Salt March",
+        "Indian independence",
+        "Quit India Movement"
+      ],
+      "answer": "0",
+      "explanation": "1857 precedes 1930,1942 and 1947."
+    },
+    {
+      "id": "ssc-history-3",
+      "topicId": "ssc-history",
+      "section": "ga",
+      "stem": "The Salt March directly challenged the colonial:",
+      "options": [
+        "Postal address format",
+        "Railway timetable alone",
+        "University admission age",
+        "Salt monopoly and tax"
+      ],
+      "answer": "3",
+      "explanation": "Salt manufacture and the salt law were the immediate focus."
+    },
+    {
+      "id": "ssc-history-4",
+      "topicId": "ssc-history",
+      "section": "ga",
+      "stem": "A historian compares two conflicting contemporary accounts primarily to:",
+      "options": [
+        "Assess perspectives and corroborate claims",
+        "Avoid all evidence",
+        "Make both accounts identical",
+        "Prove every later interpretation false"
+      ],
+      "answer": "0",
+      "explanation": "Comparison helps identify perspective, agreement and contradiction."
+    },
+    {
+      "id": "ssc-geography-1",
+      "topicId": "ssc-geography",
+      "section": "ga",
+      "stem": "Latitude 0° denotes the:",
+      "options": [
+        "South Pole",
+        "North Pole",
+        "Equator",
+        "A specific longitude only"
+      ],
+      "answer": "2",
+      "explanation": "The equator is the reference for latitude."
+    },
+    {
+      "id": "ssc-geography-2",
+      "topicId": "ssc-geography",
+      "section": "ga",
+      "stem": "Earth’s day–night cycle primarily results from:",
+      "options": [
+        "Rotation on its axis",
+        "A monthly change of shape",
+        "Ocean currents alone",
+        "Continental drift each day"
+      ],
+      "answer": "0",
+      "explanation": "Rotation changes which side faces the Sun."
+    },
+    {
+      "id": "ssc-geography-3",
+      "topicId": "ssc-geography",
+      "section": "ga",
+      "stem": "The main cause of Earth’s seasons is:",
+      "options": [
+        "The Moon covering the Sun every day",
+        "Axial tilt combined with revolution",
+        "Only Earth–Sun distance",
+        "A reversal of gravity"
+      ],
+      "answer": "1",
+      "explanation": "Tilt changes sunlight angle and day length as Earth orbits."
+    },
+    {
+      "id": "ssc-geography-4",
+      "topicId": "ssc-geography",
+      "section": "ga",
+      "stem": "Longitude expresses angular position primarily:",
+      "options": [
+        "East–west of a reference meridian",
+        "North–south of the equator",
+        "Above sea level",
+        "Below Earth’s surface"
+      ],
+      "answer": "0",
+      "explanation": "Longitude measures east–west angular position."
+    },
+    {
+      "id": "ssc-physics-1",
+      "topicId": "ssc-physics",
+      "section": "ga",
+      "stem": "The SI unit of power is:",
+      "options": [
+        "Watt",
+        "Joule",
+        "Newton",
+        "Pascal"
+      ],
+      "answer": "0",
+      "explanation": "One watt is one joule per second."
+    },
+    {
+      "id": "ssc-physics-2",
+      "topicId": "ssc-physics",
+      "section": "ga",
+      "stem": "A body moves 60 m in 12 s at uniform speed. Find the speed.",
+      "options": [
+        "2 m/s",
+        "72 m/s",
+        "12 m/s",
+        "5 m/s"
+      ],
+      "answer": "3",
+      "explanation": "Speed=60/12=5 m/s."
+    },
+    {
+      "id": "ssc-physics-3",
+      "topicId": "ssc-physics",
+      "section": "ga",
+      "stem": "Which needs a material medium to propagate?",
+      "options": [
+        "X-ray",
+        "Visible light",
+        "Radio wave",
+        "Sound"
+      ],
+      "answer": "3",
+      "explanation": "Sound is a mechanical wave; the other options are electromagnetic waves."
+    },
+    {
+      "id": "ssc-physics-4",
+      "topicId": "ssc-physics",
+      "section": "ga",
+      "stem": "An ideal ohmic resistor of 4Ω has 12 V across it. Find current.",
+      "options": [
+        "2 A",
+        "4 A",
+        "3 A",
+        "48 A"
+      ],
+      "answer": "2",
+      "explanation": "I=V/R=12/4=3 A."
+    },
+    {
+      "id": "ssc-chemistry-1",
+      "topicId": "ssc-chemistry",
+      "section": "ga",
+      "stem": "Atomic number equals the number of:",
+      "options": [
+        "Protons",
+        "Neutrons",
+        "Protons plus neutrons",
+        "Molecules"
+      ],
+      "answer": "0",
+      "explanation": "The atomic number identifies the element by its proton count."
+    },
+    {
+      "id": "ssc-chemistry-2",
+      "topicId": "ssc-chemistry",
+      "section": "ga",
+      "stem": "Isotopes of the same element have different numbers of:",
+      "options": [
+        "Protons",
+        "Element names",
+        "Neutrons",
+        "Atomic numbers"
+      ],
+      "answer": "2",
+      "explanation": "They share proton count but differ in neutron count."
+    },
+    {
+      "id": "ssc-chemistry-3",
+      "topicId": "ssc-chemistry",
+      "section": "ga",
+      "stem": "In the usual dilute aqueous model at 25°C, pH 3 indicates a solution is:",
+      "options": [
+        "Basic",
+        "Neutral",
+        "Acidic",
+        "Necessarily pure water"
+      ],
+      "answer": "2",
+      "explanation": "pH 3 is below the neutral value 7 under the stated conditions."
+    },
+    {
+      "id": "ssc-chemistry-4",
+      "topicId": "ssc-chemistry",
+      "section": "ga",
+      "stem": "Melting pure ice without decomposition is a:",
+      "options": [
+        "Physical state change",
+        "Chemical change to a new element",
+        "Nuclear reaction",
+        "Combustion reaction"
+      ],
+      "answer": "0",
+      "explanation": "Solid water becomes liquid water without changing chemical identity."
+    },
+    {
+      "id": "ssc-biology-1",
+      "topicId": "ssc-biology",
+      "section": "ga",
+      "stem": "A membrane-bound nucleus is characteristic of:",
+      "options": [
+        "Eukaryotic cells",
+        "All viruses",
+        "Every prokaryotic cell",
+        "Only non-living crystals"
+      ],
+      "answer": "0",
+      "explanation": "Eukaryotes have a membrane-bound nucleus; prokaryotes do not."
+    },
+    {
+      "id": "ssc-biology-2",
+      "topicId": "ssc-biology",
+      "section": "ga",
+      "stem": "Photosynthesis primarily converts light energy into:",
+      "options": [
+        "Only nuclear energy",
+        "Only sound",
+        "Chemical energy",
+        "No stored energy"
+      ],
+      "answer": "2",
+      "explanation": "Photosynthetic processes store energy in chemical forms."
+    },
+    {
+      "id": "ssc-biology-3",
+      "topicId": "ssc-biology",
+      "section": "ga",
+      "stem": "Which statement is correct?",
+      "options": [
+        "Plants can both photosynthesise and respire",
+        "Plants never respire",
+        "All viruses are cells",
+        "All bacteria have a membrane-bound nucleus"
+      ],
+      "answer": "0",
+      "explanation": "Plants perform respiration as well as photosynthesis."
+    },
+    {
+      "id": "ssc-biology-4",
+      "topicId": "ssc-biology",
+      "section": "ga",
+      "stem": "In a simple food chain grass→deer→tiger, grass is a:",
+      "options": [
+        "Primary consumer",
+        "Producer",
+        "Secondary consumer",
+        "Tertiary consumer"
+      ],
+      "answer": "1",
+      "explanation": "Grass produces organic material using photosynthesis."
+    },
+    {
+      "id": "ssc-economy-1",
+      "topicId": "ssc-economy",
+      "section": "ga",
+      "stem": "Government tax and spending decisions are primarily instruments of:",
+      "options": [
+        "Only monetary transmission",
+        "Only optical physics",
+        "Fiscal policy",
+        "Only census cartography"
+      ],
+      "answer": "2",
+      "explanation": "Fiscal policy concerns taxation and government expenditure."
+    },
+    {
+      "id": "ssc-economy-2",
+      "topicId": "ssc-economy",
+      "section": "ga",
+      "stem": "GDP over a year is a:",
+      "options": [
+        "Temperature reading",
+        "Stock at an instant only",
+        "Flow over a period",
+        "Count of currency notes only"
+      ],
+      "answer": "2",
+      "explanation": "GDP measures production over a specified period."
+    },
+    {
+      "id": "ssc-economy-3",
+      "topicId": "ssc-economy",
+      "section": "ga",
+      "stem": "An index rises from 150 to 165. Its percentage increase is:",
+      "options": [
+        "10%",
+        "5%",
+        "15%",
+        "165%"
+      ],
+      "answer": "0",
+      "explanation": "15/150×100=10%."
+    },
+    {
+      "id": "ssc-economy-4",
+      "topicId": "ssc-economy",
+      "section": "ga",
+      "stem": "A defensible claim that a topic was frequent in the last 5 years requires:",
+      "options": [
+        "A defined paper dataset and transparent counting method",
+        "A guess based on one memory",
+        "An undated social-media list only",
+        "Repeating the same question"
+      ],
+      "answer": "0",
+      "explanation": "A defined dataset, coverage and counting method make the frequency claim auditable."
+    },
+    {
+      "id": "ssc-computer-hardware-1",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "Which is normally volatile?",
+      "options": [
+        "Printed page",
+        "SSD",
+        "RAM",
+        "Optical disc"
+      ],
+      "answer": "2",
+      "explanation": "RAM normally requires power to retain its contents."
+    },
+    {
+      "id": "ssc-computer-hardware-2",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "How many bits are in 3 bytes?",
+      "options": [
+        "3",
+        "8",
+        "1024",
+        "24"
+      ],
+      "answer": "3",
+      "explanation": "Each byte has 8 bits, so 3×8=24."
+    },
+    {
+      "id": "ssc-computer-hardware-3",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "A touchscreen can function as:",
+      "options": [
+        "Both input and output",
+        "Output only",
+        "Input only",
+        "Neither"
+      ],
+      "answer": "0",
+      "explanation": "It displays output and accepts touch input."
+    },
+    {
+      "id": "ssc-computer-hardware-4",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "Which software manages memory and processes?",
+      "options": [
+        "Only a slide template",
+        "Operating system",
+        "Only a cable",
+        "Only a font"
+      ],
+      "answer": "1",
+      "explanation": "Resource management is an operating-system function."
+    },
+    {
+      "id": "ssc-computer-hardware-5",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "Renaming report.txt to report.pdf necessarily converts it into a valid PDF:",
+      "options": [
+        "False",
+        "True",
+        "Only if uppercase",
+        "Only if the name is short"
+      ],
+      "answer": "0",
+      "explanation": "Changing an extension does not transform the file format."
+    },
+    {
+      "id": "ssc-computer-hardware-6",
+      "topicId": "ssc-computer-hardware",
+      "section": "computer",
+      "stem": "8192 bytes equals how many KiB?",
+      "options": [
+        "64",
+        "8.192",
+        "8",
+        "8192"
+      ],
+      "answer": "2",
+      "explanation": "8192/1024=8 KiB."
+    },
+    {
+      "id": "ssc-office-1",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "In common Windows desktop applications Ctrl+Z usually means:",
+      "options": [
+        "Undo",
+        "Print",
+        "Copy",
+        "Open"
+      ],
+      "answer": "0",
+      "explanation": "Ctrl+Z commonly undoes the previous action."
+    },
+    {
+      "id": "ssc-office-2",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "Which operation generally creates a differently named copy?",
+      "options": [
+        "Zoom",
+        "Undo",
+        "Select All",
+        "Save As"
+      ],
+      "answer": "3",
+      "explanation": "Save As permits a new name or location."
+    },
+    {
+      "id": "ssc-office-3",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "An effect between presentation slides is a:",
+      "options": [
+        "Transition",
+        "Cell formula",
+        "RAM chip",
+        "Mail attachment"
+      ],
+      "answer": "0",
+      "explanation": "A transition applies at the change between slides."
+    },
+    {
+      "id": "ssc-office-4",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "For consistent structured document headings, prefer:",
+      "options": [
+        "Spaces before every word",
+        "Random font sizes",
+        "Heading styles",
+        "Renaming the file"
+      ],
+      "answer": "2",
+      "explanation": "Styles preserve consistent formatting and heading structure."
+    },
+    {
+      "id": "ssc-office-5",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "Ctrl+X followed by Ctrl+V commonly performs:",
+      "options": [
+        "A permanent format conversion",
+        "A move via cut and paste",
+        "An antivirus scan",
+        "A slide show"
+      ],
+      "answer": "1",
+      "explanation": "Cut and paste moves selected content in typical editing contexts."
+    },
+    {
+      "id": "ssc-office-6",
+      "topicId": "ssc-office",
+      "section": "computer",
+      "stem": "Portrait and landscape describe:",
+      "options": [
+        "Processor instructions",
+        "Password strength",
+        "Page orientation",
+        "Email delivery"
+      ],
+      "answer": "2",
+      "explanation": "These are page-layout orientations."
+    },
+    {
+      "id": "ssc-spreadsheets-1",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "Which normally begins an Excel formula?",
+      "options": [
+        "#",
+        "=",
+        "@ only",
+        "A space only"
+      ],
+      "answer": "1",
+      "explanation": "Excel formulas start with an equals sign."
+    },
+    {
+      "id": "ssc-spreadsheets-2",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "Copy =$A2+B$1 from C2 to C3. The result is:",
+      "options": [
+        "=$B3+C$1",
+        "=$A2+B$2",
+        "=$A3+B$1",
+        "=$A2+B$1"
+      ],
+      "answer": "2",
+      "explanation": "The relative row in $A2 changes; row 1 in B$1 stays fixed."
+    },
+    {
+      "id": "ssc-spreadsheets-3",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "SUM(A1:A3), when the cells contain 2,4,6, equals:",
+      "options": [
+        "4",
+        "6",
+        "12",
+        "24"
+      ],
+      "answer": "2",
+      "explanation": "SUM adds 2+4+6=12."
+    },
+    {
+      "id": "ssc-spreadsheets-4",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "AVERAGE of 3,6,9 is:",
+      "options": [
+        "3",
+        "9",
+        "6",
+        "18"
+      ],
+      "answer": "2",
+      "explanation": "The sum 18 divided by three values is 6."
+    },
+    {
+      "id": "ssc-spreadsheets-5",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "A stored value 0.4 displayed as a percentage is:",
+      "options": [
+        "0.4%",
+        "4%",
+        "40%",
+        "400%"
+      ],
+      "answer": "2",
+      "explanation": "Percentage display multiplies the displayed number by 100."
+    },
+    {
+      "id": "ssc-spreadsheets-6",
+      "topicId": "ssc-spreadsheets",
+      "section": "computer",
+      "stem": "Which reference fixes both row and column?",
+      "options": [
+        "$A$1",
+        "$A1",
+        "A$1",
+        "A1"
+      ],
+      "answer": "0",
+      "explanation": "Dollar signs before both coordinates make an absolute reference."
+    },
+    {
+      "id": "ssc-internet-security-1",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "BCC is used to:",
+      "options": [
+        "Increase RAM",
+        "Encrypt every attachment automatically",
+        "Delete all mail",
+        "Hide that recipient list from other recipients"
+      ],
+      "answer": "3",
+      "explanation": "BCC addresses are not exposed to other recipients in the normal recipient display."
+    },
+    {
+      "id": "ssc-internet-security-2",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "Sending a local file to a remote service is:",
+      "options": [
+        "Defragmenting",
+        "Downloading",
+        "Uploading",
+        "Printing"
+      ],
+      "answer": "2",
+      "explanation": "Upload sends data from the local device to a remote service."
+    },
+    {
+      "id": "ssc-internet-security-3",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "Which is a browser?",
+      "options": [
+        "A processor register",
+        "Only a search index",
+        "A program that displays web resources",
+        "A power supply"
+      ],
+      "answer": "2",
+      "explanation": "A browser requests and renders web resources."
+    },
+    {
+      "id": "ssc-internet-security-4",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "HTTPS alone proves a site operator is honest:",
+      "options": [
+        "True",
+        "Only at night",
+        "Only on a phone",
+        "False"
+      ],
+      "answer": "3",
+      "explanation": "HTTPS secures transport, not the trustworthiness of the operator."
+    },
+    {
+      "id": "ssc-internet-security-5",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "An unsolicited caller requests an OTP. You should:",
+      "options": [
+        "Share it quickly",
+        "Post it publicly",
+        "Verify through an independent official channel without sharing it",
+        "Disable all updates"
+      ],
+      "answer": "2",
+      "explanation": "Do not disclose OTPs to unsolicited callers."
+    },
+    {
+      "id": "ssc-internet-security-6",
+      "topicId": "ssc-internet-security",
+      "section": "computer",
+      "stem": "A malicious program disguised as a useful application is commonly called a:",
+      "options": [
+        "Compiler flag",
+        "Spreadsheet range",
+        "Trojan",
+        "Printer queue"
+      ],
+      "answer": "2",
+      "explanation": "A Trojan misrepresents itself as legitimate software."
+    },
+    {
+      "id": "ssc-statistics-data-1",
+      "topicId": "ssc-statistics-data",
+      "section": "statistics",
+      "stem": "The median of 2,9,4,7 is:",
+      "options": [
+        "4",
+        "7",
+        "5.5",
+        "9"
+      ],
+      "answer": "2",
+      "explanation": "Order 2,4,7,9; median=(4+7)/2=5.5."
+    },
+    {
+      "id": "ssc-statistics-data-2",
+      "topicId": "ssc-statistics-data",
+      "section": "statistics",
+      "stem": "Population variance of {1,3} is:",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "0"
+      ],
+      "answer": "0",
+      "explanation": "Mean 2, squared deviations 1 and 1; divide by 2."
+    },
+    {
+      "id": "ssc-statistics-data-3",
+      "topicId": "ssc-statistics-data",
+      "section": "statistics",
+      "stem": "The range of {3,3,8,12} is:",
+      "options": [
+        "3",
+        "8",
+        "12",
+        "9"
+      ],
+      "answer": "3",
+      "explanation": "12−3=9."
+    },
+    {
+      "id": "ssc-statistics-data-4",
+      "topicId": "ssc-statistics-data",
+      "section": "statistics",
+      "stem": "The first central moment is:",
+      "options": [
+        "Always 1",
+        "Zero",
+        "Always the mean",
+        "Always the variance"
+      ],
+      "answer": "1",
+      "explanation": "The mean of deviations from the mean is zero."
+    },
+    {
+      "id": "ssc-statistics-probability-1",
+      "topicId": "ssc-statistics-probability",
+      "section": "statistics",
+      "stem": "For Binomial(n=10,p=0.2), the variance is:",
+      "options": [
+        "1.6",
+        "2",
+        "0.2",
+        "10"
+      ],
+      "answer": "0",
+      "explanation": "np(1−p)=10×0.2×0.8=1.6."
+    },
+    {
+      "id": "ssc-statistics-probability-2",
+      "topicId": "ssc-statistics-probability",
+      "section": "statistics",
+      "stem": "If P(A∩B)=0.12 and P(B)=0.3, then P(A|B)=",
+      "options": [
+        "0.036",
+        "2.5",
+        "0.18",
+        "0.4"
+      ],
+      "answer": "3",
+      "explanation": "0.12/0.3=0.4."
+    },
+    {
+      "id": "ssc-statistics-probability-3",
+      "topicId": "ssc-statistics-probability",
+      "section": "statistics",
+      "stem": "A Poisson variable with parameter 4 has variance:",
+      "options": [
+        "4",
+        "2",
+        "8",
+        "16"
+      ],
+      "answer": "0",
+      "explanation": "Poisson mean and variance both equal its parameter."
+    },
+    {
+      "id": "ssc-statistics-probability-4",
+      "topicId": "ssc-statistics-probability",
+      "section": "statistics",
+      "stem": "An exponential waiting time has rate 0.5 per minute. Its mean is:",
+      "options": [
+        "0.5 minute",
+        "2 minutes",
+        "1 minute",
+        "4 minutes"
+      ],
+      "answer": "1",
+      "explanation": "Mean=1/rate=2 minutes."
+    },
+    {
+      "id": "ssc-statistics-inference-1",
+      "topicId": "ssc-statistics-inference",
+      "section": "statistics",
+      "stem": "Rejecting a true null hypothesis is a:",
+      "options": [
+        "Guaranteed correct decision",
+        "Type II error",
+        "Type I error",
+        "Sampling frame"
+      ],
+      "answer": "2",
+      "explanation": "Type I error is false rejection of the null."
+    },
+    {
+      "id": "ssc-statistics-inference-2",
+      "topicId": "ssc-statistics-inference",
+      "section": "statistics",
+      "stem": "With n=25 and sample standard deviation 10, estimated standard error of the mean is:",
+      "options": [
+        "0.4",
+        "2",
+        "5",
+        "10"
+      ],
+      "answer": "1",
+      "explanation": "s/√n=10/5=2."
+    },
+    {
+      "id": "ssc-statistics-inference-3",
+      "topicId": "ssc-statistics-inference",
+      "section": "statistics",
+      "stem": "Which design deliberately samples within each defined stratum?",
+      "options": [
+        "Only a census",
+        "Convenience sampling",
+        "Stratified sampling",
+        "Judgment sampling"
+      ],
+      "answer": "2",
+      "explanation": "Stratification divides the frame into strata and samples within them."
+    },
+    {
+      "id": "ssc-statistics-inference-4",
+      "topicId": "ssc-statistics-inference",
+      "section": "statistics",
+      "stem": "In a one-way ANOVA with 4 groups and 20 total observations, within-group degrees of freedom are:",
+      "options": [
+        "16",
+        "4",
+        "3",
+        "19"
+      ],
+      "answer": "0",
+      "explanation": "Residual degrees of freedom=N−k=20−4=16."
+    },
+    {
+      "id": "ssc-statistics-association-1",
+      "topicId": "ssc-statistics-association",
+      "section": "statistics",
+      "stem": "With r=−0.5, sy=6 and sx=3, the Y-on-X slope is:",
+      "options": [
+        "−1",
+        "−0.25",
+        "1",
+        "−3"
+      ],
+      "answer": "0",
+      "explanation": "b=r sy/sx=−0.5×6/3=−1."
+    },
+    {
+      "id": "ssc-statistics-association-2",
+      "topicId": "ssc-statistics-association",
+      "section": "statistics",
+      "stem": "A price moves from 80 to 100. Its price relative is:",
+      "options": [
+        "20",
+        "125",
+        "100",
+        "80"
+      ],
+      "answer": "1",
+      "explanation": "100/80×100=125."
+    },
+    {
+      "id": "ssc-statistics-association-3",
+      "topicId": "ssc-statistics-association",
+      "section": "statistics",
+      "stem": "Laspeyres price indices use:",
+      "options": [
+        "No quantities or weights ever",
+        "Only current quantities",
+        "Base-period quantities",
+        "Future prices only"
+      ],
+      "answer": "2",
+      "explanation": "Laspeyres holds the quantity weights at the base period."
+    },
+    {
+      "id": "ssc-statistics-association-4",
+      "topicId": "ssc-statistics-association",
+      "section": "statistics",
+      "stem": "A recurring quarterly pattern is usually called:",
+      "options": [
+        "An accounting asset",
+        "A randomised experiment",
+        "Only a sampling frame",
+        "Seasonality"
+      ],
+      "answer": "3",
+      "explanation": "Seasonality repeats at a regular within-year period."
+    },
+    {
+      "id": "ssc-accounts-foundations-1",
+      "topicId": "ssc-accounts-foundations",
+      "section": "finance",
+      "stem": "Buying equipment for cash normally:",
+      "options": [
+        "Increases equipment and decreases cash",
+        "Creates revenue",
+        "Always increases total assets",
+        "Always reduces liabilities"
+      ],
+      "answer": "0",
+      "explanation": "It exchanges one asset for another at the purchase amount."
+    },
+    {
+      "id": "ssc-accounts-foundations-2",
+      "topicId": "ssc-accounts-foundations",
+      "section": "finance",
+      "stem": "A trial balance can still agree after:",
+      "options": [
+        "Every possible error is impossible",
+        "An unequal one-sided posting",
+        "Complete omission of a transaction",
+        "Only a printer fault"
+      ],
+      "answer": "2",
+      "explanation": "Omitting both sides preserves agreement."
+    },
+    {
+      "id": "ssc-accounts-foundations-3",
+      "topicId": "ssc-accounts-foundations",
+      "section": "finance",
+      "stem": "Recording earned revenue before cash collection follows:",
+      "options": [
+        "No accounting principle",
+        "Only cash accounting",
+        "Accrual accounting",
+        "Stock counting only"
+      ],
+      "answer": "2",
+      "explanation": "Accrual recognises revenue when earned under the applicable criteria."
+    },
+    {
+      "id": "ssc-accounts-foundations-4",
+      "topicId": "ssc-accounts-foundations",
+      "section": "finance",
+      "stem": "A bank charge not entered in the cash book generally requires:",
+      "options": [
+        "Deleting the bank statement",
+        "Ignoring it forever",
+        "Increasing sales",
+        "A cash-book adjustment"
+      ],
+      "answer": "3",
+      "explanation": "The business must record the bank charge in its books."
+    },
+    {
+      "id": "ssc-accounts-statements-1",
+      "topicId": "ssc-accounts-statements",
+      "section": "finance",
+      "stem": "Opening inventory 100, purchases 600 and closing inventory 150 give simple cost of goods sold:",
+      "options": [
+        "550",
+        "450",
+        "650",
+        "850"
+      ],
+      "answer": "0",
+      "explanation": "100+600−150=550."
+    },
+    {
+      "id": "ssc-accounts-statements-2",
+      "topicId": "ssc-accounts-statements",
+      "section": "finance",
+      "stem": "Cost 12,000, residual 2,000 and life 5 years give straight-line annual depreciation:",
+      "options": [
+        "2,400",
+        "2,000",
+        "2,800",
+        "10,000"
+      ],
+      "answer": "1",
+      "explanation": "(12,000−2,000)/5=2,000."
+    },
+    {
+      "id": "ssc-accounts-statements-3",
+      "topicId": "ssc-accounts-statements",
+      "section": "finance",
+      "stem": "A balance sheet primarily reports:",
+      "options": [
+        "Only sales quantities",
+        "Only cash receipts over a year",
+        "Financial position at a date",
+        "Only future market prices"
+      ],
+      "answer": "2",
+      "explanation": "It reports assets, liabilities and equity at a stated date."
+    },
+    {
+      "id": "ssc-accounts-statements-4",
+      "topicId": "ssc-accounts-statements",
+      "section": "finance",
+      "stem": "An NPO receipts-and-payments account is primarily based on:",
+      "options": [
+        "Only depreciation",
+        "Only accrued income",
+        "Only unpaid expenses",
+        "Cash receipts and cash payments"
+      ],
+      "answer": "3",
+      "explanation": "It summarises cash movements, unlike an accrual income-and-expenditure account."
+    },
+    {
+      "id": "ssc-microeconomics-1",
+      "topicId": "ssc-microeconomics",
+      "section": "finance",
+      "stem": "A consumer-income change can cause:",
+      "options": [
+        "A demand-curve shift",
+        "Only movement caused by own price",
+        "No possible change in demand",
+        "A mechanical change in every production function"
+      ],
+      "answer": "0",
+      "explanation": "Income is a demand determinant held fixed along an own-price demand curve."
+    },
+    {
+      "id": "ssc-microeconomics-2",
+      "topicId": "ssc-microeconomics",
+      "section": "finance",
+      "stem": "Total cost 240 at output 12 gives average cost:",
+      "options": [
+        "12",
+        "228",
+        "20",
+        "2880"
+      ],
+      "answer": "2",
+      "explanation": "Average cost=240/12=20."
+    },
+    {
+      "id": "ssc-microeconomics-3",
+      "topicId": "ssc-microeconomics",
+      "section": "finance",
+      "stem": "Returns to scale concern changes in:",
+      "options": [
+        "Only one input with all others fixed",
+        "All inputs together",
+        "Only the tax year",
+        "Only consumer income"
+      ],
+      "answer": "1",
+      "explanation": "Returns to scale is a long-run all-input scaling concept."
+    },
+    {
+      "id": "ssc-microeconomics-4",
+      "topicId": "ssc-microeconomics",
+      "section": "finance",
+      "stem": "For an ideal price-taking firm, marginal revenue equals:",
+      "options": [
+        "Consumer income",
+        "Always zero",
+        "Total fixed cost",
+        "Market price"
+      ],
+      "answer": "3",
+      "explanation": "An extra unit sells at the given market price in the price-taking model."
+    },
+    {
+      "id": "ssc-macro-governance-1",
+      "topicId": "ssc-macro-governance",
+      "section": "finance",
+      "stem": "Output 500 minus intermediate consumption 320 gives value added:",
+      "options": [
+        "820",
+        "320",
+        "500",
+        "180"
+      ],
+      "answer": "3",
+      "explanation": "500−320=180."
+    },
+    {
+      "id": "ssc-macro-governance-2",
+      "topicId": "ssc-macro-governance",
+      "section": "finance",
+      "stem": "Public debt is normally a stock, while a one-year fiscal deficit is a:",
+      "options": [
+        "Flow over that year",
+        "Stock only at one instant",
+        "Physical length",
+        "Price index only"
+      ],
+      "answer": "0",
+      "explanation": "A deficit is measured over a period; debt is measured at a point in time."
+    },
+    {
+      "id": "ssc-macro-governance-3",
+      "topicId": "ssc-macro-governance",
+      "section": "finance",
+      "stem": "The constitutional article providing for the Finance Commission is:",
+      "options": [
+        "Article 21",
+        "Article 110",
+        "Article 368",
+        "Article 280"
+      ],
+      "answer": "3",
+      "explanation": "Article 280 provides for the Finance Commission."
+    },
+    {
+      "id": "ssc-macro-governance-4",
+      "topicId": "ssc-macro-governance",
+      "section": "finance",
+      "stem": "The CAG is primarily associated with:",
+      "options": [
+        "Running private stock exchanges",
+        "Setting every retail price",
+        "Conducting all bank lending",
+        "Auditing public accounts within its remit"
+      ],
+      "answer": "3",
+      "explanation": "Its constitutional role concerns public audit."
+    }
+  ]
+}

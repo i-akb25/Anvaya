@@ -1,3 +1,4 @@
+import { sscUnits } from "./ssc.ts";
 import { releaseUnits } from "./release-content.ts";
 import catalog from "./lecture-catalog.json" with { type: "json" };
 import { syllabusUnits, type SyllabusUnit } from "./syllabus.ts";
@@ -26,7 +27,7 @@ export type LectureTopic = {
 export const lectureResources = catalog.resources as LectureResource[];
 export const lectureTopics: LectureTopic[] = [
   ...(catalog.topics as LectureTopic[]),
-  ...releaseUnits.map((u) => ({
+  ...[...releaseUnits, ...sscUnits].map((u) => ({
     id: u.slug,
     title: u.title,
     subject: u.subject,

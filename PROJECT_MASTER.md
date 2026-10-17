@@ -131,3 +131,10 @@ The personal question desk supports authored/imported MCQ, exact-set MSQ and num
 22 source-linked foundation lessons and81 distinct original questions are now connected to study/recall, preserving immutable earlier question banks. New routes: `/mocks` (custom sectional practice), `/library` (persistent private PDFs), `/current-affairs` (dated selections, publisher RSS metadata and private review journal), `/content-review` (local pack preflight), `/coverage` (ten-track inventory) and `/tutor` (optional, owner-authenticated Gemini integration with SQL-backed quotas). Supabase and AI remain OFF by default.
 
 This is not complete ten-exam content: full syllabus transcription, independent editorial review, authentic permitted PYQs and official full mocks remain gated. Live provider setup and physical-device/accessibility verification remain pending. See [learning release details](docs/LEARNING_RELEASE.md).
+
+
+## SSC CGL study release · 17 October 2026
+
+`/ssc-cgl` now connects 44 new condensed lessons and 200 original MCQs to notes, recall, search and topic drills. Tier-I (100 questions) and Tier-II common objective (150 questions) original rehearsals use distinct 2026 timing/marking profiles, preserve frozen recovery and show the merit/qualifying split. `/ssc-cgl/dest` provides a separately timed persistent typing session and bounded reports. The active platform bank now has 66 lessons / 281 questions, preserving earlier bank versions.
+
+This is not complete SSC editorial coverage: advanced depth, permitted authentic PYQs/final keys, curated SSC videos and independent review remain pending. Statistics/Finance each have 16 questions; their full 100-question papers remain unavailable. Accounts and tutor remain OFF. See [SSC release and remaining gates](docs/SSC_CGL.md).

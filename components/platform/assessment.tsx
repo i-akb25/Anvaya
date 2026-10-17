@@ -235,9 +235,10 @@ export function AssessmentDesk() {
           {active ? "Stay with the problem." : "Practice with a clear purpose."}
         </h1>
         <p>
-          Custom foundation practice using original, AI-authored questions with
-          calculation/source checks. Not a PYQ bank, official mock or
-          difficulty-calibrated exam paper. Independent human review is pending.
+          Original AI-authored practice. Check labels appear in each answer
+          review; SSC essentials have author checks only. Not a PYQ bank,
+          official mock or difficulty-calibrated exam paper. Independent human
+          review is pending.
         </p>
         <Link href="/syllabus">View official-pattern readiness →</Link>
       </div>

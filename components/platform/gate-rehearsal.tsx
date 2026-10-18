@@ -59,16 +59,16 @@ export function GateRehearsal({
     <div className="panel">
       <h3>GATE · full-count original rehearsal</h3>
       <p>
-        65 unique questions ·100 marks ·one whole-paper timer. GA15, engineering
-        mathematics13 and technical72 marks. MCQs lose one-third of their
-        assigned mark for a wrong answer. Wrong MSQ/NAT and blanks score0; MSQ
-        requires the exact set, with no partial credit.
+        65 unique questions · 100 marks · one whole-paper timer. GA 15,
+        engineering mathematics 13 and technical 72 marks. MCQs lose one-third
+        of their assigned mark for a wrong answer. Wrong MSQ/NAT and blanks
+        score 0; MSQ requires the exact set, with no partial credit.
       </p>
       <p className="small-copy">
         Original foundation questions, not PYQs. Difficulty and full subject
-        breadth are not calibrated. The nine maths /46 technical question
-        allocation and1/2-mark assignments are this rehearsal’s choices; only
-        the marks split,65-question total and marking rules follow the source
+        breadth are not calibrated. The nine maths / 46 technical question
+        allocation and 1/2-mark assignments are this rehearsal’s choices; only
+        the marks split, 65-question total and marking rules follow the source
         pattern.
       </p>
       <label>
@@ -77,9 +77,9 @@ export function GateRehearsal({
           value={profile}
           onChange={(e) => setProfile(e.target.value as GateProfile)}
         >
-          <option value="standard">Standard ·180 minutes</option>
+          <option value="standard">Standard · 180 minutes</option>
           <option value="compensatory">
-            Compensatory practice ·240 minutes
+            Compensatory practice · 240 minutes
           </option>
         </select>
       </label>

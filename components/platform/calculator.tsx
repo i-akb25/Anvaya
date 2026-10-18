@@ -42,7 +42,7 @@ export function ScientificCalculator() {
       <p className="small-copy">
         Local practice calculator, not a replica of the official GATE
         calculator. Use explicit multiplication. Trig inputs follow the selected
-        angle mode; log is base10 and ln is natural log.
+        angle mode; log is base 10 and ln is natural log.
       </p>
       <label>
         Angle mode

@@ -73,3 +73,7 @@ Validation adds eight regression tests for journal bounds and backward compatibi
 ### Bounded navigation and all-exam extension
 
 The later all-exam release replaces the combined SSC page with Overview/Lessons/Practice/Sources/Latest result sections and six lessons per page. Its study desk now separates plan/progress/notebook and shows one notebook question at a time, replacing the earlier ten-per-page layout. Existing SSC notes/settings stay unchanged. New custom drills use bank v6; full SSC templates remain pinned to v5/template v2. See [all-exam release](ALL_EXAM_LEARNING.md).
+
+### Shared foundation question notes
+
+SSC study evidence and the question notebook now include shared foundation lessons as well as the dedicated SSC collection. This fixes result links for shared questions that previously opened an empty notebook. The current study scope contains 97 lessons / 635 questions; the classroom's dedicated collection remains 79 / 562. Notes retain their existing `sscStudy` storage field, original marks are unchanged and full-paper templates stay pinned to v5. A regression test covers shared-question notes, evidence totals, exact retries and doubt exclusion.

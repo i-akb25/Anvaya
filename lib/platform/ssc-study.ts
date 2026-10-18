@@ -1,13 +1,39 @@
-import {
-  sscChapters,
-  sscQuestions,
-  sscSections,
-  type SSCSection,
-} from "./ssc.ts";
+import { studyUnits } from "./content.ts";
+import { practiceQuestions } from "./questions.ts";
+import { sscChapters, sscSections, type SSCSection } from "./ssc.ts";
 import { createPractice, evaluate, type PracticeAttempt } from "./engine.ts";
 import { recallQueue, localDay } from "./recall.ts";
 import type { LearningVault } from "./vault.ts";
-const sscQuestionIds = new Set(sscQuestions.map((q) => q.id));
+const sscLessonSlugs = new Set(
+  studyUnits.filter((u) => u.exams.includes("ssc")).map((u) => u.slug),
+);
+const sscStudyQuestions = practiceQuestions.filter((q) =>
+  sscLessonSlugs.has(q.topicId),
+);
+const sscQuestionIds = new Set(sscStudyQuestions.map((q) => q.id));
+const dedicatedSlugs = new Set(sscChapters.map((c) => c.slug));
+const sscStudyChapters = [
+  ...sscChapters.map((c) => ({
+    slug: c.slug,
+    title: c.title,
+    section: c.section as SSCSection,
+  })),
+  ...studyUnits
+    .filter((u) => u.exams.includes("ssc") && !dedicatedSlugs.has(u.slug))
+    .map((u) => ({
+      slug: u.slug,
+      title: u.title,
+      section: (/English/.test(u.subject)
+        ? "english"
+        : /Reasoning/.test(u.subject)
+          ? "reason"
+          : /Quantitative|Mathematics|Statistics|Data Interpretation/.test(
+                u.subject,
+              )
+            ? "quant"
+            : "ga") as SSCSection,
+    })),
+];
 export const mistakeReasons = [
   "concept",
   "calculation",
@@ -45,7 +71,7 @@ export function validSSCStudy(value: unknown): value is SSCStudy {
     !!s.journal &&
     typeof s.journal === "object" &&
     !Array.isArray(s.journal) &&
-    Object.keys(s.journal).length <= sscQuestions.length &&
+    Object.keys(s.journal).length <= sscStudyQuestions.length &&
     Object.entries(s.journal).every(
       ([id, e]) =>
         sscQuestionIds.has(id) &&
@@ -87,7 +113,7 @@ export function latestSSCResponses(v: LearningVault) {
 export function sscMistakes(v: LearningVault) {
   const journal = v.sscStudy?.journal ?? {},
     latest = latestSSCResponses(v);
-  return sscQuestions.flatMap((question) => {
+  return sscStudyQuestions.flatMap((question) => {
     const response = latest.get(question.id),
       entry = journal[question.id];
     if (!response && !entry) return [];
@@ -105,7 +131,7 @@ export function sscMistakes(v: LearningVault) {
 }
 export function sscDailyPlan(v: LearningVault, today = localDay()) {
   const settings = v.sscStudy ?? defaultSSCStudy();
-  const chapters = sscChapters.filter((c) =>
+  const chapters = sscStudyChapters.filter((c) =>
     settings.section === "common"
       ? !["statistics", "finance"].includes(c.section)
       : c.section === settings.section,
@@ -165,7 +191,7 @@ export function sscDailyPlan(v: LearningVault, today = localDay()) {
 export function sscSubjectProgress(v: LearningVault) {
   const latest = [...latestSSCResponses(v).values()];
   return Object.entries(sscSections).map(([section, title]) => {
-    const chapters = sscChapters.filter((c) => c.section === section),
+    const chapters = sscStudyChapters.filter((c) => c.section === section),
       slugs = new Set(chapters.map((c) => c.slug));
     const responses = latest.filter((r) => slugs.has(r.topicId));
     return {
@@ -174,7 +200,7 @@ export function sscSubjectProgress(v: LearningVault) {
       lessons: chapters.length,
       completed: chapters.filter((c) => v.completed.includes(`ssc:${c.slug}`))
         .length,
-      questions: sscQuestions.filter((q) => slugs.has(q.topicId)).length,
+      questions: sscStudyQuestions.filter((q) => slugs.has(q.topicId)).length,
       observed: responses.length,
       correct: responses.filter((r) => r.status === "correct").length,
       incorrect: responses.filter((r) => r.status === "incorrect").length,
@@ -202,7 +228,7 @@ export function createSSCRetry(
     throw Error("Select 1–20 unresolved questions without a key doubt.");
   return createPractice({
     examId: "ssc",
-    topicIds: sscChapters.map((c) => c.slug),
+    topicIds: sscStudyChapters.map((c) => c.slug),
     questionIds: ids,
     count: ids.length,
     seconds: Math.max(60, ids.length * 60),

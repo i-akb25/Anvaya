@@ -245,3 +245,45 @@ test("equal timestamp SSC responses prefer the newest saved history entry", () =
   ];
   assert.equal(latestSSCResponses(v).get(id).status, "correct");
 });
+
+test("SSC shared-foundation result questions support private notes, evidence and exact retries", () => {
+  const a = submit(
+      createPractice({
+        examId: "ssc",
+        topicIds: ["conditional-counting"],
+        count: 2,
+        seconds: 120,
+        correct: 2,
+        penalty: 0.5,
+        seen: [],
+        allowRepeats: true,
+        writerId: "origin",
+        now: 1000,
+      }),
+      1100,
+    ),
+    v = emptyVault();
+  v.attempts = [a];
+  const id = a.items[0].question.id;
+  v.sscStudy = { ...defaultSSCStudy(), journal: { [id]: entry() } };
+  assert.equal(validVault(v), true);
+  assert.equal(validSSCStudy(v.sscStudy), true);
+  assert.ok(sscMistakes(v).some((r) => r.question.id === id && r.open));
+  const retry = createSSCRetry(v, [id], "retry", 2000);
+  assert.equal(validAttempt(retry), true);
+  assert.equal(retry.items[0].question.id, id);
+  const totals = sscSubjectProgress(v).reduce(
+    (a, r) => ({
+      questions: a.questions + r.questions,
+      lessons: a.lessons + r.lessons,
+      observed: a.observed + r.observed,
+    }),
+    { questions: 0, lessons: 0, observed: 0 },
+  );
+  assert.deepEqual(totals, { questions: 635, lessons: 97, observed: 2 });
+  v.sscStudy.journal[id].doubt = true;
+  assert.throws(
+    () => createSSCRetry(v, [id], "retry", 2000),
+    /without a key doubt/,
+  );
+});

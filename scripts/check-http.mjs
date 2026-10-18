@@ -47,6 +47,11 @@ try {
     await delay(100);
   }
   assert.equal(ready, true, "Production test server did not become ready");
+  for (let i = 1; i <= 8; i++) {
+    const r = await fetch(origin + `/assets/ssc/ssc-visual-practice-${i}.svg`);
+    assert.equal(r.status, 200, "SSC diagram route");
+    assert.match(r.headers.get("content-type") ?? "", /image\/svg\+xml/);
+  }
   for (const path of [
     "/",
     "/courses",
@@ -56,6 +61,9 @@ try {
     "/recall",
     "/ssc-cgl",
     "/ssc-cgl/dest",
+    "/ssc-cgl/sources",
+    "/courses/ssc-estimation-detail",
+    "/courses/ssc-visual-practice",
     "/courses/ssc-trigonometry",
     "/lectures/ssc-trigonometry",
     "/today",

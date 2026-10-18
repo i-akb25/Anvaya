@@ -138,3 +138,10 @@ This is not complete ten-exam content: full syllabus transcription, independent 
 `/ssc-cgl` now connects 44 new condensed lessons and 200 original MCQs to notes, recall, search and topic drills. Tier-I (100 questions) and Tier-II common objective (150 questions) original rehearsals use distinct 2026 timing/marking profiles, preserve frozen recovery and show the merit/qualifying split. `/ssc-cgl/dest` provides a separately timed persistent typing session and bounded reports. The active platform bank now has 66 lessons / 281 questions, preserving earlier bank versions.
 
 This is not complete SSC editorial coverage: advanced depth, permitted authentic PYQs/final keys, curated SSC videos and independent review remain pending. Statistics/Finance each have 16 questions; their full 100-question papers remain unavailable. Accounts and tutor remain OFF. See [SSC release and remaining gates](docs/SSC_CGL.md).
+
+
+## SSC CGL completion checkpoint · 18 October 2026
+
+The SSC path now has 79 original lessons / 562 explained MCQs, with separate full-count original Statistics and Finance/Economics rehearsals, 40/60 Finance quotas, two disjoint common-paper attempts from an unseen bank, accessible vector drills, publisher lecture mappings, source/review status, same-tab launch handoff and paged answer review. The active platform totals 101 lessons / 643 questions. Banks v1–v4 remain immutable; new attempts use v5. DEST resume/report links are connected to the daily/results desks. Accounts and tutor remain OFF.
+
+This checkpoint completes those software/content additions; it does not approve exhaustive subject depth, authentic PYQ/final-key ingestion, independent editorial review, calibrated difficulty or live/regional examination equivalence. See `docs/SSC_CGL.md` and `/ssc-cgl/sources` for the exact remaining gates.

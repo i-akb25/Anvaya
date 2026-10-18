@@ -170,7 +170,7 @@ export function createPractice(input: {
   if (
     !Number.isInteger(input.count) ||
     input.count < 1 ||
-    input.count > 50 ||
+    input.count > 200 ||
     !Number.isInteger(input.seconds) ||
     input.seconds < 60 ||
     input.seconds > 10800 ||

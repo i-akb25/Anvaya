@@ -2,44 +2,39 @@
 
 **Project source of truth:** [PROJECT_MASTER.md](./PROJECT_MASTER.md). Product, design, privacy, content integrity and release rules are documented there.
 
-An exam preparation prototype with learning paths, worked examples and paper-specific practice. It is **not a complete or production-ready learning platform**.
+Anvaya is a local-first personal exam-preparation workspace. The SSC CGL path is usable for learning and original practice; complete syllabus depth, independent editorial approval and authentic imported PYQs are not claimed. Accounts and tutor remain OFF by default.
 
-## Development prototype (not a learner release)
+## Current learner routes
 
 | Route | Experience |
 | --- | --- |
-| `/` | Study desk and exam-filtered next lesson |
-| `/exams` | Ten exam tracks, learning links and official portals |
-| `/topics` | Search foundation topics and aliases by exam context |
-| `/learn` | Foundation learning paths |
-| `/learn/[slug]` | Concepts, worked example, common trap, checkpoint, revision prompts, notes |
-| `/practice` | CAT/SSC rehearsal, five-question drills, section timers/locks, recovery |
-| `/results` | Section reports, responses, explanations, study backup/restore |
-| `/practice/custom`, `/review` | Earlier demo engine/history preserved separately |
-
-The new study layout uses cream, sage and earth colours, restrained elevation and a reading-led content hierarchy. Responsive breakpoints and keyboard states are implemented; real browser/device visual QA is still pending. No claim of WCAG compliance is made without testing.
+| `/ssc-cgl` | SSC topic lessons, progress, four paper profiles and source status |
+| `/ssc-cgl/dest` | Separately timed, saved original DEST practice and reports |
+| `/ssc-cgl/sources` | Primary references, lecture checks and explicit review/key limitations |
+| `/courses`, `/courses/[slug]` | Worked lessons, recall prompts, private notes and connected drills |
+| `/lectures`, `/lectures/[id]` | Publisher-linked topics, consented players and saved watch notes |
+| `/assessments`, `/results` | Frozen timed attempts, paged navigation/review, answers and explanations |
+| `/today`, `/notebook`, `/search`, `/recall` | Plans, saved notes, opt-in private search and scheduled recall |
+| `/library`, `/my-practice` | Private PDF storage and user-supplied question packs |
+| `/account` | Validated local backups; optional cloud integration is disabled |
 
 ## Content and exam rules
 
-There are **13 AI-generated lesson drafts** and **146 distinct AI-generated foundation questions**: 24 VARC, 22 DILR, 25 QA, 25 reasoning, 25 general awareness and 25 English. They are explicitly **not editorially reviewed, not authentic PYQs and not calibrated to real exam difficulty**. Automated numerical-key checks do not replace subject-expert review.
+The active platform contains **101 original AI-authored lessons and 643 questions**. Of these, **79 lessons and 562 MCQs** belong to the dedicated SSC path. New SSC content has author checks only. Source links do not imply independent review or an official answer key. Historical draft content remains separate from this active bank.
 
-- **CAT rehearsal:** requested 68-question blueprint, 24/22/22, VARC → DILR → QA, 40 minutes each, 204 available marks. Completed/upcoming sections cannot be opened. MCQ +3/−1; numeric +3/0. The historical official 2024 navigation guide is linked as a reference. CAT 2026 current-cycle retrieval was blocked; no claim of independently verified 2026 question count is made.
-- **SSC CGL Tier-I rehearsal:** 100 MCQs, 25 per subject, 60 minutes with 15-minute subject timers, +2/−0.5. Source: official 2026 notice §13.8, checked 14 October 2026. The rehearsal follows the table’s subject order without claiming the live interface’s order. Tier-II, DEST and accommodation timings are not implemented.
-- Each blueprint has one full paper’s worth of content. Shuffling does not create a new mock. Previously attempted questions are excluded by default; exhausted pools stop with an explanation. Repeats require an explicit revision choice.
-- Full mocks for other tracks, complete reviewed syllabi and an authentic PYQ collection are not available. Linked GATE EE/EC/IN references remain separate dated source records, not imported syllabi.
+SSC original rehearsals support Tier-I (100 questions), Tier-II common objective (150), Statistics (100) and Finance/Economics (100 with 40 Accounts + 60 Economics/Governance). Timings and penalties follow the linked 2026 notice, with separate compensatory practice profiles; eligibility and live interface behaviour are not certified. Common-paper sections close on their timers; special papers have whole-paper navigation. DEST starts as a separate session. See [SSC details](docs/SSC_CGL.md).
 
-Released bank and paper versions are append-only. Preserve old versions when publishing changed questions or keys so historical attempts remain reproducible.
+The common bank supports two disjoint full attempts of either common-paper template when starting from an unseen bank. This does not create independently calibrated mock sets. Exhausted pools stop rather than repeat within a paper or silently reuse earlier questions. Reuse requires an explicit choice. No imported authentic PYQ bank, official percentile or exam-readiness prediction is published.
+
+Released question banks are append-only. Versions v1–v4 validate previous saved snapshots; new attempts use v5. Never edit a released key in place. Other exam tracks retain their own sources, cycles and incomplete coverage status.
 
 ## Local data and privacy
 
-No account, provider token, private server upload or cloud sync is enabled. Notes and attempts use browser storage, which is not encrypted or user-isolated server storage. Use a trusted device. Never commit private notes, paid PDFs, credentials or personal documents.
+Study notes, attempts and DEST use `anvaya-learning-v1`; plans and paper notes use `anvaya-workspace-v1`. Existing legacy storage stays separate. Local data is not encrypted or server-isolated: use a trusted device and export backups. Do not commit private notes, paid material, credentials or personal documents.
 
-- New study key: `anvaya-study-v1`.
-- Study backups include notes, exam-context reading progress, seen-question IDs, unfinished test state and the latest 30 results. Restore explicitly replaces the new study workspace after validation; export first if needed.
-- Legacy demo keys (`anvaya-workspace-v2`, `anvaya-practice-v1`) remain separate and readable through legacy routes.
-- Recovery retains the original section deadlines. Resuming elsewhere claims the local draft; stale-tab writes are rejected. Repeated submissions do not create additional results.
-- Failed writes retain the previous stored record. Memory-only practice is available, with a downloadable result. Raw recovery export is provided for damaged data; it is not an automatic import format.
-- Backups contain private notes and responses. Store them privately. External lecture links are publisher searches/redirects, not downloaded classes or partnerships.
+Backups validate before replacement and preserve original timed-session deadlines. Revision checks reject stale-tab writes. The latest 30 objective results and ten DEST reports are retained; seen IDs persist separately. Private PDF bytes in IndexedDB need a separate file backup and are not contained in JSON backups. Failed writes surface an error and preserve previously stored records.
+
+107 publisher links are listed across the platform. New SSC-supporting NIOS mathematics links were checked on publisher pages; full playback and spoken-language review are not claimed. External players require an explicit learner action. No downloaded classes or publisher affiliation are implied.
 
 ## Run and verify
 
@@ -64,7 +59,7 @@ CI uses `npm ci` and the lockfile. Existing asset generation is available with `
 
 ## Outstanding release gates
 
-Private owner authentication, server-side authorization/RLS, cross-device notes/files, independent server backups, complete canonical syllabus mappings, reviewed source-backed patterns/PYQs, expert content verification, browser accessibility/device QA and operational release testing remain incomplete. These local prototype features do not satisfy those gates. Search indexing remains disabled.
+Live owner-account/provider verification, cross-device sync/file backups, complete canonical syllabus depth, authenticated permitted PYQs, independent expert content approval and comprehensive accessibility/device QA remain incomplete. These local prototype features do not satisfy those gates. Search indexing remains disabled.
 
 The PostCSS override stays within the existing Next.js 15 stack. The previously observed development-only `braces`/ESLint advisory is still documented; a clean production-dependency audit is not a clean full-toolchain audit.
 
@@ -74,7 +69,11 @@ Support: akbsupportinfo@gmail.com
 
 All ten tracks are recorded in `lib/exam-coverage.ts` with authority, cycle, source URL, retrieval status and explicitly incomplete rule review. A failed retrieval is not labelled verified. Stages are reviewed separately; the three GATE papers remain distinct. No generic CAT/SSC paper is substituted for another exam.
 
-The generated lesson/question prototypes are now **disabled in production**, even if the preview flag is set. To inspect drafts locally only, use `NEXT_PUBLIC_ANVAYA_DRAFT_PREVIEW=true` with `npm run dev`. They are not approved learning content. Production routes show the source-review status instead, with tests unavailable. This is an incomplete source-review interface, not the promised learning platform. Source-backed content, question moderation and private-workspace gates must be completed before learner publication.
+The older generated-draft engine remains disabled in production. The current `/courses` and `/assessments` platform is separately available with explicit source/authorship labels and original practice, not official content approval.
+
+## Historical implementation notes
+
+The dated sections below describe earlier releases; current counts and routes are given above and in `docs/SSC_CGL.md`.
 
 ### Course-first classroom update
 

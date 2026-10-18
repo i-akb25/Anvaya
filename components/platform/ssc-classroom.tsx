@@ -26,6 +26,7 @@ import {
   type LearningVault,
 } from "@/lib/platform/vault";
 import { ResultReport } from "./assessment";
+import { sscHandoffKey } from "@/lib/platform/ssc-handoff";
 export function SSCClassroom() {
   const [v, setV] = useState<LearningVault>(emptyVault()),
     [ready, setReady] = useState(false),
@@ -87,6 +88,12 @@ export function SSCClassroom() {
       setV(
         saveVault({ ...latestVault, active: attempt }, latestVault.revision),
       );
+      try {
+        sessionStorage.setItem(
+          sscHandoffKey,
+          JSON.stringify({ id: attempt.id, writerId: attempt.writerId }),
+        );
+      } catch {}
       window.location.assign("/assessments?exam=ssc");
     } catch (e) {
       setStatus((e as Error).message);
@@ -146,6 +153,7 @@ export function SSCClassroom() {
         <Link href="/notebook">My notes</Link>
         <Link href="/results">Mistakes & results</Link>
         <Link href="/current-affairs">Current affairs</Link>
+        <Link href="/ssc-cgl/sources">Sources & review status</Link>
         <Link href="/ssc-cgl/dest">
           <Clock3 size={18} />
           Separate DEST
@@ -275,9 +283,9 @@ export function SSCClassroom() {
         <p>
           Questions are original, not PYQs, and difficulty is not calibrated to
           SSC. Subject-table order is a deliberate rehearsal choice; live
-          subject-order behaviour is not certified. Each subject closes when its
-          timer expires. There is no return to a closed subject or early section
-          skip in this practice.
+          subject-order behaviour is not certified. Common-paper subjects close
+          when their timers expire; no return or early skip is allowed. Special
+          papers use a single whole-paper timer with free question navigation.
         </p>
         <div className="practice-builder">
           <label>
@@ -289,6 +297,12 @@ export function SSCClassroom() {
               <option value="tier1">Tier-I · 100 questions · 200 marks</option>
               <option value="tier2-common">
                 Tier-II Paper-I objective · 150 questions · 450 marks
+              </option>
+              <option value="tier2-statistics">
+                Tier-II Statistics · 100 questions · 200 marks
+              </option>
+              <option value="tier2-finance">
+                Tier-II Finance & Economics · 100 questions · 200 marks
               </option>
             </select>
           </label>
@@ -307,8 +321,8 @@ export function SSCClassroom() {
           <p>
             {plan.reduce((n, r) => n + r.seconds, 0) / 60} minutes total. The
             compensatory profile is for rehearsal only and does not establish
-            eligibility. Correct: +{stage === "tier1" ? 2 : 3}; wrong: −
-            {stage === "tier1" ? "0.50" : "1"}; unanswered: 0.
+            eligibility. Correct: +{stage === "tier2-common" ? 3 : 2}; wrong: −
+            {stage === "tier2-common" ? "1" : "0.50"}; unanswered: 0.
           </p>
           <label className="check-label">
             <input
@@ -357,7 +371,7 @@ export function SSCClassroom() {
                   <th>{r.title}</th>
                   <td>{r.count}</td>
                   <td>{r.seconds / 60} min</td>
-                  <td>{r.count * (stage === "tier1" ? 2 : 3)}</td>
+                  <td>{r.count * (stage === "tier2-common" ? 3 : 2)}</td>
                 </tr>
               ))}
             </tbody>
@@ -381,6 +395,12 @@ export function SSCClassroom() {
       </section>
       <section className="ssc-section">
         <h2>Applicable-post papers</h2>
+        <p>
+          Finance/Economics rehearsal enforces 40 Accounts and 60
+          Economics/Governance questions within one shared timer; these
+          proportions follow the 80/120-mark syllabus split at two marks per
+          question. Verify your post applicability.
+        </p>
         <div className="ssc-topic-grid">
           {[
             [
@@ -403,9 +423,17 @@ export function SSCClassroom() {
                 sections of common Paper-I.
               </p>
               <p>
-                16 original questions and four condensed lessons available.
-                Full-length rehearsal is unavailable until a sufficient reviewed
-                bank exists.
+                {
+                  sscQuestions.filter((q) =>
+                    sscChapters.some(
+                      (c) => c.slug === q.topicId && c.section === id,
+                    ),
+                  ).length
+                }{" "}
+                original questions and{" "}
+                {sscChapters.filter((c) => c.section === id).length} lessons
+                available. Full-count original rehearsal is ready; questions are
+                author-checked and not independently reviewed or calibrated.
               </p>
               <button
                 className="button"
@@ -417,6 +445,19 @@ export function SSCClassroom() {
                 }}
               >
                 Open branch lessons →
+              </button>
+              <button
+                className="button primary"
+                onClick={() => {
+                  setStage(
+                    id === "statistics" ? "tier2-statistics" : "tier2-finance",
+                  );
+                  document
+                    .getElementById("ssc-rehearsal")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Configure branch rehearsal →
               </button>
             </article>
           ))}

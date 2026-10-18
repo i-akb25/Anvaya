@@ -1,4 +1,4 @@
-import { sscQuestions } from "./ssc.ts";
+import { sscQuestions, legacySscQuestions } from "./ssc.ts";
 import { releaseQuestions } from "./release-content.ts";
 import { expansionQuestions } from "./expansion-questions.ts";
 import { sourceFor } from "./content.ts";
@@ -13,6 +13,7 @@ export type StudyQuestion = {
   answer: string | number[] | { min: number; max: number };
   explanation: string;
   context?: string;
+  figure?: { src: string; alt: string };
   groupId?: string;
   sourceId: string;
   origin: "original-ai-authored";
@@ -384,7 +385,8 @@ const firstRelease: StudyQuestion[] = items.map((q) => ({
 export const legacyBankVersion = "source-linked-foundations-20261015-v1";
 export const previousBankVersion = "source-linked-foundations-20261015-v2";
 export const thirdBankVersion = "source-linked-foundations-20261016-v3";
-export const practiceBankVersion = "source-linked-foundations-20261017-v4";
+export const fourthBankVersion = "source-linked-foundations-20261017-v4";
+export const practiceBankVersion = "source-linked-foundations-20261018-v5";
 const secondRelease: StudyQuestion[] = [
   ...firstRelease,
   ...expansionQuestions.map((q): StudyQuestion => ({
@@ -421,6 +423,8 @@ export function questionBankFor(version: string): StudyQuestion[] | undefined {
   if (version === legacyBankVersion) return firstRelease;
   if (version === previousBankVersion) return secondRelease;
   if (version === thirdBankVersion) return thirdRelease;
+  if (version === fourthBankVersion)
+    return [...thirdRelease, ...legacySscQuestions];
   if (version === practiceBankVersion) return practiceQuestions;
 }
 export function questionSource(q: StudyQuestion) {

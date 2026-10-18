@@ -1,40 +1,61 @@
-# SSC CGL personal study release · 17 October 2026
+# SSC CGL personal study release · 18 October 2026
 
-Open `/ssc-cgl`. This release makes the common SSC learning/practice workflow usable locally; it does not certify a complete or independently reviewed SSC curriculum.
+Open `/ssc-cgl`. Learning, topic drills, four original paper templates and separate DEST operate locally without Supabase or an AI provider. This is not certification of exhaustive curriculum coverage, independent expert review or official mock difficulty.
 
-## Available now
+## Content inventory
 
-- 44 original condensed lessons: 9 maths, 8 reasoning, 8 English, 7 general awareness, 4 computer, 4 Statistics and 4 Finance/Economics. Every lesson has concepts, an original worked example, recall prompts, an error warning, personal notes and connected topic practice.
-- 200 distinct new original MCQs with explanations: 36 maths, 32 reasoning, 48 English, 28 awareness, 24 computer, 16 Statistics and 16 Finance/Economics. These have author checks only, not independent editorial review, official keys or PYQ provenance.
-- Lesson completion enters the existing per-exam recall queue; notes are available through the notebook and opt-in private search. Existing arithmetic/probability foundations remain linked.
-- Complete-count original rehearsals for Tier-I and the objective session of Tier-II Paper-I. Full paper generation never pads a short bank or repeats a question within the attempt. Another paper may require explicit reuse of questions seen in earlier attempts. These are foundation/essentials rehearsals, not calibrated exam difficulty.
-- Separate DEST at `/ssc-cgl/dest`, using an original 1,968-character ASCII passage. Its timer starts only when the learner starts this separate session; no break duration is invented. It saves each accepted change, retains the original deadline, requires takeover after a reload, rejects stale-tab writes, and retains ten reports in the workspace backup. Paste/drop prevention is a practice aid, not anti-cheat.
+| Subject | Original lessons | Original MCQs |
+| --- | ---: | ---: |
+| Maths | 10 | 76 |
+| Reasoning | 9 | 72 |
+| English | 8 | 96 |
+| General awareness | 15 | 60 |
+| Computer | 4 | 48 |
+| Statistics | 16 | 100 |
+| Finance/Economics | 17 | 110 |
+| Total SSC path | 79 | 562 |
 
-## Rules and provenance
+This release adds 35 lessons and 362 explained questions. Statistics includes sampling, grouped data, moments/dispersion, correlation/regression, Bayes, distributions, estimation, hypothesis tests, ANOVA, time series and indices. Finance includes bookkeeping, reconciliation, bills/control accounts, statements, depreciation/inventory, microeconomics, macro aggregates, banking/budgets, development and governance. GS additions cover historical periods, physical geography, climate, culture, constitutional roles and human biology. Eight original accessible SVG drills support visual reasoning.
 
-The primary rule reference is the [2026 SSC CGL notice](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf), §§13.8–13.11, checked 17 October 2026. The later Central Region notice dated 24 September concerns centre/date/shift reassignment, not a replacement paper scheme. Tentative dates in the original notice are not encoded as a current calendar.
+Every lesson connects to notes, topic practice, notebook/search and per-exam recall. Lesson completion records the learner’s work, not mastery of every official subtopic. Existing published questions are unchanged; new questions have original keys and author checks only. Primary reading links are concept/rule references, not SSC question numbers or answer keys.
 
-| Rehearsal | Counts and standard subject timers | Scoring |
-| --- | --- | --- |
-| Tier-I | 25 each in reasoning/awareness/quant/English; 15 minutes each | +2 / −0.50; blanks zero |
-| Tier-II common objective | Maths 30/30 min; reasoning 30/30; English 45/40; awareness 25/20; computer 20/15 | +3 / −1; blanks zero |
+## Original rehearsal contracts
 
-Compensatory practice timings are separate: Tier-I 20 minutes per subject; Tier-II 40/40/55/25/20 minutes; DEST 20 minutes instead of 15. These options do not establish accommodation eligibility.
+The rule reference is the [SSC CGL 2026 notice](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf), §§13.8–13.11, revisited 18 October 2026. No tentative original schedule is encoded as a current calendar. Live subject order and regional evaluation remain separate official instructions.
 
-The Tier-II report separates the 390-mark merit portion from the 60-mark qualifying computer component. DEST is also qualifying, but no pass/fail verdict or official error percentage is invented. The character-level Levenshtein report counts case, spaces, punctuation, missing remainder and line breaks. Five-character WPM includes errors and is only a practice metric.
+| Paper | Standard timing | Compensatory practice | Scoring |
+| --- | --- | --- | --- |
+| Tier-I | 15 min per subject; 100 Q total | 20 min per subject | +2 / −0.50 |
+| Tier-II common objective | Maths/reasoning/English/GA/computer: 30/30/40/20/15 min; 150 Q | 40/40/55/25/20 min | +3 / −1 |
+| Statistics, applicable posts | 100 Q, shared 120 min | 160 min | +2 / −0.50 |
+| Finance/Economics, applicable posts | 100 Q, shared 120 min | 160 min | +2 / −0.50 |
 
-The rehearsal uses the notice's subject-table order with fixed subject timers. Live subject-order/navigation behaviour has not been independently certified. Frozen SSC metadata is checked against counts, question sections, marking, bank version and timings when restoring an attempt; altering its configuration invalidates the snapshot. The original v1, v2 and v3 banks remain available for old attempts; new attempts use v4.
+Blanks score zero. Finance generation enforces 40 Accounts plus 60 Economics/Governance questions, following the syllabus’s 80/120-mark division at two marks per question. Its pool has 43 Accounts and 67 Economics/Governance questions. Those are subject quotas within one shared timer, not separate timed sections.
 
-## Still incomplete
+Statistics applies to the specified shortlisted JSO/Statistical Investigator candidates; Finance/Economics applies to the specified shortlisted Assistant Audit/Accounts Officer candidates. The profile does not determine post or accommodation eligibility.
 
-- Complete subject depth, especially ancient/medieval history, maps/culture, visual reasoning, current affairs and advanced special-paper teaching. A lesson's tags indicate scope, not mastery of every official subtopic.
-- Independent review of every answer, explanation and lesson; authentic, permitted previous papers with final keys; calibrated difficulty and curated SSC-specific videos.
-- Statistics and Finance/Economics full-length papers. Their separate 100-question schemes are shown with post applicability, but each branch currently has only 16 original questions. The UI offers lessons/drills and does not launch a padded full paper.
-- Regional DEST evaluation instructions and live examination navigation certification.
-- Comprehensive physical-device and accessibility review. Responsive CSS is implemented, but local browser UI access was unavailable from the remote browser.
+Common papers use table-order fixed subject timers; closed subjects cannot be reopened and early skipping is unavailable. Special papers allow whole-paper navigation. The common bank supports two disjoint complete-count attempts of either common template from an unseen pool. Special-bank exhaustion and previous attempts can require explicit reuse. No question repeats within a paper, no short pool is padded, and shuffling does not create a calibrated new paper.
 
-No Supabase, account or AI-provider enablement is required. Cloud sync and tutor remain OFF by default. Notes/results/DEST are in the existing JSON backup; private PDF file bytes still require their own copy.
+The Tier-II common report separates the 390-mark merit portion and 60-mark qualifying computer component. Special-paper reports show their own practice total, with Accounts/Economics components for Finance. No official cutoff, normalisation, rank or pass/fail is inferred.
+
+## Recovery, review and DEST
+
+New attempts use bank v5 and SSC template v2. Bank v4/template v1 and earlier question banks remain readable with unchanged questions, keys and deadlines. Validators check frozen paper counts, subject membership, timing, navigation, marking and Finance quotas; altered snapshots fail validation. A one-time same-tab launch token transfers only a newly created SSC attempt with matching ID/writer; it cannot silently claim an unrelated or already-taken attempt. Subsequent reload recovery uses explicit takeover and revision conflicts prevent stale writes.
+
+Free-navigation palettes paginate at 25 questions; fixed-section palettes show only the active subject. Results paginate at 20, with all/missed/marked filters retaining original question indices, answers and scoring.
+
+DEST remains a separate session after the objective session and re-registration break; no break duration is invented. The original 1,968-character passage runs for 15 minutes standard or 20 compensatory practice. Accepted changes save locally, the original deadline survives reload, and ten reports are retained in JSON backups. The daily desk resumes DEST and results link to its reports. Paste/drop prevention is only a practice aid. Case/space/punctuation-sensitive character edit distance and five-character WPM are practice metrics, not SSC’s regional error formula or qualifying verdict.
+
+## Sources and lectures
+
+`/ssc-cgl/sources` distinguishes rule references, original author-checked keys, publisher-linked lectures and official paper/key availability. Primary references include SSC, NIOS, NIST and the Legislative Department; no textbook exercises or paid classes are reproduced. Seven new NIOS mathematics video links were found on the publisher subject table; existing relevant foundation lectures are connected to SSC lessons. Full playback, spoken language and complete chapter coverage are not certified.
+
+The public SSC portal and answer-key index were checked. A directly accessible CGL paper paired with its final answer key could not be authenticated for import. Other examinations’ keys are not substituted. Candidate-specific/time-limited access may apply. No last-five-year frequency ranking is invented without a defined audited corpus. Supplied private packs can be inspected with `/content-review`, but importing them does not confer authenticated official provenance.
+
+## Remaining approval/content gates
+
+Independent expert review and difficulty calibration; exhaustive textbook depth and every syllabus subtopic; permitted authentic paper/final-key pairs; full linked-video playback review; live navigation and regional DEST certification; comprehensive physical-device and accessibility review remain open. These are visible in the classroom/source page and are not removed by passing automated checks.
 
 ## Validation
 
-92 automated tests pass, including separately computed numerical keys, constraint enumeration, full paper counts, exact timer boundaries, frozen-marking tampering, unseen-bank exhaustion, merit/qualifying separation, DEST edit distance/deadlines, storage conflict handling and lesson-to-recall/search integration. Production build and HTTP/authentication deny-path checks pass in configured-fake-provider and local-only modes. Production dependency audit reports zero vulnerabilities. These checks do not replace subject-expert review.
+99 automated tests cover numerical keys derived by separate computations, original visual transforms, special-paper quotas/timing/scoring, two disjoint common attempts, exhaustion, frozen v4 recovery, v5 tamper rejection, same-tab launch conflicts, paged feedback alignment, DEST and the existing privacy/storage flows. Production build, route/header/authentication deny-path checks (both fake-configured-provider and local-only modes), SVG delivery and production dependency audit are required. They are software checks, not subject-expert certification.

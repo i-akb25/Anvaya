@@ -1,3 +1,4 @@
+import { sscMedia, sscMediaMap } from "./ssc-media.ts";
 import { sscUnits } from "./ssc.ts";
 import { releaseUnits } from "./release-content.ts";
 import catalog from "./lecture-catalog.json" with { type: "json" };
@@ -24,7 +25,10 @@ export type LectureTopic = {
   aliases: string[];
   lessonSlug?: string;
 };
-export const lectureResources = catalog.resources as LectureResource[];
+export const lectureResources: LectureResource[] = [
+  ...(catalog.resources as LectureResource[]),
+  ...sscMedia,
+];
 export const lectureTopics: LectureTopic[] = [
   ...(catalog.topics as LectureTopic[]),
   ...[...releaseUnits, ...sscUnits].map((u) => ({
@@ -32,9 +36,10 @@ export const lectureTopics: LectureTopic[] = [
     title: u.title,
     subject: u.subject,
     exams: u.exams,
-    resourceIds: [],
-    scope:
-      "Source-linked reading and worked lesson available; no video curated yet.",
+    resourceIds: sscMediaMap[u.slug] ?? [],
+    scope: sscMediaMap[u.slug]?.length
+      ? "Selected supporting foundation lectures for parts of this lesson, not full SSC chapter coverage. Publisher links checked; playback and spoken language not reviewed. Further reading and original worked notes remain available."
+      : "Source-linked reading and worked lesson available; no video curated yet.",
     aliases: [u.slug.replaceAll("-", " ")],
     lessonSlug: u.slug,
   })),

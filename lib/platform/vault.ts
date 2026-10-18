@@ -1,3 +1,4 @@
+import { validExamStudyRecord, type ExamStudy } from "./exam-study.ts";
 import { validSSCStudy, type SSCStudy } from "./ssc-study.ts";
 import { validDestStore, type DestStore } from "./ssc-dest.ts";
 import { validBriefing, type Briefing } from "./briefings.ts";
@@ -12,6 +13,7 @@ export type LearningVault = {
   schema: 1;
   sscDest?: DestStore;
   sscStudy?: SSCStudy;
+  examStudy?: Record<string, ExamStudy>;
   briefings?: Briefing[];
   revision: number;
   notes: Record<string, string>;
@@ -58,6 +60,7 @@ export function validVault(value: unknown): value is LearningVault {
   return (
     v.schema === 1 &&
     (v.sscStudy === undefined || validSSCStudy(v.sscStudy)) &&
+    (v.examStudy === undefined || validExamStudyRecord(v.examStudy)) &&
     (v.sscDest === undefined || validDestStore(v.sscDest)) &&
     !(v.sscDest?.active && (v.active || v.personal?.active)) &&
     Number.isSafeInteger(v.revision) &&

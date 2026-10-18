@@ -1,4 +1,5 @@
 "use client";
+import { Pager } from "./pagination";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Search, Play, ArrowRight, ExternalLink, BookOpen } from "lucide-react";
@@ -40,7 +41,7 @@ export function LectureLibrary() {
     [publisher, setPublisher] = useState("all"),
     [availability, setAvailability] = useState("all"),
     [syllabusId, setSyllabus] = useState("all"),
-    [limit, setLimit] = useState(12);
+    [page, setPage] = useState(0);
   const [vault, setVault] = useState<LearningVault>(emptyVault()),
     [status, setStatus] = useState("");
   useEffect(() => {
@@ -61,7 +62,7 @@ export function LectureLibrary() {
     }
   }, []);
   useEffect(() => {
-    setLimit(12);
+    setPage(0);
   }, [exam, subject, query, language, publisher, availability, syllabusId]);
   const rows = filterLectureTopics({
     exam,
@@ -254,67 +255,80 @@ export function LectureLibrary() {
         cover listings and metadata; full video playback and teaching quality
         have not been reviewed.
       </p>
-      <div className="lecture-topic-list">
-        {rows.slice(0, limit).map((t) => {
-          const resources = resourcesForTopic(t),
-            contexts = exam === "all" ? t.exams : [exam],
-            completed = contexts.reduce(
-              (sum, ex) =>
-                sum +
-                t.resourceIds.filter(
-                  (id) =>
-                    vault.lectures?.[lectureKey(ex, t.id, id)]?.status ===
-                    "completed",
-                ).length,
-              0,
-            );
-          return (
-            <article className="lecture-topic-row" key={t.id}>
-              <div className="lecture-topic-symbol">
-                {resources.length ? <Play size={22} /> : <BookOpen size={22} />}
-              </div>
-              <div>
-                <span className="eyebrow">{t.subject}</span>
-                <h2>
-                  <Link
-                    href={`/lectures/${t.id}${exam !== "all" ? `?exam=${exam}` : ""}`}
-                  >
-                    {t.title}
-                  </Link>
-                </h2>
-                <p>{t.scope}</p>
-                <div className="lecture-tags">
-                  <span>
-                    {resources.length
-                      ? `${resources.length} source links`
-                      : "Curation pending"}
-                  </span>
-                  {[...new Set(resources.map((r) => r.publisher))].map((p) => (
-                    <span key={p}>{p}</span>
-                  ))}
-                  {completed > 0 && (
-                    <span>
-                      {completed} marked complete{" "}
-                      {exam === "all" ? "across exam contexts" : "in this exam"}
-                    </span>
+      <div className="lecture-topic-list" id="lesson-page-start" tabIndex={-1}>
+        {rows
+          .slice(
+            Math.min(page, Math.max(0, Math.ceil(rows.length / 6) - 1)) * 6,
+            Math.min(page, Math.max(0, Math.ceil(rows.length / 6) - 1)) * 6 + 6,
+          )
+          .map((t) => {
+            const resources = resourcesForTopic(t),
+              contexts = exam === "all" ? t.exams : [exam],
+              completed = contexts.reduce(
+                (sum, ex) =>
+                  sum +
+                  t.resourceIds.filter(
+                    (id) =>
+                      vault.lectures?.[lectureKey(ex, t.id, id)]?.status ===
+                      "completed",
+                  ).length,
+                0,
+              );
+            return (
+              <article className="lecture-topic-row" key={t.id}>
+                <div className="lecture-topic-symbol">
+                  {resources.length ? (
+                    <Play size={22} />
+                  ) : (
+                    <BookOpen size={22} />
                   )}
                 </div>
-                <small>
-                  {t.exams
-                    .map((id) => exams.find((e) => e.id === id)?.name)
-                    .join(" · ")}
-                </small>
-              </div>
-              <Link
-                className="button"
-                href={`/lectures/${t.id}${exam !== "all" ? `?exam=${exam}` : ""}`}
-              >
-                {resources.length ? "Open topic" : "View gap"}{" "}
-                <ArrowRight size={15} />
-              </Link>
-            </article>
-          );
-        })}
+                <div>
+                  <span className="eyebrow">{t.subject}</span>
+                  <h2>
+                    <Link
+                      href={`/lectures/${t.id}${exam !== "all" ? `?exam=${exam}` : ""}`}
+                    >
+                      {t.title}
+                    </Link>
+                  </h2>
+                  <p>{t.scope}</p>
+                  <div className="lecture-tags">
+                    <span>
+                      {resources.length
+                        ? `${resources.length} source links`
+                        : "Curation pending"}
+                    </span>
+                    {[...new Set(resources.map((r) => r.publisher))].map(
+                      (p) => (
+                        <span key={p}>{p}</span>
+                      ),
+                    )}
+                    {completed > 0 && (
+                      <span>
+                        {completed} marked complete{" "}
+                        {exam === "all"
+                          ? "across exam contexts"
+                          : "in this exam"}
+                      </span>
+                    )}
+                  </div>
+                  <small>
+                    {t.exams
+                      .map((id) => exams.find((e) => e.id === id)?.name)
+                      .join(" · ")}
+                  </small>
+                </div>
+                <Link
+                  className="button"
+                  href={`/lectures/${t.id}${exam !== "all" ? `?exam=${exam}` : ""}`}
+                >
+                  {resources.length ? "Open topic" : "View gap"}{" "}
+                  <ArrowRight size={15} />
+                </Link>
+              </article>
+            );
+          })}
       </div>
       {!rows.length && (
         <div className="empty-state">
@@ -328,11 +342,12 @@ export function LectureLibrary() {
           </button>
         </div>
       )}
-      {rows.length > limit && (
-        <button className="button primary" onClick={() => setLimit(limit + 12)}>
-          Show more topics ({rows.length - limit} remaining)
-        </button>
-      )}
+      <Pager
+        page={Math.min(page, Math.max(0, Math.ceil(rows.length / 6) - 1))}
+        pages={Math.max(1, Math.ceil(rows.length / 6))}
+        total={rows.length}
+        onPage={setPage}
+      />
       <p role="status">{status}</p>
       <section className="editorial-band">
         <h2>Keep the learning connected.</h2>

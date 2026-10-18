@@ -149,3 +149,7 @@ This checkpoint completes those software/content additions; it does not approve 
 ### SSC study workflow checkpoint · 18 October 2026
 
 Daily study budget/scope, subject evidence, a question correction/doubt notebook and exact selected-question retries now connect the SSC classroom, results, lessons, recall and backups. Source banks, official provenance status and published keys remain unchanged. Timed-session conflicts and stale local writes are rejected. No automatic mastery, official qualification or exhaustive curriculum claim is introduced.
+
+### All-exam learning and bounded navigation · 18 October 2026
+
+Added nine exam classrooms and per-exam study/diagnosis workflows alongside the existing SSC path. Seven worked lessons and 42 original questions expand the unique active inventory to 108/685. New bank v6 preserves all older snapshots; full SSC templates remain pinned to v5. Classrooms use explicit sections, course/lecture/lesson grids show six items per page, and notebooks show one question at a time. Other paths gain contextual notes, plans, evidence and exact selected retries without implying official scoring or full mock coverage. See [release contracts and remaining limits](docs/ALL_EXAM_LEARNING.md). Cloud and tutor remain disabled by default.

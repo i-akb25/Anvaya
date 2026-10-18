@@ -59,6 +59,21 @@ try {
     "/courses/constitutional-rights",
     "/courses/rc-transients",
     "/recall",
+    "/classrooms",
+    ...[
+      "upsc",
+      "bpsc",
+      "sbi",
+      "ibps",
+      "cat",
+      "gate-ee",
+      "gate-ec",
+      "gate-in",
+      "ese",
+    ].flatMap((id) => [`/classrooms/${id}`, `/classrooms/${id}/study`]),
+    "/courses/nominal-real-output",
+    "/courses/strain-calibration",
+    "/lectures/ideal-transformer-ratios",
     "/ssc-cgl",
     "/ssc-cgl/study",
     "/ssc-cgl/dest",
@@ -101,6 +116,25 @@ try {
     assert.ok(r.headers.get("content-security-policy"));
     assert.equal(r.headers.get("x-content-type-options"), "nosniff");
     const html = await r.text();
+    if (path === "/courses")
+      assert.equal(
+        (html.match(/<article class="paper-card"/g) ?? []).length,
+        6,
+        "Course library must render a bounded page",
+      );
+    if (path === "/lectures")
+      assert.equal(
+        (html.match(/<article class="lecture-topic-row"/g) ?? []).length,
+        6,
+        "Lecture library must replace, not append pages",
+      );
+    if (path === "/ssc-cgl" || /^\/classrooms\/[^/]+$/.test(path))
+      assert.ok(
+        html.includes("Classroom sections") ||
+          html.includes("SSC classroom sections") ||
+          html.includes("Classroom sections".toLowerCase()),
+        "Classrooms expose section navigation",
+      );
     if (["/practice", "/practice/custom", "/assessments"].includes(path))
       assert.ok(
         html.includes("Start custom practice"),
@@ -136,6 +170,11 @@ try {
     (await fetch(origin + "/lectures/not-a-real-topic")).status,
     404,
   );
+  for (const path of [
+    "/classrooms/not-an-exam",
+    "/classrooms/not-an-exam/study",
+  ])
+    assert.equal((await fetch(origin + path)).status, 404);
   const tutor = await fetch(origin + "/api/tutor");
   assert.equal(tutor.status, 200);
   assert.equal((await tutor.json()).configured, !localOnly);

@@ -1,3 +1,4 @@
+import { allExamUnits, allExamSources } from "./all-exam-content.ts";
 import { sscSources, sscUnits } from "./ssc.ts";
 import { releaseSources, releaseUnits } from "./release-content.ts";
 import { expansionSources, expansionUnits } from "./expansion.ts";
@@ -10,6 +11,7 @@ export type Source = {
   licenseNote: string;
 };
 export const sources: Source[] = [
+  ...allExamSources,
   ...sscSources,
   ...expansionSources,
   ...releaseSources,
@@ -420,7 +422,11 @@ const foundationUnits: StudyUnit[] = [
     "Primary source opened and concepts compared; original numerical examples calculation-checked. No independent human editorial review is claimed.",
   version: `${u.slug}-sourcecheck-${releaseUnits.some((r) => r.slug === u.slug) ? "20261016" : "20261015"}-v1`,
 }));
-export const studyUnits: StudyUnit[] = [...foundationUnits, ...sscUnits];
+export const studyUnits: StudyUnit[] = [
+  ...foundationUnits,
+  ...sscUnits,
+  ...allExamUnits,
+];
 export function sourceFor(id: string) {
   const source = sources.find((s) => s.id === id);
   if (!source) throw Error("Unknown source");

@@ -1,0 +1,1237 @@
+{
+  "units": [
+    {
+      "slug": "nominal-real-output",
+      "title": "Economy: separate price change from output change",
+      "subject": "Economy",
+      "exams": [
+        "upsc",
+        "bpsc",
+        "sbi",
+        "ibps"
+      ],
+      "minutes": 20,
+      "objective": "Distinguish current-price value from output valued at a fixed price base. A larger money total alone does not show how much physical production changed.",
+      "sourceId": "multi-real",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "nominal-real-output-20261018-v1",
+      "concepts": [
+        {
+          "title": "Choose the comparison",
+          "text": "Distinguish current-price value from output valued at a fixed price base. A larger money total alone does not show how much physical production changed."
+        },
+        {
+          "title": "Use the index consistently",
+          "text": "For a GDP deflator with base 100, real GDP = nominal GDP × 100 / deflator. Keep the base year and currency unit fixed when comparing years. This is not a live Indian GDP estimate."
+        },
+        {
+          "title": "Read the result carefully",
+          "text": "For the original example below, 480 / 1.20 = 400. A prior real value of 380 gives growth 20/380, not 20/480. The price adjustment and the growth denominator are separate steps."
+        }
+      ],
+      "example": {
+        "problem": "An invented economy has nominal output 480 billion and GDP deflator 120. Prior-year real output on the same base was 380 billion. Find current real output and its growth.",
+        "steps": [
+          "Convert the base-100 deflator to 120/100 = 1.20.",
+          "Real output = 480/1.20 = 400 billion in base-year prices.",
+          "Real increase = 400 − 380 = 20 billion.",
+          "Growth = 20/380 × 100 = 5.263…%, about 5.26%."
+        ],
+        "answer": "400 billion; real growth about 5.26%."
+      },
+      "recall": [
+        "Why does an index of 120 mean division by 1.20?",
+        "Which price base must match across years?",
+        "Can nominal growth alone identify real growth?"
+      ],
+      "mistake": "Dividing by 120 instead of 1.20 loses a factor of 100. Do not substitute CPI for the GDP deflator without a stated model."
+    },
+    {
+      "slug": "table-di-base",
+      "title": "Data interpretation: choose totals and comparison bases",
+      "subject": "Data Interpretation",
+      "exams": [
+        "sbi",
+        "ibps",
+        "cat",
+        "upsc",
+        "bpsc"
+      ],
+      "minutes": 20,
+      "objective": "Read what each cell counts, the period and whether categories overlap. For disjoint categories, add counts before calculating a combined share.",
+      "sourceId": "multi-table",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "table-di-base-20261018-v1",
+      "concepts": [
+        {
+          "title": "Annotate the table",
+          "text": "Read what each cell counts, the period and whether categories overlap. For disjoint categories, add counts before calculating a combined share."
+        },
+        {
+          "title": "Choose the denominator",
+          "text": "A share uses the relevant total; growth uses the earlier value; a ratio compares the requested quantities. State that denominator before doing arithmetic."
+        },
+        {
+          "title": "Check an original table",
+          "text": "Three fictional branches have January/February counts A:120/150, B:80/100, C:100/150. January total is 300; February total is 400. Combined growth is 100/300, not the average of 25%, 25% and 50%."
+        }
+      ],
+      "example": {
+        "problem": "Using A:120→150, B:80→100 and C:100→150, find total growth and C’s February share.",
+        "steps": [
+          "Add January: 120+80+100=300.",
+          "Add February: 150+100+150=400.",
+          "Growth = (400−300)/300 × 100 = 33⅓%.",
+          "C share = 150/400 × 100 = 37.5%."
+        ],
+        "answer": "Total growth 33⅓%; C February share 37.5%."
+      },
+      "recall": [
+        "What is the base for percentage growth?",
+        "Why can averaging branch growth rates fail?",
+        "When may cell counts be added?"
+      ],
+      "mistake": "An unweighted mean of category percentages can differ from the aggregate change. Keep the original totals visible."
+    },
+    {
+      "slug": "conditional-arguments",
+      "title": "Critical reasoning: necessary and sufficient conditions",
+      "subject": "Reasoning and Comprehension",
+      "exams": [
+        "cat",
+        "sbi",
+        "ibps",
+        "upsc",
+        "bpsc"
+      ],
+      "minutes": 20,
+      "objective": "If P then Q makes P sufficient for Q and Q necessary for P. It does not say Q is sufficient for P. Treat these as logical relations, not causal evidence.",
+      "sourceId": "multi-conditional",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "conditional-arguments-20261018-v1",
+      "concepts": [
+        {
+          "title": "Translate exactly",
+          "text": "If P then Q makes P sufficient for Q and Q necessary for P. It does not say Q is sufficient for P. Treat these as logical relations, not causal evidence."
+        },
+        {
+          "title": "Find the forbidden case",
+          "text": "P true with Q false violates P→Q. The contrapositive, not-Q→not-P, excludes that same case. Reversing the arrow generally does not."
+        },
+        {
+          "title": "Separate policy and evidence",
+          "text": "Suppose every approved laboratory booking requires a completed safety induction. Induction is necessary for approval. A trained applicant may still lack equipment clearance, so training alone does not prove approval."
+        }
+      ],
+      "example": {
+        "problem": "Policy: every approved booking has a completed induction. Mira has no completed induction. Can Mira’s booking be approved under that policy?",
+        "steps": [
+          "Let P mean approved booking and Q mean completed induction.",
+          "The policy states P→Q.",
+          "The equivalent contrapositive is not-Q→not-P.",
+          "Mira satisfies not-Q, so approval would contradict the policy."
+        ],
+        "answer": "No, provided the stated policy applies without exceptions."
+      },
+      "recall": [
+        "Which case falsifies P→Q?",
+        "Is its converse equivalent?",
+        "Does necessary imply sufficient?"
+      ],
+      "mistake": "Affirming the consequent: observing Q does not establish P. Also do not assume a real-world causal mechanism from a logical conditional."
+    },
+    {
+      "slug": "ac-real-power",
+      "title": "AC circuits: RMS values and real power",
+      "subject": "Electric Circuits",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "For a sinusoid with peak Vm, Vrms=Vm/√2. An RMS value is not the peak or the full-cycle arithmetic average.",
+      "sourceId": "multi-ac",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "ac-real-power-20261018-v1",
+      "concepts": [
+        {
+          "title": "Name the amplitudes",
+          "text": "For a sinusoid with peak Vm, Vrms=Vm/√2. An RMS value is not the peak or the full-cycle arithmetic average."
+        },
+        {
+          "title": "Track power factor",
+          "text": "For sinusoidal steady-state voltage and current, average real power P=Vrms Irms cos φ. The product Vrms Irms is apparent power in VA. This simple cosine relation assumes sinusoidal waveforms."
+        },
+        {
+          "title": "Use a numerical check",
+          "text": "An original load at 200 V RMS, 5 A RMS and power factor 0.8 absorbs 800 W, while its apparent power is 1000 VA. A reactive ideal element may exchange energy while its average real power is zero."
+        }
+      ],
+      "example": {
+        "problem": "A sinusoidal load takes 4 A RMS from 150 V RMS at power factor 0.75. Find apparent and real power.",
+        "steps": [
+          "Both supplied electrical magnitudes are already RMS.",
+          "Apparent power S=150×4=600 VA.",
+          "Real power P=600×0.75=450 W.",
+          "Check that P≤S for the passive load and stated power factor."
+        ],
+        "answer": "600 VA; 450 W."
+      },
+      "recall": [
+        "How do peak and RMS differ?",
+        "When is Vrms Irms real power?",
+        "Why can zero average power coexist with current?"
+      ],
+      "mistake": "Do not multiply RMS power by an extra half. Do not use cos φ as the total power factor for arbitrary distorted waveforms."
+    },
+    {
+      "slug": "digital-gate-logic",
+      "title": "Digital electronics: verify a Boolean function",
+      "subject": "Digital Electronics",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "Write each gate’s output for a given input before combining gates. NAND complements AND; NOR complements OR. A one at an OR input is sufficient for a one at its output.",
+      "sourceId": "multi-gates",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "digital-gate-logic-20261018-v1",
+      "concepts": [
+        {
+          "title": "Evaluate intermediate nodes",
+          "text": "Write each gate’s output for a given input before combining gates. NAND complements AND; NOR complements OR. A one at an OR input is sufficient for a one at its output."
+        },
+        {
+          "title": "Compare every row",
+          "text": "Two Boolean expressions are equivalent if their outputs agree for every input assignment. For two independent binary inputs, test 00, 01, 10 and 11."
+        },
+        {
+          "title": "Work an original function",
+          "text": "For Y=(A AND B) OR (NOT A AND B), evaluate 00→0, 01→1, 10→0, 11→1. This matches B. A changes which product term is active but never changes the final output for fixed B."
+        }
+      ],
+      "example": {
+        "problem": "Evaluate Y=NAND(A,B) at A=1,B=1, then compare with Y when A=0,B=1.",
+        "steps": [
+          "At 11, AND is 1. Complement it to get NAND=0.",
+          "At 01, AND is 0. Complement it to get NAND=1.",
+          "The change follows the truth table, not ordinary arithmetic on the output label."
+        ],
+        "answer": "NAND outputs 0 at 11 and 1 at 01."
+      },
+      "recall": [
+        "When is a NAND output zero?",
+        "How many rows have n binary inputs?",
+        "What evidence proves equivalence?"
+      ],
+      "mistake": "An inversion bubble changes the function. Do not replace NAND with AND or mistake a Boolean OR for addition of unrestricted integers."
+    },
+    {
+      "slug": "strain-calibration",
+      "title": "Instrumentation: strain, gauge factor and bridge balance",
+      "subject": "Measurements and Instrumentation",
+      "exams": [
+        "gate-in",
+        "gate-ee",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "Engineering strain ε=ΔL/L is dimensionless. One microstrain is 10⁻⁶ strain. Keep length units identical before dividing.",
+      "sourceId": "multi-strain",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "strain-calibration-20261018-v1",
+      "concepts": [
+        {
+          "title": "Convert strain units",
+          "text": "Engineering strain ε=ΔL/L is dimensionless. One microstrain is 10⁻⁶ strain. Keep length units identical before dividing."
+        },
+        {
+          "title": "Apply gauge factor",
+          "text": "For the stated linear resistive model, GF=(ΔR/R)/ε, so ΔR=GF×ε×R. The sign records tension or compression for a positive gauge factor."
+        },
+        {
+          "title": "Separate sensor and circuit",
+          "text": "An original 200 Ω gauge with GF=2 at 250 microstrain changes by 0.1 Ω. A Wheatstone bridge converts resistance imbalance to voltage. Output sign depends on arm placement and voltage polarity, so no unstated sign convention is assumed here."
+        }
+      ],
+      "example": {
+        "problem": "A 350 Ω gauge with GF=2 sees +400 microstrain. Find its resistance change and final resistance in the linear model.",
+        "steps": [
+          "Convert strain: ε=400×10⁻⁶=0.0004.",
+          "Fractional resistance change GF×ε=2×0.0004=0.0008.",
+          "ΔR=350×0.0008=0.28 Ω.",
+          "Rfinal=350+0.28=350.28 Ω."
+        ],
+        "answer": "+0.28 Ω; 350.28 Ω."
+      },
+      "recall": [
+        "Why is strain dimensionless?",
+        "Where does the factor 10⁻⁶ enter?",
+        "What determines bridge output polarity?"
+      ],
+      "mistake": "Microstrain is not percent strain. A gauge-factor formula alone does not determine bridge output voltage or temperature compensation."
+    },
+    {
+      "slug": "ideal-transformer-ratios",
+      "title": "Electrical machines: ideal transformer ratios",
+      "subject": "Electrical Machines",
+      "exams": [
+        "gate-ee",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "For the ideal transformer voltage magnitudes, Vs/Vp=Ns/Np. A larger secondary turns count raises the voltage magnitude for the stated alternating operation.",
+      "sourceId": "multi-transformer",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "ideal-transformer-ratios-20261018-v1",
+      "concepts": [
+        {
+          "title": "Fix the winding labels",
+          "text": "For the ideal transformer voltage magnitudes, Vs/Vp=Ns/Np. A larger secondary turns count raises the voltage magnitude for the stated alternating operation."
+        },
+        {
+          "title": "Use ideal power balance",
+          "text": "With losses neglected, Vp Ip=Vs Is for the corresponding load power conditions. Current magnitudes change inversely with the turns ratio. This ideal model does not describe saturation, inrush or leakage."
+        },
+        {
+          "title": "Refer impedance consistently",
+          "text": "For a resistive secondary load RL, its primary-referred value is (Np/Ns)² RL. An original 4:1 turns ratio maps 5 Ω to 80 Ω. Referring a quantity is not physically changing the resistor."
+        }
+      ],
+      "example": {
+        "problem": "An ideal transformer has Np=800, Ns=200 and Vp=240 V RMS. A 6 Ω resistive load is connected to the secondary. Find Vs, Is, Ip and primary-referred resistance.",
+        "steps": [
+          "Voltage ratio gives Vs=240×200/800=60 V RMS.",
+          "The resistive secondary current is Is=60/6=10 A RMS.",
+          "Ideal power balance gives Ip=60×10/240=2.5 A RMS.",
+          "Referred resistance=(800/200)²×6=96 Ω; check 240/96=2.5 A."
+        ],
+        "answer": "60 V; 10 A; 2.5 A; 96 Ω."
+      },
+      "recall": [
+        "Which ratio scales voltage?",
+        "Why is current inversely scaled?",
+        "Why is impedance scaled by a squared ratio?"
+      ],
+      "mistake": "Do not apply the voltage ratio in the same direction to current. The ideal model cannot be used as a safe design for mains hardware."
+    }
+  ],
+  "questions": [
+    {
+      "id": "nominal-real-output-1",
+      "version": "nominal-real-output-1-v1",
+      "topicId": "nominal-real-output",
+      "type": "nat",
+      "stem": "An invented economy has nominal GDP 660 and deflator 110 (base 100). What is real GDP in the same units?",
+      "answer": {
+        "min": 600,
+        "max": 600
+      },
+      "explanation": "Real = 660 × 100/110 = 600.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "nominal-real-output-2",
+      "version": "nominal-real-output-2-v1",
+      "topicId": "nominal-real-output",
+      "type": "nat",
+      "stem": "Nominal GDP is 900 and real GDP is 750 on one price base. What is the base-100 GDP deflator?",
+      "answer": {
+        "min": 120,
+        "max": 120
+      },
+      "explanation": "Deflator = 900/750 × 100 = 120.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "nominal-real-output-3",
+      "version": "nominal-real-output-3-v1",
+      "topicId": "nominal-real-output",
+      "type": "mcq",
+      "stem": "Nominal output rises 10% and the GDP deflator rises 10% on a common base. What happens to real output?",
+      "answer": "1",
+      "explanation": "The real-output multiplier is 1.10/1.10 = 1.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Rises 10%",
+        "Is unchanged",
+        "Falls 10%",
+        "Rises 20%"
+      ]
+    },
+    {
+      "id": "nominal-real-output-4",
+      "version": "nominal-real-output-4-v1",
+      "topicId": "nominal-real-output",
+      "type": "nat",
+      "stem": "Real GDP rises from 400 to 420 on the same base. What is its percentage growth?",
+      "answer": {
+        "min": 5,
+        "max": 5
+      },
+      "explanation": "Growth = (420−400)/400 × 100 = 5%.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "nominal-real-output-5",
+      "version": "nominal-real-output-5-v1",
+      "topicId": "nominal-real-output",
+      "type": "mcq",
+      "stem": "Which comparison can isolate real output growth from the supplied GDP figures?",
+      "answer": "2",
+      "explanation": "Both figures must be valued on a common price base.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Current nominal GDP and an unrelated CPI only",
+        "Two nominal GDP totals without prices",
+        "Two real GDP totals using the same price base",
+        "Only the current nominal GDP"
+      ]
+    },
+    {
+      "id": "nominal-real-output-6",
+      "version": "nominal-real-output-6-v1",
+      "topicId": "nominal-real-output",
+      "type": "nat",
+      "stem": "Nominal GDP is 450 and the deflator is 90 (base 100). Find real GDP.",
+      "answer": {
+        "min": 500,
+        "max": 500
+      },
+      "explanation": "450 × 100/90 = 500. A deflator below 100 makes the fixed-base value larger than this nominal value.",
+      "sourceId": "multi-real",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "table-di-base-1",
+      "version": "table-di-base-1-v1",
+      "topicId": "table-di-base",
+      "type": "nat",
+      "stem": "What is the February total?",
+      "answer": {
+        "min": 400,
+        "max": 400
+      },
+      "explanation": "150+100+150=400.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "table-di-base-2",
+      "version": "table-di-base-2-v1",
+      "topicId": "table-di-base",
+      "type": "nat",
+      "stem": "What percentage of the February total is C?",
+      "answer": {
+        "min": 37.5,
+        "max": 37.5
+      },
+      "explanation": "150/400 ×100=37.5%.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "table-di-base-3",
+      "version": "table-di-base-3-v1",
+      "topicId": "table-di-base",
+      "type": "nat",
+      "stem": "What is B’s January count as a percentage of A’s January count? Enter to two decimal places.",
+      "answer": {
+        "min": 66.66,
+        "max": 66.68
+      },
+      "explanation": "80/120 ×100=200/3%.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "table-di-base-4",
+      "version": "table-di-base-4-v1",
+      "topicId": "table-di-base",
+      "type": "nat",
+      "stem": "How many more cases did C record in February than January?",
+      "answer": {
+        "min": 50,
+        "max": 50
+      },
+      "explanation": "150−100=50.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "table-di-base-5",
+      "version": "table-di-base-5-v1",
+      "topicId": "table-di-base",
+      "type": "nat",
+      "stem": "What is A’s percentage increase from January to February?",
+      "answer": {
+        "min": 25,
+        "max": 25
+      },
+      "explanation": "(150−120)/120 ×100=25%.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "table-di-base-6",
+      "version": "table-di-base-6-v1",
+      "topicId": "table-di-base",
+      "type": "mcq",
+      "stem": "Which branch has the largest percentage increase from January to February?",
+      "answer": "2",
+      "explanation": "A and B each grow 25%; C grows 50%.",
+      "sourceId": "multi-table",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A only",
+        "B only",
+        "C only",
+        "All are equal"
+      ],
+      "context": "Original fictional branch counts, January / February: A 120 / 150; B 80 / 100; C 100 / 150. Counts are disjoint and use the same definition in both months.",
+      "groupId": "multi-table-set"
+    },
+    {
+      "id": "conditional-arguments-1",
+      "version": "conditional-arguments-1-v1",
+      "topicId": "conditional-arguments",
+      "type": "mcq",
+      "stem": "All approved lab bookings require induction. Asha completed induction. What follows about her approval?",
+      "answer": "2",
+      "explanation": "Induction is necessary but may not be sufficient.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "She must be approved",
+        "She cannot be approved",
+        "Approval cannot be determined from this alone",
+        "Every trained person is approved"
+      ]
+    },
+    {
+      "id": "conditional-arguments-2",
+      "version": "conditional-arguments-2-v1",
+      "topicId": "conditional-arguments",
+      "type": "mcq",
+      "stem": "Which is equivalent to “If a file is accepted, it has a valid signature”?",
+      "answer": "0",
+      "explanation": "Use not-signature→not-accepted.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "If it lacks a valid signature, it is not accepted",
+        "If it has a valid signature, it is accepted",
+        "If it is rejected, it lacks a valid signature",
+        "All signed files are accepted"
+      ]
+    },
+    {
+      "id": "conditional-arguments-3",
+      "version": "conditional-arguments-3-v1",
+      "topicId": "conditional-arguments",
+      "type": "msq",
+      "stem": "For the statement P→Q, which assignments make the implication true?",
+      "answer": [
+        0,
+        2,
+        3
+      ],
+      "explanation": "Only P=true,Q=false violates the implication.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "P=true, Q=true",
+        "P=true, Q=false",
+        "P=false, Q=true",
+        "P=false, Q=false"
+      ]
+    },
+    {
+      "id": "conditional-arguments-4",
+      "version": "conditional-arguments-4-v1",
+      "topicId": "conditional-arguments",
+      "type": "mcq",
+      "stem": "A permit is issued only if the fee is paid. Which condition is necessary for issuance?",
+      "answer": "1",
+      "explanation": "Only if introduces the necessary condition.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A permit has already been issued",
+        "The fee is paid",
+        "Every fee payer receives a permit",
+        "The fee is unpaid"
+      ]
+    },
+    {
+      "id": "conditional-arguments-5",
+      "version": "conditional-arguments-5-v1",
+      "topicId": "conditional-arguments",
+      "type": "tita",
+      "stem": "For two Boolean propositions P and Q, how many truth assignments falsify P→Q? Enter an integer.",
+      "answer": {
+        "min": 1,
+        "max": 1
+      },
+      "explanation": "Only P=true,Q=false, out of the four assignments.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "conditional-arguments-6",
+      "version": "conditional-arguments-6-v1",
+      "topicId": "conditional-arguments",
+      "type": "mcq",
+      "stem": "Every red token is round. A token is not round. What follows?",
+      "answer": "3",
+      "explanation": "The contrapositive excludes redness when roundness is absent.",
+      "sourceId": "multi-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "It must be blue",
+        "It must be square",
+        "It is red",
+        "It is not red"
+      ]
+    },
+    {
+      "id": "ac-real-power-1",
+      "version": "ac-real-power-1-v1",
+      "topicId": "ac-real-power",
+      "type": "nat",
+      "stem": "A sinusoidal load has 240 V RMS, 2 A RMS and power factor 0.6. Find average real power in W.",
+      "answer": {
+        "min": 288,
+        "max": 288
+      },
+      "explanation": "P=240×2×0.6=288 W.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ac-real-power-2",
+      "version": "ac-real-power-2-v1",
+      "topicId": "ac-real-power",
+      "type": "nat",
+      "stem": "A sinusoidal voltage has peak 100√2 V. What is its RMS value in V?",
+      "answer": {
+        "min": 100,
+        "max": 100
+      },
+      "explanation": "Vrms=100√2/√2=100 V.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ac-real-power-3",
+      "version": "ac-real-power-3-v1",
+      "topicId": "ac-real-power",
+      "type": "nat",
+      "stem": "A passive sinusoidal load takes 300 W at 100 V RMS and 5 A RMS. What is its power factor?",
+      "answer": {
+        "min": 0.6,
+        "max": 0.6
+      },
+      "explanation": "Power factor = 300/(100×5)=0.6.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ac-real-power-4",
+      "version": "ac-real-power-4-v1",
+      "topicId": "ac-real-power",
+      "type": "mcq",
+      "stem": "An ideal inductor in sinusoidal steady state absorbs what average real power over a whole cycle?",
+      "answer": "1",
+      "explanation": "Its voltage and current differ in phase by 90°, so cos φ=0.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Positive constant power",
+        "Zero",
+        "Always negative power",
+        "Infinite power"
+      ]
+    },
+    {
+      "id": "ac-real-power-5",
+      "version": "ac-real-power-5-v1",
+      "topicId": "ac-real-power",
+      "type": "msq",
+      "stem": "For a passive sinusoidal load, which statements are correct?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Real power is VI cosφ; apparent power is VI; RMS is peak/√2 for a sine.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "P=Vrms Irms cosφ",
+        "P always equals Vrms Irms",
+        "S=Vrms Irms in VA",
+        "RMS voltage always equals its peak"
+      ]
+    },
+    {
+      "id": "ac-real-power-6",
+      "version": "ac-real-power-6-v1",
+      "topicId": "ac-real-power",
+      "type": "nat",
+      "stem": "A purely resistive sinusoidal load has 50 V RMS and 2 A RMS. Find its average real power in W.",
+      "answer": {
+        "min": 100,
+        "max": 100
+      },
+      "explanation": "Voltage and current are in phase, so P=50×2=100 W.",
+      "sourceId": "multi-ac",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "digital-gate-logic-1",
+      "version": "digital-gate-logic-1-v1",
+      "topicId": "digital-gate-logic",
+      "type": "mcq",
+      "stem": "What is the output of a two-input NAND gate for inputs 1 and 1?",
+      "answer": "0",
+      "explanation": "AND gives 1; inversion gives 0.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Undefined"
+      ]
+    },
+    {
+      "id": "digital-gate-logic-2",
+      "version": "digital-gate-logic-2-v1",
+      "topicId": "digital-gate-logic",
+      "type": "mcq",
+      "stem": "What is the output of a two-input NOR gate for inputs 0 and 0?",
+      "answer": "1",
+      "explanation": "OR gives 0; inversion gives 1.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Undefined"
+      ]
+    },
+    {
+      "id": "digital-gate-logic-3",
+      "version": "digital-gate-logic-3-v1",
+      "topicId": "digital-gate-logic",
+      "type": "nat",
+      "stem": "How many input rows are required for a complete truth table with three independent binary inputs?",
+      "answer": {
+        "min": 8,
+        "max": 8
+      },
+      "explanation": "Each of three inputs has two choices: 2³=8.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "digital-gate-logic-4",
+      "version": "digital-gate-logic-4-v1",
+      "topicId": "digital-gate-logic",
+      "type": "mcq",
+      "stem": "The Boolean expression (A AND B) OR (NOT A AND B) equals which function?",
+      "answer": "2",
+      "explanation": "Factor B: B AND (A OR NOT A)=B.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A",
+        "NOT B",
+        "B",
+        "A AND B"
+      ]
+    },
+    {
+      "id": "digital-gate-logic-5",
+      "version": "digital-gate-logic-5-v1",
+      "topicId": "digital-gate-logic",
+      "type": "msq",
+      "stem": "For a two-input AND gate, which input pairs give output zero?",
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "AND is one only when both inputs are one.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "digital-gate-logic-6",
+      "version": "digital-gate-logic-6-v1",
+      "topicId": "digital-gate-logic",
+      "type": "nat",
+      "stem": "For two independent binary inputs, how many rows have a two-input OR output equal to 1?",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "01,10 and11 give one;00 gives zero.",
+      "sourceId": "multi-gates",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "strain-calibration-1",
+      "version": "strain-calibration-1-v1",
+      "topicId": "strain-calibration",
+      "type": "nat",
+      "stem": "A 200 Ω resistive gauge has GF=2 and strain +500 microstrain. Find ΔR in Ω using the linear model.",
+      "answer": {
+        "min": 0.2,
+        "max": 0.2
+      },
+      "explanation": "ΔR=200×2×500×10⁻⁶=0.2 Ω.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "strain-calibration-2",
+      "version": "strain-calibration-2-v1",
+      "topicId": "strain-calibration",
+      "type": "nat",
+      "stem": "A 100 mm bar elongates by 0.02 mm. What is the strain in microstrain?",
+      "answer": {
+        "min": 200,
+        "max": 200
+      },
+      "explanation": "0.02/100=0.0002=200 microstrain.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "strain-calibration-3",
+      "version": "strain-calibration-3-v1",
+      "topicId": "strain-calibration",
+      "type": "nat",
+      "stem": "A gauge has ΔR/R=0.001 and strain 500 microstrain. Find its gauge factor.",
+      "answer": {
+        "min": 2,
+        "max": 2
+      },
+      "explanation": "GF=0.001/(500×10⁻⁶)=2.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "strain-calibration-4",
+      "version": "strain-calibration-4-v1",
+      "topicId": "strain-calibration",
+      "type": "mcq",
+      "stem": "Which quantity is engineering strain ΔL/L?",
+      "answer": "2",
+      "explanation": "The same length unit cancels between numerator and denominator.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A voltage",
+        "A force",
+        "Dimensionless",
+        "A resistance"
+      ]
+    },
+    {
+      "id": "strain-calibration-5",
+      "version": "strain-calibration-5-v1",
+      "topicId": "strain-calibration",
+      "type": "nat",
+      "stem": "A 120 Ω gauge with positive GF=2 experiences −1000 microstrain. Find its final resistance in Ω in the linear model.",
+      "answer": {
+        "min": 119.76,
+        "max": 119.76
+      },
+      "explanation": "ΔR=120×2×(−0.001)=−0.24 Ω; final=119.76 Ω.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "strain-calibration-6",
+      "version": "strain-calibration-6-v1",
+      "topicId": "strain-calibration",
+      "type": "msq",
+      "stem": "Which statements about the stated linear resistive-gauge model are correct?",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Both follow the definition; other claims require circuit/configuration details.",
+      "sourceId": "multi-strain",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "ΔR/R=GF×ε",
+        "One microstrain is 10⁻⁶ strain",
+        "Gauge factor alone determines bridge output polarity",
+        "Any single active gauge always cancels all temperature effects"
+      ]
+    },
+    {
+      "id": "ideal-transformer-ratios-1",
+      "version": "ideal-transformer-ratios-1-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "nat",
+      "stem": "An ideal transformer has Np=1000, Ns=250 and Vp=200 V RMS. Find Vs in V RMS.",
+      "answer": {
+        "min": 50,
+        "max": 50
+      },
+      "explanation": "Vs=200×250/1000=50 V.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-transformer-ratios-2",
+      "version": "ideal-transformer-ratios-2-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "nat",
+      "stem": "An ideal transformer delivers 100 V RMS at 4 A RMS into a resistive load. At 200 V RMS primary voltage, find primary current in A RMS.",
+      "answer": {
+        "min": 2,
+        "max": 2
+      },
+      "explanation": "Secondary power=400 W; ideal primary current=400/200=2 A.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-transformer-ratios-3",
+      "version": "ideal-transformer-ratios-3-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "nat",
+      "stem": "An ideal transformer has Np/Ns=3 and a 4 Ω resistive secondary load. Find the primary-referred resistance in Ω.",
+      "answer": {
+        "min": 36,
+        "max": 36
+      },
+      "explanation": "Referred load=3²×4=36 Ω.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-transformer-ratios-4",
+      "version": "ideal-transformer-ratios-4-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "mcq",
+      "stem": "For an ideal step-up transformer supplying a resistive load, which relation holds for current magnitudes?",
+      "answer": "1",
+      "explanation": "Power balance and raised voltage imply a smaller secondary current than primary.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Secondary current exceeds primary current",
+        "Secondary current is smaller than primary current",
+        "Both currents must be zero",
+        "Both currents must always be equal"
+      ]
+    },
+    {
+      "id": "ideal-transformer-ratios-5",
+      "version": "ideal-transformer-ratios-5-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "nat",
+      "stem": "An ideal transformer has Ns/Np=0.2 and secondary current 5 A RMS into a resistive load. Find primary current in A RMS.",
+      "answer": {
+        "min": 1,
+        "max": 1
+      },
+      "explanation": "Ip=(Vs/Vp)Is=(Ns/Np)Is=0.2×5=1 A.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-transformer-ratios-6",
+      "version": "ideal-transformer-ratios-6-v1",
+      "topicId": "ideal-transformer-ratios",
+      "type": "msq",
+      "stem": "Which are assumptions or consequences of the ideal transformer model used here?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Losslessness and the voltage ratio are ideal-model statements; real behaviour has additional effects.",
+      "sourceId": "multi-transformer",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "No winding or core power loss in the model",
+        "It accurately predicts all inrush currents",
+        "Voltage magnitude ratio equals turns ratio",
+        "It permits arbitrary DC steady-state operation without magnetic limitations"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "multi-real",
+      "title": "Economy: separate price change from output change · concept reference",
+      "url": "https://openstax.org/books/principles-economics-3e/pages/19-2-adjusting-nominal-values-to-real-values",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-table",
+      "title": "Data interpretation: choose totals and comparison bases · concept reference",
+      "url": "https://openstax.org/books/introductory-statistics-2e/pages/1-3-frequency-frequency-tables-and-levels-of-measurement",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-conditional",
+      "title": "Critical reasoning: necessary and sufficient conditions · concept reference",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/2-5-equivalent-statements",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-ac",
+      "title": "AC circuits: RMS values and real power · concept reference",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-4-power-in-an-ac-circuit",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-gates",
+      "title": "Digital electronics: verify a Boolean function · concept reference",
+      "url": "https://www.allaboutcircuits.com/textbook/digital/chpt-3/multiple-input-gates/",
+      "publisher": "All About Circuits",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-strain",
+      "title": "Instrumentation: strain, gauge factor and bridge balance · concept reference",
+      "url": "https://www.ni.com/en/shop/data-acquisition/sensor-fundamentals/measuring-strain-with-strain-gages.html",
+      "publisher": "NI",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "multi-transformer",
+      "title": "Electrical machines: ideal transformer ratios · concept reference",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    }
+  ]
+}

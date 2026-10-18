@@ -1,6 +1,5 @@
 import { validSSCTemplate, type SSCTemplate } from "./ssc-rules.ts";
 import {
-  practiceQuestions,
   questionBankFor,
   practiceBankVersion,
   type StudyQuestion,
@@ -156,6 +155,7 @@ export function submit(a: PracticeAttempt, now: number) {
     : a;
 }
 export function createPractice(input: {
+  bankVersion?: string;
   questionIds?: string[];
   examId: string;
   topicIds: string[];
@@ -183,7 +183,10 @@ export function createPractice(input: {
     input.penalty > 10
   )
     throw Error("Invalid test settings.");
-  let pool = practiceQuestions.filter(
+  const bankVersion = input.bankVersion ?? practiceBankVersion;
+  const bank = questionBankFor(bankVersion);
+  if (!bank) throw Error("Unknown question bank version.");
+  let pool = bank.filter(
     (q) =>
       input.topicIds.includes(q.topicId) &&
       (!input.questionIds || input.questionIds.includes(q.id)) &&
@@ -208,7 +211,7 @@ export function createPractice(input: {
   return {
     id: crypto.randomUUID(),
     version: 1,
-    bankVersion: practiceBankVersion,
+    bankVersion,
     examId: input.examId,
     classification: "custom-illustrative",
     sections: [{ id: "practice", seconds: input.seconds }],
@@ -313,6 +316,7 @@ export type SectionPlan = {
 };
 /** Custom source-linked sectional practice only. Does not certify an official pattern. */
 export function createSectionPractice(input: {
+  bankVersion?: string;
   examId: string;
   sections: SectionPlan[];
   fixed: boolean;
@@ -337,6 +341,7 @@ export function createSectionPractice(input: {
     const prior = input.allowRepeats ? [] : input.seen;
     const a = createPractice({
       ...s,
+      bankVersion: input.bankVersion,
       examId: input.examId,
       seen: [...prior, ...used],
       allowRepeats: false,

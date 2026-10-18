@@ -288,3 +288,7 @@ This checkpoint completes those software/content additions; it does not approve 
 ### SSC personal study loop · 18 October 2026
 
 Added `/ssc-cgl/study`: local daily budget/scope planning, subject evidence from distinct latest saved responses, question-level correction notes/reasons, reversible manual resolution and private key-doubt flags. Result feedback links directly into the notebook; filters and pagination support longer histories. Focused retries reuse only 1–20 selected unresolved questions, exclude flagged doubts, retain timed-session ownership and never alter old scores. Optional validated vault storage preserves old backups and includes new notes/settings in explicit exports. Full editorial/PYQ/live-exam gates remain open; cloud/tutor stay disabled by default.
+
+### All-exam learning and bounded navigation · 18 October 2026
+
+Added nine exam classrooms and per-exam study/diagnosis workflows alongside the existing SSC path. Seven worked lessons and 42 original questions expand the unique active inventory to 108/685. New bank v6 preserves all older snapshots; full SSC templates remain pinned to v5. Classrooms use explicit sections, course/lecture/lesson grids show six items per page, and notebooks show one question at a time. Other paths gain contextual notes, plans, evidence and exact selected retries without implying official scoring or full mock coverage. See [release contracts and remaining limits](docs/ALL_EXAM_LEARNING.md). Cloud and tutor remain disabled by default.

@@ -1,3 +1,4 @@
+import { fifthBankVersion } from "./questions.ts";
 import {
   createSectionPractice,
   createPractice,
@@ -24,6 +25,7 @@ export function createSSCAttempt(input: {
       seconds = plan[0].seconds;
     const parts = (["accounts", "economics"] as const).map((part) =>
       createPractice({
+        bankVersion: fifthBankVersion,
         examId: "ssc",
         topicIds: topics.filter((t) => sscFinancePart(t) === part),
         count: part === "accounts" ? 40 : 60,
@@ -45,6 +47,7 @@ export function createSSCAttempt(input: {
     };
   } else
     a = createSectionPractice({
+      bankVersion: fifthBankVersion,
       examId: "ssc",
       sections: plan.map((r) => ({
         title: r.title,

@@ -66,9 +66,9 @@ function memory() {
   };
 }
 test("SSC classroom maps every original chapter into search, syllabus, notes and topic drill scope", () => {
-  assert.equal(sscChapters.length, 44);
-  assert.equal(sscQuestions.length, 200);
-  assert.equal(new Set(sscQuestions.map((q) => q.stem)).size, 200);
+  assert.equal(sscChapters.length, 79);
+  assert.equal(sscQuestions.length, 562);
+  assert.equal(new Set(sscQuestions.map((q) => q.stem)).size, 562);
   for (const u of sscUnits) {
     assert.deepEqual(u.exams, ["ssc"]);
     assert.equal(u.status, "source-linked");
@@ -83,8 +83,8 @@ test("SSC classroom maps every original chapter into search, syllabus, notes and
     assert.ok(syllabusFor("ssc").some((s) => s.topicIds.includes(u.slug)));
     assert.ok(sscQuestions.some((q) => q.topicId === u.slug));
   }
-  assert.equal(sscTopicIds("statistics").length, 4);
-  assert.equal(sscTopicIds("finance").length, 4);
+  assert.equal(sscTopicIds("statistics").length, 16);
+  assert.equal(sscTopicIds("finance").length, 17);
   assert.ok(
     sscQuestions.every(
       (q) => !q.pyq && !q.humanReviewed && q.keyStatus === "author-checked",
@@ -209,7 +209,7 @@ test("SSC never silently fills a short unseen bank, preserves snapshot keys and 
   assert.throws(
     () =>
       make("tier2-common", "standard", {
-        seen: a.items.map((i) => i.question.id),
+        seen: sscQuestions.map((q) => q.id),
       }),
     /unseen/,
   );

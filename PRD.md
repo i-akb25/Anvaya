@@ -277,3 +277,10 @@ This is not complete ten-exam content: full syllabus transcription, independent 
 ## SSC CGL delivery checkpoint · 17 October 2026
 
 The SSC common personal-study workflow is implemented at `/ssc-cgl`: condensed lessons, notes, recall, topic drills, original complete-count Tier-I/Tier-II common rehearsals and separate saved DEST. Special-paper lessons are separate by applicable post. Read `docs/SSC_CGL.md` for exact inventory, timing profiles, validation and explicitly incomplete content/review gates. Do not interpret this checkpoint as approval of full syllabus coverage or official mocks.
+
+
+## SSC CGL completion checkpoint · 18 October 2026
+
+The SSC path now has 79 original lessons / 562 explained MCQs, with separate full-count original Statistics and Finance/Economics rehearsals, 40/60 Finance quotas, two disjoint common-paper attempts from an unseen bank, accessible vector drills, publisher lecture mappings, source/review status, same-tab launch handoff and paged answer review. The active platform totals 101 lessons / 643 questions. Banks v1–v4 remain immutable; new attempts use v5. DEST resume/report links are connected to the daily/results desks. Accounts and tutor remain OFF.
+
+This checkpoint completes those software/content additions; it does not approve exhaustive subject depth, authentic PYQ/final-key ingestion, independent editorial review, calibrated difficulty or live/regional examination equivalence. See `docs/SSC_CGL.md` and `/ssc-cgl/sources` for the exact remaining gates.

@@ -48,6 +48,12 @@ export function ProgressDesk() {
           or readiness.
         </p>
       </div>
+      <div className="question-actions">
+        <Link href="/ssc-cgl">SSC classroom →</Link>
+        <Link href="/ssc-cgl/dest">
+          DEST reports ({vault.sscDest?.history.length ?? 0}) →
+        </Link>
+      </div>
       <div className="progress-overview">
         <div className="panel">
           <strong>{vault.completed.length}</strong>

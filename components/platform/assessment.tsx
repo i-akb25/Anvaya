@@ -1,7 +1,14 @@
 "use client";
+import { QuestionFigure } from "./question-figure";
 import Link from "next/link";
+import { claimSSCLaunch, sscHandoffKey } from "@/lib/platform/ssc-handoff";
+import {
+  answerReviewPage,
+  type ReviewFilter,
+} from "@/lib/platform/answer-review";
+import { sscTitle } from "@/lib/platform/ssc-rules";
 import { sscScore } from "@/lib/platform/ssc-exam";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { exams } from "@/lib/catalog";
 import { studyUnits } from "@/lib/platform/content";
 import { practiceQuestions, questionSource } from "@/lib/platform/questions";
@@ -75,6 +82,7 @@ function NumericInput({
   );
 }
 export function AssessmentDesk() {
+  const writerRef = useRef("");
   const [vault, setVault] = useState<LearningVault>(emptyVault()),
     [ready, setReady] = useState(false),
     [writer, setWriter] = useState(""),
@@ -87,10 +95,12 @@ export function AssessmentDesk() {
     [repeat, setRepeat] = useState(false),
     [now, setNow] = useState(0),
     [requestedIndex, setIndex] = useState(0),
+    [palettePage, setPalettePage] = useState(0),
     [status, setStatus] = useState(""),
     [result, setResult] = useState<PracticeAttempt | null>(null);
   useEffect(() => {
-    setWriter(crypto.randomUUID());
+    writerRef.current ||= crypto.randomUUID();
+    setWriter(writerRef.current);
     const q = new URLSearchParams(location.search);
     if (studyUnits.some((u) => u.slug === q.get("topic"))) {
       const selected = q.get("topic")!;
@@ -117,7 +127,16 @@ export function AssessmentDesk() {
       setPenalty(computer ? 1 : 0.5);
     }
     try {
-      setVault(readVault());
+      const current = readVault();
+      let raw: string | null = null;
+      try {
+        raw = sessionStorage.getItem(sscHandoffKey);
+        sessionStorage.removeItem(sscHandoffKey);
+      } catch {}
+      const claimed = claimSSCLaunch(current, raw, writerRef.current);
+      setVault(
+        claimed === current ? current : saveVault(claimed, current.revision),
+      );
       setReady(true);
     } catch (e) {
       setStatus((e as Error).message);
@@ -137,6 +156,7 @@ export function AssessmentDesk() {
           active.items.findIndex((i) => i.section === section),
         )
       : Math.min(requestedIndex, Math.max(0, (active?.items.length ?? 1) - 1));
+  useEffect(() => setPalettePage(Math.floor(index / 25)), [index]);
   function persist(next: LearningVault) {
     try {
       const saved = saveVault(next, vault.revision);
@@ -341,7 +361,7 @@ export function AssessmentDesk() {
             <span>
               {exams.find((e) => e.id === active.examId)?.name} ·{" "}
               {active.ssc
-                ? `${active.ssc.id === "tier1" ? "Tier-I" : "Tier-II Paper-I"} original rehearsal`
+                ? `${sscTitle(active.ssc.id)} original rehearsal`
                 : "Custom practice"}
             </span>
             <strong role="timer" aria-label="Remaining time">
@@ -400,6 +420,7 @@ export function AssessmentDesk() {
                 <div className="question-context">{item.question.context}</div>
               )}
               <h2>{item.question.stem}</h2>
+              <QuestionFigure figure={item.question.figure} />
               <p className="small-copy">
                 +{item.marking.correct} correct ·{" "}
                 {item.question.type === "mcq"
@@ -532,22 +553,51 @@ export function AssessmentDesk() {
                   : "Free navigation across this custom paper."}
               </p>
               <div className="question-palette">
-                {active.items.map((v, i) => (
-                  <button
-                    key={v.question.id}
-                    disabled={
-                      active.navigation === "fixed-sections" &&
-                      v.section !== section
-                    }
-                    className={`palette-button ${!blank(active.answers[v.question.id]) ? "answered" : ""} ${index === i ? "current" : ""}`}
-                    onClick={() => setIndex(i)}
-                    aria-label={`Question ${i + 1}${active.marked.includes(v.question.id) ? ", marked for review" : ""}`}
-                  >
-                    {i + 1}
-                    {active.marked.includes(v.question.id) ? "★" : ""}
-                  </button>
-                ))}
+                {active.items
+                  .map((v, i) => ({ v, i }))
+                  .filter(({ v, i }) =>
+                    active.navigation === "fixed-sections"
+                      ? v.section === section
+                      : i >= palettePage * 25 && i < (palettePage + 1) * 25,
+                  )
+                  .map(({ v, i }) => (
+                    <button
+                      key={v.question.id}
+                      disabled={
+                        active.navigation === "fixed-sections" &&
+                        v.section !== section
+                      }
+                      className={`palette-button ${!blank(active.answers[v.question.id]) ? "answered" : ""} ${index === i ? "current" : ""}`}
+                      onClick={() => setIndex(i)}
+                      aria-label={`Question ${i + 1}${active.marked.includes(v.question.id) ? ", marked for review" : ""}`}
+                    >
+                      {i + 1}
+                      {active.marked.includes(v.question.id) ? "★" : ""}
+                    </button>
+                  ))}
               </div>
+              {active.navigation === "paper" && active.items.length > 25 && (
+                <div className="question-actions">
+                  <button
+                    className="button"
+                    disabled={palettePage === 0}
+                    onClick={() => setPalettePage((p) => p - 1)}
+                  >
+                    Earlier questions
+                  </button>
+                  <span>
+                    Palette {palettePage + 1} /{" "}
+                    {Math.ceil(active.items.length / 25)}
+                  </span>
+                  <button
+                    className="button"
+                    disabled={(palettePage + 1) * 25 >= active.items.length}
+                    onClick={() => setPalettePage((p) => p + 1)}
+                  >
+                    Later questions
+                  </button>
+                </div>
+              )}
               <p className="small-copy">
                 Original deadline is retained after reload. Answers save on this
                 device, not automatically to the cloud.
@@ -597,6 +647,13 @@ export function AssessmentDesk() {
   );
 }
 export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
+  const [reviewFilter, setReviewFilter] = useState<ReviewFilter>("all"),
+    [reviewPage, setReviewPage] = useState(0);
+  useEffect(() => {
+    setReviewPage(0);
+    setReviewFilter("all");
+  }, [attempt.id]);
+  const review = answerReviewPage(attempt, reviewFilter, reviewPage);
   const report = evaluate(attempt);
   const ssc = attempt.ssc ? sscScore(attempt) : null;
   return (
@@ -627,9 +684,24 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
       {ssc && (
         <div className="panel">
           <h3>SSC CGL · original practice breakdown</h3>
+          {ssc.finance && (
+            <ul>
+              {ssc.finance.map((p) => (
+                <li key={p.part}>
+                  {p.part === "accounts"
+                    ? "Accounts (Part A)"
+                    : "Economics & Governance (Part B)"}
+                  : {p.score.toFixed(2)} / {p.maximum}
+                </li>
+              ))}
+            </ul>
+          )}
           <p>
-            Merit portion: {ssc.merit.toFixed(2)} / {ssc.meritMaximum}. Practice
-            marks only; no official cutoff, normalisation or pass/fail verdict.
+            {attempt.ssc?.id === "tier2-common"
+              ? "Merit portion"
+              : "Paper practice score"}
+            : {ssc.merit.toFixed(2)} / {ssc.meritMaximum}. Practice marks only;
+            no official cutoff, normalisation or pass/fail verdict.
           </p>
           {ssc.computer && (
             <p>
@@ -652,7 +724,28 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
           </p>
         </div>
       )}
-      {attempt.items.map((item, i) => {
+      <div className="library-toolbar">
+        <label>
+          Review questions
+          <select
+            value={reviewFilter}
+            onChange={(e) => {
+              setReviewFilter(e.target.value as ReviewFilter);
+              setReviewPage(0);
+            }}
+          >
+            <option value="all">All responses</option>
+            <option value="missed">Incorrect and unanswered</option>
+            <option value="marked">Marked for review</option>
+          </select>
+        </label>
+        <p>
+          {review.total} matching questions · page {review.page + 1} /{" "}
+          {review.pages}
+        </p>
+      </div>
+      {!review.total && <p>No questions match this review filter.</p>}
+      {review.rows.map(({ item, index: i }) => {
         const source = questionSource(item.question);
         return (
           <details key={item.question.id} className="answer-review">
@@ -664,6 +757,7 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
             </summary>
             <div>
               {item.question.context && <p>{item.question.context}</p>}
+              <QuestionFigure figure={item.question.figure} />
               <p>
                 Your response:{" "}
                 {blank(attempt.answers[item.question.id])
@@ -698,6 +792,24 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
           </details>
         );
       })}
+      {review.pages > 1 && (
+        <div className="question-actions">
+          <button
+            className="button"
+            disabled={review.page === 0}
+            onClick={() => setReviewPage(review.page - 1)}
+          >
+            Previous review page
+          </button>
+          <button
+            className="button"
+            disabled={review.page + 1 >= review.pages}
+            onClick={() => setReviewPage(review.page + 1)}
+          >
+            Next review page
+          </button>
+        </div>
+      )}
     </section>
   );
 }

@@ -31,7 +31,7 @@ const state = {
   updatedAt: "2026-10-15T17:00:00.000Z",
 };
 test("catalog has unique actual source links and no silent search-result or blank entries", () => {
-  assert.equal(lectureResources.length, 100);
+  assert.equal(lectureResources.length, 107);
   assert.equal(
     new Set(lectureResources.map((r) => r.id)).size,
     lectureResources.length,
@@ -58,7 +58,11 @@ test("catalog has unique actual source links and no silent search-result or blan
     assert.equal(evidence.protocol, "https:");
     assert.ok(hosts.includes(u.hostname), r.id);
     assert.ok(!/search|results/.test(u.pathname), r.id);
-    assert.ok(r.title && r.publisher && r.checkedOn === "2026-10-15");
+    assert.ok(
+      r.title &&
+        r.publisher &&
+        ["2026-10-15", "2026-10-18"].includes(r.checkedOn),
+    );
     assert.ok(
       ["publisher-page", "publisher-linked", "publisher-indexed"].includes(
         r.verification,
@@ -87,8 +91,9 @@ test("all released lessons connect to lecture topics without changing exam conte
       unit.slug,
     );
     if (unit.version.includes("20261016") || unit.slug.startsWith("ssc-")) {
-      assert.equal(topic.resourceIds.length, 0);
-      assert.match(topic.scope, /no video/);
+      if (topic.resourceIds.length)
+        assert.match(topic.scope, /parts of this lesson/);
+      else assert.match(topic.scope, /no video/);
     } else assert.ok(topic.resourceIds.length, unit.slug);
   }
   for (const exam of [

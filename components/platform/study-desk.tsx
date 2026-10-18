@@ -416,6 +416,15 @@ export function TodayDesk() {
           </Link>
         </section>
       )}
+      {v.sscDest?.active && (
+        <section className="editorial-band">
+          <h2>Resume your SSC DEST session.</h2>
+          <p>The original deadline continues while you are away.</p>
+          <Link className="button primary" href="/ssc-cgl/dest">
+            Resume DEST →
+          </Link>
+        </section>
+      )}
       {v.personal?.active && (
         <section className="editorial-band">
           <h2>Resume {v.personal.active.pack.title}</h2>

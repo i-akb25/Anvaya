@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { practiceHandoffKey } from "@/lib/platform/practice-handoff";
 import { exams } from "@/lib/catalog";
 import { studyUnits } from "@/lib/platform/content";
 import { practiceQuestions } from "@/lib/platform/questions";
@@ -35,7 +36,7 @@ export function SectionBuilder() {
   function start() {
     try {
       const v = readVault();
-      if (v.active || v.personal?.active)
+      if (v.active || v.personal?.active || v.sscDest?.active)
         throw Error(
           "Finish your unfinished practice before starting another test.",
         );
@@ -49,7 +50,13 @@ export function SectionBuilder() {
         now: Date.now(),
       });
       saveVault({ ...v, active: a }, v.revision);
-      location.assign("/assessments");
+      try {
+        sessionStorage.setItem(
+          practiceHandoffKey,
+          JSON.stringify({ id: a.id, writerId: a.writerId, examId: exam }),
+        );
+      } catch {}
+      location.assign(`/assessments?exam=${exam}`);
     } catch (e) {
       setStatus((e as Error).message);
     }

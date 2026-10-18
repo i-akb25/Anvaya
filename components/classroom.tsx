@@ -23,7 +23,11 @@ export function ExamCards({ filter = "" }: { filter?: string }) {
           (e.name + e.group).toLowerCase().includes(filter.toLowerCase()),
         )
         .map((e, i) => (
-          <Link className="course-card" href={`/exams/${e.id}`} key={e.id}>
+          <Link
+            className="course-card"
+            href={e.id === "ssc" ? "/ssc-cgl" : `/classrooms/${e.id}`}
+            key={e.id}
+          >
             <div className={`course-art art-${i % 4}`}>
               <span className="course-monogram">
                 {e.id.startsWith("gate")
@@ -106,7 +110,7 @@ export function Classroom() {
             </select>
             <Link
               className="button primary"
-              href={selected === "ssc" ? "/ssc-cgl" : `/exams/${selected}`}
+              href={selected === "ssc" ? "/ssc-cgl" : `/classrooms/${selected}`}
             >
               Open my path <ArrowRight size={18} />
             </Link>
@@ -263,6 +267,18 @@ export function ExamPath({ id }: { id: string }) {
           </a>
         </div>
       </div>
+      {id !== "ssc" && (
+        <div className="editorial-band">
+          <h2>Your learning classroom</h2>
+          <p>
+            Open lessons, topic drills, daily study and question-level mistake
+            notes for this exam.
+          </p>
+          <Link className="button primary" href={`/classrooms/${id}`}>
+            Open classroom →
+          </Link>
+        </div>
+      )}
       {id === "ssc" && (
         <div className="editorial-band">
           <h2>Your SSC CGL classroom is ready.</h2>

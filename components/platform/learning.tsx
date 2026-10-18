@@ -1,4 +1,5 @@
 "use client";
+import { Pager } from "./pagination";
 import { afterDays } from "@/lib/platform/recall";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -13,6 +14,7 @@ import {
 import { exams } from "@/lib/catalog";
 import { StudyShell } from "../study-shell";
 export function CourseLibrary() {
+  const [page, setPage] = useState(0);
   const [q, setQ] = useState(""),
     [exam, setExam] = useState("all");
   const rows = studyUnits.filter(
@@ -20,6 +22,8 @@ export function CourseLibrary() {
       (exam === "all" || u.exams.includes(exam)) &&
       (u.title + u.subject).toLowerCase().includes(q.toLowerCase()),
   );
+  const pages = Math.max(1, Math.ceil(rows.length / 6)),
+    currentPage = Math.min(page, pages - 1);
   return (
     <StudyShell>
       <div className="page-heading">
@@ -46,7 +50,10 @@ export function CourseLibrary() {
           <Search size={18} />
           <input
             value={q}
-            onChange={(e) => setQ(e.target.value)}
+            onChange={(e) => {
+              setQ(e.target.value);
+              setPage(0);
+            }}
             placeholder="Find a concept…"
             aria-label="Search study units"
           />
@@ -54,7 +61,10 @@ export function CourseLibrary() {
         <select
           aria-label="Filter by exam"
           value={exam}
-          onChange={(e) => setExam(e.target.value)}
+          onChange={(e) => {
+            setExam(e.target.value);
+            setPage(0);
+          }}
         >
           <option value="all">All exam contexts</option>
           {exams.map((e) => (
@@ -64,8 +74,8 @@ export function CourseLibrary() {
           ))}
         </select>
       </div>
-      <div className="paper-grid">
-        {rows.map((u) => (
+      <div className="paper-grid" id="lesson-page-start" tabIndex={-1}>
+        {rows.slice(currentPage * 6, currentPage * 6 + 6).map((u) => (
           <article className="paper-card" key={u.slug}>
             <BookOpen />
             <span className="eyebrow">
@@ -87,6 +97,12 @@ export function CourseLibrary() {
           </article>
         ))}
       </div>
+      <Pager
+        page={currentPage}
+        pages={pages}
+        total={rows.length}
+        onPage={setPage}
+      />
       {!rows.length && (
         <p className="empty-state">
           No matching unit. More subject coverage is still being reviewed.

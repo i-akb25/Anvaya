@@ -1,3 +1,4 @@
+import { allExamUnits } from "./all-exam-content.ts";
 import { sscMedia, sscMediaMap } from "./ssc-media.ts";
 import { sscUnits } from "./ssc.ts";
 import { releaseUnits } from "./release-content.ts";
@@ -31,7 +32,7 @@ export const lectureResources: LectureResource[] = [
 ];
 export const lectureTopics: LectureTopic[] = [
   ...(catalog.topics as LectureTopic[]),
-  ...[...releaseUnits, ...sscUnits].map((u) => ({
+  ...[...releaseUnits, ...sscUnits, ...allExamUnits].map((u) => ({
     id: u.slug,
     title: u.title,
     subject: u.subject,

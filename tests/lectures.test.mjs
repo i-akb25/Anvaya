@@ -90,7 +90,7 @@ test("all released lessons connect to lecture topics without changing exam conte
       [...unit.exams].sort(),
       unit.slug,
     );
-    if (unit.version.includes("20261016") || unit.slug.startsWith("ssc-")) {
+    if (unit.version.includes("20261016") || unit.version.includes("20261018") || unit.slug.startsWith("ssc-")) {
       if (topic.resourceIds.length)
         assert.match(topic.scope, /parts of this lesson/);
       else assert.match(topic.scope, /no video/);

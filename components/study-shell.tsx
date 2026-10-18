@@ -33,6 +33,7 @@ export function StudyShell({ children }: { children: React.ReactNode }) {
   }, []);
   const links = [
     ["/", "Classroom"],
+    ["/classrooms", "Exam paths"],
     ["/courses", "Learn"],
     ["/lectures", "Lectures"],
     ["/syllabus", "Syllabus"],

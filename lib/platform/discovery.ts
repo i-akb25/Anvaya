@@ -1,3 +1,5 @@
+import { exams } from "../catalog.ts";
+import { examStudy, examQuestions, studyDeskUrl } from "./exam-study.ts";
 import { publishedBriefings } from "./briefings.ts";
 import { studyUnits } from "./content.ts";
 import { lectureTopics, lectureResources } from "./lectures.ts";
@@ -38,7 +40,7 @@ export function studyIndex(v?: LearningVault, w?: Workspace): StudyHit[] {
       exams: u.exams,
       href: `/courses/${u.slug}`,
       private: false,
-      status: `${u.status === "source-checked" ? "Source-checked" : "Syllabus-linked, author-checked"} original lesson; not independently human-reviewed`,
+      status: `${u.status === "source-checked" ? "Source-checked" : "Source-linked, author-checked"} original lesson; not independently human-reviewed`,
     })),
     ...lectureTopics.map((t) => ({
       id: `topic:${t.id}`,
@@ -74,6 +76,25 @@ export function studyIndex(v?: LearningVault, w?: Workspace): StudyHit[] {
     })),
   ];
   if (v) {
+    for (const exam of exams) {
+      const pool = examQuestions(exam.id);
+      for (const [id, entry] of Object.entries(examStudy(v, exam.id).journal)) {
+        const q = pool.find((q) => q.id === id);
+        if (q && entry.note.trim())
+          hits.push({
+            id: `question-note:${exam.id}:${id}`,
+            kind: "My question note",
+            title: q.stem,
+            body: entry.note,
+            exams: [exam.id],
+            href: `${studyDeskUrl(exam.id)}?question=${encodeURIComponent(id)}#mistake-notebook`,
+            private: true,
+            status: entry.doubt
+              ? "Private key doubt; unverified"
+              : "Personal correction; unverified",
+          });
+      }
+    }
     for (const b of v.briefings ?? [])
       if (b.status !== "withdrawn")
         hits.push({

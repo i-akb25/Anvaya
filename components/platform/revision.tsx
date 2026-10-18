@@ -49,6 +49,7 @@ export function ProgressDesk() {
         </p>
       </div>
       <div className="question-actions">
+        <Link href="/classrooms">All exam classrooms →</Link>
         <Link href="/ssc-cgl">SSC classroom →</Link>
         <Link href="/ssc-cgl/study">SSC study plan & question notes →</Link>
         <Link href="/ssc-cgl/dest">

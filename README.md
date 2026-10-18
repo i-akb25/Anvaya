@@ -2,12 +2,15 @@
 
 **Project source of truth:** [PROJECT_MASTER.md](./PROJECT_MASTER.md). Product, design, privacy, content integrity and release rules are documented there.
 
-Anvaya is a local-first personal exam-preparation workspace. The SSC CGL path is usable for learning and original practice; complete syllabus depth, independent editorial approval and authentic imported PYQs are not claimed. Accounts and tutor remain OFF by default.
+Anvaya is a local-first personal exam-preparation workspace. All ten exam paths connect available lessons, practice and private revision workflows; complete syllabus depth, independent editorial approval and authentic imported PYQs are not claimed. Accounts and tutor remain OFF by default.
 
 ## Current learner routes
 
 | Route | Experience |
 | --- | --- |
+| `/classrooms`, `/classrooms/[exam]` | All exam paths with overview, paginated lessons, practice and source references |
+| `/classrooms/[exam]/study` | Per-exam daily sessions, subject evidence and question mistake notebook |
+| `/ssc-cgl/study` | Existing SSC study data and question diagnosis, with bounded section navigation |
 | `/ssc-cgl` | SSC topic lessons, progress, four paper profiles and source status |
 | `/ssc-cgl/dest` | Separately timed, saved original DEST practice and reports |
 | `/ssc-cgl/sources` | Primary references, lecture checks and explicit review/key limitations |
@@ -20,13 +23,15 @@ Anvaya is a local-first personal exam-preparation workspace. The SSC CGL path is
 
 ## Content and exam rules
 
-The active platform contains **101 original AI-authored lessons and 643 questions**. Of these, **79 lessons and 562 MCQs** belong to the dedicated SSC path. New SSC content has author checks only. Source links do not imply independent review or an official answer key. Historical draft content remains separate from this active bank.
+See [all-exam release details](docs/ALL_EXAM_LEARNING.md) for exact per-exam counts and current limitations. Course and lecture libraries show six items per page; study notebooks show one question at a time.
+
+The active platform contains **108 original AI-authored lessons and 685 questions**. Of these, **79 lessons and 562 MCQs** belong to the dedicated SSC path. New SSC content has author checks only. Source links do not imply independent review or an official answer key. Historical draft content remains separate from this active bank.
 
 SSC original rehearsals support Tier-I (100 questions), Tier-II common objective (150), Statistics (100) and Finance/Economics (100 with 40 Accounts + 60 Economics/Governance). Timings and penalties follow the linked 2026 notice, with separate compensatory practice profiles; eligibility and live interface behaviour are not certified. Common-paper sections close on their timers; special papers have whole-paper navigation. DEST starts as a separate session. See [SSC details](docs/SSC_CGL.md).
 
 The common bank supports two disjoint full attempts of either common-paper template when starting from an unseen bank. This does not create independently calibrated mock sets. Exhausted pools stop rather than repeat within a paper or silently reuse earlier questions. Reuse requires an explicit choice. No imported authentic PYQ bank, official percentile or exam-readiness prediction is published.
 
-Released question banks are append-only. Versions v1–v4 validate previous saved snapshots; new attempts use v5. Never edit a released key in place. Other exam tracks retain their own sources, cycles and incomplete coverage status.
+Released question banks are append-only. Versions v1–v5 validate previous saved snapshots; custom attempts use v6. Full SSC paper templates stay pinned to v5. Never edit a released key in place. Other exam tracks retain their own sources, cycles and incomplete coverage status.
 
 ## Local data and privacy
 

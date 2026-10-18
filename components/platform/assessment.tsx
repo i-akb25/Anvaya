@@ -6,7 +6,11 @@ import {
   answerReviewPage,
   type ReviewFilter,
 } from "@/lib/platform/answer-review";
-import { sscQuestions } from "@/lib/platform/ssc";
+import { examQuestions, studyDeskUrl } from "@/lib/platform/exam-study";
+import {
+  practiceHandoffKey,
+  claimPracticeLaunch,
+} from "@/lib/platform/practice-handoff";
 import { sscTitle } from "@/lib/platform/ssc-rules";
 import { sscScore } from "@/lib/platform/ssc-exam";
 import { useEffect, useState, useRef } from "react";
@@ -134,7 +138,20 @@ export function AssessmentDesk() {
         raw = sessionStorage.getItem(sscHandoffKey);
         sessionStorage.removeItem(sscHandoffKey);
       } catch {}
-      const claimed = claimSSCLaunch(current, raw, writerRef.current);
+      let genericRaw: string | null = null;
+      try {
+        genericRaw = sessionStorage.getItem(practiceHandoffKey);
+        sessionStorage.removeItem(practiceHandoffKey);
+      } catch {}
+      const genericClaim = claimPracticeLaunch(
+        current,
+        genericRaw,
+        writerRef.current,
+      );
+      const claimed =
+        genericClaim === current
+          ? claimSSCLaunch(current, raw, writerRef.current)
+          : genericClaim;
       setVault(
         claimed === current ? current : saveVault(claimed, current.revision),
       );
@@ -780,14 +797,15 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
               <a target="_blank" rel="noreferrer" href={source.url}>
                 {source.title} ↗
               </a>
-              {attempt.examId === "ssc" &&
-                sscQuestions.some((q) => q.id === item.question.id) && (
-                  <Link
-                    href={`/ssc-cgl/study?question=${encodeURIComponent(item.question.id)}#mistake-notebook`}
-                  >
-                    Diagnose this question or flag a key doubt →
-                  </Link>
-                )}
+              {examQuestions(attempt.examId).some(
+                (q) => q.id === item.question.id,
+              ) && (
+                <Link
+                  href={`${studyDeskUrl(attempt.examId)}?question=${encodeURIComponent(item.question.id)}#mistake-notebook`}
+                >
+                  Diagnose this question or flag a key doubt →
+                </Link>
+              )}
               <p className="small-copy">
                 Original AI-authored practice · {item.question.keyStatus} · No
                 human editorial review · Not a PYQ

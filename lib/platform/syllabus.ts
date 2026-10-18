@@ -179,6 +179,17 @@ function topics(title: string) {
   if (/environment|biodiversity/.test(value)) ids.push("ecosystems-energy");
   if (/general awareness/.test(value))
     ids.push("constitutional-rights", "ecosystems-energy");
+  if (/economy|economic|financial awareness/.test(value))
+    ids.push("nominal-real-output");
+  if (/interpretation|statistical analysis/.test(value))
+    ids.push("table-di-base");
+  if (/reasoning|comprehension|verbal/.test(value))
+    ids.push("conditional-arguments");
+  if (/circuits|networks/.test(value)) ids.push("ac-real-power");
+  if (/digital|electronics/.test(value)) ids.push("digital-gate-logic");
+  if (/measurement|sensor|instrumentation/.test(value))
+    ids.push("strain-calibration");
+  if (/machines/.test(value)) ids.push("ideal-transformer-ratios");
   return [...new Set(ids)];
 }
 export const syllabusUnits: SyllabusUnit[] = [

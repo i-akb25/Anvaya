@@ -145,3 +145,7 @@ This is not complete SSC editorial coverage: advanced depth, permitted authentic
 The SSC path now has 79 original lessons / 562 explained MCQs, with separate full-count original Statistics and Finance/Economics rehearsals, 40/60 Finance quotas, two disjoint common-paper attempts from an unseen bank, accessible vector drills, publisher lecture mappings, source/review status, same-tab launch handoff and paged answer review. The active platform totals 101 lessons / 643 questions. Banks v1–v4 remain immutable; new attempts use v5. DEST resume/report links are connected to the daily/results desks. Accounts and tutor remain OFF.
 
 This checkpoint completes those software/content additions; it does not approve exhaustive subject depth, authentic PYQ/final-key ingestion, independent editorial review, calibrated difficulty or live/regional examination equivalence. See `docs/SSC_CGL.md` and `/ssc-cgl/sources` for the exact remaining gates.
+
+### SSC study workflow checkpoint · 18 October 2026
+
+Daily study budget/scope, subject evidence, a question correction/doubt notebook and exact selected-question retries now connect the SSC classroom, results, lessons, recall and backups. Source banks, official provenance status and published keys remain unchanged. Timed-session conflicts and stale local writes are rejected. No automatic mastery, official qualification or exhaustive curriculum claim is introduced.

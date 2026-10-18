@@ -134,3 +134,7 @@ This is not complete ten-exam content: full syllabus transcription, independent 
 `/ssc-cgl` now connects 44 new condensed lessons and 200 original MCQs to notes, recall, search and topic drills. Tier-I (100 questions) and Tier-II common objective (150 questions) original rehearsals use distinct 2026 timing/marking profiles, preserve frozen recovery and show the merit/qualifying split. `/ssc-cgl/dest` provides a separately timed persistent typing session and bounded reports. The active platform bank now has 66 lessons / 281 questions, preserving earlier bank versions.
 
 This is not complete SSC editorial coverage: advanced depth, permitted authentic PYQs/final keys, curated SSC videos and independent review remain pending. Statistics/Finance each have 16 questions; their full 100-question papers remain unavailable. Accounts and tutor remain OFF. See [SSC release and remaining gates](docs/SSC_CGL.md).
+
+### SSC daily study and mistakes
+
+Open `/ssc-cgl/study` for a budgeted next session, subject progress evidence and a question-level correction notebook. Save mistake reasons, notes, manual resolutions or private key doubts; retry 1–20 selected unresolved questions with one minute each and +2/−0.50 custom scoring. Doubt-flagged questions are excluded until cleared. Settings and notes stay local and are included in validated JSON backups. Result feedback links directly to the relevant notebook question. See [SSC release details](docs/SSC_CGL.md) for storage, review and provenance limits.

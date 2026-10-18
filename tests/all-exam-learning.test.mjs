@@ -152,7 +152,7 @@ test("Boolean question sets agree with exhaustive independently enumerated assig
 });
 test("v5 stays immutable and full SSC templates remain pinned to that bank after v6 publication", () => {
   assert.equal(questionBankFor(fifthBankVersion).length, 643);
-  assert.equal(questionBankFor(practiceBankVersion).length, 685);
+  assert.equal(questionBankFor(practiceBankVersion).length, 745);
   assert.ok(
     !questionBankFor(fifthBankVersion).some((q) =>
       allExamQuestions.some((n) => n.id === q.id),

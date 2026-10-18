@@ -1,4 +1,6 @@
 "use client";
+import { ScientificCalculator } from "./calculator";
+import { gateScore } from "@/lib/platform/gate-exam";
 import { QuestionFigure } from "./question-figure";
 import Link from "next/link";
 import { claimSSCLaunch, sscHandoffKey } from "@/lib/platform/ssc-handoff";
@@ -559,6 +561,12 @@ export function AssessmentDesk() {
             </article>
             <aside className="panel">
               <h3>Question palette</h3>
+              {active.gate && (
+                <details>
+                  <summary>Scientific practice calculator</summary>
+                  <ScientificCalculator />
+                </details>
+              )}
               {active.navigation === "fixed-sections" && (
                 <p aria-label="Current section time remaining">
                   {Math.max(0, Math.ceil((sectionEnd - now) / 1000))} seconds
@@ -699,6 +707,23 @@ export function ResultReport({ attempt }: { attempt: PracticeAttempt }) {
         seconds. Per-question timing was not measured. Bank{" "}
         {attempt.bankVersion}. No percentile or rank is calculated.
       </p>
+      {attempt.gate && (
+        <div className="panel">
+          <h3>GATE original practice breakdown</h3>
+          <ul>
+            {gateScore(attempt).map((r) => (
+              <li key={r.domain}>
+                {r.title}: {r.score.toFixed(2)} /{r.maximum}
+              </li>
+            ))}
+          </ul>
+          <p className="small-copy">
+            Original foundation rehearsal ·{attempt.gate.paper.toUpperCase()} ·
+            {attempt.gate.profile}. No official key, calibrated difficulty,
+            normalised GATE score, rank or qualifying verdict is inferred.
+          </p>
+        </div>
+      )}
       {ssc && (
         <div className="panel">
           <h3>SSC CGL · original practice breakdown</h3>

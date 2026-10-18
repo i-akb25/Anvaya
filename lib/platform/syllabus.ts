@@ -186,10 +186,27 @@ function topics(title: string) {
   if (/reasoning|comprehension|verbal/.test(value))
     ids.push("conditional-arguments");
   if (/circuits|networks/.test(value)) ids.push("ac-real-power");
-  if (/digital|electronics/.test(value)) ids.push("digital-gate-logic");
+  if (/digital/.test(value)) ids.push("digital-gate-logic");
   if (/measurement|sensor|instrumentation/.test(value))
     ids.push("strain-calibration");
   if (/machines/.test(value)) ids.push("ideal-transformer-ratios");
+  if (/engineering mathematics/.test(value))
+    ids.push(
+      "matrix-linear-systems",
+      "calculus-rates-area",
+      "conditional-counting",
+    );
+  if (/control/.test(value)) ids.push("first-order-control");
+  if (/signals/.test(value)) ids.push("discrete-convolution");
+  if (/electronic devices/.test(value)) ids.push("diode-piecewise-model");
+  if (/analog/.test(value))
+    ids.push("ideal-opamp-feedback", "diode-piecewise-model");
+  if (/measurement|instrumentation/.test(value))
+    ids.push("measurement-uncertainty");
+  if (/environment|biodiversity/.test(value)) ids.push("species-interactions");
+  if (/geography/.test(value)) ids.push("weather-climate-evidence");
+  if (/numeracy|quant|probability/.test(value))
+    ids.push("conditional-counting");
   return [...new Set(ids)];
 }
 export const syllabusUnits: SyllabusUnit[] = [

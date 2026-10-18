@@ -59,6 +59,10 @@ try {
     "/courses/constitutional-rights",
     "/courses/rc-transients",
     "/recall",
+    "/tools/calculator",
+    "/courses/first-order-control",
+    "/courses/species-interactions",
+    "/lectures/discrete-convolution",
     "/classrooms",
     ...[
       "upsc",
@@ -116,6 +120,10 @@ try {
     assert.ok(r.headers.get("content-security-policy"));
     assert.equal(r.headers.get("x-content-type-options"), "nosniff");
     const html = await r.text();
+    if (path === "/tools/calculator")
+      assert.ok(
+        html.includes("Calculator expression") && html.includes("Angle mode"),
+      );
     if (path === "/courses")
       assert.equal(
         (html.match(/<article class="paper-card"/g) ?? []).length,

@@ -292,3 +292,7 @@ Added `/ssc-cgl/study`: local daily budget/scope planning, subject evidence from
 ### All-exam learning and bounded navigation · 18 October 2026
 
 Added nine exam classrooms and per-exam study/diagnosis workflows alongside the existing SSC path. Seven worked lessons and 42 original questions expand the unique active inventory to 108/685. New bank v6 preserves all older snapshots; full SSC templates remain pinned to v5. Classrooms use explicit sections, course/lecture/lesson grids show six items per page, and notebooks show one question at a time. Other paths gain contextual notes, plans, evidence and exact selected retries without implying official scoring or full mock coverage. See [release contracts and remaining limits](docs/ALL_EXAM_LEARNING.md). Cloud and tutor remain disabled by default.
+
+### Engineering depth and frozen GATE original papers · 18 October2026
+
+Added10 worked lessons/60 questions, bringing unique active inventory to118/745. GATE EE/EC/IN gain65-question100-mark original rehearsals with15/13/72 components,180/240-minute practice profiles and frozenv7 contracts. The new bounded local scientific calculator is available standalone and during those papers. Bankv1–v6 and SSCv5 templates remain unchanged. See [release contracts, checks and remaining coverage limits](docs/GATE_ORIGINAL_REHEARSAL.md). No official key, difficulty calibration, independent review or complete curriculum claim is introduced.

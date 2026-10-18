@@ -1,3 +1,4 @@
+import { depthUnits } from "./depth-content.ts";
 import { allExamUnits } from "./all-exam-content.ts";
 import { sscMedia, sscMediaMap } from "./ssc-media.ts";
 import { sscUnits } from "./ssc.ts";
@@ -29,21 +30,39 @@ export type LectureTopic = {
 export const lectureResources: LectureResource[] = [
   ...(catalog.resources as LectureResource[]),
   ...sscMedia,
+  {
+    id: "mit-convolution-lecture",
+    title: "Lecture 4: Convolution",
+    url: "https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/resources/lecture-4-convolution/",
+    publisher: "MIT OpenCourseWare",
+    language: "Not confirmed",
+    kind: "lecture",
+    evidenceUrl:
+      "https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/resources/lecture-4-convolution/",
+    checkedOn: "2026-10-18",
+    verification: "publisher-page",
+  },
 ];
 export const lectureTopics: LectureTopic[] = [
   ...(catalog.topics as LectureTopic[]),
-  ...[...releaseUnits, ...sscUnits, ...allExamUnits].map((u) => ({
-    id: u.slug,
-    title: u.title,
-    subject: u.subject,
-    exams: u.exams,
-    resourceIds: sscMediaMap[u.slug] ?? [],
-    scope: sscMediaMap[u.slug]?.length
-      ? "Selected supporting foundation lectures for parts of this lesson, not full SSC chapter coverage. Publisher links checked; playback and spoken language not reviewed. Further reading and original worked notes remain available."
-      : "Source-linked reading and worked lesson available; no video curated yet.",
-    aliases: [u.slug.replaceAll("-", " ")],
-    lessonSlug: u.slug,
-  })),
+  ...[...releaseUnits, ...sscUnits, ...allExamUnits, ...depthUnits].map(
+    (u) => ({
+      id: u.slug,
+      title: u.title,
+      subject: u.subject,
+      exams: u.exams,
+      resourceIds:
+        u.slug === "discrete-convolution"
+          ? ["mit-convolution-lecture"]
+          : (sscMediaMap[u.slug] ?? []),
+      scope:
+        sscMediaMap[u.slug]?.length || u.slug === "discrete-convolution"
+          ? "Selected supporting foundation lectures for parts of this lesson, not full exam-chapter coverage. Publisher links checked; playback and spoken language not reviewed. Further reading and original worked notes remain available."
+          : "Source-linked reading and worked lesson available; no video curated yet.",
+      aliases: [u.slug.replaceAll("-", " ")],
+      lessonSlug: u.slug,
+    }),
+  ),
 ];
 export const lectureCatalogVersion = catalog.version;
 export function resourcesForTopic(topic: LectureTopic) {

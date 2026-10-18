@@ -453,6 +453,8 @@ export const patterns: Pattern[] = [
       ],
       {
         status: "source-checked",
+        checkedOn: "2026-10-18",
+        version: `gate-${code}-2027-paper-20261018-v2`,
         sourceLocator:
           "Official question paper pattern; 13 mathematics + 72 technical marks within subject",
         navigation: "paper",

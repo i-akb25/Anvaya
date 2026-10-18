@@ -19,19 +19,22 @@ Anvaya is a local-first personal exam-preparation workspace. All ten exam paths 
 | `/assessments`, `/results` | Frozen timed attempts, paged navigation/review, answers and explanations |
 | `/today`, `/notebook`, `/search`, `/recall` | Plans, saved notes, opt-in private search and scheduled recall |
 | `/library`, `/my-practice` | Private PDF storage and user-supplied question packs |
+| `/tools/calculator` | Local scientific practice calculator, also available inside GATE rehearsals |
 | `/account` | Validated local backups; optional cloud integration is disabled |
 
 ## Content and exam rules
 
 See [all-exam release details](docs/ALL_EXAM_LEARNING.md) for exact per-exam counts and current limitations. Course and lecture libraries show six items per page; study notebooks show one question at a time.
 
-The active platform contains **108 original AI-authored lessons and 685 questions**. Of these, **79 lessons and 562 MCQs** belong to the dedicated SSC path. New SSC content has author checks only. Source links do not imply independent review or an official answer key. Historical draft content remains separate from this active bank.
+The active platform contains **118 original AI-authored lessons and 745 questions**. Of these, **79 lessons and 562 MCQs** belong to the dedicated SSC path. New SSC content has author checks only. Source links do not imply independent review or an official answer key. Historical draft content remains separate from this active bank.
+
+GATE EE/EC/IN now offer 65-question, 100-mark original rehearsals with 15/13/72 practice components, whole-paper timing and declared MCQ/MSQ/NAT scoring. These use limited foundation pools, not full subject-depth or calibrated official papers. See [GATE release details](docs/GATE_ORIGINAL_REHEARSAL.md).
 
 SSC original rehearsals support Tier-I (100 questions), Tier-II common objective (150), Statistics (100) and Finance/Economics (100 with 40 Accounts + 60 Economics/Governance). Timings and penalties follow the linked 2026 notice, with separate compensatory practice profiles; eligibility and live interface behaviour are not certified. Common-paper sections close on their timers; special papers have whole-paper navigation. DEST starts as a separate session. See [SSC details](docs/SSC_CGL.md).
 
 The common bank supports two disjoint full attempts of either common-paper template when starting from an unseen bank. This does not create independently calibrated mock sets. Exhausted pools stop rather than repeat within a paper or silently reuse earlier questions. Reuse requires an explicit choice. No imported authentic PYQ bank, official percentile or exam-readiness prediction is published.
 
-Released question banks are append-only. Versions v1–v5 validate previous saved snapshots; custom attempts use v6. Full SSC paper templates stay pinned to v5. Never edit a released key in place. Other exam tracks retain their own sources, cycles and incomplete coverage status.
+Released question banks are append-only. Versions v1–v6 validate previous saved snapshots; custom attempts and new GATE templates use v7. Full SSC paper templates stay pinned to v5. Never edit a released key in place. Other exam tracks retain their own sources, cycles and incomplete coverage status.
 
 ## Local data and privacy
 
@@ -39,7 +42,7 @@ Study notes, attempts and DEST use `anvaya-learning-v1`; plans and paper notes u
 
 Backups validate before replacement and preserve original timed-session deadlines. Revision checks reject stale-tab writes. The latest 30 objective results and ten DEST reports are retained; seen IDs persist separately. Private PDF bytes in IndexedDB need a separate file backup and are not contained in JSON backups. Failed writes surface an error and preserve previously stored records.
 
-107 publisher links are listed across the platform. New SSC-supporting NIOS mathematics links were checked on publisher pages; full playback and spoken-language review are not claimed. External players require an explicit learner action. No downloaded classes or publisher affiliation are implied.
+108 publisher links are listed across the platform. New SSC-supporting NIOS mathematics links were checked on publisher pages; full playback and spoken-language review are not claimed. External players require an explicit learner action. No downloaded classes or publisher affiliation are implied.
 
 ## Run and verify
 

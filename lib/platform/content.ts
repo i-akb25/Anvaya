@@ -1,3 +1,4 @@
+import { depthUnits, depthSources } from "./depth-content.ts";
 import { allExamUnits, allExamSources } from "./all-exam-content.ts";
 import { sscSources, sscUnits } from "./ssc.ts";
 import { releaseSources, releaseUnits } from "./release-content.ts";
@@ -11,6 +12,7 @@ export type Source = {
   licenseNote: string;
 };
 export const sources: Source[] = [
+  ...depthSources,
   ...allExamSources,
   ...sscSources,
   ...expansionSources,
@@ -426,6 +428,7 @@ export const studyUnits: StudyUnit[] = [
   ...foundationUnits,
   ...sscUnits,
   ...allExamUnits,
+  ...depthUnits,
 ];
 export function sourceFor(id: string) {
   const source = sources.find((s) => s.id === id);

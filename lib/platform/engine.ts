@@ -1,3 +1,4 @@
+import { validGateTemplate, type GateTemplate } from "./gate-rules.ts";
 import { validSSCTemplate, type SSCTemplate } from "./ssc-rules.ts";
 import {
   questionBankFor,
@@ -22,6 +23,7 @@ export type PracticeAttempt = {
   bankVersion: string;
   classification: "custom-illustrative";
   ssc?: SSCTemplate;
+  gate?: GateTemplate;
   sections: { id: string; seconds: number; title?: string }[];
   navigation: "paper" | "fixed-sections";
   items: FrozenQuestion[];
@@ -174,7 +176,7 @@ export function createPractice(input: {
     input.count > 200 ||
     !Number.isInteger(input.seconds) ||
     input.seconds < 60 ||
-    input.seconds > 10800 ||
+    input.seconds > 14400 ||
     !Number.isFinite(input.correct) ||
     input.correct <= 0 ||
     input.correct > 10 ||
@@ -265,7 +267,7 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
             (typeof s.title === "string" && s.title.length <= 100)) &&
           Number.isInteger(s.seconds) &&
           s.seconds >= 60 &&
-          s.seconds <= 10800,
+          s.seconds <= 14400,
       ) ||
       !Array.isArray(a.marked) ||
       !a.marked.every((id) => a.items.some((i) => i.question.id === id)) ||
@@ -276,6 +278,7 @@ export function validAttempt(value: unknown): value is PracticeAttempt {
       return false;
     return (
       validSSCTemplate(a) &&
+      validGateTemplate(a) &&
       a.items.every((i) => {
         const original = questionBankFor(a.bankVersion)!.find(
           (q) => q.id === i.question.id,

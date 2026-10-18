@@ -31,7 +31,7 @@ const state = {
   updatedAt: "2026-10-15T17:00:00.000Z",
 };
 test("catalog has unique actual source links and no silent search-result or blank entries", () => {
-  assert.equal(lectureResources.length, 107);
+  assert.equal(lectureResources.length, 108);
   assert.equal(
     new Set(lectureResources.map((r) => r.id)).size,
     lectureResources.length,

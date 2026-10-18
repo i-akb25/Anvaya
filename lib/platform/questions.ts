@@ -1,3 +1,4 @@
+import { depthQuestions } from "./depth-content.ts";
 import { allExamQuestions } from "./all-exam-content.ts";
 import { sscQuestions, legacySscQuestions } from "./ssc.ts";
 import { releaseQuestions } from "./release-content.ts";
@@ -388,7 +389,8 @@ export const previousBankVersion = "source-linked-foundations-20261015-v2";
 export const thirdBankVersion = "source-linked-foundations-20261016-v3";
 export const fourthBankVersion = "source-linked-foundations-20261017-v4";
 export const fifthBankVersion = "source-linked-foundations-20261018-v5";
-export const practiceBankVersion = "source-linked-foundations-20261018-v6";
+export const sixthBankVersion = "source-linked-foundations-20261018-v6";
+export const practiceBankVersion = "source-linked-foundations-20261018-v7";
 const secondRelease: StudyQuestion[] = [
   ...firstRelease,
   ...expansionQuestions.map((q): StudyQuestion => ({
@@ -418,9 +420,10 @@ const thirdRelease: StudyQuestion[] = [
   })),
 ];
 const fifthRelease: StudyQuestion[] = [...thirdRelease, ...sscQuestions];
+const sixthRelease: StudyQuestion[] = [...fifthRelease, ...allExamQuestions];
 export const practiceQuestions: StudyQuestion[] = [
-  ...fifthRelease,
-  ...allExamQuestions,
+  ...sixthRelease,
+  ...depthQuestions,
 ];
 export function questionBankFor(version: string): StudyQuestion[] | undefined {
   if (version === legacyBankVersion) return firstRelease;
@@ -429,6 +432,7 @@ export function questionBankFor(version: string): StudyQuestion[] | undefined {
   if (version === fourthBankVersion)
     return [...thirdRelease, ...legacySscQuestions];
   if (version === fifthBankVersion) return fifthRelease;
+  if (version === sixthBankVersion) return sixthRelease;
   if (version === practiceBankVersion) return practiceQuestions;
 }
 export function questionSource(q: StudyQuestion) {

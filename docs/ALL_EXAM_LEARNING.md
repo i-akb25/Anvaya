@@ -4,22 +4,22 @@ Open `/classrooms` for all ten exam paths. SSC keeps `/ssc-cgl` and `/ssc-cgl/st
 
 ## Available inventory
 
-Counts below include shared foundation lessons relevant to each exam. They must not be summed as unique content or interpreted as full syllabus coverage. The unique active bank is 108 lessons and 685 original questions; the dedicated SSC collection remains 79 lessons and 562 MCQs.
+Counts below include shared foundation lessons relevant to each exam. They must not be summed as unique content or interpreted as full syllabus coverage. The unique active bank is 118 lessons and 745 original questions; the dedicated SSC collection remains 79 lessons and 562 MCQs.
 
 | Exam context | Available lessons | Original questions |
 | --- | ---: | ---: |
-| UPSC Civil Services | 19 | 77 |
-| BPSC Combined Competitive | 19 | 77 |
-| SSC CGL, including shared foundations | 94 | 617 |
-| SBI PO | 16 | 67 |
-| IBPS PO | 16 | 67 |
-| GATE Electrical Engineering | 22 | 91 |
-| GATE Electronics and Communication | 20 | 79 |
-| GATE Instrumentation Engineering | 21 | 85 |
-| UPSC ESE Electrical | 21 | 89 |
-| CAT | 15 | 61 |
+| UPSC Civil Services | 22 | 95 |
+| BPSC Combined Competitive | 22 | 95 |
+| SSC CGL, including shared foundations | 97 | 635 |
+| SBI PO | 17 | 73 |
+| IBPS PO | 17 | 73 |
+| GATE Electrical Engineering | 30 | 139 |
+| GATE Electronics and Communication | 28 | 127 |
+| GATE Instrumentation Engineering | 29 | 133 |
+| UPSC ESE Electrical | 29 | 137 |
+| CAT | 16 | 67 |
 
-Seven new original worked lessons add 42 questions: nominal/real output, table data interpretation, necessary/sufficient conditions, sinusoidal AC real power, Boolean gates, strain-gauge calibration and ideal transformers. They include concepts, worked steps, recall prompts, pitfalls and connected practice. Formats include MCQ, exact-set MSQ, NAT and TITA. Original numerical datasets and policy examples are fictional. Concept references are publisher pages from OpenStax, All About Circuits and NI, checked on 18 October. These are author-checked lessons, not independently approved chapters or copied textbook exercises. No new video playback claim is made.
+The initial all-exam batch added seven original worked lessons add 42 questions: nominal/real output, table data interpretation, necessary/sufficient conditions, sinusoidal AC real power, Boolean gates, strain-gauge calibration and ideal transformers. They include concepts, worked steps, recall prompts, pitfalls and connected practice. Formats include MCQ, exact-set MSQ, NAT and TITA. Original numerical datasets and policy examples are fictional. Concept references are publisher pages from OpenStax, All About Circuits and NI, checked on 18 October. These are author-checked lessons, not independently approved chapters or copied textbook exercises. No new video playback claim is made.
 
 ## Bounded navigation
 
@@ -39,6 +39,8 @@ Bank v6 adds the new questions; v1–v5 remain available unchanged for frozen sa
 
 ## Verification and limits
 
-116 automated tests pass, including new numerical recomputations and exhaustive Boolean checks, cross-exam isolation, all-nine-path exact retries, bank v5 recovery, SSC pinning, backup validation and ownership conflicts. Production HTTP checks cover all new classroom and study routes, invalid-exam 404s, bounded initial course/lecture pages and existing authentication deny paths. Production build and dependency audit are required before merge.
+125 automated tests pass, including new numerical recomputations and exhaustive Boolean checks, cross-exam isolation, all-nine-path exact retries, bank v5 recovery, SSC pinning, backup validation and ownership conflicts. Production HTTP checks cover all new classroom and study routes, invalid-exam 404s, bounded initial course/lecture pages and existing authentication deny paths. Production build and dependency audit are required before merge.
 
 Full syllabi, complete-depth teaching, calibrated full mocks for the other exams, permitted authenticated official PYQs/final keys, independent expert review and comprehensive device/accessibility QA remain incomplete. Existing paper references retain their individual recorded cycles, retrieval status and unresolved issues; this release does not certify them as newly reviewed live rules. Supabase and tutor remain OFF by default.
+
+The subsequent [engineering depth and GATE release](GATE_ORIGINAL_REHEARSAL.md) adds 10 lessons/60 questions, full-count original EE/EC/IN rehearsals and a bounded scientific calculator. It brings current validation to 125 tests and bank v7 while preserving v1–v6. The inventory table above reflects that latest release.

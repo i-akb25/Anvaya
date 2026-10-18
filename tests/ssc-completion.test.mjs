@@ -165,7 +165,7 @@ test("two common rehearsals can use disjoint questions; exhausted special banks 
 });
 test("v4 SSC snapshots retain immutable question/marking/timing contracts after the v5 upgrade", () => {
   assert.equal(questionBankFor(fourthBankVersion).length, 281);
-  assert.equal(questionBankFor(practiceBankVersion).length, 685);
+  assert.equal(questionBankFor(practiceBankVersion).length, 745);
   const rows = sscPlan("tier1", "standard"),
     sections = rows.map((r, i) => ({
       id: `section-${i + 1}`,

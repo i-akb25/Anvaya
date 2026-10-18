@@ -1,4 +1,6 @@
 "use client";
+import { GateRehearsal } from "./gate-rehearsal";
+import { gatePapers, type GatePaper } from "@/lib/platform/gate-rules";
 import { Pager } from "./pagination";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -243,6 +245,9 @@ export function ExamClassroom({ examId }: { examId: string }) {
       {tab === "practice" && (
         <section className="ssc-section">
           <h2>Apply what you learned</h2>
+          {gatePapers.includes(examId as GatePaper) && (
+            <GateRehearsal paper={examId as GatePaper} vault={v} />
+          )}
           <div className="ssc-topic-grid">
             <article className="panel">
               <h3>Topic drills</h3>

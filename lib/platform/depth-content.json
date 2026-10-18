@@ -1,0 +1,1771 @@
+{
+  "units": [
+    {
+      "slug": "matrix-linear-systems",
+      "title": "Linear algebra: determinants, systems and eigenvalues",
+      "subject": "Engineering Mathematics",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "Write AX=b using one fixed variable order. For a 2×2 matrix [[a,b],[c,d]], det(A)=ad−bc. Nonzero determinant permits an inverse and a unique solution for every right-hand side.",
+      "sourceId": "depth-matrix",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "matrix-linear-systems-20261018-v1",
+      "concepts": [
+        {
+          "title": "Start with the equations",
+          "text": "Write AX=b using one fixed variable order. For a 2×2 matrix [[a,b],[c,d]], det(A)=ad−bc. Nonzero determinant permits an inverse and a unique solution for every right-hand side."
+        },
+        {
+          "title": "Do not infer too much from singularity",
+          "text": "A zero determinant rules out an inverse but does not by itself distinguish no solutions from infinitely many. Compare equation consistency or use row reduction."
+        },
+        {
+          "title": "Check a candidate eigenpair",
+          "text": "A nonzero vector v is an eigenvector only when Av=λv. For the original diagonal matrix diag(3,5), the coordinate directions have eigenvalues 3 and 5; a general vector combining both directions is not an eigenvector."
+        }
+      ],
+      "example": {
+        "problem": "Solve 2 x+y=7 and x−y=2. Check whether the coefficient matrix is invertible.",
+        "steps": [
+          "Use variable order (x,y), giving A=[[2,1],[1,−1]].",
+          "det(A)=2(−1)−1(1)=−3, so the system has a unique solution.",
+          "Add the two equations: 3 x=9, hence x=3.",
+          "Substitute into x−y=2: y=1; both original equations hold."
+        ],
+        "answer": "x=3, y=1; determinant −3."
+      },
+      "recall": [
+        "What does a nonzero determinant establish?",
+        "What remains unresolved when a determinant is zero?",
+        "Why must an eigenvector be nonzero?"
+      ],
+      "mistake": "A matrix and its transpose can share a determinant without having the same eigenvectors. Always verify the specified vector by multiplication."
+    },
+    {
+      "slug": "calculus-rates-area",
+      "title": "Calculus: derivatives and signed accumulation",
+      "subject": "Engineering Mathematics",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "A derivative describes local rate of change; a definite integral gives signed accumulation. Include the variable and units before applying a rule.",
+      "sourceId": "depth-calculus",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "calculus-rates-area-20261018-v1",
+      "concepts": [
+        {
+          "title": "State the quantity",
+          "text": "A derivative describes local rate of change; a definite integral gives signed accumulation. Include the variable and units before applying a rule."
+        },
+        {
+          "title": "Differentiate before substituting",
+          "text": "For f(x)=x³−2 x, f′(x)=3 x²−2. At x=2 the slope is 10. Substituting x=2 before differentiating turns the expression into a constant and destroys the required rate."
+        },
+        {
+          "title": "Check accumulated units",
+          "text": "For an original velocity v(t)=2 t m/s on 0≤t≤3 s, displacement is ∫0³2 t dt=9 m. If velocity changes sign, displacement and total distance need not agree."
+        }
+      ],
+      "example": {
+        "problem": "A particle has position s(t)=t³−3 t metres. Find its instantaneous velocity at t=2 s and displacement from t=0 to t=2 s.",
+        "steps": [
+          "Differentiate: v(t)=3 t²−3 m/s.",
+          "At t=2, v=12−3=9 m/s.",
+          "Calculate endpoint positions: s(2)=8−6=2 m and s(0)=0.",
+          "Displacement is 2−0=2 m; this is not the same quantity as final velocity."
+        ],
+        "answer": "Velocity 9 m/s; displacement 2 m."
+      },
+      "recall": [
+        "What is held variable before differentiation?",
+        "When can distance differ from displacement?",
+        "What units does integrating a rate produce?"
+      ],
+      "mistake": "A derivative at a point is not a finite interval average. Endpoint subtraction of position gives signed displacement, not necessarily path length."
+    },
+    {
+      "slug": "first-order-control",
+      "title": "Control systems: first-order response and feedback",
+      "subject": "Control Systems",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "The transfer-function model G(s)=K/(τs+1) below assumes zero initial state and τ>0. Its pole is −1/τ. Initial stored energy adds a response that the zero-state formula does not include.",
+      "sourceId": "depth-control",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "first-order-control-20261018-v1",
+      "concepts": [
+        {
+          "title": "Declare initial conditions",
+          "text": "The transfer-function model G(s)=K/(τs+1) below assumes zero initial state and τ>0. Its pole is −1/τ. Initial stored energy adds a response that the zero-state formula does not include."
+        },
+        {
+          "title": "Read gain and time constant",
+          "text": "For a unit step, y(t)=K(1−exp(−t/τ)), t≥0. The final value is K. At one time constant, the response reaches about 63.2% of that final value, not 63.2% of one unit for every K."
+        },
+        {
+          "title": "Keep the feedback sign",
+          "text": "For forward G and feedback H with negative feedback, closed-loop T=G/(1+GH). The characteristic denominator must be analysed after combining terms. The ideal formula does not certify real actuator stability or saturation limits."
+        }
+      ],
+      "example": {
+        "problem": "For G(s)=2/(s+2), find the time constant and final zero-state output for a unit step. Then find the unity-negative-feedback transfer function.",
+        "steps": [
+          "Rewrite G(s)=1/(0.5 s+1), so K=1 and τ=0.5 s.",
+          "The pole is−2 s⁻¹ and the unit-step final output is 1.",
+          "Unity-negative feedback gives T=G/(1+G).",
+          "Simplify T=[2/(s+2)]/[1+2/(s+2)]=2/(s+4)."
+        ],
+        "answer": "Time constant 0.5 s; open-loop step final value 1; closed-loop T(s)=2/(s+4)."
+      },
+      "recall": [
+        "Where does the pole lie for positiveτ?",
+        "Is K a time constant?",
+        "What changes for positive rather than negative feedback?"
+      ],
+      "mistake": "Do not readτ directly as the constant term of an unnormalised denominator. Final-value reasoning requires a stable applicable response."
+    },
+    {
+      "slug": "discrete-convolution",
+      "title": "Signals: calculate a finite convolution",
+      "subject": "Signals and Systems",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "A list of samples is incomplete without an origin. Here finite sequences start at n=0 and are zero elsewhere. State that before shifting or convolving.",
+      "sourceId": "depth-convolution",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "discrete-convolution-20261018-v1",
+      "concepts": [
+        {
+          "title": "Label time indices",
+          "text": "A list of samples is incomplete without an origin. Here finite sequences start at n=0 and are zero elsewhere. State that before shifting or convolving."
+        },
+        {
+          "title": "Use the overlap sum",
+          "text": "For a discrete-time LTI system, y[n]=Σk x[k]h[n−k]. Compute one n at a time; terms outside the finite support are zero."
+        },
+        {
+          "title": "Check length and total",
+          "text": "For original x=[1,2] and h=[1,1], output is[1,3,2]. Full linear convolution has length 2+2−1=3. Its sum 6 equals(1+2)(1+1), a useful arithmetic check, not a substitute for every coefficient."
+        }
+      ],
+      "example": {
+        "problem": "For x[0]=2,x[1]=1 and h[0]=1,h[1]=−1, zero elsewhere, find the full linear convolution.",
+        "steps": [
+          "At n=0, y[0]=2×1=2.",
+          "At n=1, y[1]=2×(−1)+1×1=−1.",
+          "At n=2, y[2]=1×(−1)=−1.",
+          "The support is n=0,1,2 and the sum 0 equals(sum x)(sum h)=3×0."
+        ],
+        "answer": "y=[2,−1,−1] starting at n=0."
+      },
+      "recall": [
+        "Why must the sample origin be stated?",
+        "What is the full output length?",
+        "How does the impulse response enter an LTI output?"
+      ],
+      "mistake": "This is linear convolution, not circular convolution or pointwise multiplication. Padding and wraparound change a circular-convolution problem."
+    },
+    {
+      "slug": "ideal-opamp-feedback",
+      "title": "Analog electronics: ideal op-amp feedback",
+      "subject": "Analog Electronics",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "Use the ideal voltage-feedback model only with stable negative feedback and unsaturated output. In that linear regime input currents are zero and input differential voltage tends to zero.",
+      "sourceId": "depth-opamp",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "ideal-opamp-feedback-20261018-v1",
+      "concepts": [
+        {
+          "title": "State the operating region",
+          "text": "Use the ideal voltage-feedback model only with stable negative feedback and unsaturated output. In that linear regime input currents are zero and input differential voltage tends to zero."
+        },
+        {
+          "title": "Distinguish two circuits",
+          "text": "An inverting amplifier has gain−Rf/Rin. A non-inverting amplifier has gain 1+Rf/Rg. Resistors are positive magnitudes; the inverting sign is part of the topology."
+        },
+        {
+          "title": "Verify the output limit",
+          "text": "For an original inverting gain−5 and input 0.4 V, the predicted output is−2 V. If the available output swing cannot reach−2 V, the linear result is invalid. A virtual ground is not a physical current sink into the input terminal."
+        }
+      ],
+      "example": {
+        "problem": "An ideal inverting amplifier has Rin=10 kΩ, Rf=30 kΩ and Vin=0.5 V. Assume stable linear operation. Find gain, output and input-resistor current.",
+        "steps": [
+          "The non-inverting input is grounded, so the inverting node is at virtual 0 V in the stated linear model.",
+          "Gain=−30/10=−3.",
+          "Vout=−3×0.5=−1.5 V.",
+          "Input-resistor current=(0.5−0)/10000=50 µA; it flows through the feedback resistor, not into the ideal input."
+        ],
+        "answer": "Gain−3; Vout−1.5 V; resistor current 50 µA."
+      },
+      "recall": [
+        "When does virtual-ground reasoning apply?",
+        "Which configuration adds 1 to the resistor ratio?",
+        "Where does input-resistor current flow?"
+      ],
+      "mistake": "Zero differential input voltage is not guaranteed for open-loop operation or saturation. Do not use the virtual-short rule without the negative-feedback assumption."
+    },
+    {
+      "slug": "diode-piecewise-model",
+      "title": "Semiconductors: check a diode model consistently",
+      "subject": "Analog Electronics",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "An ideal conducting diode has zero voltage drop; a constant-drop model uses the stated forward drop. Neither model is a universal exact description of a real diode at all currents and temperatures.",
+      "sourceId": "depth-diode",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "diode-piecewise-model-20261018-v1",
+      "concepts": [
+        {
+          "title": "Choose the model first",
+          "text": "An ideal conducting diode has zero voltage drop; a constant-drop model uses the stated forward drop. Neither model is a universal exact description of a real diode at all currents and temperatures."
+        },
+        {
+          "title": "Test your assumed state",
+          "text": "Assume on or off, solve the circuit, then check the implied voltage and current against the assumed direction. A contradiction means the assumed state is invalid."
+        },
+        {
+          "title": "Separate current and voltage",
+          "text": "For an original 5 V source, a forward diode with prescribed 0.7 V drop and a 1 kΩ series resistor, I=(5−0.7)/1000=4.3 m A. The resistor, not the diode, carries the remaining 4.3 V drop."
+        }
+      ],
+      "example": {
+        "problem": "A 6 V DC source drives a correctly forward-oriented constant-drop diode and a 2 kΩ resistor in series. Use a 0.6 V diode drop. Find current and resistor power.",
+        "steps": [
+          "Assume the diode is on in its prescribed forward direction.",
+          "The resistor voltage is 6−0.6=5.4 V.",
+          "Current is 5.4/2000=2.7 m A, consistent with forward conduction.",
+          "Resistor power isI²R=(0.0027)²×2000=0.01458 W."
+        ],
+        "answer": "Current 2.7 m A; resistor power 14.58 m W."
+      },
+      "recall": [
+        "Why must a model be named?",
+        "How do you check an assumed on state?",
+        "Is 0.7 V an exact universal diode voltage?"
+      ],
+      "mistake": "An ideal diode and a 0.7 V constant-drop diode are different models. Reverse breakdown, leakage and heating need additional device information."
+    },
+    {
+      "slug": "measurement-uncertainty",
+      "title": "Measurements: distinguish bounds and standard uncertainty",
+      "subject": "Measurements and Instrumentation",
+      "exams": [
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "A maximum error bound is not automatically a standard uncertainty. The combination rule depends on whether inputs are bounds, standard uncertainties or correlated estimates.",
+      "sourceId": "depth-uncertainty",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "measurement-uncertainty-20261018-v1",
+      "concepts": [
+        {
+          "title": "Name what ± means",
+          "text": "A maximum error bound is not automatically a standard uncertainty. The combination rule depends on whether inputs are bounds, standard uncertainties or correlated estimates."
+        },
+        {
+          "title": "Propagate standard uncertainties",
+          "text": "For independent inputs x,y with standard uncertainties ux,uy, a sum has combined standard uncertainty sqrt(ux²+uy²). A difference uses the same squared terms. Correlation adds covariance terms and cannot be ignored when present."
+        },
+        {
+          "title": "Keep worst-case bounds separate",
+          "text": "For stated absolute bounds ax,ay, the worst-case bound on x+y is ax+ay. Original bounds 0.2 and 0.3 give 0.5; standard uncertainties 0.2 and 0.3 instead give approximately 0.361 when independent."
+        }
+      ],
+      "example": {
+        "problem": "Two independent measured quantities have standard uncertainties 3 and 4 in one common unit. Find the combined standard uncertainty of their sum. Compare with maximum bounds 3 and 4.",
+        "steps": [
+          "For independent standard uncertainties use root-sum-square.",
+          "Compute sqrt(3²+4²)=sqrt 25=5 units.",
+          "If 3 and 4 were maximum absolute bounds, add magnitudes instead.",
+          "The corresponding worst-case bound would be 3+4=7 units; these describe different input assumptions."
+        ],
+        "answer": "Combined standard uncertainty 5; corresponding sum of maximum bounds 7."
+      },
+      "recall": [
+        "Does ± always mean one standard deviation?",
+        "When does root-sum-square apply?",
+        "What information is missing for correlated inputs?"
+      ],
+      "mistake": "Do not silently interpret a manufacturer tolerance as a standard deviation, or use independence when the same instrument creates correlated errors."
+    },
+    {
+      "slug": "conditional-counting",
+      "title": "Probability: condition on the right population",
+      "subject": "Mathematics",
+      "exams": [
+        "upsc",
+        "bpsc",
+        "ssc",
+        "sbi",
+        "ibps",
+        "cat",
+        "gate-ee",
+        "gate-ec",
+        "gate-in",
+        "ese"
+      ],
+      "minutes": 20,
+      "objective": "P(A|B)=P(A∩B)/P(B) when P(B)>0. The denominator is the condition, not the whole original population.",
+      "sourceId": "depth-conditional",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "conditional-counting-20261018-v1",
+      "concepts": [
+        {
+          "title": "Restrict the population",
+          "text": "P(A|B)=P(A∩B)/P(B) when P(B)>0. The denominator is the condition, not the whole original population."
+        },
+        {
+          "title": "Reconstruct counts",
+          "text": "For an original machine-output example, machine A makes 60 items with 6 defective and B makes 40 with 2 defective. A random defective item comes from A with probability 6/(6+2)=3/4, not 60/100."
+        },
+        {
+          "title": "Test independence",
+          "text": "A and B are independent when P(A∩B)=P(A)P(B). Mutually exclusive nonzero-probability events are not independent: their intersection is zero even though the product is positive."
+        }
+      ],
+      "example": {
+        "problem": "A box holds 30 red and 20 blue tokens. Of these,12 red and 8 blue are stamped. A token is selected uniformly from the box and is known to be stamped. Find the probability it is red.",
+        "steps": [
+          "Restrict to stamped tokens:12+8=20.",
+          "The favourable stamped-red count is 12.",
+          "Conditional probability=12/20=0.6.",
+          "Check the event definition: selection is known stamped, so use 20 rather than 50 in the denominator."
+        ],
+        "answer": "0.6."
+      },
+      "recall": [
+        "What event determines the denominator?",
+        "When is conditional probability undefined?",
+        "Are mutually exclusive nonzero events independent?"
+      ],
+      "mistake": "P(A|B) and P(B|A) generally differ. Selection bias or a changed sampling rule can invalidate a simple count ratio."
+    },
+    {
+      "slug": "species-interactions",
+      "title": "Ecology: classify interactions using evidence",
+      "subject": "Environment",
+      "exams": [
+        "upsc",
+        "bpsc",
+        "ssc"
+      ],
+      "minutes": 20,
+      "objective": "Use a simplified interaction sign pair for the two species: mutualism(+,+), commensalism(+,0), competition(−,−) and exploitation such as parasitism(+ ,−). The label depends on the described effects.",
+      "sourceId": "depth-ecology",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "species-interactions-20261018-v1",
+      "concepts": [
+        {
+          "title": "Specify the two effects",
+          "text": "Use a simplified interaction sign pair for the two species: mutualism(+,+), commensalism(+,0), competition(−,−) and exploitation such as parasitism(+ ,−). The label depends on the described effects."
+        },
+        {
+          "title": "Read the stated scenario",
+          "text": "In an original hypothetical experiment, organism A gains food while B has lower survival. This supports a(+ ,−) interaction under those conditions. Merely observing two species together does not establish benefit or causation."
+        },
+        {
+          "title": "Avoid universal labels",
+          "text": "Effects can vary with context and life stage. Use the problem’s observations rather than assuming every association is always beneficial or that one example describes all species in a group."
+        }
+      ],
+      "example": {
+        "problem": "In an invented controlled comparison, species A receives food from B and B receives protection from A. Both show improved survival compared with otherwise matched controls. Classify the interaction under the stated conditions.",
+        "steps": [
+          "Identify the effect on A: food improves its survival, coded+.",
+          "Identify the effect on B: protection improves its survival, coded+.",
+          "The pair is(+,+), consistent with mutualism in this described comparison.",
+          "The result does not establish that the relationship is obligatory or identical in every environment."
+        ],
+        "answer": "Mutualism under the stated conditions."
+      },
+      "recall": [
+        "What evidence distinguishes commensalism from mutualism?",
+        "Does coexistence prove benefit?",
+        "Why can interaction labels depend on context?"
+      ],
+      "mistake": "Zero in a simplified sign model means no measured effect under stated conditions, not proof that every possible effect is exactly zero."
+    },
+    {
+      "slug": "weather-climate-evidence",
+      "title": "Geography: weather, climate and valid comparisons",
+      "subject": "Geography",
+      "exams": [
+        "upsc",
+        "bpsc",
+        "ssc"
+      ],
+      "minutes": 20,
+      "objective": "Weather describes shorter-term atmospheric conditions. Climate concerns longer-term patterns and distributions. One unusual day does not on its own establish or refute a long-term trend.",
+      "sourceId": "depth-climate",
+      "status": "source-linked",
+      "authorship": "AI-authored",
+      "review": "Original worked lesson with author checks. No independent human editorial review; not a complete exam chapter.",
+      "version": "weather-climate-evidence-20261018-v1",
+      "concepts": [
+        {
+          "title": "Match the time scale",
+          "text": "Weather describes shorter-term atmospheric conditions. Climate concerns longer-term patterns and distributions. One unusual day does not on its own establish or refute a long-term trend."
+        },
+        {
+          "title": "Use comparable records",
+          "text": "A trend comparison should consider the same variable, location or defined region, observation method and period. Changing instruments or sampling coverage can require adjustment before interpreting differences."
+        },
+        {
+          "title": "Distinguish average and variability",
+          "text": "In an original example, a fictional station has a baseline mean 20°C and a comparison-period mean 21°C, an anomaly of+1°C. This does not say every day was warmer by 1°C or that extremes were unchanged."
+        }
+      ],
+      "example": {
+        "problem": "A fictional station’s baseline mean temperature is 18°C and a later comparable period’s mean is 19.5°C. Find the mean anomaly and say what it does not prove.",
+        "steps": [
+          "Keep the same station, variable and compatible observation method.",
+          "Anomaly=later mean−baseline mean=19.5−18=+1.5°C.",
+          "This is a difference in means, not a percentage temperature change.",
+          "It does not show that each individual day rose by 1.5°C, or attribute the change to one cause."
+        ],
+        "answer": "+1.5°C mean anomaly; daily changes and causes are not established by these means alone."
+      },
+      "recall": [
+        "Can one cold day refute a long-term trend?",
+        "What must be comparable across records?",
+        "Does a mean describe every individual observation?"
+      ],
+      "mistake": "Percent change on the Celsius scale can be misleading because its zero is not absolute. Use the requested temperature difference and clearly specified units."
+    }
+  ],
+  "questions": [
+    {
+      "id": "matrix-linear-systems-1",
+      "version": "matrix-linear-systems-1-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "nat",
+      "stem": "Find the determinant of [[4,1],[2,3]].",
+      "answer": {
+        "min": 10,
+        "max": 10
+      },
+      "explanation": "4×3−1×2=10.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "matrix-linear-systems-2",
+      "version": "matrix-linear-systems-2-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "nat",
+      "stem": "For 3 x+y=11 and x−y=1, find x.",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "Adding gives 4 x=12, so x=3 and y=2.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "matrix-linear-systems-3",
+      "version": "matrix-linear-systems-3-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "mcq",
+      "stem": "Which statement about two identical linear equations in two unknowns is correct?",
+      "answer": "2",
+      "explanation": "Identical compatible equations impose one independent constraint.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "There is exactly one solution",
+        "There is no solution",
+        "There are infinitely many solutions",
+        "The coefficient matrix must be invertible"
+      ]
+    },
+    {
+      "id": "matrix-linear-systems-4",
+      "version": "matrix-linear-systems-4-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "nat",
+      "stem": "For A=diag(2,7), find the eigenvalue corresponding to v=(0,3).",
+      "answer": {
+        "min": 7,
+        "max": 7
+      },
+      "explanation": "Av=(0,21)=7 v.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "matrix-linear-systems-5",
+      "version": "matrix-linear-systems-5-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "msq",
+      "stem": "For a square matrix A with nonzero determinant, which statements hold?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Invertibility gives a unique solution for every b; zero determinant does not occur here.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A has an inverse",
+        "A must be the identity",
+        "AX=b has one solution for every b",
+        "Every vector is an eigenvector"
+      ]
+    },
+    {
+      "id": "matrix-linear-systems-6",
+      "version": "matrix-linear-systems-6-v1",
+      "topicId": "matrix-linear-systems",
+      "type": "nat",
+      "stem": "Find the trace of [[6,2],[1,−4]].",
+      "answer": {
+        "min": 2,
+        "max": 2
+      },
+      "explanation": "The trace is the sum of diagonal entries:6−4=2.",
+      "sourceId": "depth-matrix",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "calculus-rates-area-1",
+      "version": "calculus-rates-area-1-v1",
+      "topicId": "calculus-rates-area",
+      "type": "nat",
+      "stem": "For f(x)=x³−2 x, find f′(2).",
+      "answer": {
+        "min": 10,
+        "max": 10
+      },
+      "explanation": "f′=3 x²−2, hence f′(2)=10.",
+      "sourceId": "depth-calculus",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "calculus-rates-area-2",
+      "version": "calculus-rates-area-2-v1",
+      "topicId": "calculus-rates-area",
+      "type": "nat",
+      "stem": "Evaluate the definite integral of 3 x² from x=0 to x=2.",
+      "answer": {
+        "min": 8,
+        "max": 8
+      },
+      "explanation": "The antiderivative is x³;2³−0=8.",
+      "sourceId": "depth-integral",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "calculus-rates-area-3",
+      "version": "calculus-rates-area-3-v1",
+      "topicId": "calculus-rates-area",
+      "type": "nat",
+      "stem": "For f(x)=5 x+2, find its derivative at x=7.",
+      "answer": {
+        "min": 5,
+        "max": 5
+      },
+      "explanation": "The slope of this linear function is always 5.",
+      "sourceId": "depth-calculus",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "calculus-rates-area-4",
+      "version": "calculus-rates-area-4-v1",
+      "topicId": "calculus-rates-area",
+      "type": "mcq",
+      "stem": "A signed velocity is negative throughout an interval. Which statement must hold?",
+      "answer": "1",
+      "explanation": "The velocity integral is negative, while distance is positive.",
+      "sourceId": "depth-calculus",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Displacement must be positive",
+        "Signed displacement is negative",
+        "Distance is negative",
+        "The particle is stationary"
+      ]
+    },
+    {
+      "id": "calculus-rates-area-5",
+      "version": "calculus-rates-area-5-v1",
+      "topicId": "calculus-rates-area",
+      "type": "msq",
+      "stem": "Which derivative statements are correct?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Differentiate term by term.",
+      "sourceId": "depth-calculus",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "d(x²)/dx=2 x",
+        "d(7)/dx=7",
+        "d(3 x)/dx=3",
+        "d(x³)/dx=x²"
+      ]
+    },
+    {
+      "id": "calculus-rates-area-6",
+      "version": "calculus-rates-area-6-v1",
+      "topicId": "calculus-rates-area",
+      "type": "nat",
+      "stem": "For v(t)=4 m/s constant on 0≤t≤5 s, find displacement in m.",
+      "answer": {
+        "min": 20,
+        "max": 20
+      },
+      "explanation": "∫0⁵4 dt=4×5=20 m.",
+      "sourceId": "depth-integral",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "first-order-control-1",
+      "version": "first-order-control-1-v1",
+      "topicId": "first-order-control",
+      "type": "nat",
+      "stem": "For G(s)=4/(2 s+1), find the time constant in seconds.",
+      "answer": {
+        "min": 2,
+        "max": 2
+      },
+      "explanation": "The denominator is alreadyτs+1, soτ=2 s.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "first-order-control-2",
+      "version": "first-order-control-2-v1",
+      "topicId": "first-order-control",
+      "type": "nat",
+      "stem": "For G(s)=3/(s+2), find its DC gain.",
+      "answer": {
+        "min": 1.5,
+        "max": 1.5
+      },
+      "explanation": "Set s=0:3/2=1.5.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "first-order-control-3",
+      "version": "first-order-control-3-v1",
+      "topicId": "first-order-control",
+      "type": "nat",
+      "stem": "For G(s)=1/(0.25 s+1), find its pole in s⁻¹.",
+      "answer": {
+        "min": -4,
+        "max": -4
+      },
+      "explanation": "Solve 0.25 s+1=0: s=−4.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "first-order-control-4",
+      "version": "first-order-control-4-v1",
+      "topicId": "first-order-control",
+      "type": "mcq",
+      "stem": "For a stable positive-gain first-order zero-state unit-step response, approximately what fraction of the final value is reached at t=τ?",
+      "answer": "2",
+      "explanation": "1−exp(−1)≈0.632.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "0.368",
+        "0.5",
+        "0.632",
+        "1.632"
+      ]
+    },
+    {
+      "id": "first-order-control-5",
+      "version": "first-order-control-5-v1",
+      "topicId": "first-order-control",
+      "type": "msq",
+      "stem": "For G(s)=K/(τs+1), τ>0 and zero initial state, which statements hold?",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "The pole is negative and the DC gain is K; other claims confuse quantities.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "The pole is−1/τ",
+        "The unit-step final value is K",
+        "The time constant always equals K",
+        "The pole is+1/τ"
+      ]
+    },
+    {
+      "id": "first-order-control-6",
+      "version": "first-order-control-6-v1",
+      "topicId": "first-order-control",
+      "type": "nat",
+      "stem": "A static forward gain G=4 has unity negative feedback. Find the closed-loop gain.",
+      "answer": {
+        "min": 0.8,
+        "max": 0.8
+      },
+      "explanation": "T=4/(1+4)=0.8.",
+      "sourceId": "depth-control",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "discrete-convolution-1",
+      "version": "discrete-convolution-1-v1",
+      "topicId": "discrete-convolution",
+      "type": "nat",
+      "stem": "For x=[1,2] and h=[1,1], find y[1].",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "y[1]=1×1+2×1=3.",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "All finite sequences start at n=0 and are zero elsewhere. Use full linear convolution."
+    },
+    {
+      "id": "discrete-convolution-2",
+      "version": "discrete-convolution-2-v1",
+      "topicId": "discrete-convolution",
+      "type": "nat",
+      "stem": "For x=[2,1] and h=[1,−1], find y[2].",
+      "answer": {
+        "min": -1,
+        "max": -1
+      },
+      "explanation": "At n=2 only x[1]h[1]=−1 remains.",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "All finite sequences start at n=0 and are zero elsewhere. Use full linear convolution."
+    },
+    {
+      "id": "discrete-convolution-3",
+      "version": "discrete-convolution-3-v1",
+      "topicId": "discrete-convolution",
+      "type": "nat",
+      "stem": "Two finite sequences have lengths 4 and 3. What is the full linear convolution length?",
+      "answer": {
+        "min": 6,
+        "max": 6
+      },
+      "explanation": "4+3−1=6 samples.",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "discrete-convolution-4",
+      "version": "discrete-convolution-4-v1",
+      "topicId": "discrete-convolution",
+      "type": "mcq",
+      "stem": "Convolving a sequence x[n] with the unit impulse δ[n] gives which result?",
+      "answer": "0",
+      "explanation": "The impulse acts as the identity under convolution.",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "x[n]",
+        "Zero for all n",
+        "The square of every sample",
+        "The reversed sequence only"
+      ]
+    },
+    {
+      "id": "discrete-convolution-5",
+      "version": "discrete-convolution-5-v1",
+      "topicId": "discrete-convolution",
+      "type": "msq",
+      "stem": "Which properties hold for full linear convolution of finite sequences?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Reordering and association preserve convolution; pointwise multiplication is a different operation.",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Commutativity",
+        "It always equals pointwise multiplication",
+        "Associativity",
+        "Its output always has the input length"
+      ]
+    },
+    {
+      "id": "discrete-convolution-6",
+      "version": "discrete-convolution-6-v1",
+      "topicId": "discrete-convolution",
+      "type": "nat",
+      "stem": "For x=[3,1] and h=[2,2], find the sum of all full-convolution output samples.",
+      "answer": {
+        "min": 16,
+        "max": 16
+      },
+      "explanation": "The output is[6,8,2], with sum 16=(3+1)(2+2).",
+      "sourceId": "depth-convolution",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "context": "All finite sequences start at n=0 and are zero elsewhere. Use full linear convolution."
+    },
+    {
+      "id": "ideal-opamp-feedback-1",
+      "version": "ideal-opamp-feedback-1-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "nat",
+      "stem": "An ideal linear inverting amplifier has Rin=5 kΩ and Rf=20 kΩ. Find its voltage gain.",
+      "answer": {
+        "min": -4,
+        "max": -4
+      },
+      "explanation": "Gain=−20/5=−4.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-opamp-feedback-2",
+      "version": "ideal-opamp-feedback-2-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "nat",
+      "stem": "An ideal linear non-inverting amplifier has Rf=20 kΩ and Rg=10 kΩ. Find its gain.",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "Gain=1+20/10=3.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-opamp-feedback-3",
+      "version": "ideal-opamp-feedback-3-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "nat",
+      "stem": "An ideal linear inverting amplifier has gain−6 and input 0.2 V. Find output in V.",
+      "answer": {
+        "min": -1.2,
+        "max": -1.2
+      },
+      "explanation": "Vout=−6×0.2=−1.2 V.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "ideal-opamp-feedback-4",
+      "version": "ideal-opamp-feedback-4-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "mcq",
+      "stem": "In the stated ideal op-amp model, what is the current into either input terminal?",
+      "answer": "1",
+      "explanation": "Infinite input impedance means zero input-terminal current.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Infinite",
+        "Zero",
+        "Equal to output current",
+        "Always 1 m A"
+      ]
+    },
+    {
+      "id": "ideal-opamp-feedback-5",
+      "version": "ideal-opamp-feedback-5-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "msq",
+      "stem": "Which conditions justify the virtual-short approximation for an ideal voltage-feedback op amp?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Negative feedback and linear unsaturated operation are required.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Stable negative feedback",
+        "The output is saturated",
+        "The output remains within its linear operating range",
+        "Positive feedback always forces equal inputs"
+      ]
+    },
+    {
+      "id": "ideal-opamp-feedback-6",
+      "version": "ideal-opamp-feedback-6-v1",
+      "topicId": "ideal-opamp-feedback",
+      "type": "nat",
+      "stem": "A 10 kΩ input resistor has 0.3 V across it in an ideal inverting circuit. Find its current in µA.",
+      "answer": {
+        "min": 30,
+        "max": 30
+      },
+      "explanation": "0.3/10000 A=30 µA.",
+      "sourceId": "depth-opamp",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "diode-piecewise-model-1",
+      "version": "diode-piecewise-model-1-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "nat",
+      "stem": "A 5 V source drives a forward-oriented 0.7 V constant-drop diode and 1 kΩ series resistor. Find current in m A.",
+      "answer": {
+        "min": 4.3,
+        "max": 4.3
+      },
+      "explanation": "(5−0.7)/1000 A=4.3 m A.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "diode-piecewise-model-2",
+      "version": "diode-piecewise-model-2-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "nat",
+      "stem": "A 9 V source drives an ideal forward-conducting diode and 3 kΩ series resistor. Find current in m A.",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "The ideal on-state drop is 0 V, so 9/3000 A=3 m A.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "diode-piecewise-model-3",
+      "version": "diode-piecewise-model-3-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "mcq",
+      "stem": "Which statement about a quoted 0.7 V diode drop is correct?",
+      "answer": "2",
+      "explanation": "It is a chosen approximation for a problem, not a universal law.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "It is exact for every diode",
+        "It makes current independent of the series resistor",
+        "It can be a stated constant-drop approximation",
+        "It proves reverse breakdown has occurred"
+      ]
+    },
+    {
+      "id": "diode-piecewise-model-4",
+      "version": "diode-piecewise-model-4-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "nat",
+      "stem": "A forward-biased diode has 0.6 V across it and carries 2 m A. Find diode power in m W.",
+      "answer": {
+        "min": 1.2,
+        "max": 1.2
+      },
+      "explanation": "P=0.6×2 m A=1.2 m W.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "diode-piecewise-model-5",
+      "version": "diode-piecewise-model-5-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "msq",
+      "stem": "Which steps belong to consistent piecewise diode analysis?",
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "State assumptions, solve and check consistency.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Specify the diode model",
+        "Check the solved current direction against the assumed state",
+        "Assume all diodes always conduct",
+        "Ignore the resistor voltage drop"
+      ]
+    },
+    {
+      "id": "diode-piecewise-model-6",
+      "version": "diode-piecewise-model-6-v1",
+      "topicId": "diode-piecewise-model",
+      "type": "nat",
+      "stem": "A constant-drop diode of 0.5 V is in series with 1.5 kΩ across 5 V in the forward direction. Find current in m A.",
+      "answer": {
+        "min": 3,
+        "max": 3
+      },
+      "explanation": "(5−0.5)/1500 A=3 m A.",
+      "sourceId": "depth-diode",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "measurement-uncertainty-1",
+      "version": "measurement-uncertainty-1-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "nat",
+      "stem": "Independent standard uncertainties are 3 and 4 V. Find the combined standard uncertainty of their sum in V.",
+      "answer": {
+        "min": 5,
+        "max": 5
+      },
+      "explanation": "sqrt(3²+4²)=5 V.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "measurement-uncertainty-2",
+      "version": "measurement-uncertainty-2-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "nat",
+      "stem": "Two additive quantities have maximum absolute error bounds 0.2 and 0.3 V. Find the worst-case bound on their sum in V.",
+      "answer": {
+        "min": 0.5,
+        "max": 0.5
+      },
+      "explanation": "Worst-case absolute bounds add:0.2+0.3=0.5 V.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "measurement-uncertainty-3",
+      "version": "measurement-uncertainty-3-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "mcq",
+      "stem": "Which extra information matters when combining correlated standard uncertainties?",
+      "answer": "1",
+      "explanation": "Propagation must include covariance terms.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Only the colour of the instrument",
+        "Covariance or correlation information",
+        "Only the larger central value",
+        "No extra information ever matters"
+      ]
+    },
+    {
+      "id": "measurement-uncertainty-4",
+      "version": "measurement-uncertainty-4-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "nat",
+      "stem": "Independent standard uncertainties are 6 and 8 mm. Find the combined standard uncertainty of their difference in mm.",
+      "answer": {
+        "min": 10,
+        "max": 10
+      },
+      "explanation": "For independent inputs, variances add for a difference too: sqrt(36+64)=10 mm.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "measurement-uncertainty-5",
+      "version": "measurement-uncertainty-5-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "msq",
+      "stem": "Which statements are valid?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "The numerical meaning of the inputs determines the combination method.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A maximum bound is not automatically a standard uncertainty",
+        "Worst-case bounds must always be combined by root-sum-square",
+        "Correlation can change combined standard uncertainty",
+        "All error sources are independent by definition"
+      ]
+    },
+    {
+      "id": "measurement-uncertainty-6",
+      "version": "measurement-uncertainty-6-v1",
+      "topicId": "measurement-uncertainty",
+      "type": "nat",
+      "stem": "A measured 100 V quantity has a maximum absolute error bound 2 V. Find the bound as a percentage of the measured value.",
+      "answer": {
+        "min": 2,
+        "max": 2
+      },
+      "explanation": "2/100×100=2%.",
+      "sourceId": "depth-uncertainty",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "conditional-counting-1",
+      "version": "conditional-counting-1-v1",
+      "topicId": "conditional-counting",
+      "type": "nat",
+      "stem": "Among 20 stamped tokens,12 are red. A uniformly selected stamped token is red with what probability?",
+      "answer": {
+        "min": 0.6,
+        "max": 0.6
+      },
+      "explanation": "12/20=0.6.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "conditional-counting-2",
+      "version": "conditional-counting-2-v1",
+      "topicId": "conditional-counting",
+      "type": "nat",
+      "stem": "Machine A contributes 6 defective items and B contributes 2. One item is selected uniformly from all defective items. Find the probability it came from A.",
+      "answer": {
+        "min": 0.75,
+        "max": 0.75
+      },
+      "explanation": "6/(6+2)=0.75.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "conditional-counting-3",
+      "version": "conditional-counting-3-v1",
+      "topicId": "conditional-counting",
+      "type": "nat",
+      "stem": "P(A∩B)=0.12 and P(B)=0.3. Find P(A|B).",
+      "answer": {
+        "min": 0.4,
+        "max": 0.4
+      },
+      "explanation": "0.12/0.3=0.4.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "conditional-counting-4",
+      "version": "conditional-counting-4-v1",
+      "topicId": "conditional-counting",
+      "type": "mcq",
+      "stem": "Events A and B are mutually exclusive and each has positive probability. Are they independent?",
+      "answer": "0",
+      "explanation": "Their intersection is zero but P(A)P(B)>0.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "No",
+        "Always yes",
+        "Only if the sample space is finite",
+        "Only if their names differ"
+      ]
+    },
+    {
+      "id": "conditional-counting-5",
+      "version": "conditional-counting-5-v1",
+      "topicId": "conditional-counting",
+      "type": "msq",
+      "stem": "Which statements are correct for elementary conditional probability?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Conditioning divides by the condition probability, and independence factors the intersection.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "P(A|B) requires P(B)>0",
+        "P(A|B) always equals P(B|A)",
+        "Independence implies P(A∩B)=P(A)P(B)",
+        "Mutually exclusive positive-probability events are independent"
+      ]
+    },
+    {
+      "id": "conditional-counting-6",
+      "version": "conditional-counting-6-v1",
+      "topicId": "conditional-counting",
+      "type": "nat",
+      "stem": "Independent events have probabilities 0.2 and 0.5. Find their intersection probability.",
+      "answer": {
+        "min": 0.1,
+        "max": 0.1
+      },
+      "explanation": "0.2×0.5=0.1.",
+      "sourceId": "depth-conditional",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "species-interactions-1",
+      "version": "species-interactions-1-v1",
+      "topicId": "species-interactions",
+      "type": "mcq",
+      "stem": "In a stated interaction, both species benefit. Which simplified label fits?",
+      "answer": "2",
+      "explanation": "The sign pair is(+,+), which defines mutualism in the simplified model.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Competition",
+        "Parasitism",
+        "Mutualism",
+        "Amensalism"
+      ]
+    },
+    {
+      "id": "species-interactions-2",
+      "version": "species-interactions-2-v1",
+      "topicId": "species-interactions",
+      "type": "mcq",
+      "stem": "Species A benefits while no effect on B is detected under the stated conditions. Which simplified label fits?",
+      "answer": "0",
+      "explanation": "The pair(+,0) describes commensalism.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Commensalism",
+        "Mutualism",
+        "Competition",
+        "Predation"
+      ]
+    },
+    {
+      "id": "species-interactions-3",
+      "version": "species-interactions-3-v1",
+      "topicId": "species-interactions",
+      "type": "mcq",
+      "stem": "Two species each have reduced growth when competing for the same limiting resource. Which sign pair describes the stated effects?",
+      "answer": "1",
+      "explanation": "Competition harms both relative to the defined comparison.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "(+,+)",
+        "(−,−)",
+        "(+,0)",
+        "(0,0)"
+      ]
+    },
+    {
+      "id": "species-interactions-4",
+      "version": "species-interactions-4-v1",
+      "topicId": "species-interactions",
+      "type": "mcq",
+      "stem": "A parasite gains resources while its host is harmed. Which sign pair describes parasite,host?",
+      "answer": "3",
+      "explanation": "The parasite benefits and the host is harmed.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "(−,+)",
+        "(+,+)",
+        "(0,+)",
+        "(+,−)"
+      ]
+    },
+    {
+      "id": "species-interactions-5",
+      "version": "species-interactions-5-v1",
+      "topicId": "species-interactions",
+      "type": "msq",
+      "stem": "Which conclusions are justified from interaction evidence?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Labels require stated effects and may depend on context.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Measured benefit to both can support mutualism under those conditions",
+        "Coexistence alone proves mutualism",
+        "The same association can have different effects in different environments",
+        "A simplified zero effect proves absolutely no possible effect"
+      ]
+    },
+    {
+      "id": "species-interactions-6",
+      "version": "species-interactions-6-v1",
+      "topicId": "species-interactions",
+      "type": "mcq",
+      "stem": "Two species are observed at the same site, with no measurements of effects. What can be concluded about mutualism?",
+      "answer": "1",
+      "explanation": "Presence together does not measure benefits or establish interaction type.",
+      "sourceId": "depth-ecology",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "It is proved",
+        "It is not established by coexistence alone",
+        "It is impossible",
+        "It must be obligatory"
+      ]
+    },
+    {
+      "id": "weather-climate-evidence-1",
+      "version": "weather-climate-evidence-1-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "nat",
+      "stem": "A fictional station has a baseline mean 18°C and later comparable mean 19.5°C. Find later-minus-baseline anomaly in°C.",
+      "answer": {
+        "min": 1.5,
+        "max": 1.5
+      },
+      "explanation": "19.5−18=+1.5°C.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "weather-climate-evidence-2",
+      "version": "weather-climate-evidence-2-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "mcq",
+      "stem": "Which observation alone is insufficient to refute a long-term warming trend?",
+      "answer": "2",
+      "explanation": "An individual weather event does not determine a long-term distribution or trend.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A carefully analysed multi-decade series",
+        "A comparable regional multi-year record",
+        "One unusually cold day",
+        "A defined analysis of long-term means"
+      ]
+    },
+    {
+      "id": "weather-climate-evidence-3",
+      "version": "weather-climate-evidence-3-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "mcq",
+      "stem": "Which comparison is most defensible for assessing a change in a station’s mean temperature?",
+      "answer": "0",
+      "explanation": "Compare the same variable and comparable periods using compatible records.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Comparable records of the same variable at that station",
+        "One indoor reading versus one outdoor reading",
+        "January at one site versus July at another without context",
+        "An unknown instrument reading with no date"
+      ]
+    },
+    {
+      "id": "weather-climate-evidence-4",
+      "version": "weather-climate-evidence-4-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "nat",
+      "stem": "A fictional station’s comparable mean is 17°C versus a 20°C baseline. Find the anomaly in°C.",
+      "answer": {
+        "min": -3,
+        "max": -3
+      },
+      "explanation": "17−20=−3°C.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1
+    },
+    {
+      "id": "weather-climate-evidence-5",
+      "version": "weather-climate-evidence-5-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "msq",
+      "stem": "Which statements correctly distinguish averages and individual conditions?",
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "A mean describes a collection and does not force identical changes in every element.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "A mean increase need not mean every day increased equally",
+        "A mean alone identifies the only cause of change",
+        "Climate comparisons need a defined time scale",
+        "One hot afternoon determines the long-term climate"
+      ]
+    },
+    {
+      "id": "weather-climate-evidence-6",
+      "version": "weather-climate-evidence-6-v1",
+      "topicId": "weather-climate-evidence",
+      "type": "mcq",
+      "stem": "Two means differ by 2°C. Which statement is justified from that fact alone?",
+      "answer": "1",
+      "explanation": "Only the specified difference follows; distribution and cause require more evidence.",
+      "sourceId": "depth-climate",
+      "origin": "original-ai-authored",
+      "keyStatus": "author-checked",
+      "humanReviewed": false,
+      "pyq": false,
+      "marks": 1,
+      "options": [
+        "Every day differed by 2°C",
+        "The difference of those means is 2°C",
+        "All extremes changed by 2°C",
+        "One particular cause is proved"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "depth-matrix",
+      "title": "Linear algebra: determinants, systems and eigenvalues · concept reference",
+      "url": "https://openstax.org/books/precalculus-2e/pages/9-7-solving-systems-with-inverses",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-calculus",
+      "title": "Calculus: derivatives and signed accumulation · concept reference",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-control",
+      "title": "Control systems: first-order response and feedback · concept reference",
+      "url": "https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/resources/mit18_03scf11_s25_2text/",
+      "publisher": "MIT OpenCourseWare",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-convolution",
+      "title": "Signals: calculate a finite convolution · concept reference",
+      "url": "https://ocw.mit.edu/courses/res-6-007-signals-and-systems-spring-2011/resources/lecture-4-convolution/",
+      "publisher": "MIT OpenCourseWare",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-opamp",
+      "title": "Analog electronics: ideal op-amp feedback · concept reference",
+      "url": "https://www.analog.com/media/en/training-seminars/tutorials/mt-032.pdf",
+      "publisher": "Analog Devices",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-diode",
+      "title": "Semiconductors: check a diode model consistently · concept reference",
+      "url": "https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/introduction-to-diodes-and-rectifiers/",
+      "publisher": "All About Circuits",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-uncertainty",
+      "title": "Measurements: distinguish bounds and standard uncertainty · concept reference",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty",
+      "publisher": "NIST",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-conditional",
+      "title": "Probability: condition on the right population · concept reference",
+      "url": "https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-ecology",
+      "title": "Ecology: classify interactions using evidence · concept reference",
+      "url": "https://openstax.org/books/biology-2e/pages/45-6-community-ecology",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-climate",
+      "title": "Geography: weather, climate and valid comparisons · concept reference",
+      "url": "https://science.nasa.gov/climate-change/faq/whats-the-difference-between-weather-and-climate/",
+      "publisher": "NASA",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Publisher concept reference only. Worked examples and questions are original; no exercises or figures reproduced."
+    },
+    {
+      "id": "depth-integral",
+      "title": "The definite integral · concept reference",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+      "publisher": "OpenStax",
+      "checkedOn": "2026-10-18",
+      "licenseNote": "Concept reference; original numerical examples only."
+    }
+  ]
+}

@@ -156,6 +156,7 @@ export function submit(a: PracticeAttempt, now: number) {
     : a;
 }
 export function createPractice(input: {
+  questionIds?: string[];
   examId: string;
   topicIds: string[];
   count: number;
@@ -185,6 +186,7 @@ export function createPractice(input: {
   let pool = practiceQuestions.filter(
     (q) =>
       input.topicIds.includes(q.topicId) &&
+      (!input.questionIds || input.questionIds.includes(q.id)) &&
       (!input.seen.includes(q.id) || input.allowRepeats),
   );
   // Keep shared passages adjacent; never fill a short bank by repeating questions.

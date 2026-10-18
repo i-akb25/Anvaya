@@ -150,6 +150,7 @@ export function SSCClassroom() {
           <CheckCircle2 size={18} />
           Due revision
         </Link>
+        <Link href="/ssc-cgl/study">Study plan & mistake notebook</Link>
         <Link href="/notebook">My notes</Link>
         <Link href="/results">Mistakes & results</Link>
         <Link href="/current-affairs">Current affairs</Link>

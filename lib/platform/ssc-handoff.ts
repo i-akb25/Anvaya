@@ -11,7 +11,7 @@ export function claimSSCLaunch(
     const token = JSON.parse(raw),
       a = v.active;
     if (
-      !a?.ssc ||
+      a?.examId !== "ssc" ||
       a.submittedAt !== null ||
       token.id !== a.id ||
       token.writerId !== a.writerId

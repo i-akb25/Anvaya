@@ -50,6 +50,7 @@ export function ProgressDesk() {
       </div>
       <div className="question-actions">
         <Link href="/ssc-cgl">SSC classroom →</Link>
+        <Link href="/ssc-cgl/study">SSC study plan & question notes →</Link>
         <Link href="/ssc-cgl/dest">
           DEST reports ({vault.sscDest?.history.length ?? 0}) →
         </Link>

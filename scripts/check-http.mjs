@@ -60,6 +60,7 @@ try {
     "/courses/rc-transients",
     "/recall",
     "/ssc-cgl",
+    "/ssc-cgl/study",
     "/ssc-cgl/dest",
     "/ssc-cgl/sources",
     "/courses/ssc-estimation-detail",
